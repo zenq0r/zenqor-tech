@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Zenqor Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sila salin kod <header> dari index.html di atas dan tampal di sini -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-nav"><img src="official_logo_ZT.png" alt="Zenqor Logo" class="logo-img-nav"></a>
+            <nav class="nav-links">
+                <a href="index.html" data-i18n="nav_home"></a>
+                <a href="about.html" style="color: var(--primary-blue);" data-i18n="nav_about"></a>
+                <a href="services.html" data-i18n="nav_services"></a>
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu">
+                        <span data-i18n="nav_portfolio"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                    <div class="dropdown-menu" id="portfolio-menu">
+                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming"></a>
+                        <a href="portfolio-web.html" data-i18n="nav_port_web"></a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu">
+                        <span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                    <div class="dropdown-menu" id="careers-menu">
+                        <a href="careers.html" data-i18n="nav_careers_join"></a>
+                    </div>
+                </div>
+                <a href="contact.html" data-i18n="nav_contact"></a>
+                <button id="lang-toggle" class="lang-btn"></button>
+                <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+            </nav>
+            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="hero section-padding" style="min-height: 40vh; padding-top: 150px; padding-bottom: 20px;">
+        <div class="container hero-content reveal">
+            <h1 data-i18n="nav_about"></h1>
+        </div>
+    </section>
+
+    <section id="about" class="about section-padding bg-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 data-i18n="about_title"></h2>
+                <p data-i18n="about_sub"></p>
+            </div>
+            <div class="tech-stack-container reveal">
+                <div class="tech-category card-style hover-up">
+                    <i class="fas fa-layer-group text-accent icon-lg"></i>
+                    <h3 data-i18n="tech_1"></h3>
+                    <ul><li>HTML5 & CSS3</li><li>JavaScript (ES6+)</li><li>React</li></ul>
+                </div>
+                <div class="tech-category card-style hover-up">
+                    <i class="fas fa-server text-accent icon-lg"></i>
+                    <h3 data-i18n="tech_2"></h3>
+                    <ul><li>Node.js</li><li>Python</li><li>PHP</li></ul>
+                </div>
+                <div class="tech-category card-style hover-up">
+                    <i class="fas fa-database text-accent icon-lg"></i>
+                    <h3 data-i18n="tech_3"></h3>
+                    <ul><li>PostgreSQL</li><li>MySQL</li><li>MariaDB</li></ul>
+                </div>
+                <div class="tech-category card-style hover-up">
+                    <i class="fas fa-cloud text-accent icon-lg"></i>
+                    <h3 data-i18n="tech_4"></h3>
+                    <ul><li>AWS</li><li>Google Cloud</li><li>Microsoft Azure</li></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sila salin kod <footer> dari index.html di atas dan tampal di sini -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo-footer"><img src="official_logo_ZT.png" alt="Zenqor Logo" class="logo-img-footer"></a>
+                <p data-i18n="footer_sub"></p>
+            </div>
+            <div class="footer-links">
+                <a href="services.html" data-i18n="nav_services"></a>
+                <a href="careers.html" data-i18n="nav_careers"></a>
+                <a href="contact.html" data-i18n="nav_contact"></a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom"><p data-i18n="footer_copy"></p></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
