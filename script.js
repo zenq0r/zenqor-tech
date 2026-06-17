@@ -23,7 +23,7 @@ const translations = {
         srv_7_t: "Database Tuning", srv_7_d: "Optimizing SQL queries and database structures to eliminate server latency.",
         
         pg_hero_title: "Premium <span class='text-primary'>FiveM Resources</span>",
-        pg_hero_sub: "Custom scripts and UI designed for top-tier roleplay servers.",
+        pg_hero_sub: "Custom FiveM roleplay server scripting and website UI designs crafted to match your vision and business needs.",
         pg_1_t: "Malaysia Prayer Time & Adhan Notifications",  pg_1_d: "Malaysia Prayer Time & Adhan Notifications is built with a responsive design and provides accurate prayer times based on the official zones and regions of each state, verified by JAKIM.",
         pg_2_t: "Standalone Billing", pg_2_d: "Framework-agnostic invoicing tool that works instantly on any server architecture.",
         pg_3_t: "Immersive Crime System", pg_3_d: "Complex robberies, evidence tracking, and dynamic NPC interactions built in optimized Lua.",
@@ -77,8 +77,8 @@ const translations = {
         srv_6_t: "Pembaikan Pepijat", srv_6_d: "Menyelesaikan isu kod lama, membaiki ralat framework, dan isu 'missing export'.",
         srv_7_t: "Konfigurasi Pangkalan Data", srv_7_d: "Mengoptimumkan pertanyaan SQL dan struktur pangkalan data untuk menghapuskan 'latency'.",
         
-        pg_hero_title: "<span class='text-primary'>Premium</span> Sumber FiveM ",
-        pg_hero_sub: "Skrip tersuai dan UI direka khas untuk pelayan 'roleplay' kelas atasan.",
+        pg_hero_title: "<span class='text-primary'>Premium</span> FiveM Scripts",
+        pg_hero_sub: "Skrip tersuai untuk pelayan roleplay FiveM serta reka bentuk UI laman web yang disesuaikan mengikut cita rasa dan keperluan yang diperlukan.",
         pg_1_t: "Notifikasi Waktu Solat & Azan Malaysia", pg_1_d: "Notifikasi Waktu Solat & Azan Malaysia dibangunkan secara responsif dengan waktu solat yang tepat mengikut zon dan kawasan setiap negeri berdasarkan data yang disahkan oleh JAKIM.",
         pg_2_t: "Sistem Bil Standalone", pg_2_d: "Alatan invois bebas framework yang berfungsi serta-merta pada sebarang seni bina pelayan.",
         pg_3_t: "Sistem Jenayah Imersif", pg_3_d: "Sistem rompakan kompleks, penjejakan bukti, dan interaksi NPC dinamik dalam Lua yang dioptimumkan.",
