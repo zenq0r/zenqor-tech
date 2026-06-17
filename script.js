@@ -1,4 +1,4 @@
-// --- 1. KAMUS TERJEMAHAN ---
+// --- 1. KAMUS TERJEMAHAN (Semua teks berpusat di sini) ---
 const translations = {
     en: {
         nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_contact: "Contact",
@@ -21,11 +21,19 @@ const translations = {
         srv_5_t: "UI/UX Design", srv_5_d: "Player-centric interfaces and conversion-optimized enterprise dashboards.",
         srv_6_t: "AI Automation", srv_6_d: "Machine learning integrations for smarter business operations.",
         srv_7_t: "Cloud Infrastructure", srv_7_d: "Secure, scalable, and compliant cloud deployment and architecture.",
-        port_main_title: "Featured <span class='text-primary'>Portfolio</span>",
-        port_main_sub: "Pioneering digital projects across gaming and enterprise sectors.",
-        tag_1: "Mobile Game", port_1_t: "Project Nexus", port_1_d: "A multiplayer tactical RPG for Android and iOS devices.",
-        tag_2: "Enterprise System", port_2_t: "Gov-Data Architecture", port_2_d: "Secure, high-availability data processing hub for municipal governance.",
-        tag_3: "AI Solution", port_3_t: "Neural Logistics", port_3_d: "Machine-learning driven supply chain optimization dashboard.",
+        
+        // Terjemahan Baharu untuk Laman Portfolio
+        pg_hero_title: "Next-Gen <span class='text-primary'>Gaming</span>",
+        pg_hero_sub: "Immersive worlds engineered with Unreal Engine & Unity.",
+        pg_1_t: "Project Nexus", pg_1_d: "A multiplayer tactical RPG featuring cross-platform play.",
+        pg_2_t: "Cyber Drift", pg_2_d: "High-octane racing simulator built for next-gen consoles.",
+        pg_3_t: "Aetheria Quest", pg_3_d: "Open-world adventure game with AI-driven NPC behaviors.",
+        pw_hero_title: "Enterprise <span class='text-primary'>Web Solutions</span>",
+        pw_hero_sub: "Scalable architectures and conversion-optimized dashboards.",
+        pw_1_t: "FinTech Analytics Hub", pw_1_d: "Secure financial dashboard for real-time market data.",
+        pw_2_t: "Gov-Data Architecture", pw_2_d: "High-availability data processing system for municipal governance.",
+        pw_3_t: "E-Commerce Ecosystem", pw_3_d: "Scalable online retail platform with integrated AI supply chain.",
+
         car_page_badge: "We Are Hiring",
         car_page_title: "Shape the Future of <span class='text-primary'>Technology</span>",
         car_page_sub: "Join our team of elite developers, designers, and engineers. Build impactful solutions from enterprise systems to next-gen games.",
@@ -69,11 +77,19 @@ const translations = {
         srv_5_t: "Reka Bentuk UI/UX", srv_5_d: "Antara muka mesra pengguna dan papan pemuka perusahaan yang dioptimumkan.",
         srv_6_t: "Automasi AI", srv_6_d: "Integrasi pembelajaran mesin untuk operasi perniagaan yang lebih pintar.",
         srv_7_t: "Infrastruktur Awan", srv_7_d: "Penggunaan dan seni bina awan yang selamat, berskala dan mematuhi piawaian.",
-        port_main_title: "Portfolio <span class='text-primary'>Pilihan</span>",
-        port_main_sub: "Mempelopori projek digital dalam sektor permainan dan perusahaan.",
-        tag_1: "Permainan Mudah Alih", port_1_t: "Projek Nexus", port_1_d: "RPG taktikal berbilang pemain untuk peranti Android dan iOS.",
-        tag_2: "Sistem Perusahaan", port_2_t: "Seni Bina Data Kerajaan", port_2_d: "Hab pemprosesan data keselamatan tinggi untuk tadbir urus perbandaran.",
-        tag_3: "Penyelesaian AI", port_3_t: "Logistik Neural", port_3_d: "Papan pemuka pengoptimuman rantaian bekalan berasaskan pembelajaran mesin.",
+        
+        // Terjemahan Baharu untuk Laman Portfolio
+        pg_hero_title: "Permainan <span class='text-primary'>Generasi Baharu</span>",
+        pg_hero_sub: "Dunia imersif yang direka dengan Unreal Engine & Unity.",
+        pg_1_t: "Projek Nexus", pg_1_d: "RPG taktikal berbilang pemain dengan fungsi rentas platform.",
+        pg_2_t: "Cyber Drift", pg_2_d: "Simulator perlumbaan berkuasa tinggi untuk konsol generasi baharu.",
+        pg_3_t: "Misi Aetheria", pg_3_d: "Permainan dunia terbuka dengan tingkah laku NPC dipacu AI.",
+        pw_hero_title: "Penyelesaian <span class='text-primary'>Web Perusahaan</span>",
+        pw_hero_sub: "Seni bina berskala dan papan pemuka yang dioptimumkan.",
+        pw_1_t: "Hab Analitik FinTech", pw_1_d: "Papan pemuka kewangan selamat untuk data pasaran masa nyata.",
+        pw_2_t: "Seni Bina Data Kerajaan", pw_2_d: "Sistem pemprosesan data ketersediaan tinggi untuk tadbir urus perbandaran.",
+        pw_3_t: "Ekosistem E-Dagang", pw_3_d: "Platform peruncitan dalam talian berskala besar dengan integrasi rantaian bekalan AI.",
+
         car_page_badge: "Kami Sedang Mengambil Pekerja",
         car_page_title: "Bentuk Masa Hadapan <span class='text-primary'>Teknologi</span>",
         car_page_sub: "Sertai pasukan pembangun, pereka, dan jurutera elit kami. Bina penyelesaian berimpak dari sistem perusahaan hingga permainan generasi baharu.",
@@ -97,6 +113,8 @@ const translations = {
         msg_sending: "Menghantar...", msg_success: "Mesej Berjaya Dihantar"
     }
 };
+
+// Pastikan bahagian bawah script (Pengurusan Bahasa, Tema, Dropdown, Animasi, Borang) tidak diubah dan dikekalkan.
 
 const langToggle = document.getElementById('lang-toggle');
 let currentLang = localStorage.getItem('zenqor-lang') || 'en';
