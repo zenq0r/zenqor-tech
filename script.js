@@ -33,6 +33,18 @@ const translations = {
         ph_msg: "Project Specifications", btn_submit: "Deploy Message",
         footer_sub: "Building Games, Software & Digital Experiences For The Future.",
         footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). All rights reserved.",
+        car_page_badge: "We Are Hiring",
+        car_page_title: "Shape the Future of <span class='text-primary'>Technology</span>",
+        car_page_sub: "Join our team of elite developers, designers, and engineers. Build impactful solutions from enterprise systems to next-gen games.",
+        perk_1_t: "Hybrid Work", perk_1_d: "Flexible working hours and work-from-home opportunities.",
+        perk_2_t: "Health Coverage", perk_2_d: "Comprehensive medical insurance for you and your family.",
+        perk_3_t: "Career Growth", perk_3_d: "Annual training allowance and rapid promotion pathways.",
+        perk_4_t: "Modern Tech", perk_4_d: "Work with the latest tools, game engines, and cloud infrastructure.",
+        jobs_title: "Open <span class='text-primary'>Positions</span>",
+        job_1_t: "Senior Game Developer", job_1_d: "Lead the development of 3D titles using Unreal Engine and Unity. 3+ years experience required.",
+        job_2_t: "Full Stack Engineer", job_2_d: "Build highly scalable enterprise applications using React, Node.js, and AWS.",
+        job_3_t: "UI/UX Designer", job_3_d: "Design intuitive interfaces for web apps and mobile games. Strong Figma portfolio required.",
+        btn_apply: "Apply via Email",
         msg_sending: "Deploying...", msg_success: "Transmission Successful"
     },
     ms: {
@@ -68,6 +80,18 @@ const translations = {
         ph_msg: "Spesifikasi Projek", btn_submit: "Hantar Mesej",
         footer_sub: "Membina Permainan, Perisian & Pengalaman Digital Masa Hadapan.",
         footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara.",
+        car_page_badge: "Kami Sedang Mengambil Pekerja",
+        car_page_title: "Bentuk Masa Hadapan <span class='text-primary'>Teknologi</span>",
+        car_page_sub: "Sertai pasukan pembangun, pereka, dan jurutera elit kami. Bina penyelesaian berimpak dari sistem perusahaan hingga permainan generasi baharu.",
+        perk_1_t: "Kerja Hibrid", perk_1_d: "Waktu kerja fleksibel dan peluang bekerja dari rumah.",
+        perk_2_t: "Perlindungan Kesihatan", perk_2_d: "Insurans perubatan komprehensif untuk anda dan keluarga.",
+        perk_3_t: "Pembangunan Kerjaya", perk_3_d: "Elaun latihan tahunan dan laluan kenaikan pangkat yang pantas.",
+        perk_4_t: "Teknologi Moden", perk_4_d: "Bekerja dengan alatan terkini, enjin permainan, dan infrastruktur awan.",
+        jobs_title: "Jawatan <span class='text-primary'>Kosong</span>",
+        job_1_t: "Pembangun Permainan Kanan", job_1_d: "Menerajui pembangunan tajuk 3D menggunakan Unreal Engine & Unity. Pengalaman 3+ tahun diperlukan.",
+        job_2_t: "Jurutera Full Stack", job_2_d: "Membina aplikasi perusahaan berskala tinggi menggunakan React, Node.js, dan AWS.",
+        job_3_t: "Pereka UI/UX", job_3_d: "Mereka bentuk antara muka intuitif untuk aplikasi web dan permainan. Portfolio Figma diperlukan.",
+        btn_apply: "Mohon melalui E-mel",
         msg_sending: "Menghantar...", msg_success: "Mesej Berjaya Dihantar"
     }
 };
