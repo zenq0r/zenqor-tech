@@ -1,4 +1,4 @@
-// --- i18n Translation System ---
+// --- 1. KAMUS TERJEMAHAN (Semua teks berpusat di sini) ---
 const translations = {
     en: {
         nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_contact: "Contact",
@@ -6,7 +6,7 @@ const translations = {
         hero_title: "Building Games, Software & <br><span class='text-primary'>Digital Experiences</span>",
         hero_sub: "Zenqor Technologies delivers innovative game development, web solutions and enterprise software for businesses and organizations.",
         btn_portfolio: "View Portfolio", btn_contact: "Contact Us",
-        stat_1: "Projects Shipped", stat_2: "Uptime & Security", stat_3: "Gamers & Users", stat_4: "Certified Partner",
+        stat_1: "Projects Shipped", stat_2: "Uptime & Security", stat_3: "Gamers & Users", stat_gov: "Gov", stat_4: "Certified Partner",
         about_title: "The Power Engine <span class='text-primary'>Behind Your Ideas</span>",
         about_sub: "We combine game-engine rendering techniques with robust enterprise backend architecture.",
         tech_1: "Frontend & UI", tech_2: "Backend", tech_3: "Database", tech_4: "Cloud Infrastructure",
@@ -21,9 +21,9 @@ const translations = {
         srv_7_t: "Cloud Infrastructure", srv_7_d: "Secure, scalable, and compliant cloud deployment and architecture.",
         port_main_title: "Featured <span class='text-primary'>Portfolio</span>",
         port_main_sub: "Pioneering digital projects across gaming and enterprise sectors.",
-        tag_1: "Mobile Game", port_1_d: "A multiplayer tactical RPG for Android and iOS devices.",
-        tag_2: "Enterprise System", port_2_d: "Secure, high-availability data processing hub for municipal governance.",
-        tag_3: "AI Solution", port_3_d: "Machine-learning driven supply chain optimization dashboard.",
+        tag_1: "Mobile Game", port_1_t: "Project Nexus", port_1_d: "A multiplayer tactical RPG for Android and iOS devices.",
+        tag_2: "Enterprise System", port_2_t: "Gov-Data Architecture", port_2_d: "Secure, high-availability data processing hub for municipal governance.",
+        tag_3: "AI Solution", port_3_t: "Neural Logistics", port_3_d: "Machine-learning driven supply chain optimization dashboard.",
         car_title: "Join the <span class='text-primary'>Zenqor</span> Vanguard",
         car_sub: "We are always looking for visionary developers, artists, and engineers to build the future of tech and gaming.",
         btn_careers: "View Open Roles",
@@ -34,7 +34,8 @@ const translations = {
         opt_def: "Select Project Type", opt_1: "Game Development", opt_2: "Enterprise Software", opt_3: "Web Application", opt_4: "AI / Cloud Infrastructure",
         ph_msg: "Project Specifications", btn_submit: "Deploy Message",
         footer_sub: "Building Games, Software & Digital Experiences For The Future.",
-        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). All rights reserved."
+        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). All rights reserved.",
+        msg_sending: "Deploying...", msg_success: "Transmission Successful"
     },
     ms: {
         nav_home: "Utama", nav_about: "Tentang Kami", nav_services: "Perkhidmatan", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_contact: "Hubungi",
@@ -42,7 +43,7 @@ const translations = {
         hero_title: "Membina Permainan, Perisian & <br><span class='text-primary'>Pengalaman Digital</span>",
         hero_sub: "Zenqor Technologies menyediakan pembangunan permainan inovatif, penyelesaian web dan perisian perusahaan untuk perniagaan dan organisasi.",
         btn_portfolio: "Lihat Portfolio", btn_contact: "Hubungi Kami",
-        stat_1: "Projek Disiapkan", stat_2: "Masa Awam & Keselamatan", stat_3: "Pemain & Pengguna", stat_4: "Rakan Kongsi Diiktiraf",
+        stat_1: "Projek Disiapkan", stat_2: "Masa Awam & Keselamatan", stat_3: "Pemain & Pengguna", stat_gov: "Kerajaan", stat_4: "Rakan Kongsi Diiktiraf",
         about_title: "Enjin Kuasa <span class='text-primary'>Di Sebalik Idea Anda</span>",
         about_sub: "Kami menggabungkan teknik pemaparan enjin permainan dengan seni bina tulang belakang perusahaan yang teguh.",
         tech_1: "Muka Depan & UI", tech_2: "Sistem Belakang", tech_3: "Pangkalan Data", tech_4: "Infrastruktur Awan",
@@ -57,9 +58,9 @@ const translations = {
         srv_7_t: "Infrastruktur Awan", srv_7_d: "Penggunaan dan seni bina awan yang selamat, berskala dan mematuhi piawaian.",
         port_main_title: "Portfolio <span class='text-primary'>Pilihan</span>",
         port_main_sub: "Mempelopori projek digital dalam sektor permainan dan perusahaan.",
-        tag_1: "Permainan Mudah Alih", port_1_d: "RPG taktikal berbilang pemain untuk peranti Android dan iOS.",
-        tag_2: "Sistem Perusahaan", port_2_d: "Hab pemprosesan data keselamatan tinggi untuk tadbir urus perbandaran.",
-        tag_3: "Penyelesaian AI", port_3_d: "Papan pemuka pengoptimuman rantaian bekalan berasaskan pembelajaran mesin.",
+        tag_1: "Permainan Mudah Alih", port_1_t: "Projek Nexus", port_1_d: "RPG taktikal berbilang pemain untuk peranti Android dan iOS.",
+        tag_2: "Sistem Perusahaan", port_2_t: "Seni Bina Data Kerajaan", port_2_d: "Hab pemprosesan data keselamatan tinggi untuk tadbir urus perbandaran.",
+        tag_3: "Penyelesaian AI", port_3_t: "Logistik Neural", port_3_d: "Papan pemuka pengoptimuman rantaian bekalan berasaskan pembelajaran mesin.",
         car_title: "Sertai Barisan Hadapan <span class='text-primary'>Zenqor</span>",
         car_sub: "Kami sentiasa mencari pembangun, artis, dan jurutera berwawasan untuk membina masa depan teknologi dan permainan.",
         btn_careers: "Lihat Jawatan Kosong",
@@ -70,10 +71,12 @@ const translations = {
         opt_def: "Pilih Jenis Projek", opt_1: "Pembangunan Permainan", opt_2: "Perisian Perusahaan", opt_3: "Aplikasi Web", opt_4: "AI / Infrastruktur Awan",
         ph_msg: "Spesifikasi Projek", btn_submit: "Hantar Mesej",
         footer_sub: "Membina Permainan, Perisian & Pengalaman Digital Masa Hadapan.",
-        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara."
+        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara.",
+        msg_sending: "Menghantar...", msg_success: "Mesej Berjaya Dihantar"
     }
 };
 
+// --- 2. SISTEM PENGURUSAN BAHASA ---
 const langToggle = document.getElementById('lang-toggle');
 let currentLang = localStorage.getItem('zenqor-lang') || 'en';
 
@@ -86,6 +89,7 @@ function setLanguage(lang) {
         langToggle.textContent = lang === 'en' ? 'MS' : 'EN';
     }
     
+    // Suntik Teks HTML Biasa
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if(translations[lang][key]) {
@@ -93,22 +97,13 @@ function setLanguage(lang) {
         }
     });
 
-    const nameInput = document.getElementById('form_name');
-    const emailInput = document.getElementById('form_email');
-    const msgInput = document.getElementById('form_msg');
-    const selectBox = document.getElementById('form_select');
-
-    if(nameInput) nameInput.placeholder = translations[lang]['ph_name'];
-    if(emailInput) emailInput.placeholder = translations[lang]['ph_email'];
-    if(msgInput) msgInput.placeholder = translations[lang]['ph_msg'];
-    
-    if(selectBox) {
-        selectBox.options[0].text = translations[lang]['opt_def'];
-        selectBox.options[1].text = translations[lang]['opt_1'];
-        selectBox.options[2].text = translations[lang]['opt_2'];
-        selectBox.options[3].text = translations[lang]['opt_3'];
-        selectBox.options[4].text = translations[lang]['opt_4'];
-    }
+    // Suntik Teks Placeholder Borang
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if(translations[lang][key]) {
+            el.placeholder = translations[lang][key];
+        }
+    });
 }
 
 if(langToggle) {
@@ -117,14 +112,14 @@ if(langToggle) {
     });
 }
 
+// Mulakan Bahasa Secara Automatik
 setLanguage(currentLang);
 
-// --- Theme Management (Tukar Default kepada 'light') ---
+// --- 3. SISTEM PENGURUSAN TEMA (Dark/Light) ---
 const themeToggleBtn = document.getElementById('theme-toggle');
 const rootElement = document.documentElement;
 const themeIcon = themeToggleBtn.querySelector('i');
 
-// Lalai ditukar kepada Light untuk menampakkan impak korporat
 const savedTheme = localStorage.getItem('zenqor-engine-theme') || 'light';
 rootElement.setAttribute('data-theme', savedTheme);
 updateIcon(savedTheme);
@@ -147,7 +142,7 @@ function updateIcon(theme) {
     }
 }
 
-// --- Menu Mudah Alih (Mobile Menu) ---
+// --- 4. MENU MUDAH ALIH ---
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
@@ -161,7 +156,7 @@ navLinks.querySelectorAll('a').forEach(link => {
     });
 });
 
-// --- Scroll Reveal Animations ---
+// --- 5. ANIMASI SKROL (REVEAL) ---
 const revealElements = document.querySelectorAll('.reveal');
 
 const revealCallback = (entries, observer) => {
@@ -179,22 +174,21 @@ const revealOptions = {
 };
 
 const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
-
 revealElements.forEach(el => revealObserver.observe(el));
 
-// --- Contact Form Simulator ---
+// --- 6. SIMULASI BORANG HUBUNGI ---
 const form = document.getElementById('mainContactForm');
 if(form) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const btn = form.querySelector('button');
-        const originalText = btn.textContent;
+        const originalText = translations[currentLang]['btn_submit']; // Rujuk terus dari kamus
         
-        btn.textContent = currentLang === 'en' ? 'Deploying...' : 'Menghantar...';
+        btn.textContent = translations[currentLang]['msg_sending'];
         btn.disabled = true;
         
         setTimeout(() => {
-            btn.textContent = currentLang === 'en' ? 'Transmission Successful' : 'Mesej Berjaya Dihantar';
+            btn.textContent = translations[currentLang]['msg_success'];
             btn.style.background = '#059669'; 
             form.reset();
             
