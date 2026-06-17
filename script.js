@@ -1,389 +1,230 @@
-/* =========================================
-   VARIABLES & THEME
-   ========================================= */
-:root {
-    --bg-dark: #0F172A; 
-    --primary-blue: #2563EB; 
-    --accent-cyan: #06B6D4; 
-    --highlight-amber: #F59E0B; 
+// --- i18n Translation System ---
+const translations = {
+    en: {
+        nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_contact: "Contact",
+        hero_badge: "Enterprise Grade & Government Ready",
+        hero_title: "Building Games, Software & <br><span class='text-gradient'>Digital Experiences</span> For The Future",
+        hero_sub: "Zenqor Technologies delivers innovative game development, web solutions and enterprise software for businesses and organizations.",
+        btn_portfolio: "View Portfolio", btn_contact: "Contact Us",
+        stat_1: "Projects Shipped", stat_2: "Uptime & Security", stat_3: "Gamers & Users", stat_4: "Certified Partner",
+        about_title: "The Power Engine <span class='text-gradient'>Behind Your Ideas</span>",
+        about_sub: "We combine game-engine rendering techniques with robust enterprise backend architecture.",
+        tech_1: "Frontend & UI", tech_2: "Backend", tech_3: "Database", tech_4: "Cloud Infrastructure",
+        srv_main_title: "Our <span class='text-gradient'>Core Services</span>",
+        srv_main_sub: "From high-fidelity gaming experiences to secure government software ecosystems.",
+        srv_1_t: "Game Development", srv_1_d: "Next-gen 3D/2D games engineered for consoles, PC, and immersive environments.",
+        srv_2_t: "Mobile App Dev", srv_2_d: "High-performance iOS and Android applications and mobile games.",
+        srv_3_t: "Website Development", srv_3_d: "Ultra-fast, responsive, and SEO-optimized modern web experiences.",
+        srv_4_t: "Custom Software", srv_4_d: "Scalable, bespoke enterprise and government solutions.",
+        srv_5_t: "UI/UX Design", srv_5_d: "Player-centric interfaces and conversion-optimized enterprise dashboards.",
+        srv_6_t: "AI Automation", srv_6_d: "Machine learning integrations for smarter business operations.",
+        srv_7_t: "Cloud Infrastructure", srv_7_d: "Secure, scalable, and compliant cloud deployment and architecture.",
+        port_main_title: "Featured <span class='text-gradient'>Portfolio</span>",
+        port_main_sub: "Pioneering digital projects across gaming and enterprise sectors.",
+        tag_1: "Mobile Game", port_1_d: "A multiplayer tactical RPG for Android and iOS devices.",
+        tag_2: "Enterprise System", port_2_d: "Secure, high-availability data processing hub for municipal governance.",
+        tag_3: "AI Solution", port_3_d: "Machine-learning driven supply chain optimization dashboard.",
+        car_title: "Join the <span class='text-highlight'>Zenqor</span> Vanguard",
+        car_sub: "We are always looking for visionary developers, artists, and engineers to build the future of tech and gaming.",
+        btn_careers: "View Open Roles",
+        con_title: "Initialize <span class='text-gradient'>Connection</span>",
+        con_sub: "Partner with us to engineer your next technological leap.",
+        hq_title: "Headquarters", hq_addr: "Klang Valley Tech Park<br>Selangor, Malaysia",
+        ph_name: "Designation / Name", ph_email: "Corporate Email", 
+        opt_def: "Select Project Type", opt_1: "Game Development", opt_2: "Enterprise Software", opt_3: "Web Application", opt_4: "AI / Cloud Infrastructure",
+        ph_msg: "Project Specifications", btn_submit: "Deploy Message",
+        footer_sub: "Building Games, Software & Digital Experiences For The Future.",
+        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). All rights reserved."
+    },
+    ms: {
+        nav_home: "Utama", nav_about: "Tentang Kami", nav_services: "Perkhidmatan", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_contact: "Hubungi",
+        hero_badge: "Taraf Perusahaan & Diiktiraf Kerajaan",
+        hero_title: "Membina Permainan, Perisian & <br><span class='text-gradient'>Pengalaman Digital</span> Masa Hadapan",
+        hero_sub: "Zenqor Technologies menyediakan pembangunan permainan inovatif, penyelesaian web dan perisian perusahaan untuk perniagaan dan organisasi.",
+        btn_portfolio: "Lihat Portfolio", btn_contact: "Hubungi Kami",
+        stat_1: "Projek Disiapkan", stat_2: "Masa Awam & Keselamatan", stat_3: "Pemain & Pengguna", stat_4: "Rakan Kongsi Diiktiraf",
+        about_title: "Enjin Kuasa <span class='text-gradient'>Di Sebalik Idea Anda</span>",
+        about_sub: "Kami menggabungkan teknik pemaparan enjin permainan dengan seni bina tulang belakang perusahaan yang teguh.",
+        tech_1: "Muka Depan & UI", tech_2: "Sistem Belakang", tech_3: "Pangkalan Data", tech_4: "Infrastruktur Awan",
+        srv_main_title: "Perkhidmatan <span class='text-gradient'>Teras Kami</span>",
+        srv_main_sub: "Daripada pengalaman permainan beresolusi tinggi hingga ekosistem perisian kerajaan yang selamat.",
+        srv_1_t: "Pembangunan Permainan", srv_1_d: "Permainan 3D/2D generasi baharu yang direka untuk konsol, PC dan persekitaran imersif.",
+        srv_2_t: "Pembangunan Aplikasi Pintar", srv_2_d: "Aplikasi iOS dan Android berprestasi tinggi serta permainan mudah alih.",
+        srv_3_t: "Pembangunan Laman Web", srv_3_d: "Pengalaman web moden yang amat pantas, responsif dan dioptimumkan SEO.",
+        srv_4_t: "Perisian Khusus", srv_4_d: "Penyelesaian perusahaan dan kerajaan yang boleh diskala mengikut keperluan.",
+        srv_5_t: "Reka Bentuk UI/UX", srv_5_d: "Antara muka mesra pengguna dan papan pemuka perusahaan yang dioptimumkan.",
+        srv_6_t: "Automasi AI", srv_6_d: "Integrasi pembelajaran mesin untuk operasi perniagaan yang lebih pintar.",
+        srv_7_t: "Infrastruktur Awan", srv_7_d: "Penggunaan dan seni bina awan yang selamat, berskala dan mematuhi piawaian.",
+        port_main_title: "Portfolio <span class='text-gradient'>Pilihan</span>",
+        port_main_sub: "Mempelopori projek digital dalam sektor permainan dan perusahaan.",
+        tag_1: "Permainan Mudah Alih", port_1_d: "RPG taktikal berbilang pemain untuk peranti Android dan iOS.",
+        tag_2: "Sistem Perusahaan", port_2_d: "Hab pemprosesan data keselamatan tinggi untuk tadbir urus perbandaran.",
+        tag_3: "Penyelesaian AI", port_3_d: "Papan pemuka pengoptimuman rantaian bekalan berasaskan pembelajaran mesin.",
+        car_title: "Sertai Barisan Hadapan <span class='text-highlight'>Zenqor</span>",
+        car_sub: "Kami sentiasa mencari pembangun, artis, dan jurutera berwawasan untuk membina masa depan teknologi dan permainan.",
+        btn_careers: "Lihat Jawatan Kosong",
+        con_title: "Mulakan <span class='text-gradient'>Hubungan</span>",
+        con_sub: "Bekerjasama dengan kami untuk merancang lonjakan teknologi anda yang seterusnya.",
+        hq_title: "Ibu Pejabat", hq_addr: "Taman Teknologi Lembah Klang<br>Selangor, Malaysia",
+        ph_name: "Jawatan / Nama", ph_email: "E-mel Korporat", 
+        opt_def: "Pilih Jenis Projek", opt_1: "Pembangunan Permainan", opt_2: "Perisian Perusahaan", opt_3: "Aplikasi Web", opt_4: "AI / Infrastruktur Awan",
+        ph_msg: "Spesifikasi Projek", btn_submit: "Hantar Mesej",
+        footer_sub: "Membina Permainan, Perisian & Pengalaman Digital Masa Hadapan.",
+        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara."
+    }
+};
+
+const langToggle = document.getElementById('lang-toggle');
+let currentLang = localStorage.getItem('zenqor-lang') || 'en';
+
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('zenqor-lang', lang);
+    document.documentElement.lang = lang;
     
-    --bg-color: #080c16;
-    --surface-color: rgba(15, 23, 42, 0.6);
-    --text-primary: #FFFFFF;
-    --text-secondary: #94A3B8;
-    --border-color: rgba(6, 182, 212, 0.15);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    if(langToggle) {
+        langToggle.textContent = lang === 'en' ? 'MS' : 'EN';
+    }
+    
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if(translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+        }
+    });
+
+    const nameInput = document.getElementById('form_name');
+    const emailInput = document.getElementById('form_email');
+    const msgInput = document.getElementById('form_msg');
+    const selectBox = document.getElementById('form_select');
+
+    if(nameInput) nameInput.placeholder = translations[lang]['ph_name'];
+    if(emailInput) emailInput.placeholder = translations[lang]['ph_email'];
+    if(msgInput) msgInput.placeholder = translations[lang]['ph_msg'];
+    
+    if(selectBox) {
+        selectBox.options[0].text = translations[lang]['opt_def'];
+        selectBox.options[1].text = translations[lang]['opt_1'];
+        selectBox.options[2].text = translations[lang]['opt_2'];
+        selectBox.options[3].text = translations[lang]['opt_3'];
+        selectBox.options[4].text = translations[lang]['opt_4'];
+    }
 }
 
-[data-theme="light"] {
-    --bg-color: #F8FAFC;
-    --surface-color: rgba(255, 255, 255, 0.8);
-    --text-primary: #0F172A;
-    --text-secondary: #475569;
-    --border-color: rgba(37, 99, 235, 0.2);
-    --glass-shadow: 0 8px 32px 0 rgba(37, 99, 235, 0.05);
+if(langToggle) {
+    langToggle.addEventListener('click', () => {
+        setLanguage(currentLang === 'en' ? 'ms' : 'en');
+    });
 }
 
-/* =========================================
-   RESET & TYPOGRAPHY
-   ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+setLanguage(currentLang);
+
+// --- Theme Management (Dark/Light) ---
+const themeToggleBtn = document.getElementById('theme-toggle');
+const rootElement = document.documentElement;
+const themeIcon = themeToggleBtn.querySelector('i');
+
+const savedTheme = localStorage.getItem('zenqor-engine-theme') || 'dark';
+rootElement.setAttribute('data-theme', savedTheme);
+updateIcon(savedTheme);
+
+themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = rootElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    rootElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('zenqor-engine-theme', newTheme);
+    updateIcon(newTheme);
+});
+
+function updateIcon(theme) {
+    if(theme === 'light') {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    } else {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    }
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    line-height: 1.6;
-    overflow-x: hidden;
-    transition: background-color 0.4s ease;
-}
+// --- Menu Mudah Alih (Mobile Menu) ---
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
 
-h1, h2, h3, h4, .logo {
-    font-family: 'Space Grotesk', sans-serif;
-}
+mobileMenuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
 
-.container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
 
-.section-padding {
-    padding: 120px 0;
-}
+// --- Scroll Reveal Animations ---
+const revealElements = document.querySelectorAll('.reveal');
 
-/* =========================================
-   AMBIENT BACKGROUND (3D Feel)
-   ========================================= */
-.ambient-bg {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-}
+const revealCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+        }
+    });
+};
 
-.grid-overlay {
-    position: absolute;
-    width: 200%; height: 200%;
-    top: -50%; left: -50%;
-    background-image: 
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 40px 40px;
-    transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
-    animation: gridMove 20s linear infinite;
-}
+const revealOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+};
 
-@keyframes gridMove {
-    0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
-    100% { transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px); }
-}
+const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
 
-.orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.4;
-    animation: float 10s ease-in-out infinite alternate;
-}
+revealElements.forEach(el => revealObserver.observe(el));
 
-.orb-1 {
-    width: 500px; height: 500px;
-    background: var(--primary-blue);
-    top: -100px; left: -100px;
-}
+// --- Simulated 3D Card Tilt Effect ---
+const tiltCards = document.querySelectorAll('.hover-tilt');
 
-.orb-2 {
-    width: 400px; height: 400px;
-    background: var(--accent-cyan);
-    bottom: -100px; right: -50px;
-    animation-delay: -5s;
-}
+tiltCards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    });
+});
 
-@keyframes float {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(30px, 50px); }
-}
-
-/* =========================================
-   GLASSMORPHISM & UTILITIES
-   ========================================= */
-.glass {
-    background: var(--surface-color);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--glass-shadow);
-    border-radius: 16px;
-}
-
-.text-gradient {
-    background: linear-gradient(90deg, var(--accent-cyan), var(--primary-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.text-accent { color: var(--accent-cyan); }
-.text-primary { color: var(--primary-blue); }
-.text-highlight { color: var(--highlight-amber); }
-.dot { color: var(--highlight-amber); }
-.mt-3 { margin-top: 1.5rem; }
-.mt-5 { margin-top: 3rem; }
-.w-100 { width: 100%; }
-
-/* =========================================
-   NAVIGATION & LOGO
-   ========================================= */
-.navbar {
-    position: fixed;
-    top: 0; width: 100%;
-    z-index: 1000;
-    border-radius: 0;
-    border-left: none; border-right: none; border-top: none;
-}
-
-.nav-container {
-    display: flex; justify-content: space-between; align-items: center;
-    height: 80px;
-}
-
-.logo {
-    display: flex; align-items: center; text-decoration: none;
-}
-
-.logo-img {
-    height: 70px; 
-    width: auto;
-    object-fit: contain;
-    mix-blend-mode: screen; /* Fungsi utama untuk hilangkan latar belakang hitam */
-    transition: transform 0.3s ease;
-}
-
-.logo-img:hover {
-    transform: scale(1.05);
-}
-
-.nav-links {
-    display: flex; gap: 32px; align-items: center;
-}
-
-.nav-links a {
-    color: var(--text-secondary); text-decoration: none;
-    font-size: 0.9rem; font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover { color: var(--accent-cyan); }
-
-.lang-btn {
-    background: transparent;
-    border: 1px solid var(--text-secondary);
-    color: var(--text-primary);
-    padding: 4px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 12px;
-    transition: all 0.3s ease;
-}
-
-.lang-btn:hover {
-    background: var(--primary-blue);
-    color: #fff;
-    border-color: var(--primary-blue);
-}
-
-#theme-toggle {
-    background: none; border: none; color: var(--text-primary);
-    cursor: pointer; font-size: 1.2rem;
-}
-
-.mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
-
-/* =========================================
-   BUTTONS
-   ========================================= */
-.btn {
-    display: inline-flex; justify-content: center; align-items: center;
-    padding: 14px 32px;
-    border-radius: 8px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600; font-size: 1rem;
-    text-decoration: none; cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary-blue), #1e40af);
-    color: #fff;
-}
-
-.btn-glow:hover {
-    box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    background: transparent;
-    border: 1px solid var(--text-secondary);
-    color: var(--text-primary);
-}
-
-.btn-outline:hover {
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
-}
-
-/* =========================================
-   HERO SECTION
-   ========================================= */
-.hero {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding-top: 120px;
-}
-
-.hero-content {
-    text-align: center; max-width: 900px; margin: 0 auto;
-}
-
-.badge {
-    display: inline-block;
-    padding: 6px 16px; border-radius: 20px;
-    background: rgba(245, 158, 11, 0.1);
-    color: var(--highlight-amber);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    font-size: 0.85rem; font-weight: 600;
-    margin-bottom: 24px;
-    letter-spacing: 1px;
-}
-
-.hero h1 {
-    font-size: 4rem; line-height: 1.1; margin-bottom: 24px;
-}
-
-.hero-sub {
-    font-size: 1.2rem; color: var(--text-secondary);
-    margin-bottom: 40px; max-width: 700px; margin-inline: auto;
-}
-
-.hero-actions { display: flex; gap: 16px; justify-content: center; }
-
-.stats-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    padding: 32px; border-radius: 16px;
-}
-
-.stat-card h3 { font-size: 2.5rem; margin-bottom: 8px; }
-.stat-card p { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;}
-
-/* =========================================
-   SECTIONS & GRIDS
-   ========================================= */
-.section-header { text-align: center; margin-bottom: 64px; }
-.section-header h2 { font-size: 2.5rem; margin-bottom: 16px; }
-.section-header p { color: var(--text-secondary); font-size: 1.1rem; }
-
-.tech-stack-container {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
-}
-
-.tech-category { padding: 32px 24px; text-align: center; }
-.tech-category h3 { margin: 16px 0; font-size: 1.2rem; }
-.tech-category ul { list-style: none; color: var(--text-secondary); font-size: 0.9rem; }
-.tech-category li { margin-bottom: 8px; }
-.icon-lg { font-size: 2.5rem; }
-
-.services-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
-}
-
-.service-card { padding: 40px 32px; transition: border-color 0.3s; }
-.service-card:hover { border-color: var(--primary-blue); }
-.service-card h3 { margin: 24px 0 12px; font-size: 1.3rem; }
-.service-card p { color: var(--text-secondary); font-size: 0.95rem; }
-
-/* Portfolio */
-.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.portfolio-item { overflow: hidden; display: flex; flex-direction: column; }
-.port-img {
-    height: 220px; background-size: cover; background-position: center;
-    border-bottom: 1px solid var(--border-color);
-}
-.port-content { padding: 24px; }
-.tag {
-    font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-    background: rgba(6, 182, 212, 0.1); color: var(--accent-cyan);
-    padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 12px;
-}
-.port-content h3 { margin-bottom: 8px; font-size: 1.2rem; }
-.port-content p { color: var(--text-secondary); font-size: 0.9rem; }
-
-/* Careers & Contact */
-.careers-box { text-align: center; padding: 80px 40px; }
-.careers-content h2 { font-size: 2.5rem; margin-bottom: 16px; }
-.careers-content p { color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
-
-.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
-.contact-info, .contact-form { padding: 40px; }
-.info-row { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
-.info-row i { margin-top: 4px; }
-.input-group { margin-bottom: 24px; }
-.input-group input, .input-group select, .input-group textarea {
-    width: 100%; padding: 16px;
-    background: rgba(0,0,0,0.2); border: 1px solid var(--border-color);
-    border-radius: 8px; color: var(--text-primary);
-    font-family: inherit; transition: border-color 0.3s;
-}
-.input-group input:focus, .input-group textarea:focus {
-    outline: none; border-color: var(--accent-cyan);
-}
-.input-group input::placeholder, .input-group textarea::placeholder {
-    color: var(--text-secondary);
-}
-
-/* Footer */
-footer { border-top: 1px solid var(--border-color); padding: 60px 0 20px; background: rgba(0,0,0,0.2); }
-.footer-content { display: flex; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; gap: 32px;}
-.footer-brand p { color: var(--text-secondary); margin-top: 16px; max-width: 300px; font-size: 0.9rem; }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { color: var(--text-secondary); text-decoration: none; }
-.footer-links a:hover { color: var(--accent-cyan); }
-.footer-social { display: flex; gap: 16px; font-size: 1.5rem; }
-.footer-social a { color: var(--text-secondary); transition: color 0.3s; }
-.footer-social a:hover { color: var(--primary-blue); }
-.footer-bottom { text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding-top: 20px; border-top: 1px solid var(--border-color); }
-
-/* =========================================
-   ANIMATIONS & RESPONSIVE
-   ========================================= */
-.reveal {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.reveal.active { opacity: 1; transform: translateY(0); }
-
-.hover-tilt { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.hover-tilt:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 40px rgba(6, 182, 212, 0.15); }
-
-@media (max-width: 1024px) {
-    .hero h1 { font-size: 3rem; }
-    .stats-grid, .tech-stack-container { grid-template-columns: repeat(2, 1fr); }
-    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-    .contact-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .mobile-menu-btn { display: block; }
-    .hero h1 { font-size: 2.5rem; }
-    .stats-grid { grid-template-columns: 1fr; gap: 16px; }
-    .portfolio-grid, .tech-stack-container { grid-template-columns: 1fr; }
-    .footer-content { flex-direction: column; text-align: center; align-items: center; }
+// --- Contact Form Simulator ---
+const form = document.getElementById('mainContactForm');
+if(form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button');
+        const originalText = btn.textContent;
+        
+        btn.textContent = currentLang === 'en' ? 'Deploying...' : 'Menghantar...';
+        btn.disabled = true;
+        
+        setTimeout(() => {
+            btn.textContent = currentLang === 'en' ? 'Transmission Successful' : 'Mesej Berjaya Dihantar';
+            btn.style.background = '#059669'; 
+            form.reset();
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+                btn.disabled = false;
+            }, 3000);
+        }, 1200);
+    });
 }
