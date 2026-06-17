@@ -182,7 +182,7 @@ if(form) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const btn = form.querySelector('button');
-        const originalText = translations[currentLang]['btn_submit']; // Rujuk terus dari kamus
+        const originalText = translations[currentLang]['btn_submit'];
         
         btn.textContent = translations[currentLang]['msg_sending'];
         btn.disabled = true;
