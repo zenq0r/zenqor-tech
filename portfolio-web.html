@@ -11,13 +11,13 @@
 <body>
     <header class="navbar">
         <div class="container nav-container">
-            <a href="index.html#home" class="logo-nav">
+            <a href="index.html" class="logo-nav">
                 <img src="official_logo_ZT.png" alt="Zenqor Logo" class="logo-img-nav">
             </a>
             <nav class="nav-links">
-                <a href="index.html#home" data-i18n="nav_home"></a>
-                <a href="index.html#about" data-i18n="nav_about"></a>
-                <a href="index.html#services" data-i18n="nav_services"></a>
+                <a href="index.html" data-i18n="nav_home"></a>
+                <a href="about.html" data-i18n="nav_about"></a>
+                <a href="services.html" data-i18n="nav_services"></a>
                 
                 <div class="nav-item-dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu" style="color: var(--primary-blue);">
@@ -25,7 +25,7 @@
                     </a>
                     <div class="dropdown-menu" id="portfolio-menu">
                         <a href="portfolio-gaming.html" data-i18n="nav_port_gaming"></a>
-                        <a href="portfolio-web.html" data-i18n="nav_port_web"></a>
+                        <a href="portfolio-web.html" style="color: var(--primary-blue);" data-i18n="nav_port_web"></a>
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <a href="index.html#contact" data-i18n="nav_contact"></a>
+                <a href="contact.html" data-i18n="nav_contact"></a>
                 <button id="lang-toggle" class="lang-btn"></button>
                 <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
             </nav>
@@ -46,26 +46,66 @@
         </div>
     </header>
 
-    <section class="hero section-padding" style="min-height: 50vh; padding-top: 150px; padding-bottom: 50px;">
+    <section class="hero section-padding" style="min-height: 40vh; padding-top: 150px; padding-bottom: 20px;">
         <div class="container hero-content reveal">
-            <div class="badge">Web Portfolio</div>
-            <h1>Enterprise <span class="text-primary">Web Solutions</span></h1>
-            <p class="hero-sub">Scalable architectures and conversion-optimized dashboards.</p>
+            <div class="badge" data-i18n="nav_port_web"></div>
+            <h1 data-i18n="pw_hero_title"></h1>
+            <p class="hero-sub" data-i18n="pw_hero_sub"></p>
+        </div>
+    </section>
+
+    <!-- Grid Projek Web -->
+    <section class="portfolio section-padding">
+        <div class="container">
+            <div class="portfolio-grid">
+                <!-- Projek 1 -->
+                <div class="portfolio-item card-style reveal hover-up">
+                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="port-content">
+                        <span class="tag">React & Node.js</span>
+                        <h3 data-i18n="pw_1_t"></h3>
+                        <p data-i18n="pw_1_d"></p>
+                    </div>
+                </div>
+                <!-- Projek 2 -->
+                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.1s;">
+                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="port-content">
+                        <span class="tag">Enterprise System</span>
+                        <h3 data-i18n="pw_2_t"></h3>
+                        <p data-i18n="pw_2_d"></p>
+                    </div>
+                </div>
+                <!-- Projek 3 -->
+                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.2s;">
+                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="port-content">
+                        <span class="tag">AI Integration</span>
+                        <h3 data-i18n="pw_3_t"></h3>
+                        <p data-i18n="pw_3_d"></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container footer-content">
             <div class="footer-brand">
-                <a href="index.html#home" class="logo-footer">
+                <a href="index.html" class="logo-footer">
                     <img src="official_logo_ZT.png" alt="Zenqor Logo" class="logo-img-footer">
                 </a>
                 <p data-i18n="footer_sub"></p>
             </div>
             <div class="footer-links">
-                <a href="index.html#services" data-i18n="nav_services"></a>
+                <a href="services.html" data-i18n="nav_services"></a>
                 <a href="careers.html" data-i18n="nav_careers"></a>
-                <a href="index.html#contact" data-i18n="nav_contact"></a>
+                <a href="contact.html" data-i18n="nav_contact"></a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
             </div>
         </div>
         <div class="footer-bottom">
