@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Zenqor Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html#home" class="logo-nav">
+                <img src="official_logo_ZT.png" alt="Zenqor Logo" class="logo-img-nav">
+            </a>
+            <nav class="nav-links">
+                <a href="index.html#home" data-i18n="nav_home"></a>
+                <a href="index.html#about" data-i18n="nav_about"></a>
+                <a href="index.html#services" data-i18n="nav_services"></a>
+                <a href="index.html#portfolio" data-i18n="nav_portfolio"></a>
+                
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" id="careers-toggle" style="color: var(--primary-blue);">
+                        <span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                    <div class="dropdown-menu" id="careers-menu">
+                        <a href="careers.html" data-i18n="nav_careers_join"></a>
+                    </div>
+                </div>
+
+                <a href="index.html#contact" data-i18n="nav_contact"></a>
+                <button id="lang-toggle" class="lang-btn"></button>
+                <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+            </nav>
+            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="hero section-padding" style="min-height: 50vh; padding-top: 150px; padding-bottom: 50px;">
+        <div class="container hero-content reveal">
+            <div class="badge" data-i18n="car_page_badge"></div>
+            <h1 data-i18n="car_page_title"></h1>
+            <p class="hero-sub" data-i18n="car_page_sub"></p>
+        </div>
+    </section>
+
+    <section class="about section-padding bg-alt" style="padding: 60px 0;">
+        <div class="container">
+            <div class="tech-stack-container reveal">
+                <div class="tech-category card-style hover-up" style="text-align: center;">
+                    <i class="fas fa-laptop-house text-accent icon-lg"></i>
+                    <h3 data-i18n="perk_1_t"></h3>
+                    <p data-i18n="perk_1_d" style="color: var(--text-secondary); font-size: 0.95rem;"></p>
+                </div>
+                <div class="tech-category card-style hover-up" style="text-align: center;">
+                    <i class="fas fa-heartbeat text-accent icon-lg"></i>
+                    <h3 data-i18n="perk_2_t"></h3>
+                    <p data-i18n="perk_2_d" style="color: var(--text-secondary); font-size: 0.95rem;"></p>
+                </div>
+                <div class="tech-category card-style hover-up" style="text-align: center;">
+                    <i class="fas fa-chart-line text-accent icon-lg"></i>
+                    <h3 data-i18n="perk_3_t"></h3>
+                    <p data-i18n="perk_3_d" style="color: var(--text-secondary); font-size: 0.95rem;"></p>
+                </div>
+                <div class="tech-category card-style hover-up" style="text-align: center;">
+                    <i class="fas fa-gamepad text-accent icon-lg"></i>
+                    <h3 data-i18n="perk_4_t"></h3>
+                    <p data-i18n="perk_4_d" style="color: var(--text-secondary); font-size: 0.95rem;"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 data-i18n="jobs_title"></h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card card-style reveal hover-up">
+                    <h3 class="text-primary" data-i18n="job_1_t"></h3>
+                    <span class="tag">Full-Time</span> <span class="tag">Selangor</span>
+                    <p data-i18n="job_1_d" style="margin: 15px 0;"></p>
+                    <a href="mailto:careers@zenqortechnologies.com?subject=Application%20for%20Senior%20Game%20Developer" class="btn btn-outline w-100 mt-3" data-i18n="btn_apply"></a>
+                </div>
+                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.1s;">
+                    <h3 class="text-primary" data-i18n="job_2_t"></h3>
+                    <span class="tag">Full-Time</span> <span class="tag">Hybrid</span>
+                    <p data-i18n="job_2_d" style="margin: 15px 0;"></p>
+                    <a href="mailto:careers@zenqortechnologies.com?subject=Application%20for%20Full%20Stack%20Engineer" class="btn btn-outline w-100 mt-3" data-i18n="btn_apply"></a>
+                </div>
+                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.2s;">
+                    <h3 class="text-primary" data-i18n="job_3_t"></h3>
+                    <span class="tag">Contract</span> <span class="tag">Remote</span>
+                    <p data-i18n="job_3_d" style="margin: 15px 0;"></p>
+                    <a href="mailto:careers@zenqortechnologies.com?subject=Application%20for%20UI/UX%20Designer" class="btn btn-outline w-100 mt-3" data-i18n="btn_apply"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html#home" class="logo-footer">
+                    <img src="official_logo_ZT.png" alt="Zenqor Logo" class="logo-img-footer">
+                </a>
+                <p data-i18n="footer_sub"></p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html#services" data-i18n="nav_services"></a>
+                <a href="index.html#portfolio" data-i18n="nav_portfolio"></a>
+                <a href="careers.html" data-i18n="nav_careers"></a>
+                <a href="index.html#contact" data-i18n="nav_contact"></a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer_copy"></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
