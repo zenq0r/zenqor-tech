@@ -2,13 +2,12 @@
    1. VARIABLES & KORPORAT THEME
    ========================================= */
 :root {
-    /* Corporate Light Theme (Default) */
     --bg-color: #F8FAFC;
     --bg-alt: #F1F5F9;
     --surface-color: #FFFFFF;
     --text-primary: #0F172A;
     --text-secondary: #475569;
-    --primary-blue: #1D4ED8; /* Solid Corporate Blue */
+    --primary-blue: #1D4ED8; 
     --primary-hover: #1E40AF;
     --accent-cyan: #0284C7;
     --highlight-amber: #D97706;
@@ -19,7 +18,6 @@
 }
 
 [data-theme="dark"] {
-    /* Refined Dark Theme */
     --bg-color: #0B1120;
     --bg-alt: #0F172A;
     --surface-color: #1E293B;
@@ -38,37 +36,12 @@
 /* =========================================
    2. RESET & TYPOGRAPHY
    ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    line-height: 1.6;
-    overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-h1, h2, h3, h4 {
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .section-padding { padding: 100px 0; }
 .bg-alt { background-color: var(--bg-alt); }
-
-/* Typography Colors */
 .text-primary { color: var(--primary-blue); }
 .text-accent { color: var(--accent-cyan); }
 .text-highlight { color: var(--highlight-amber); }
@@ -76,162 +49,89 @@ h1, h2, h3, h4 {
 /* =========================================
    3. KAD KORPORAT
    ========================================= */
-.card-style {
-    background: var(--surface-color);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--card-shadow);
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+.card-style { background: var(--surface-color); border: 1px solid var(--border-color); box-shadow: var(--card-shadow); border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 
 /* =========================================
-   4. NAVIGATION BAR & LOGO ATAS
+   4. NAVIGATION BAR, LOGO & DROPDOWN POP-UP
    ========================================= */
-.navbar { 
-    position: fixed; 
-    top: 0; 
-    width: 100%; 
-    z-index: 1000; 
-    background: var(--surface-color);
-    border-bottom: 1px solid var(--border-color);
-    transition: background-color 0.3s ease;
-}
-
-.nav-container { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    min-height: 85px; 
-    padding: 10px 0;
-}
+.navbar { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--surface-color); border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; min-height: 85px; padding: 10px 0; }
 
 .logo-nav { display: flex; align-items: center; }
-.logo-img-nav { 
-    height: 70px; 
-    width: auto; 
-    transition: transform 0.3s ease; 
-}
+.logo-img-nav { height: 70px; width: auto; transition: transform 0.3s ease; }
 .logo-img-nav:hover { transform: scale(1.03); }
 
-/* Pautan Navigasi */
 .nav-links { display: flex; gap: 32px; align-items: center; }
-.nav-links a { 
-    color: var(--text-secondary); 
-    text-decoration: none; 
-    font-size: 0.95rem; 
-    font-weight: 600; 
-    transition: color 0.2s; 
-}
+.nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
 .nav-links a:hover { color: var(--primary-blue); }
 
-.lang-btn { 
-    background: transparent; 
-    border: 2px solid var(--border-color); 
-    color: var(--text-primary); 
-    padding: 6px 12px; 
-    border-radius: 6px; 
-    cursor: pointer; 
-    font-weight: 700; 
-    font-size: 12px; 
-    transition: all 0.2s ease; 
+/* Kod CSS untuk Pop-up Dropdown (Careers) */
+.nav-item-dropdown {
+    position: relative;
+    display: inline-block;
 }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--surface-color);
+    min-width: 320px;
+    box-shadow: var(--hover-shadow);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    z-index: 1001;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 15px;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+.dropdown-menu a:hover {
+    background-color: var(--bg-alt);
+    color: var(--primary-blue);
+}
+.dropdown-menu.show {
+    display: block;
+    animation: fadeInDown 0.2s ease forwards;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translate(-50%, -10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.lang-btn { background: transparent; border: 2px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 12px; transition: all 0.2s ease; }
 .lang-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
-
-.theme-btn { 
-    background: none; 
-    border: none; 
-    color: var(--text-secondary); 
-    cursor: pointer; 
-    font-size: 1.2rem; 
-    transition: color 0.2s;
-}
+.theme-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 1.2rem; transition: color 0.2s; }
 .theme-btn:hover { color: var(--primary-blue); }
-
 .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); }
 
 /* =========================================
    5. BUTTONS & FORMS
    ========================================= */
-.btn { 
-    display: inline-flex; 
-    justify-content: center; 
-    align-items: center; 
-    padding: 14px 28px; 
-    border-radius: 8px; 
-    font-weight: 600; 
-    font-size: 1rem; 
-    text-decoration: none; 
-    cursor: pointer; 
-    transition: all 0.2s ease; 
-    border: 2px solid transparent; 
-}
-
-.btn-primary { 
-    background-color: var(--primary-blue); 
-    color: #ffffff; 
-}
-.btn-primary:hover { 
-    background-color: var(--primary-hover); 
-    transform: translateY(-2px);
-    box-shadow: var(--hover-shadow);
-}
-
-.btn-outline { 
-    background-color: transparent; 
-    border-color: var(--border-color); 
-    color: var(--text-primary); 
-}
-.btn-outline:hover { 
-    border-color: var(--primary-blue); 
-    color: var(--primary-blue); 
-}
-
-.mt-3 { margin-top: 1.5rem; }
-.mt-5 { margin-top: 3rem; }
-.w-100 { width: 100%; }
+.btn { display: inline-flex; justify-content: center; align-items: center; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer; transition: all 0.2s ease; border: 2px solid transparent; }
+.btn-primary { background-color: var(--primary-blue); color: #ffffff; }
+.btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: var(--hover-shadow); }
+.btn-outline { background-color: transparent; border-color: var(--border-color); color: var(--text-primary); }
+.btn-outline:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+.mt-3 { margin-top: 1.5rem; } .mt-5 { margin-top: 3rem; } .w-100 { width: 100%; }
 
 .input-group { margin-bottom: 20px; }
-.input-group input, .input-group select, .input-group textarea { 
-    width: 100%; 
-    padding: 14px; 
-    background: var(--bg-color); 
-    border: 1px solid var(--border-color); 
-    border-radius: 8px; 
-    color: var(--text-primary); 
-    font-family: inherit;
-    font-size: 0.95rem;
-    transition: border-color 0.2s;
-}
-.input-group input:focus, .input-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-blue);
-}
+.input-group input, .input-group select, .input-group textarea { width: 100%; padding: 14px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary); font-family: inherit; font-size: 0.95rem; transition: border-color 0.2s; }
+.input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--primary-blue); }
 
 /* =========================================
    6. SECTIONS & LAYOUT
    ========================================= */
-.hero { 
-    min-height: 100vh; 
-    display: flex; 
-    align-items: center; 
-    padding-top: 120px; 
-    text-align: center; 
-}
+.hero { min-height: 100vh; display: flex; align-items: center; padding-top: 120px; text-align: center; }
 .hero-content { max-width: 850px; margin: 0 auto; }
-
-.badge {
-    display: inline-block;
-    padding: 6px 16px; 
-    border-radius: 20px;
-    background: var(--bg-alt);
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
-    font-size: 0.85rem; 
-    font-weight: 600;
-    margin-bottom: 24px;
-    letter-spacing: 0.5px;
-}
-
+.badge { display: inline-block; padding: 6px 16px; border-radius: 20px; background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border-color); font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; letter-spacing: 0.5px; }
 .hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
 .hero-sub { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 40px; }
 .hero-actions { display: flex; gap: 16px; justify-content: center; }
@@ -240,17 +140,14 @@ h1, h2, h3, h4 {
 .section-header h2 { font-size: 2.5rem; margin-bottom: 12px; }
 .section-header p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto;}
 
-/* Grid Systems */
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); padding: 32px; }
 .tech-stack-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
 .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
 
-/* Cards Styling */
 .stat-card h3 { font-size: 2.5rem; margin-bottom: 4px; }
 .stat-card p { font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; text-transform: uppercase;}
-
 .service-card, .tech-category { padding: 40px 32px; }
 .icon-lg { font-size: 2.5rem; margin-bottom: 20px;}
 .service-card h3, .tech-category h3 { margin-bottom: 10px; font-size: 1.25rem;}
@@ -261,58 +158,30 @@ h1, h2, h3, h4 {
 .portfolio-item { overflow: hidden; display: flex; flex-direction: column; }
 .port-img { height: 200px; background-size: cover; background-position: center; border-bottom: 1px solid var(--border-color); }
 .port-content { padding: 24px; }
-.tag {
-    font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-    background: var(--bg-alt); color: var(--primary-blue);
-    padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 12px;
-}
+.tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; background: var(--bg-alt); color: var(--primary-blue); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 12px; }
 .port-content h3 { margin-bottom: 8px; font-size: 1.2rem; }
 .port-content p { color: var(--text-secondary); font-size: 0.9rem; }
-
-.careers-box { text-align: center; padding: 80px 40px; }
-.careers-content p { color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
 
 .contact-info, .contact-form { padding: 40px; }
 .info-row { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
 .info-row i { margin-top: 4px; }
 
 /* =========================================
-   7. FOOTER & LOGO BAWAH (DIKEMASKINI)
+   7. FOOTER & LOGO BAWAH
    ========================================= */
-footer { 
-    border-top: 1px solid var(--border-color); 
-    padding: 30px 0 15px; 
-    background: var(--surface-color); 
-}
-
-.footer-content { 
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15px; 
-    text-align: center;
-}
-
+footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; background: var(--surface-color); }
+.footer-content { display: flex; flex-direction: column; align-items: center; margin-bottom: 15px; text-align: center; }
 .footer-brand { width: 100%; margin-bottom: 10px; }
 .logo-footer { display: flex; justify-content: center; align-items: center; margin-bottom: 5px; }
 .logo-img-footer { height: 60px; width: auto; }
-
 .footer-brand p { color: var(--text-secondary); font-size: 0.9rem; margin: 0 auto; }
 .footer-links { display: flex; gap: 24px; margin-bottom: 15px; }
 .footer-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; }
 .footer-links a:hover { color: var(--primary-blue); }
-
 .footer-social { display: flex; gap: 20px; font-size: 1.3rem; }
 .footer-social a { color: var(--text-secondary); transition: color 0.2s; }
 .footer-social a:hover { color: var(--primary-blue); }
-
-.footer-bottom { 
-    text-align: center; 
-    color: var(--text-secondary); 
-    font-size: 0.85rem; 
-    padding-top: 15px; 
-    border-top: 1px solid var(--border-color); 
-}
+.footer-bottom { text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding-top: 15px; border-top: 1px solid var(--border-color); }
 
 /* =========================================
    8. ANIMATIONS & RESPONSIVE
@@ -329,31 +198,17 @@ footer {
 }
 
 @media (max-width: 768px) {
-    /* Menu Mudah Alih Dibetulkan */
     .mobile-menu-btn { display: block; }
-    
-    .nav-links { 
-        display: none; 
-        position: absolute;
-        top: 100%; 
-        left: 0;
-        width: 100%;
-        background-color: var(--surface-color);
-        flex-direction: column;
-        padding: 20px 0;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        border-bottom: 1px solid var(--border-color);
-        max-height: calc(100vh - 85px); 
-        overflow-y: auto;
-    }
-
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--surface-color); flex-direction: column; padding: 20px 0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid var(--border-color); max-height: calc(100vh - 85px); overflow-y: auto; }
     .nav-links.active { display: flex; }
     .nav-links a { padding: 12px 20px; width: 100%; text-align: center; font-size: 1.05rem; }
+    
+    /* Responsive Dropdown dalam Mobile */
+    .dropdown-menu { position: relative; left: 0; transform: none; box-shadow: none; border: none; background-color: var(--bg-alt); margin-top: 5px;}
     
     .lang-btn { margin: 10px auto; width: 80px; text-align: center; }
     .theme-btn { margin: 10px auto 20px auto; padding: 10px; }
     
-    /* Skrin & Layout */
     .hero h1 { font-size: 2.2rem; }
     .stats-grid { grid-template-columns: 1fr; gap: 16px; padding: 20px;}
     .portfolio-grid, .tech-stack-container { grid-template-columns: 1fr; }
