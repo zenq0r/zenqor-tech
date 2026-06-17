@@ -57,11 +57,22 @@ h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-pr
 .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--surface-color); border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease; }
 .nav-container { display: flex; justify-content: space-between; align-items: center; min-height: 85px; padding: 10px 0; }
 
-.logo-nav { display: flex; align-items: center; }
+.logo-nav { 
+    display: flex; 
+    align-items: center; 
+    position: relative;
+    z-index: 1; /* Memastikan logo berada di bawah teks jika ada lebihan lutsinar */
+}
 .logo-img-nav { height: 70px; width: auto; transition: transform 0.3s ease; }
 .logo-img-nav:hover { transform: scale(1.03); }
 
-.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links { 
+    display: flex; 
+    gap: 32px; 
+    align-items: center; 
+    position: relative;
+    z-index: 10; /* Memaksa teks sentiasa boleh diklik dan bertindan di atas logo */
+}
 .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
 .nav-links a:hover { color: var(--primary-blue); }
 
@@ -186,12 +197,29 @@ h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-pr
 footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; background: var(--surface-color); }
 .footer-content { display: flex; flex-direction: column; align-items: center; margin-bottom: 15px; text-align: center; }
 .footer-brand { width: 100%; margin-bottom: 10px; }
-.logo-footer { display: flex; justify-content: center; align-items: center; margin-bottom: 5px; }
-.logo-img-footer { height: 280px; width: auto; }
+
+.logo-footer { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 5px; 
+    position: relative;
+    z-index: 1; /* Merendahkan lapisan logo di footer */
+}
+.logo-img-footer { height: 60px; width: auto; }
+
 .footer-brand p { color: var(--text-secondary); font-size: 0.9rem; margin: 0 auto; }
-.footer-links { display: flex; gap: 24px; margin-bottom: 15px; }
+
+.footer-links { 
+    display: flex; 
+    gap: 24px; 
+    margin-bottom: 15px; 
+    position: relative;
+    z-index: 10; /* Tinggikan lapisan pautan */
+}
 .footer-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; }
 .footer-links a:hover { color: var(--primary-blue); }
+
 .footer-social { display: flex; gap: 20px; font-size: 1.3rem; }
 .footer-social a { color: var(--text-secondary); transition: color 0.2s; }
 .footer-social a:hover { color: var(--primary-blue); }
