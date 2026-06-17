@@ -29,7 +29,7 @@ const translations = {
         btn_careers: "View Open Roles",
         con_title: "Initialize <span class='text-primary'>Connection</span>",
         con_sub: "Partner with us to engineer your next technological leap.",
-        hq_title: "Headquarters", hq_addr: "Klang Valley Tech Park<br>Selangor, Malaysia",
+        hq_title: "Headquarters", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
         ph_name: "Designation / Name", ph_email: "Corporate Email", 
         opt_def: "Select Project Type", opt_1: "Game Development", opt_2: "Enterprise Software", opt_3: "Web Application", opt_4: "AI / Cloud Infrastructure",
         ph_msg: "Project Specifications", btn_submit: "Deploy Message",
