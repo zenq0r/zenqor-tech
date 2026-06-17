@@ -1,27 +1,38 @@
 /* =========================================
-   1. VARIABLES & THEME
+   1. VARIABLES & KORPORAT THEME
    ========================================= */
 :root {
-    --bg-dark: #0F172A; 
-    --primary-blue: #2563EB; 
-    --accent-cyan: #06B6D4; 
-    --highlight-amber: #F59E0B; 
-    
-    --bg-color: #080c16;
-    --surface-color: rgba(15, 23, 42, 0.6);
-    --text-primary: #FFFFFF;
-    --text-secondary: #94A3B8;
-    --border-color: rgba(6, 182, 212, 0.15);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-}
-
-[data-theme="light"] {
+    /* Corporate Light Theme (Default) */
     --bg-color: #F8FAFC;
-    --surface-color: rgba(255, 255, 255, 0.8);
+    --bg-alt: #F1F5F9;
+    --surface-color: #FFFFFF;
     --text-primary: #0F172A;
     --text-secondary: #475569;
-    --border-color: rgba(37, 99, 235, 0.2);
-    --glass-shadow: 0 8px 32px 0 rgba(37, 99, 235, 0.05);
+    --primary-blue: #1D4ED8; /* Solid Corporate Blue */
+    --primary-hover: #1E40AF;
+    --accent-cyan: #0284C7;
+    --highlight-amber: #D97706;
+    
+    --border-color: #E2E8F0;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+    /* Refined Dark Theme */
+    --bg-color: #0B1120;
+    --bg-alt: #0F172A;
+    --surface-color: #1E293B;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --primary-blue: #3B82F6;
+    --primary-hover: #2563EB;
+    --accent-cyan: #38BDF8;
+    --highlight-amber: #F59E0B;
+    
+    --border-color: #334155;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
 }
 
 /* =========================================
@@ -39,376 +50,260 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
-    transition: background-color 0.4s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, h3, h4, .logo-nav, .logo-footer {
-    font-family: 'Space Grotesk', sans-serif;
+h1, h2, h3, h4 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
 }
 
 .container {
-    max-width: 1280px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
-.section-padding {
-    padding: 120px 0;
-}
+.section-padding { padding: 100px 0; }
+.bg-alt { background-color: var(--bg-alt); }
 
-/* =========================================
-   3. AMBIENT BACKGROUND & 3D EFFECTS
-   ========================================= */
-.ambient-bg {
-    position: fixed;
-    top: 0; 
-    left: 0; 
-    width: 100vw; 
-    height: 100vh;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.grid-overlay {
-    position: absolute;
-    width: 200%; 
-    height: 200%;
-    top: -50%; 
-    left: -50%;
-    background-image: 
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 40px 40px;
-    transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
-    animation: gridMove 20s linear infinite;
-}
-
-@keyframes gridMove {
-    0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
-    100% { transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px); }
-}
-
-.orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.4;
-    animation: float 10s ease-in-out infinite alternate;
-}
-
-.orb-1 { 
-    width: 500px; 
-    height: 500px; 
-    background: var(--primary-blue); 
-    top: -100px; 
-    left: -100px; 
-}
-
-.orb-2 { 
-    width: 400px; 
-    height: 400px; 
-    background: var(--accent-cyan); 
-    bottom: -100px; 
-    right: -50px; 
-    animation-delay: -5s; 
-}
-
-@keyframes float {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(30px, 50px); }
-}
-
-/* =========================================
-   4. GLASSMORPHISM
-   ========================================= */
-.glass {
-    background: var(--surface-color);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--glass-shadow);
-    border-radius: 16px;
-}
-
-.text-gradient {
-    background: linear-gradient(90deg, var(--accent-cyan), var(--primary-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.text-accent { color: var(--accent-cyan); }
+/* Typography Colors */
 .text-primary { color: var(--primary-blue); }
+.text-accent { color: var(--accent-cyan); }
 .text-highlight { color: var(--highlight-amber); }
 
 /* =========================================
-   5. NAVIGATION BAR & LOGO (ATAS)
+   3. KAD KORPORAT (Ganti Glassmorphism)
+   ========================================= */
+.card-style {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* =========================================
+   4. NAVIGATION BAR & LOGO ATAS
    ========================================= */
 .navbar { 
     position: fixed; 
     top: 0; 
     width: 100%; 
     z-index: 1000; 
-    border-radius: 0; 
-    border-left: none; 
-    border-right: none; 
-    border-top: none; 
+    background: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
 }
 
 .nav-container { 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    min-height: 90px; /* Ditukar dari fixed height supaya kotak nav mengembang bersama logo */
+    min-height: 85px; 
     padding: 10px 0;
 }
 
-/* Logo Atas */
-.logo-nav {
-    display: flex;
-    align-items: center;
-}
-
+/* LOGO: mix-blend-mode dibuang sepenuhnya */
+.logo-nav { display: flex; align-items: center; }
 .logo-img-nav { 
-    height: 90px; /* Saiz optimal untuk navigasi atas supaya tidak berterabur */
+    height: 70px; /* Saiz dikawal rapi */
     width: auto; 
-    mix-blend-mode: screen; 
     transition: transform 0.3s ease; 
 }
-
-.logo-img-nav:hover { 
-    transform: scale(1.05); 
-}
+.logo-img-nav:hover { transform: scale(1.03); }
 
 /* Pautan Navigasi */
-.nav-links { 
-    display: flex; 
-    gap: 32px; 
-    align-items: center; 
-}
-
+.nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a { 
     color: var(--text-secondary); 
     text-decoration: none; 
-    font-size: 0.9rem; 
-    font-weight: 500; 
-    transition: color 0.3s; 
+    font-size: 0.95rem; 
+    font-weight: 600; 
+    transition: color 0.2s; 
 }
-
-.nav-links a:hover { 
-    color: var(--accent-cyan); 
-}
+.nav-links a:hover { color: var(--primary-blue); }
 
 .lang-btn { 
     background: transparent; 
-    border: 1px solid var(--text-secondary); 
+    border: 2px solid var(--border-color); 
     color: var(--text-primary); 
-    padding: 4px 10px; 
+    padding: 6px 12px; 
     border-radius: 6px; 
     cursor: pointer; 
     font-weight: 700; 
     font-size: 12px; 
-    transition: all 0.3s ease; 
+    transition: all 0.2s ease; 
 }
+.lang-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
 
-.lang-btn:hover { 
-    background: var(--primary-blue); 
-    color: #fff; 
-    border-color: var(--primary-blue); 
-}
-
-#theme-toggle { 
+.theme-btn { 
     background: none; 
     border: none; 
-    color: var(--text-primary); 
+    color: var(--text-secondary); 
     cursor: pointer; 
     font-size: 1.2rem; 
+    transition: color 0.2s;
 }
+.theme-btn:hover { color: var(--primary-blue); }
 
-.mobile-menu-btn { 
-    display: none; 
-    font-size: 1.5rem; 
-    cursor: pointer; 
-}
+.mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); }
 
 /* =========================================
-   6. UI COMPONENTS (BUTTONS & FORMS)
+   5. BUTTONS & FORMS
    ========================================= */
 .btn { 
     display: inline-flex; 
     justify-content: center; 
     align-items: center; 
-    padding: 14px 32px; 
+    padding: 14px 28px; 
     border-radius: 8px; 
-    font-family: 'Space Grotesk', sans-serif; 
     font-weight: 600; 
     font-size: 1rem; 
     text-decoration: none; 
     cursor: pointer; 
-    transition: all 0.3s ease; 
-    border: none; 
+    transition: all 0.2s ease; 
+    border: 2px solid transparent; 
 }
 
 .btn-primary { 
-    background: linear-gradient(135deg, var(--primary-blue), #1e40af); 
-    color: #fff; 
+    background-color: var(--primary-blue); 
+    color: #ffffff; 
+}
+.btn-primary:hover { 
+    background-color: var(--primary-hover); 
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
 }
 
 .btn-outline { 
-    background: transparent; 
-    border: 1px solid var(--text-secondary); 
+    background-color: transparent; 
+    border-color: var(--border-color); 
     color: var(--text-primary); 
 }
-
-.btn-glow:hover {
-    box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
-    transform: translateY(-2px);
+.btn-outline:hover { 
+    border-color: var(--primary-blue); 
+    color: var(--primary-blue); 
 }
 
-.btn-outline:hover {
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
-}
+.mt-3 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+.w-100 { width: 100%; }
 
-.input-group {
-    margin-bottom: 24px;
-}
-
+.input-group { margin-bottom: 20px; }
 .input-group input, .input-group select, .input-group textarea { 
     width: 100%; 
-    padding: 16px; 
-    background: rgba(0,0,0,0.2); 
+    padding: 14px; 
+    background: var(--bg-color); 
     border: 1px solid var(--border-color); 
     border-radius: 8px; 
     color: var(--text-primary); 
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+.input-group input:focus, .input-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
 }
 
 /* =========================================
-   7. LAYOUT & SECTIONS
+   6. SECTIONS & LAYOUT
    ========================================= */
 .hero { 
     min-height: 100vh; 
     display: flex; 
     align-items: center; 
-    padding-top: 130px; /* Dinaikkan sedikit untuk elak tertindih dengan navbar baru */
+    padding-top: 120px; 
     text-align: center; 
 }
-
-.hero-content {
-    max-width: 900px;
-    margin: 0 auto;
-}
+.hero-content { max-width: 850px; margin: 0 auto; }
 
 .badge {
     display: inline-block;
     padding: 6px 16px; 
     border-radius: 20px;
-    background: rgba(245, 158, 11, 0.1);
-    color: var(--highlight-amber);
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    background: var(--bg-alt);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
     font-size: 0.85rem; 
     font-weight: 600;
     margin-bottom: 24px;
+    letter-spacing: 0.5px;
 }
 
-.hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 24px; }
-.hero-sub { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 40px; }
+.hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+.hero-sub { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 40px; }
 .hero-actions { display: flex; gap: 16px; justify-content: center; }
 
-.section-header { 
-    text-align: center; 
-    margin-bottom: 64px; 
-}
-.section-header h2 { font-size: 2.5rem; margin-bottom: 16px; }
-.section-header p { color: var(--text-secondary); font-size: 1.1rem; }
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-header h2 { font-size: 2.5rem; margin-bottom: 12px; }
+.section-header p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto;}
 
-/* Grid Layouts */
-.stats-grid { 
-    display: grid; 
-    grid-template-columns: repeat(4, 1fr); 
-    padding: 32px; 
-    border-radius: 16px; 
-    margin-top: 3rem; 
-}
-.tech-stack-container { 
-    display: grid; 
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 24px; 
-}
-.services-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 24px; 
-}
-.portfolio-grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 24px; 
-}
-.contact-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1.5fr; 
-    gap: 40px; 
-}
+/* Grid Systems */
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); padding: 32px; }
+.tech-stack-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
 
-/* Cards */
-.stat-card h3 { font-size: 2.5rem; margin-bottom: 8px; }
+/* Cards Styling */
+.stat-card h3 { font-size: 2.5rem; margin-bottom: 4px; }
+.stat-card p { font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; text-transform: uppercase;}
+
 .service-card, .tech-category { padding: 40px 32px; }
-.tech-category ul { list-style: none; color: var(--text-secondary); margin-top: 15px; }
-.port-item { overflow: hidden; display: flex; flex-direction: column; }
-.port-img { 
-    height: 220px; 
-    background-size: cover; 
-    background-position: center; 
-    border-bottom: 1px solid var(--border-color); 
-}
+.icon-lg { font-size: 2.5rem; margin-bottom: 20px;}
+.service-card h3, .tech-category h3 { margin-bottom: 10px; font-size: 1.25rem;}
+.service-card p { color: var(--text-secondary); font-size: 0.95rem; }
+.tech-category ul { list-style: none; color: var(--text-secondary); }
+.tech-category li { margin-bottom: 8px; font-size: 0.95rem;}
+
+.portfolio-item { overflow: hidden; display: flex; flex-direction: column; }
+.port-img { height: 200px; background-size: cover; background-position: center; border-bottom: 1px solid var(--border-color); }
 .port-content { padding: 24px; }
+.tag {
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+    background: var(--bg-alt); color: var(--primary-blue);
+    padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 12px;
+}
+.port-content h3 { margin-bottom: 8px; font-size: 1.2rem; }
+.port-content p { color: var(--text-secondary); font-size: 0.9rem; }
+
+.careers-box { text-align: center; padding: 80px 40px; }
+.careers-content p { color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+
+.contact-info, .contact-form { padding: 40px; }
+.info-row { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
+.info-row i { margin-top: 4px; }
 
 /* =========================================
-   8. FOOTER & LOGO (BAWAH)
+   7. FOOTER & LOGO BAWAH
    ========================================= */
 footer { 
     border-top: 1px solid var(--border-color); 
     padding: 60px 0 20px; 
-    background: rgba(0,0,0,0.2); 
+    background: var(--surface-color); 
 }
-
 .footer-content { 
     display: flex; 
-    justify-content: space-between; 
-    margin-bottom: 40px; 
-    flex-wrap: wrap; 
-    gap: 32px; 
-}
-
-/* Footer Logo Alignment */
-.footer-brand { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    text-align: center; 
-    width: 100%; 
-}
-
-.logo-footer {
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    margin-bottom: 40px; 
+    text-align: center;
 }
 
-.logo-img-footer { 
-    height: 150px; /* Saiz besar untuk footer */
-    width: auto; 
-    mix-blend-mode: screen; 
-    margin-bottom: 15px; 
-}
+/* LOGO: mix-blend-mode dibuang sepenuhnya */
+.footer-brand { width: 100%; margin-bottom: 20px;}
+.logo-footer { display: flex; justify-content: center; align-items: center; margin-bottom: 15px;}
+.logo-img-footer { height: 110px; width: auto; }
 
-.footer-brand p { color: var(--text-secondary); max-width: 300px; font-size: 0.9rem; }
-.footer-links { display: flex; gap: 24px; width: 100%; justify-content: center; margin-top: 20px; }
-.footer-links a { color: var(--text-secondary); text-decoration: none; }
-.footer-links a:hover { color: var(--accent-cyan); }
-.footer-social { display: flex; gap: 16px; font-size: 1.5rem; width: 100%; justify-content: center; margin-top: 10px; }
-.footer-social a { color: var(--text-secondary); transition: color 0.3s; }
+.footer-brand p { color: var(--text-secondary); font-size: 0.9rem; margin: 0 auto;}
+.footer-links { display: flex; gap: 24px; margin-bottom: 20px; }
+.footer-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500;}
+.footer-links a:hover { color: var(--primary-blue); }
+.footer-social { display: flex; gap: 20px; font-size: 1.5rem; }
+.footer-social a { color: var(--text-secondary); transition: color 0.2s; }
 .footer-social a:hover { color: var(--primary-blue); }
 
 .footer-bottom { 
@@ -420,30 +315,16 @@ footer {
 }
 
 /* =========================================
-   9. ANIMATIONS & RESPONSIVE
+   8. ANIMATIONS & RESPONSIVE
    ========================================= */
-.reveal { 
-    opacity: 0; 
-    transform: translateY(30px); 
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
-}
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
-.reveal.active { 
-    opacity: 1; 
-    transform: translateY(0); 
-}
-
-.hover-tilt { 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-}
-
-.hover-tilt:hover { 
-    transform: translateY(-5px) scale(1.02); 
-    box-shadow: 0 15px 40px rgba(6, 182, 212, 0.15); 
-}
+/* Kesan hover yang bersih dan kemas */
+.hover-up:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); }
 
 @media (max-width: 1024px) {
-    .hero h1 { font-size: 3rem; }
+    .hero h1 { font-size: 2.8rem; }
     .stats-grid, .tech-stack-container { grid-template-columns: repeat(2, 1fr); }
     .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-grid { grid-template-columns: 1fr; }
@@ -452,8 +333,7 @@ footer {
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .mobile-menu-btn { display: block; }
-    .hero h1 { font-size: 2.5rem; }
-    .stats-grid { grid-template-columns: 1fr; gap: 16px; }
+    .hero h1 { font-size: 2.2rem; }
+    .stats-grid { grid-template-columns: 1fr; gap: 16px; padding: 20px;}
     .portfolio-grid, .tech-stack-container { grid-template-columns: 1fr; }
-    .footer-content { flex-direction: column; text-align: center; align-items: center; }
 }
