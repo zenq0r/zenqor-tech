@@ -63,7 +63,7 @@ h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-pr
     position: relative;
     z-index: 1; /* Memastikan logo berada di bawah teks jika ada lebihan lutsinar */
 }
-.logo-img-nav { height: 70px; width: auto; transition: transform 0.3s ease; }
+.logo-img-nav { height: 180px; width: auto; transition: transform 0.3s ease; }
 .logo-img-nav:hover { transform: scale(1.03); }
 
 .nav-links { 
@@ -206,7 +206,7 @@ footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; backgr
     position: relative;
     z-index: 1; /* Merendahkan lapisan logo di footer */
 }
-.logo-img-footer { height: 260px; width: auto; }
+.logo-img-footer { height: 280px; width: auto; }
 
 .footer-brand p { color: var(--text-secondary); font-size: 0.9rem; margin: 0 auto; }
 
