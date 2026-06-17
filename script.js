@@ -1,7 +1,9 @@
+// --- 1. KAMUS TERJEMAHAN ---
 const translations = {
     en: {
         nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_contact: "Contact",
         nav_careers_join: "Join the Zenqor Vanguard & Community",
+        nav_port_gaming: "Gaming Development", nav_port_web: "Website Development",
         hero_badge: "From Curiosity to Capability",
         hero_title: "Building Games, Software & <br><span class='text-primary'>Digital Experiences</span>",
         hero_sub: "Zenqor Technologies delivers innovative game development, web solutions and enterprise software for businesses and organizations.",
@@ -49,6 +51,7 @@ const translations = {
     ms: {
         nav_home: "Utama", nav_about: "Tentang Kami", nav_services: "Perkhidmatan", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_contact: "Hubungi",
         nav_careers_join: "Sertai Zenqor Vanguard & Komuniti",
+        nav_port_gaming: "Pembangunan Permainan", nav_port_web: "Pembangunan Laman Web",
         hero_badge: "Daripada Rasa Ingin Tahu kepada Keupayaan",
         hero_title: "Membina Permainan, Perisian & <br><span class='text-primary'>Pengalaman Digital</span>",
         hero_sub: "Zenqor Technologies menyediakan pembangunan permainan inovatif, penyelesaian web dan perisian perusahaan untuk perniagaan dan organisasi.",
@@ -129,6 +132,7 @@ if(langToggle) {
 }
 setLanguage(currentLang);
 
+// --- 3. SISTEM PENGURUSAN TEMA (Dark/Light) ---
 const themeToggleBtn = document.getElementById('theme-toggle');
 const rootElement = document.documentElement;
 const themeIcon = themeToggleBtn.querySelector('i');
@@ -155,24 +159,33 @@ function updateIcon(theme) {
     }
 }
 
-const careersToggle = document.getElementById('careers-toggle');
-const careersMenu = document.getElementById('careers-menu');
+// --- 4. LOGIK POP-UP MULTI-DROPDOWN ---
+const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-if(careersToggle) {
-    careersToggle.addEventListener('click', (e) => {
+dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
         e.preventDefault();
-        careersMenu.classList.toggle('show');
+        const targetId = toggle.getAttribute('data-target');
+        const menu = document.getElementById(targetId);
+        
+        // Tutup menu lain jika ada yang terbuka
+        document.querySelectorAll('.dropdown-menu').forEach(m => {
+            if (m !== menu) m.classList.remove('show');
+        });
+        
+        menu.classList.toggle('show');
     });
-}
+});
 
 window.addEventListener('click', function(e) {
-    if (!e.target.closest('#careers-toggle') && !e.target.closest('#careers-menu')) {
-        if (careersMenu && careersMenu.classList.contains('show')) {
-            careersMenu.classList.remove('show');
-        }
+    if (!e.target.closest('.nav-item-dropdown')) {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            menu.classList.remove('show');
+        });
     }
 });
 
+// --- 5. MENU MUDAH ALIH ---
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
@@ -182,11 +195,12 @@ mobileMenuBtn.addEventListener('click', () => {
 
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', (e) => {
-        if(e.target.closest('#careers-toggle')) return;
+        if(e.target.closest('.dropdown-toggle')) return; // Jangan tutup jika sedang tekan dropdown
         navLinks.classList.remove('active');
     });
 });
 
+// --- 6. ANIMASI SKROL (REVEAL) ---
 const revealElements = document.querySelectorAll('.reveal');
 const revealCallback = (entries, observer) => {
     entries.forEach(entry => {
@@ -200,6 +214,7 @@ const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
 revealElements.forEach(el => revealObserver.observe(el));
 
+// --- 7. SIMULASI BORANG HUBUNGI ---
 const form = document.getElementById('mainContactForm');
 if(form) {
     form.addEventListener('submit', (e) => {
