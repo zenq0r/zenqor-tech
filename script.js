@@ -2,7 +2,7 @@
 const translations = {
     en: {
         nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_contact: "Contact",
-        hero_badge: "Enterprise Grade & Government Ready",
+        hero_badge: "From Curiosity to Capability",
         hero_title: "Building Games, Software & <br><span class='text-primary'>Digital Experiences</span>",
         hero_sub: "Zenqor Technologies delivers innovative game development, web solutions and enterprise software for businesses and organizations.",
         btn_portfolio: "View Portfolio", btn_contact: "Contact Us",
@@ -39,7 +39,7 @@ const translations = {
     },
     ms: {
         nav_home: "Utama", nav_about: "Tentang Kami", nav_services: "Perkhidmatan", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_contact: "Hubungi",
-        hero_badge: "Taraf Perusahaan & Diiktiraf Kerajaan",
+        hero_badge: "Daripada Rasa Ingin Tahu kepada Keupayaan",
         hero_title: "Membina Permainan, Perisian & <br><span class='text-primary'>Pengalaman Digital</span>",
         hero_sub: "Zenqor Technologies menyediakan pembangunan permainan inovatif, penyelesaian web dan perisian perusahaan untuk perniagaan dan organisasi.",
         btn_portfolio: "Lihat Portfolio", btn_contact: "Hubungi Kami",
