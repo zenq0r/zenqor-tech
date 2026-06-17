@@ -24,7 +24,7 @@ const translations = {
         
         pg_hero_title: "Premium <span class='text-primary'>FiveM Resources</span>",
         pg_hero_sub: "Custom scripts and UI designed for top-tier roleplay servers.",
-        pg_1_t: "Advanced Inventory NUI", pg_1_d: "A responsive drag-and-drop inventory built with HTML/JS for seamless item management.",
+        pg_1_t: "Malaysia Prayer Time & Adhan Notifications",  pg_1_d: "Malaysia Prayer Time & Adhan Notifications is built with a responsive design and provides accurate prayer times based on the official zones and regions of each state, verified by JAKIM.",
         pg_2_t: "Standalone Billing", pg_2_d: "Framework-agnostic invoicing tool that works instantly on any server architecture.",
         pg_3_t: "Immersive Crime System", pg_3_d: "Complex robberies, evidence tracking, and dynamic NPC interactions built in optimized Lua.",
         pw_hero_title: "Complete <span class='text-primary'>Server Setups</span>",
@@ -79,7 +79,7 @@ const translations = {
         
         pg_hero_title: "Sumber FiveM <span class='text-primary'>Premium</span>",
         pg_hero_sub: "Skrip tersuai dan UI direka khas untuk pelayan 'roleplay' kelas atasan.",
-        pg_1_t: "NUI Inventori Lanjutan", pg_1_d: "Inventori 'drag-and-drop' responsif dibina menggunakan HTML/JS untuk pengurusan item yang lancar.",
+        pg_1_t: "Notifikasi Waktu Solat & Azan Malaysia", pg_1_d: "Notifikasi Waktu Solat & Azan Malaysia dibangunkan secara responsif dengan waktu solat yang tepat mengikut zon dan kawasan setiap negeri berdasarkan data yang disahkan oleh JAKIM.",
         pg_2_t: "Sistem Bil Standalone", pg_2_d: "Alatan invois bebas framework yang berfungsi serta-merta pada sebarang seni bina pelayan.",
         pg_3_t: "Sistem Jenayah Imersif", pg_3_d: "Sistem rompakan kompleks, penjejakan bukti, dan interaksi NPC dinamik dalam Lua yang dioptimumkan.",
         pw_hero_title: "Persediaan <span class='text-primary'>Pelayan Lengkap</span>",
