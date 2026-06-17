@@ -1,245 +1,276 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zenqor Technologies - Building Digital Solutions for the Future. We specialize in AI, Cloud, Mobile & Web Development.">
-    <title>Zenqor Technologies | Premium IT Solutions</title>
+    <meta name="description" content="Zenqor Technologies - Building Games, Software & Digital Experiences For The Future.">
+    <title>Zenqor Technologies | Next-Gen Digital Solutions</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="bg-shape shape-1"></div>
-    <div class="bg-shape shape-2"></div>
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="grid-overlay"></div>
+    </div>
 
     <header class="navbar glass">
         <div class="container nav-container">
-            <a href="#" class="logo">Zenqor<span>.</span></a>
+            <a href="#home" class="logo">ZENQOR<span class="dot">.</span></a>
             <nav class="nav-links">
-                <a href="#home" data-i18n="nav_home">Home</a>
-                <a href="#about" data-i18n="nav_about">About Us</a>
-                <a href="#services" data-i18n="nav_services">Services</a>
-                <a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a>
-                <a href="#contact" data-i18n="nav_contact">Contact</a>
-                
-                <button id="lang-toggle" class="lang-btn" aria-label="Toggle Language">MS</button>
-                
-                <button id="theme-toggle" aria-label="Toggle Theme">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#careers">Careers</a>
+                <a href="#contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-sun"></i></button>
             </nav>
             <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
-    <section id="home" class="hero fade-in">
-        <div class="container hero-content">
-            <h1 data-i18n="hero_title">Building Digital Solutions <br> <span class="text-gradient">for the Future</span></h1>
-            <p data-i18n="hero_desc">Empowering businesses with cutting-edge Software, AI, and Cloud technologies. Transform your enterprise today.</p>
-            <div class="hero-btns">
-                <a href="#services" class="btn btn-primary" data-i18n="btn_get_started">Get Started</a>
-                <a href="#contact" class="btn btn-outline" data-i18n="btn_contact">Contact Us</a>
+    <section id="home" class="hero section-padding">
+        <div class="container hero-content reveal">
+            <div class="badge">Enterprise Grade & Government Ready</div>
+            <h1>Building Games, Software & <br><span class="text-gradient">Digital Experiences</span> For The Future</h1>
+            <p class="hero-sub">Zenqor Technologies delivers innovative game development, web solutions and enterprise software for businesses and organizations.</p>
+            <div class="hero-actions">
+                <a href="#portfolio" class="btn btn-primary btn-glow">View Portfolio</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
             </div>
             
-            <div class="stats-container glass">
-                <div class="stat-item">
-                    <h3>500+</h3>
-                    <p data-i18n="stat_projects">Projects Delivered</p>
+            <div class="stats-grid glass mt-5 reveal">
+                <div class="stat-card">
+                    <h3 class="text-accent">150+</h3>
+                    <p>Projects Shipped</p>
                 </div>
-                <div class="stat-item">
-                    <h3>98%</h3>
-                    <p data-i18n="stat_satisfaction">Client Satisfaction</p>
+                <div class="stat-card">
+                    <h3 class="text-accent">99.9%</h3>
+                    <p>Uptime & Security</p>
                 </div>
-                <div class="stat-item">
-                    <h3>50+</h3>
-                    <p data-i18n="stat_experts">Tech Experts</p>
+                <div class="stat-card">
+                    <h3 class="text-accent">2M+</h3>
+                    <p>Gamers & Users</p>
                 </div>
-            </div>
-            
-            <div class="tech-stack">
-                <i class="fab fa-aws"></i>
-                <i class="fab fa-react"></i>
-                <i class="fab fa-node-js"></i>
-                <i class="fab fa-python"></i>
-                <i class="fab fa-android"></i>
-                <i class="fab fa-apple"></i>
+                <div class="stat-card">
+                    <h3 class="text-accent">Gov</h3>
+                    <p>Certified Partner</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="about section-padding fade-in">
+    <section id="about" class="about section-padding">
         <div class="container">
-            <div class="section-title">
-                <h2 data-i18n="about_title">About Us</h2>
-                <p data-i18n="about_sub">Innovating at the intersection of technology and business.</p>
+            <div class="section-header reveal">
+                <h2>The Power Engine <span class="text-gradient">Behind Your Ideas</span></h2>
+                <p>We combine game-engine rendering techniques with robust enterprise backend architecture.</p>
             </div>
-            <div class="about-grid">
-                <div class="about-text glass">
-                    <h3 data-i18n="story_title">Our Story</h3>
-                    <p data-i18n="story_desc">Founded with a vision to revolutionize the digital landscape, Zenqor Technologies has grown into a leading IT consulting and software development firm. We deliver robust, scalable, and innovative solutions tailored to modern enterprises.</p>
-                    <div class="mission-vision">
-                        <div class="mv-card">
-                            <i class="fas fa-rocket text-accent"></i>
-                            <h4 data-i18n="mission_title">Mission</h4>
-                            <p data-i18n="mission_desc">To accelerate digital transformation through innovative technology.</p>
-                        </div>
-                        <div class="mv-card">
-                            <i class="fas fa-eye text-accent"></i>
-                            <h4 data-i18n="vision_title">Vision</h4>
-                            <p data-i18n="vision_desc">To be the global benchmark for technological excellence and AI integration.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="core-values glass">
-                    <h3 data-i18n="core_title">Core Values</h3>
+            
+            <div class="tech-stack-container reveal">
+                <div class="tech-category glass hover-tilt">
+                    <i class="fas fa-layer-group text-accent icon-lg"></i>
+                    <h3>Frontend & UI</h3>
                     <ul>
-                        <li><i class="fas fa-check-circle text-primary"></i> <span data-i18n="core_1">Innovation First</span></li>
-                        <li><i class="fas fa-check-circle text-primary"></i> <span data-i18n="core_2">Uncompromised Quality</span></li>
-                        <li><i class="fas fa-check-circle text-primary"></i> <span data-i18n="core_3">Client-Centric Approach</span></li>
-                        <li><i class="fas fa-check-circle text-primary"></i> <span data-i18n="core_4">Security & Integrity</span></li>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>React</li>
+                    </ul>
+                </div>
+                <div class="tech-category glass hover-tilt">
+                    <i class="fas fa-server text-accent icon-lg"></i>
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>Python</li>
+                        <li>PHP</li>
+                    </ul>
+                </div>
+                <div class="tech-category glass hover-tilt">
+                    <i class="fas fa-database text-accent icon-lg"></i>
+                    <h3>Database</h3>
+                    <ul>
+                        <li>PostgreSQL</li>
+                        <li>MySQL</li>
+                        <li>MariaDB</li>
+                    </ul>
+                </div>
+                <div class="tech-category glass hover-tilt">
+                    <i class="fas fa-cloud text-accent icon-lg"></i>
+                    <h3>Cloud Infrastructure</h3>
+                    <ul>
+                        <li>AWS</li>
+                        <li>Google Cloud</li>
+                        <li>Microsoft Azure</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="services section-padding fade-in">
+    <section id="services" class="services section-padding">
         <div class="container">
-            <div class="section-title">
-                <h2 data-i18n="services_title">Our Services</h2>
-                <p data-i18n="services_sub">End-to-end IT solutions to scale your business.</p>
+            <div class="section-header reveal">
+                <h2>Our <span class="text-gradient">Core Services</span></h2>
+                <p>From high-fidelity gaming experiences to secure government software ecosystems.</p>
             </div>
-            <div class="grid-3">
-                <div class="service-card glass">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3 data-i18n="srv_1_title">Mobile App Development</h3>
-                    <p data-i18n="srv_1_desc">Native Android and cross-platform solutions engineered for performance and UX.</p>
+            <div class="services-grid">
+                <div class="service-card glass reveal hover-tilt">
+                    <i class="fas fa-gamepad text-primary icon-lg"></i>
+                    <h3>Game Development</h3>
+                    <p>Next-gen 3D/2D games engineered for consoles, PC, and immersive environments.</p>
                 </div>
-                <div class="service-card glass">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3 data-i18n="srv_2_title">Website Development</h3>
-                    <p data-i18n="srv_2_desc">Responsive, secure, and fast enterprise-grade web applications.</p>
+                <div class="service-card glass reveal hover-tilt" style="transition-delay: 0.1s;">
+                    <i class="fas fa-mobile-alt text-primary icon-lg"></i>
+                    <h3>Mobile App Dev</h3>
+                    <p>High-performance iOS and Android applications and mobile games.</p>
                 </div>
-                <div class="service-card glass">
-                    <i class="fas fa-cogs"></i>
-                    <h3 data-i18n="srv_3_title">Custom Software</h3>
-                    <p data-i18n="srv_3_desc">Bespoke business systems and ERPs designed for your unique workflow.</p>
+                <div class="service-card glass reveal hover-tilt" style="transition-delay: 0.2s;">
+                    <i class="fas fa-globe text-primary icon-lg"></i>
+                    <h3>Website Development</h3>
+                    <p>Ultra-fast, responsive, and SEO-optimized modern web experiences.</p>
                 </div>
-                <div class="service-card glass">
-                    <i class="fas fa-network-wired"></i>
-                    <h3 data-i18n="srv_4_title">API Integration</h3>
-                    <p data-i18n="srv_4_desc">Seamless connectivity between your internal systems and third-party tools.</p>
+                <div class="service-card glass reveal hover-tilt" style="transition-delay: 0.3s;">
+                    <i class="fas fa-code text-primary icon-lg"></i>
+                    <h3>Custom Software</h3>
+                    <p>Scalable, bespoke enterprise and government solutions.</p>
                 </div>
-                <div class="service-card glass">
-                    <i class="fas fa-cloud"></i>
-                    <h3 data-i18n="srv_5_title">Cloud Infrastructure</h3>
-                    <p data-i18n="srv_5_desc">Scalable cloud hosting, migration, and management (AWS, Azure, GCP).</p>
+                <div class="service-card glass reveal hover-tilt" style="transition-delay: 0.4s;">
+                    <i class="fas fa-pen-nib text-primary icon-lg"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Player-centric interfaces and conversion-optimized enterprise dashboards.</p>
                 </div>
-                <div class="service-card glass">
-                    <i class="fas fa-brain"></i>
-                    <h3 data-i18n="srv_6_title">AI & Automation</h3>
-                    <p data-i18n="srv_6_desc">Machine learning models and intelligent bots to automate business processes.</p>
+                <div class="service-card glass reveal hover-tilt" style="transition-delay: 0.5s;">
+                    <i class="fas fa-brain text-primary icon-lg"></i>
+                    <h3>AI Automation</h3>
+                    <p>Machine learning integrations for smarter business operations.</p>
+                </div>
+                <div class="service-card glass reveal hover-tilt" style="transition-delay: 0.6s;">
+                    <i class="fas fa-network-wired text-primary icon-lg"></i>
+                    <h3>Cloud Infrastructure</h3>
+                    <p>Secure, scalable, and compliant cloud deployment and architecture.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="portfolio" class="portfolio section-padding fade-in">
+    <section id="portfolio" class="portfolio section-padding">
         <div class="container">
-            <div class="section-title">
-                <h2 data-i18n="port_title">Featured Portfolio</h2>
-                <p data-i18n="port_sub">Our recent technological masterpieces.</p>
+            <div class="section-header reveal">
+                <h2>Featured <span class="text-gradient">Portfolio</span></h2>
+                <p>Pioneering digital projects across gaming and enterprise sectors.</p>
             </div>
-            <div class="grid-2">
-                <div class="portfolio-card glass">
-                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="portfolio-content">
-                        <h3 data-i18n="port_1_title">FinTech Dashboard Analytics</h3>
-                        <div class="tech-tags">
-                            <span>React</span> <span>Node.js</span> <span>AWS</span>
-                        </div>
-                        <a href="#" class="btn btn-outline btn-sm"><span data-i18n="btn_demo">Live Demo</span> <i class="fas fa-external-link-alt"></i></a>
+            <div class="portfolio-grid">
+                <div class="portfolio-item glass reveal hover-tilt">
+                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="port-content">
+                        <span class="tag">Mobile Game</span>
+                        <h3>Project Nexus</h3>
+                        <p>A multiplayer tactical RPG for Android and iOS devices.</p>
                     </div>
                 </div>
-                <div class="portfolio-card glass">
-                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="portfolio-content">
-                        <h3 data-i18n="port_2_title">AI Supply Chain Predictor</h3>
-                        <div class="tech-tags">
-                            <span>Python</span> <span>TensorFlow</span> <span>Vue</span>
-                        </div>
-                        <a href="#" class="btn btn-outline btn-sm"><span data-i18n="btn_demo">Live Demo</span> <i class="fas fa-external-link-alt"></i></a>
+                <div class="portfolio-item glass reveal hover-tilt" style="transition-delay: 0.1s;">
+                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="port-content">
+                        <span class="tag">Enterprise System</span>
+                        <h3>Gov-Data Architecture</h3>
+                        <p>Secure, high-availability data processing hub for municipal governance.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item glass reveal hover-tilt" style="transition-delay: 0.2s;">
+                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="port-content">
+                        <span class="tag">AI Solution</span>
+                        <h3>Neural Logistics</h3>
+                        <p>Machine-learning driven supply chain optimization dashboard.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact section-padding fade-in">
+    <section id="careers" class="careers section-padding">
+        <div class="container glass careers-box reveal">
+            <div class="careers-content">
+                <h2>Join the <span class="text-highlight">Zenqor</span> Vanguard</h2>
+                <p>We are always looking for visionary developers, artists, and engineers to build the future of tech and gaming.</p>
+                <a href="mailto:careers@zenqortechnologies.com" class="btn btn-primary mt-3">View Open Roles</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section-padding">
         <div class="container">
-            <div class="section-title">
-                <h2 data-i18n="contact_title">Contact Us</h2>
-                <p data-i18n="contact_sub">Let's discuss your next big project.</p>
+            <div class="section-header reveal">
+                <h2>Initialize <span class="text-gradient">Connection</span></h2>
+                <p>Partner with us to engineer your next technological leap.</p>
             </div>
             <div class="contact-grid">
-                <div class="contact-info glass">
-                    <h3 data-i18n="get_in_touch">Get In Touch</h3>
-                    <div class="info-item">
-                        <i class="fas fa-envelope text-primary"></i>
+                <div class="contact-info glass reveal">
+                    <h3>Headquarters</h3>
+                    <div class="info-row">
+                        <i class="fas fa-map-marker-alt text-accent"></i>
+                        <p>Klang Valley Tech Park<br>Selangor, Malaysia</p>
+                    </div>
+                    <div class="info-row">
+                        <i class="fas fa-envelope text-accent"></i>
                         <p>hello@zenqortechnologies.com</p>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone text-primary"></i>
-                        <p>+60 3 1234 5678</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt text-primary"></i>
-                        <p>Cyberjaya Tech Hub, Selangor, Malaysia</p>
-                    </div>
-                    <a href="https://wa.me/60123456789" class="btn btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i> <span data-i18n="btn_whatsapp">Chat on WhatsApp</span>
-                    </a>
-                    
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127504.42345217438!2d101.57948283626245!3d2.923415951859666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb6e4a9d3b7a1%3A0xd0f74e8ad10f1129!2sCyberjaya%2C%20Selangor!5e0!3m2!1sen!2smy!4v1683012345678!5m2!1sen!2smy" width="100%" height="200" style="border:0; border-radius: 8px; margin-top: 20px;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="info-row">
+                        <i class="fas fa-phone-alt text-accent"></i>
+                        <p>+60 3 9988 7766</p>
                     </div>
                 </div>
-                
-                <form class="contact-form glass" id="contactForm">
-                    <h3 data-i18n="send_msg">Send a Message</h3>
-                    <div class="form-group">
-                        <label for="name" data-i18n="lbl_name">Full Name</label>
-                        <input type="text" id="name" required>
+                <form class="contact-form glass reveal" id="mainContactForm">
+                    <div class="input-group">
+                        <input type="text" placeholder="Designation / Name" required>
                     </div>
-                    <div class="form-group">
-                        <label for="email" data-i18n="lbl_email">Email Address</label>
-                        <input type="email" id="email" required>
+                    <div class="input-group">
+                        <input type="email" placeholder="Corporate Email" required>
                     </div>
-                    <div class="form-group">
-                        <label for="service" data-i18n="lbl_service">Interested Service</label>
-                        <select id="service">
-                            <option data-i18n="opt_1">Software Development</option>
-                            <option data-i18n="opt_2">Cloud Solutions</option>
-                            <option data-i18n="opt_3">AI & Automation</option>
-                            <option data-i18n="opt_4">Other</option>
+                    <div class="input-group">
+                        <select required>
+                            <option value="" disabled selected>Select Project Type</option>
+                            <option>Game Development</option>
+                            <option>Enterprise Software</option>
+                            <option>Web Application</option>
+                            <option>AI / Cloud Infrastructure</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="message" data-i18n="lbl_msg">Message</label>
-                        <textarea id="message" rows="5" required></textarea>
+                    <div class="input-group">
+                        <textarea rows="4" placeholder="Project Specifications" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100" data-i18n="btn_send">Send Message</button>
+                    <button type="submit" class="btn btn-primary btn-glow w-100">Deploy Message</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer class="glass">
-        <div class="container">
-            <p data-i18n="footer_txt">© 2026 Zenqor Technologies. All rights reserved.</p>
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="#home" class="logo">ZENQOR<span class="dot">.</span></a>
+                <p>Building Games, Software & Digital Experiences For The Future.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#careers">Careers</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Zenqor Technologies (Malaysia). All rights reserved.</p>
         </div>
     </footer>
 
