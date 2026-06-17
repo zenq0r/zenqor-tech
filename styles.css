@@ -157,9 +157,10 @@ h1, h2, h3, h4, .logo {
 }
 
 .logo-img {
-    height: 45px; 
+    height: 70px; 
     width: auto;
     object-fit: contain;
+    mix-blend-mode: screen; /* Fungsi utama untuk hilangkan latar belakang hitam */
     transition: transform 0.3s ease;
 }
 
@@ -179,7 +180,6 @@ h1, h2, h3, h4, .logo {
 
 .nav-links a:hover { color: var(--accent-cyan); }
 
-/* Butang Dwibahasa */
 .lang-btn {
     background: transparent;
     border: 1px solid var(--text-secondary);
@@ -369,7 +369,6 @@ footer { border-top: 1px solid var(--border-color); padding: 60px 0 20px; backgr
 }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* Simulate 3D Hover Tilt via CSS */
 .hover-tilt { transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .hover-tilt:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 40px rgba(6, 182, 212, 0.15); }
 
