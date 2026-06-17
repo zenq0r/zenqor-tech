@@ -157,7 +157,7 @@ h1, h2, h3, h4, .logo {
 }
 
 .logo-img {
-    height: 120px; 
+    height: 150px; 
     width: auto;
     object-fit: contain;
     mix-blend-mode: screen; /* Fungsi utama untuk hilangkan latar belakang hitam */
