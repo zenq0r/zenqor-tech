@@ -61,7 +61,7 @@ const translations = {
         nav_port_gaming: "Projek Skrip", nav_port_web: "Pembangunan Pelayan",
         hero_badge: "Pembangunan FiveM Premium",
         hero_title: "Dari Idea ke Produk Digital <br><span class='text-primary'>FiveM, Website & Sistem Cloud</span>",
-        hero_sub: "Zenqor Technologies mengkhusus dalam pembangunan perisian tersuai, pembangunan laman web, skrip Lua, sumber bebas (standalone resources), dan pengoptimuman pelayan untuk komuniti permainan, perusahaan, serta platform digital.' GTA V.",
+        hero_sub: "Zenqor Technologies mengkhusus dalam pembangunan perisian tersuai, pembangunan laman web, skrip Lua, sumber bebas (standalone resources), dan pengoptimuman pelayan untuk komuniti permainan, perusahaan, serta platform digital.",
         btn_portfolio: "Lihat Skrip", btn_contact: "Lantik Kami",
         stat_1: "Skrip Dilancarkan", stat_2: "Pelayan Dioptimumkan", stat_3: "Pemain Aktif", stat_gov: "Frameworks", stat_4: "Sistem Standalone",
         about_title: "Kod Di Sebalik <span class='text-primary'>Roleplay Imersif</span>",
