@@ -1,8 +1,7 @@
-// --- 1. KAMUS TERJEMAHAN ---
 const translations = {
     en: {
         nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_contact: "Contact",
-        nav_careers_join: "Join the Zenqor Vanguard & Community", // Teks pop-up baharu
+        nav_careers_join: "Join the Zenqor Vanguard & Community",
         hero_badge: "From Curiosity to Capability",
         hero_title: "Building Games, Software & <br><span class='text-primary'>Digital Experiences</span>",
         hero_sub: "Zenqor Technologies delivers innovative game development, web solutions and enterprise software for businesses and organizations.",
@@ -25,14 +24,6 @@ const translations = {
         tag_1: "Mobile Game", port_1_t: "Project Nexus", port_1_d: "A multiplayer tactical RPG for Android and iOS devices.",
         tag_2: "Enterprise System", port_2_t: "Gov-Data Architecture", port_2_d: "Secure, high-availability data processing hub for municipal governance.",
         tag_3: "AI Solution", port_3_t: "Neural Logistics", port_3_d: "Machine-learning driven supply chain optimization dashboard.",
-        con_title: "Initialize <span class='text-primary'>Connection</span>",
-        con_sub: "Partner with us to engineer your next technological leap.",
-        hq_title: "Headquarters", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
-        ph_name: "Designation / Name", ph_email: "Corporate Email", 
-        opt_def: "Select Project Type", opt_1: "Game Development", opt_2: "Enterprise Software", opt_3: "Web Application", opt_4: "AI / Cloud Infrastructure",
-        ph_msg: "Project Specifications", btn_submit: "Deploy Message",
-        footer_sub: "Building Games, Software & Digital Experiences For The Future.",
-        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). All rights reserved.",
         car_page_badge: "We Are Hiring",
         car_page_title: "Shape the Future of <span class='text-primary'>Technology</span>",
         car_page_sub: "Join our team of elite developers, designers, and engineers. Build impactful solutions from enterprise systems to next-gen games.",
@@ -45,11 +36,19 @@ const translations = {
         job_2_t: "Full Stack Engineer", job_2_d: "Build highly scalable enterprise applications using React, Node.js, and AWS.",
         job_3_t: "UI/UX Designer", job_3_d: "Design intuitive interfaces for web apps and mobile games. Strong Figma portfolio required.",
         btn_apply: "Apply via Email",
+        con_title: "Initialize <span class='text-primary'>Connection</span>",
+        con_sub: "Partner with us to engineer your next technological leap.",
+        hq_title: "Headquarters", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
+        ph_name: "Designation / Name", ph_email: "Corporate Email", 
+        opt_def: "Select Project Type", opt_1: "Game Development", opt_2: "Enterprise Software", opt_3: "Web Application", opt_4: "AI / Cloud Infrastructure",
+        ph_msg: "Project Specifications", btn_submit: "Deploy Message",
+        footer_sub: "Building Games, Software & Digital Experiences For The Future.",
+        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). All rights reserved.",
         msg_sending: "Deploying...", msg_success: "Transmission Successful"
     },
     ms: {
         nav_home: "Utama", nav_about: "Tentang Kami", nav_services: "Perkhidmatan", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_contact: "Hubungi",
-        nav_careers_join: "Sertai Zenqor Vanguard & Komuniti", // Teks pop-up baharu
+        nav_careers_join: "Sertai Zenqor Vanguard & Komuniti",
         hero_badge: "Daripada Rasa Ingin Tahu kepada Keupayaan",
         hero_title: "Membina Permainan, Perisian & <br><span class='text-primary'>Pengalaman Digital</span>",
         hero_sub: "Zenqor Technologies menyediakan pembangunan permainan inovatif, penyelesaian web dan perisian perusahaan untuk perniagaan dan organisasi.",
@@ -72,14 +71,6 @@ const translations = {
         tag_1: "Permainan Mudah Alih", port_1_t: "Projek Nexus", port_1_d: "RPG taktikal berbilang pemain untuk peranti Android dan iOS.",
         tag_2: "Sistem Perusahaan", port_2_t: "Seni Bina Data Kerajaan", port_2_d: "Hab pemprosesan data keselamatan tinggi untuk tadbir urus perbandaran.",
         tag_3: "Penyelesaian AI", port_3_t: "Logistik Neural", port_3_d: "Papan pemuka pengoptimuman rantaian bekalan berasaskan pembelajaran mesin.",
-        con_title: "Mulakan <span class='text-primary'>Hubungan</span>",
-        con_sub: "Bekerjasama dengan kami untuk merancang lonjakan teknologi anda yang seterusnya.",
-        hq_title: "Ibu Pejabat", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
-        ph_name: "Jawatan / Nama", ph_email: "E-mel Korporat", 
-        opt_def: "Pilih Jenis Projek", opt_1: "Pembangunan Permainan", opt_2: "Perisian Perusahaan", opt_3: "Aplikasi Web", opt_4: "AI / Infrastruktur Awan",
-        ph_msg: "Spesifikasi Projek", btn_submit: "Hantar Mesej",
-        footer_sub: "Membina Permainan, Perisian & Pengalaman Digital Masa Hadapan.",
-        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara.",
         car_page_badge: "Kami Sedang Mengambil Pekerja",
         car_page_title: "Bentuk Masa Hadapan <span class='text-primary'>Teknologi</span>",
         car_page_sub: "Sertai pasukan pembangun, pereka, dan jurutera elit kami. Bina penyelesaian berimpak dari sistem perusahaan hingga permainan generasi baharu.",
@@ -92,11 +83,18 @@ const translations = {
         job_2_t: "Jurutera Full Stack", job_2_d: "Membina aplikasi perusahaan berskala tinggi menggunakan React, Node.js, dan AWS.",
         job_3_t: "Pereka UI/UX", job_3_d: "Mereka bentuk antara muka intuitif untuk aplikasi web dan permainan. Portfolio Figma diperlukan.",
         btn_apply: "Mohon melalui E-mel",
+        con_title: "Mulakan <span class='text-primary'>Hubungan</span>",
+        con_sub: "Bekerjasama dengan kami untuk merancang lonjakan teknologi anda yang seterusnya.",
+        hq_title: "Ibu Pejabat", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
+        ph_name: "Jawatan / Nama", ph_email: "E-mel Korporat", 
+        opt_def: "Pilih Jenis Projek", opt_1: "Pembangunan Permainan", opt_2: "Perisian Perusahaan", opt_3: "Aplikasi Web", opt_4: "AI / Infrastruktur Awan",
+        ph_msg: "Spesifikasi Projek", btn_submit: "Hantar Mesej",
+        footer_sub: "Membina Permainan, Perisian & Pengalaman Digital Masa Hadapan.",
+        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara.",
         msg_sending: "Menghantar...", msg_success: "Mesej Berjaya Dihantar"
     }
 };
 
-// --- 2. SISTEM PENGURUSAN BAHASA ---
 const langToggle = document.getElementById('lang-toggle');
 let currentLang = localStorage.getItem('zenqor-lang') || 'en';
 
@@ -131,7 +129,6 @@ if(langToggle) {
 }
 setLanguage(currentLang);
 
-// --- 3. SISTEM PENGURUSAN TEMA (Dark/Light) ---
 const themeToggleBtn = document.getElementById('theme-toggle');
 const rootElement = document.documentElement;
 const themeIcon = themeToggleBtn.querySelector('i');
@@ -158,18 +155,16 @@ function updateIcon(theme) {
     }
 }
 
-// --- 4. LOGIK POP-UP MENU CAREERS ---
 const careersToggle = document.getElementById('careers-toggle');
 const careersMenu = document.getElementById('careers-menu');
 
 if(careersToggle) {
     careersToggle.addEventListener('click', (e) => {
-        e.preventDefault(); // Mengelak skrin melompat ke atas
+        e.preventDefault();
         careersMenu.classList.toggle('show');
     });
 }
 
-// Menutup pop-up jika pengguna klik di luar kawasan
 window.addEventListener('click', function(e) {
     if (!e.target.closest('#careers-toggle') && !e.target.closest('#careers-menu')) {
         if (careersMenu && careersMenu.classList.contains('show')) {
@@ -178,7 +173,6 @@ window.addEventListener('click', function(e) {
     }
 });
 
-// --- 5. MENU MUDAH ALIH ---
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
@@ -186,15 +180,13 @@ mobileMenuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
-// Tutup menu mudah alih selepas pautan biasa (bukan pop-up) ditekan
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', (e) => {
-        if(e.target.closest('#careers-toggle')) return; // Jangan tutup jika sedang tekan pop-up Careers
+        if(e.target.closest('#careers-toggle')) return;
         navLinks.classList.remove('active');
     });
 });
 
-// --- 6. ANIMASI SKROL (REVEAL) ---
 const revealElements = document.querySelectorAll('.reveal');
 const revealCallback = (entries, observer) => {
     entries.forEach(entry => {
@@ -208,7 +200,6 @@ const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
 revealElements.forEach(el => revealObserver.observe(el));
 
-// --- 7. SIMULASI BORANG HUBUNGI ---
 const form = document.getElementById('mainContactForm');
 if(form) {
     form.addEventListener('submit', (e) => {
