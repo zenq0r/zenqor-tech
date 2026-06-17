@@ -77,7 +77,7 @@ const translations = {
         srv_6_t: "Pembaikan Pepijat", srv_6_d: "Menyelesaikan isu kod lama, membaiki ralat framework, dan isu 'missing export'.",
         srv_7_t: "Konfigurasi Pangkalan Data", srv_7_d: "Mengoptimumkan pertanyaan SQL dan struktur pangkalan data untuk menghapuskan 'latency'.",
         
-        pg_hero_title: "Sumber FiveM <span class='text-primary'>Premium</span>",
+        pg_hero_title: "<span class='text-primary'>Premium</span> Sumber FiveM ",
         pg_hero_sub: "Skrip tersuai dan UI direka khas untuk pelayan 'roleplay' kelas atasan.",
         pg_1_t: "Notifikasi Waktu Solat & Azan Malaysia", pg_1_d: "Notifikasi Waktu Solat & Azan Malaysia dibangunkan secara responsif dengan waktu solat yang tepat mengikut zon dan kawasan setiap negeri berdasarkan data yang disahkan oleh JAKIM.",
         pg_2_t: "Sistem Bil Standalone", pg_2_d: "Alatan invois bebas framework yang berfungsi serta-merta pada sebarang seni bina pelayan.",
