@@ -9,17 +9,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navigasi -->
     <header class="navbar">
         <div class="container nav-container">
             <a href="#home" class="logo-nav">
-                <img src="off.png" alt="Zenqor Logo" class="logo-img-nav">
+                <img src="official_logo_ZT.png" alt="Zenqor Logo" class="logo-img-nav">
             </a>
             <nav class="nav-links">
                 <a href="#home" data-i18n="nav_home"></a>
                 <a href="#about" data-i18n="nav_about"></a>
                 <a href="#services" data-i18n="nav_services"></a>
                 <a href="#portfolio" data-i18n="nav_portfolio"></a>
-                <a href="#careers" data-i18n="nav_careers"></a>
+                
+                <!-- Pop-up Dropdown untuk Careers -->
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" id="careers-toggle">
+                        <span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                    <div class="dropdown-menu" id="careers-menu">
+                        <a href="careers.html" data-i18n="nav_careers_join"></a>
+                    </div>
+                </div>
+
                 <a href="#contact" data-i18n="nav_contact"></a>
                 <button id="lang-toggle" class="lang-btn"></button>
                 <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
@@ -28,6 +39,7 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section id="home" class="hero section-padding">
         <div class="container hero-content reveal">
             <div class="badge" data-i18n="hero_badge"></div>
@@ -59,13 +71,13 @@
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="about section-padding bg-alt">
         <div class="container">
             <div class="section-header reveal">
                 <h2 data-i18n="about_title"></h2>
                 <p data-i18n="about_sub"></p>
             </div>
-            
             <div class="tech-stack-container reveal">
                 <div class="tech-category card-style hover-up">
                     <i class="fas fa-layer-group text-accent icon-lg"></i>
@@ -107,6 +119,7 @@
         </div>
     </section>
 
+    <!-- Services Section -->
     <section id="services" class="services section-padding">
         <div class="container">
             <div class="section-header reveal">
@@ -153,6 +166,7 @@
         </div>
     </section>
 
+    <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section-padding bg-alt">
         <div class="container">
             <div class="section-header reveal">
@@ -188,16 +202,9 @@
         </div>
     </section>
 
-    <section id="careers" class="careers section-padding">
-        <div class="container card-style careers-box reveal">
-            <div class="careers-content">
-                <h2 data-i18n="car_title"></h2>
-                <p data-i18n="car_sub"></p>
-                <a href="mailto:careers@zenqortechnologies.com" class="btn btn-primary mt-3" data-i18n="btn_careers"></a>
-            </div>
-        </div>
-    </section>
+    <!-- BAHAGIAN CAREERS TELAH DIPADAM DARI SINI -->
 
+    <!-- Contact Section -->
     <section id="contact" class="contact section-padding bg-alt">
         <div class="container">
             <div class="section-header reveal">
@@ -246,18 +253,19 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container footer-content">
             <div class="footer-brand">
                 <a href="#home" class="logo-footer">
-                    <img src="off.png" alt="Zenqor Logo" class="logo-img-footer">
+                    <img src="official_logo_ZT.png" alt="Zenqor Logo" class="logo-img-footer">
                 </a>
                 <p data-i18n="footer_sub"></p>
             </div>
             <div class="footer-links">
                 <a href="#services" data-i18n="nav_services"></a>
                 <a href="#portfolio" data-i18n="nav_portfolio"></a>
-                <a href="#careers" data-i18n="nav_careers"></a>
+                <a href="careers.html" data-i18n="nav_careers"></a> <!-- Pautan Diubah Ke Laman Baru -->
                 <a href="#contact" data-i18n="nav_contact"></a>
             </div>
             <div class="footer-social">
