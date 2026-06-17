@@ -2,13 +2,11 @@
    VARIABLES & THEME
    ========================================= */
 :root {
-    /* Palette requested */
-    --bg-dark: #0F172A; /* Base Primary - Slate Dark */
-    --primary-blue: #2563EB; /* Secondary - Royal Blue */
-    --accent-cyan: #06B6D4; /* Accent - Cyan */
-    --highlight-amber: #F59E0B; /* Highlight - Amber */
+    --bg-dark: #0F172A; 
+    --primary-blue: #2563EB; 
+    --accent-cyan: #06B6D4; 
+    --highlight-amber: #F59E0B; 
     
-    /* Theme Variables (Default Dark) */
     --bg-color: #080c16;
     --surface-color: rgba(15, 23, 42, 0.6);
     --text-primary: #FFFFFF;
@@ -139,7 +137,7 @@ h1, h2, h3, h4, .logo {
 .w-100 { width: 100%; }
 
 /* =========================================
-   NAVIGATION
+   NAVIGATION & LOGO
    ========================================= */
 .navbar {
     position: fixed;
@@ -155,9 +153,18 @@ h1, h2, h3, h4, .logo {
 }
 
 .logo {
-    font-size: 1.5rem; font-weight: 700;
-    color: var(--text-primary); text-decoration: none;
-    letter-spacing: 2px;
+    display: flex; align-items: center; text-decoration: none;
+}
+
+.logo-img {
+    height: 45px; 
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
 }
 
 .nav-links {
@@ -171,6 +178,25 @@ h1, h2, h3, h4, .logo {
 }
 
 .nav-links a:hover { color: var(--accent-cyan); }
+
+/* Butang Dwibahasa */
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-primary);
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: var(--primary-blue);
+    color: #fff;
+    border-color: var(--primary-blue);
+}
 
 #theme-toggle {
     background: none; border: none; color: var(--text-primary);
@@ -317,6 +343,9 @@ h1, h2, h3, h4, .logo {
 }
 .input-group input:focus, .input-group textarea:focus {
     outline: none; border-color: var(--accent-cyan);
+}
+.input-group input::placeholder, .input-group textarea::placeholder {
+    color: var(--text-secondary);
 }
 
 /* Footer */
