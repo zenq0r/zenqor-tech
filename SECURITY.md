@@ -2,20 +2,20 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+Below is the list of software versions currently being monitored and supported with security updates:
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| 1.0.x   | :white_check_mark: |
+| < 1.0   | :x:                |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+System security is our top priority at **Zenqor Technologies**. 
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+If you discover any bugs or security vulnerabilities on our website or systems, **PLEASE DO NOT** disclose them publicly in the GitHub *Issues* section.
+
+Please report them directly to us via private email at:
+📧 **info@zenqor.com.my** or **zenqor.dev@gmail.com**
+
+We will respond to your email within 48 hours and keep you updated on the status of the fix.
