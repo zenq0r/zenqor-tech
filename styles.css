@@ -61,17 +61,26 @@ h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-pr
     display: flex; 
     align-items: center; 
     position: relative;
-    z-index: 1; /* Memastikan logo berada di bawah teks jika ada lebihan lutsinar */
+    z-index: 1;
 }
-.logo-img-nav { height: 100px; width: auto; transition: transform 0.3s ease; }
-.logo-img-nav:hover { transform: scale(1.03); }
+
+/* Penggayaan Logo Teks Baharu */
+.logo-text {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.03em;
+    transition: transform 0.3s ease;
+}
+.logo-text:hover { transform: scale(1.02); }
 
 .nav-links { 
     display: flex; 
     gap: 32px; 
     align-items: center; 
     position: relative;
-    z-index: 10; /* Memaksa teks sentiasa boleh diklik dan bertindan di atas logo */
+    z-index: 10;
 }
 .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
 .nav-links a:hover { color: var(--primary-blue); }
@@ -196,17 +205,16 @@ h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-pr
    ========================================= */
 footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; background: var(--surface-color); }
 .footer-content { display: flex; flex-direction: column; align-items: center; margin-bottom: 15px; text-align: center; }
-.footer-brand { width: 100%; margin-bottom: 10px; }
+.footer-brand { width: 100%; margin-bottom: 15px; }
 
 .logo-footer { 
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    margin-bottom: 5px; 
+    margin-bottom: 10px; 
     position: relative;
-    z-index: 1; /* Merendahkan lapisan logo di footer */
+    z-index: 1;
 }
-.logo-img-footer { height: 240px; width: auto; }
 
 .footer-brand p { color: var(--text-secondary); font-size: 0.9rem; margin: 0 auto; }
 
@@ -215,7 +223,7 @@ footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; backgr
     gap: 24px; 
     margin-bottom: 15px; 
     position: relative;
-    z-index: 10; /* Tinggikan lapisan pautan */
+    z-index: 10;
 }
 .footer-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; }
 .footer-links a:hover { color: var(--primary-blue); }

@@ -11,25 +11,34 @@
 <body>
     <header class="navbar">
         <div class="container nav-container">
-            <a href="index.html#home" class="logo-nav">
-                <img src="official_logo_ZT.png" alt="Zenqor Logo" class="logo-img-nav">
+            <a href="index.html" class="logo-nav logo-text">
+                <span class="text-primary">Zenqor</span> Technologies
             </a>
             <nav class="nav-links">
-                <a href="index.html#home" data-i18n="nav_home"></a>
-                <a href="index.html#about" data-i18n="nav_about"></a>
-                <a href="index.html#services" data-i18n="nav_services"></a>
-                <a href="index.html#portfolio" data-i18n="nav_portfolio"></a>
+                <a href="index.html" data-i18n="nav_home"></a>
+                <a href="about.html" data-i18n="nav_about"></a>
+                <a href="services.html" data-i18n="nav_services"></a>
                 
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" id="careers-toggle">
-                        <span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu">
+                        <span data-i18n="nav_portfolio"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
                     </a>
-                    <div class="dropdown-menu" id="careers-menu">
-                        <a href="careers.html" data-i18n="nav_careers_join"></a>
+                    <div class="dropdown-menu" id="portfolio-menu">
+                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming"></a>
+                        <a href="portfolio-web.html" data-i18n="nav_port_web"></a>
                     </div>
                 </div>
 
-                <a href="index.html#contact" data-i18n="nav_contact"></a>
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu" style="color: var(--primary-blue);">
+                        <span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                    <div class="dropdown-menu" id="careers-menu">
+                        <a href="careers.html" style="color: var(--primary-blue);" data-i18n="nav_careers_join"></a>
+                    </div>
+                </div>
+
+                <a href="contact.html" data-i18n="nav_contact"></a>
                 <button id="lang-toggle" class="lang-btn"></button>
                 <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
             </nav>
@@ -103,16 +112,15 @@
     <footer>
         <div class="container footer-content">
             <div class="footer-brand">
-                <a href="index.html#home" class="logo-footer">
-                    <img src="official_logo_ZT.png" alt="Zenqor Logo" class="logo-img-footer">
+                <a href="index.html" class="logo-footer logo-text">
+                    <span class="text-primary">Zenqor</span> Technologies
                 </a>
                 <p data-i18n="footer_sub"></p>
             </div>
             <div class="footer-links">
-                <a href="index.html#services" data-i18n="nav_services"></a>
-                <a href="index.html#portfolio" data-i18n="nav_portfolio"></a>
+                <a href="services.html" data-i18n="nav_services"></a>
                 <a href="careers.html" data-i18n="nav_careers"></a>
-                <a href="index.html#contact" data-i18n="nav_contact"></a>
+                <a href="contact.html" data-i18n="nav_contact"></a>
             </div>
             <div class="footer-social">
                 <a href="#"><i class="fab fa-linkedin"></i></a>

@@ -1,4 +1,4 @@
-// --- 1. KAMUS TERJEMAHAN (Semua teks berpusat di sini) ---
+// --- 1. KAMUS TERJEMAHAN ---
 const translations = {
     en: {
         nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_contact: "Contact",
@@ -22,7 +22,6 @@ const translations = {
         srv_6_t: "Bug Fixing & Support", srv_6_d: "Troubleshooting legacy code, resolving framework errors, and missing export fixes.",
         srv_7_t: "Database Tuning", srv_7_d: "Optimizing SQL queries and database structures to eliminate server latency.",
         
-        // Portfolio Section
         pg_hero_title: "Premium <span class='text-primary'>FiveM Resources</span>",
         pg_hero_sub: "Custom scripts and UI designed for top-tier roleplay servers.",
         pg_1_t: "Advanced Inventory NUI", pg_1_d: "A responsive drag-and-drop inventory built with HTML/JS for seamless item management.",
@@ -78,7 +77,6 @@ const translations = {
         srv_6_t: "Pembaikan Pepijat", srv_6_d: "Menyelesaikan isu kod lama, membaiki ralat framework, dan isu 'missing export'.",
         srv_7_t: "Konfigurasi Pangkalan Data", srv_7_d: "Mengoptimumkan pertanyaan SQL dan struktur pangkalan data untuk menghapuskan 'latency'.",
         
-        // Portfolio Section
         pg_hero_title: "Sumber FiveM <span class='text-primary'>Premium</span>",
         pg_hero_sub: "Skrip tersuai dan UI direka khas untuk pelayan 'roleplay' kelas atasan.",
         pg_1_t: "NUI Inventori Lanjutan", pg_1_d: "Inventori 'drag-and-drop' responsif dibina menggunakan HTML/JS untuk pengurusan item yang lancar.",
@@ -114,8 +112,7 @@ const translations = {
     }
 };
 
-// Pastikan bahagian bawah script (Pengurusan Bahasa, Tema, Dropdown, Animasi, Borang) tidak diubah dan dikekalkan.
-
+// --- 2. MULTI-LANGUAGE SYSTEM ---
 const langToggle = document.getElementById('lang-toggle');
 let currentLang = localStorage.getItem('zenqor-lang') || 'en';
 
@@ -150,7 +147,7 @@ if(langToggle) {
 }
 setLanguage(currentLang);
 
-// --- 3. SISTEM PENGURUSAN TEMA (Dark/Light) ---
+// --- 3. THEME MANAGER ---
 const themeToggleBtn = document.getElementById('theme-toggle');
 const rootElement = document.documentElement;
 const themeIcon = themeToggleBtn.querySelector('i');
@@ -177,7 +174,7 @@ function updateIcon(theme) {
     }
 }
 
-// --- 4. LOGIK POP-UP MULTI-DROPDOWN ---
+// --- 4. MULTI-DROPDOWN POP-UP LOGIC ---
 const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
 dropdownToggles.forEach(toggle => {
@@ -186,7 +183,6 @@ dropdownToggles.forEach(toggle => {
         const targetId = toggle.getAttribute('data-target');
         const menu = document.getElementById(targetId);
         
-        // Tutup menu lain jika ada yang terbuka
         document.querySelectorAll('.dropdown-menu').forEach(m => {
             if (m !== menu) m.classList.remove('show');
         });
@@ -203,7 +199,7 @@ window.addEventListener('click', function(e) {
     }
 });
 
-// --- 5. MENU MUDAH ALIH ---
+// --- 5. MOBILE MENU ---
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
@@ -213,12 +209,12 @@ mobileMenuBtn.addEventListener('click', () => {
 
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', (e) => {
-        if(e.target.closest('.dropdown-toggle')) return; // Jangan tutup jika sedang tekan dropdown
+        if(e.target.closest('.dropdown-toggle')) return;
         navLinks.classList.remove('active');
     });
 });
 
-// --- 6. ANIMASI SKROL (REVEAL) ---
+// --- 6. SCROLL ANIMATION (REVEAL) ---
 const revealElements = document.querySelectorAll('.reveal');
 const revealCallback = (entries, observer) => {
     entries.forEach(entry => {
@@ -232,7 +228,7 @@ const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
 revealElements.forEach(el => revealObserver.observe(el));
 
-// --- 7. SIMULASI BORANG HUBUNGI ---
+// --- 7. CONTACT FORM SIMULATION ---
 const form = document.getElementById('mainContactForm');
 if(form) {
     form.addEventListener('submit', (e) => {
