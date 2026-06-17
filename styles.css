@@ -74,7 +74,7 @@ h1, h2, h3, h4 {
 .text-highlight { color: var(--highlight-amber); }
 
 /* =========================================
-   3. KAD KORPORAT (Ganti Glassmorphism)
+   3. KAD KORPORAT
    ========================================= */
 .card-style {
     background: var(--surface-color);
@@ -105,10 +105,9 @@ h1, h2, h3, h4 {
     padding: 10px 0;
 }
 
-/* LOGO: mix-blend-mode dibuang sepenuhnya */
 .logo-nav { display: flex; align-items: center; }
 .logo-img-nav { 
-    height: 70px; /* Saiz dikawal rapi */
+    height: 70px; 
     width: auto; 
     transition: transform 0.3s ease; 
 }
@@ -278,11 +277,11 @@ h1, h2, h3, h4 {
 .info-row i { margin-top: 4px; }
 
 /* =========================================
-   7. FOOTER & LOGO BAWAH
+   7. FOOTER & LOGO BAWAH (DIKEMASKINI)
    ========================================= */
 footer { 
     border-top: 1px solid var(--border-color); 
-    padding: 30px 0 15px; /* Padding atas dan bawah dikurangkan dengan ketara */
+    padding: 30px 0 15px; 
     background: var(--surface-color); 
 }
 
@@ -290,63 +289,22 @@ footer {
     display: flex; 
     flex-direction: column;
     align-items: center;
-    margin-bottom: 15px; /* Jarak antara kandungan dan garisan bawah dikurangkan */
+    margin-bottom: 15px; 
     text-align: center;
 }
 
-.footer-brand { 
-    width: 100%; 
-    margin-bottom: 10px; 
-}
+.footer-brand { width: 100%; margin-bottom: 10px; }
+.logo-footer { display: flex; justify-content: center; align-items: center; margin-bottom: 5px; }
+.logo-img-footer { height: 60px; width: auto; }
 
-.logo-footer { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    margin-bottom: 5px; 
-}
+.footer-brand p { color: var(--text-secondary); font-size: 0.9rem; margin: 0 auto; }
+.footer-links { display: flex; gap: 24px; margin-bottom: 15px; }
+.footer-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; }
+.footer-links a:hover { color: var(--primary-blue); }
 
-.logo-img-footer { 
-    height: 60px; /* Saiz logo dikecilkan kepada 60px supaya seimbang dengan navbar */
-    width: auto; 
-}
-
-.footer-brand p { 
-    color: var(--text-secondary); 
-    font-size: 0.9rem; 
-    margin: 0 auto; 
-}
-
-.footer-links { 
-    display: flex; 
-    gap: 24px; 
-    margin-bottom: 15px; /* Jarak pautan dikurangkan */
-}
-
-.footer-links a { 
-    color: var(--text-secondary); 
-    text-decoration: none; 
-    font-weight: 500; 
-}
-
-.footer-links a:hover { 
-    color: var(--primary-blue); 
-}
-
-.footer-social { 
-    display: flex; 
-    gap: 20px; 
-    font-size: 1.3rem; 
-}
-
-.footer-social a { 
-    color: var(--text-secondary); 
-    transition: color 0.2s; 
-}
-
-.footer-social a:hover { 
-    color: var(--primary-blue); 
-}
+.footer-social { display: flex; gap: 20px; font-size: 1.3rem; }
+.footer-social a { color: var(--text-secondary); transition: color 0.2s; }
+.footer-social a:hover { color: var(--primary-blue); }
 
 .footer-bottom { 
     text-align: center; 
@@ -361,8 +319,6 @@ footer {
    ========================================= */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
-
-/* Kesan hover yang bersih dan kemas */
 .hover-up:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); }
 
 @media (max-width: 1024px) {
@@ -373,8 +329,31 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .nav-links { display: none; }
+    /* Menu Mudah Alih Dibetulkan */
     .mobile-menu-btn { display: block; }
+    
+    .nav-links { 
+        display: none; 
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background-color: var(--surface-color);
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid var(--border-color);
+        max-height: calc(100vh - 85px); 
+        overflow-y: auto;
+    }
+
+    .nav-links.active { display: flex; }
+    .nav-links a { padding: 12px 20px; width: 100%; text-align: center; font-size: 1.05rem; }
+    
+    .lang-btn { margin: 10px auto; width: 80px; text-align: center; }
+    .theme-btn { margin: 10px auto 20px auto; padding: 10px; }
+    
+    /* Skrin & Layout */
     .hero h1 { font-size: 2.2rem; }
     .stats-grid { grid-template-columns: 1fr; gap: 16px; padding: 20px;}
     .portfolio-grid, .tech-stack-container { grid-template-columns: 1fr; }
