@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zenqor Technologies | Transforming Ideas into Reality</title>
+    <title>Zenqor.Technologies</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -18,10 +18,19 @@
                 <a href="#home" data-i18n="nav_home"></a>
                 <a href="#about" data-i18n="nav_about"></a>
                 <a href="#services" data-i18n="nav_services"></a>
-                <a href="#portfolio" data-i18n="nav_portfolio"></a>
                 
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" id="careers-toggle">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu">
+                        <span data-i18n="nav_portfolio"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                    <div class="dropdown-menu" id="portfolio-menu">
+                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming"></a>
+                        <a href="portfolio-web.html" data-i18n="nav_port_web"></a>
+                    </div>
+                </div>
+
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu">
                         <span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
                     </a>
                     <div class="dropdown-menu" id="careers-menu">
@@ -43,7 +52,7 @@
             <h1 data-i18n="hero_title"></h1>
             <p class="hero-sub" data-i18n="hero_sub"></p>
             <div class="hero-actions">
-                <a href="#portfolio" class="btn btn-primary" data-i18n="btn_portfolio"></a>
+                <a href="portfolio-web.html" class="btn btn-primary" data-i18n="btn_portfolio"></a>
                 <a href="#contact" class="btn btn-outline" data-i18n="btn_contact"></a>
             </div>
             
@@ -161,41 +170,6 @@
         </div>
     </section>
 
-    <section id="portfolio" class="portfolio section-padding bg-alt">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 data-i18n="port_main_title"></h2>
-                <p data-i18n="port_main_sub"></p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item card-style reveal hover-up">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag" data-i18n="tag_1"></span>
-                        <h3 data-i18n="port_1_t"></h3>
-                        <p data-i18n="port_1_d"></p>
-                    </div>
-                </div>
-                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.1s;">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag" data-i18n="tag_2"></span>
-                        <h3 data-i18n="port_2_t"></h3>
-                        <p data-i18n="port_2_d"></p>
-                    </div>
-                </div>
-                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.2s;">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag" data-i18n="tag_3"></span>
-                        <h3 data-i18n="port_3_t"></h3>
-                        <p data-i18n="port_3_d"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="contact" class="contact section-padding bg-alt">
         <div class="container">
             <div class="section-header reveal">
@@ -254,7 +228,6 @@
             </div>
             <div class="footer-links">
                 <a href="#services" data-i18n="nav_services"></a>
-                <a href="#portfolio" data-i18n="nav_portfolio"></a>
                 <a href="careers.html" data-i18n="nav_careers"></a>
                 <a href="#contact" data-i18n="nav_contact"></a>
             </div>
