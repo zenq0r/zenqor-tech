@@ -1,6 +1,10 @@
 // --- 1. KAMUS TERJEMAHAN ---
 const translations = {
     en: {
+        nav_return: "Return Policy",
+        rp_title: "Refunds and Returns",
+        rp_desc1: "At Zenqor Technologies, all digital product sales (scripts, server setups) are final. Refunds are only issued if the product is proven to be fundamentally broken and our support team cannot resolve the issue within 14 days.",
+        rp_desc2: "Please open a ticket in our Discord or email us at info@zenqor.com.my for any inquiries regarding your purchase.",
         nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_contact: "Contact",
         nav_careers_join: "Join the Zenqor Vanguard",
         nav_port_gaming: "Scripting Projects", nav_port_web: "Server Development",
@@ -56,6 +60,10 @@ const translations = {
         msg_sending: "Sending...", msg_success: "Request Delivered"
     },
     ms: {
+        nav_return: "Dasar Pemulangan",
+        rp_title: "Pemulangan dan Bayaran Balik",
+        rp_desc1: "Di Zenqor Technologies, semua jualan produk digital (skrip, tetapan pelayan) adalah muktamad. Bayaran balik hanya dikeluarkan jika produk dibuktikan rosak sepenuhnya dan pasukan sokongan kami tidak dapat menyelesaikan isu tersebut dalam masa 14 hari.",
+        rp_desc2: "Sila buka tiket (ticket) di Discord kami atau e-mel kepada info@zenqor.com.my untuk sebarang pertanyaan mengenai pembelian anda.",
         nav_home: "Utama", nav_about: "Tentang Kami", nav_services: "Perkhidmatan", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_contact: "Hubungi",
         nav_careers_join: "Sertai Zenqor Vanguard",
         nav_port_gaming: "Projek Skrip", nav_port_web: "Pembangunan Pelayan",
