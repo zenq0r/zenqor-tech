@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Policy | Zenqor Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-nav logo-text">
+                <span class="text-primary">Zenqor</span> Technologies
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" data-i18n="nav_home"></a>
+                <a href="about.html" data-i18n="nav_about"></a>
+                <a href="services.html" data-i18n="nav_services"></a>
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu"><span data-i18n="nav_portfolio"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu" id="portfolio-menu">
+                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming"></a>
+                        <a href="portfolio-web.html" data-i18n="nav_port_web"></a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu"><span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu" id="careers-menu">
+                        <a href="careers.html" data-i18n="nav_careers_join"></a>
+                    </div>
+                </div>
+                <a href="return-policy.html" style="color: var(--primary-blue);" data-i18n="nav_return"></a>
+                <a href="contact.html" data-i18n="nav_contact"></a>
+                <button id="lang-toggle" class="lang-btn"></button>
+                <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+            </nav>
+            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="hero section-padding" style="min-height: 40vh; padding-top: 150px; padding-bottom: 20px;">
+        <div class="container hero-content reveal">
+            <h1 data-i18n="nav_return"></h1>
+        </div>
+    </section>
+
+    <section class="section-padding bg-alt">
+        <div class="container">
+            <div class="card-style reveal" style="padding: 40px;">
+                <h3 data-i18n="rp_title" style="margin-bottom: 20px;"></h3>
+                <p data-i18n="rp_desc1" style="margin-bottom: 15px;"></p>
+                <p data-i18n="rp_desc2"></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo-footer logo-text">
+                    <span class="text-primary">Zenqor</span> Technologies
+                </a>
+                <div style="margin-top: 10px; font-size: 0.85rem; color: var(--text-secondary);">
+                    <p><strong>Zenqor Technologies</strong></p>
+                    <p>No. Pendaftaran: 202603157897 (JM1045730-D)</p>
+                </div>
+                <p data-i18n="footer_sub"></p>
+            </div>
+            <div class="footer-links">
+                <a href="services.html" data-i18n="nav_services"></a>
+                <a href="careers.html" data-i18n="nav_careers"></a>
+                <a href="return-policy.html" data-i18n="nav_return"></a>
+                <a href="contact.html" data-i18n="nav_contact"></a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom"><p data-i18n="footer_copy"></p></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
