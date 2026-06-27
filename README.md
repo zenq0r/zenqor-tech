@@ -1,7 +1,7 @@
 <h1 align="center">Zenqor Technologies</h1>
 
 <p align="center">
-  <strong>Official Corporate Website • FiveM Development • Digital Solutions</strong><br>
+  <strong>Official Corporate Portal & Digital Solutions Hub</strong><br>
   <em>Primary Digital Storefront by Zenqor Technologies</em>
 </p>
 
