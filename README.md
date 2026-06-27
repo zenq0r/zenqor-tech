@@ -7,33 +7,40 @@
 
 <p align="center">
   <a href="https://zenqor-tech.kauaku.store">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=15&pause=2000&color=32CD32&center=true&vCenter=true&width=600&repeat=false&lines=Designing,+Developing+%26+Deploying+Websites.;Premium+FiveM+Scripting+%26+Server+Setups.;Dynamic+Multi-Language+%26+Theme+Engine." alt="Typing Animation" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=15&pause=2000&color=32CD32&center=true&vCenter=true&width=600&repeat=false&lines=Corporate+Web+Infrastructure.;Premium+FiveM+Development.;Custom+Web+Solutions." alt="Typing Animation" />
   </a>
 </p>
 
 <p align="center">
-  <a href="https://zenqor-tech.kauaku.store">Official Website</a> &nbsp;•&nbsp;
-  <a href="https://github.com/zenq0r">Public Projects</a> &nbsp;•&nbsp;
-  <a href="mailto:info@zenqor.com.my">Contact Us &rarr;</a>
+  <img src="https://img.shields.io/badge/Status-LIVE-10b981?style=for-the-badge" alt="Status">
+  <img src="https://img.shields.io/badge/Platform-Web-blue?style=for-the-badge" alt="Platform">
+  <img src="https://img.shields.io/badge/Stack-HTML_|_CSS_|_JS-f7df1e?style=for-the-badge" alt="Stack">
 </p>
 
 ---
 
-![Infrastructure & Performance](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=58A6FF&vCenter=true&width=600&repeat=false&lines=Infrastructure+%26+Performance)
+![Overview & Architecture](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=58A6FF&vCenter=true&width=600&repeat=false&lines=Overview+%26+Architecture)
+
+This repository contains the source code for the official corporate website of **Zenqor Technologies** (SSM: 202603157897 / JM1045730-D)[cite: 1]. It serves as the primary digital storefront showcasing our expertise in premium FiveM development, custom Lua scripting, standalone server resources, and enterprise web solutions[cite: 1].
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=html,css,js,firebase,github,git" alt="Tech Stack" />
+  <img src="https://skillicons.dev/icons?i=html,css,js,github" alt="Tech Stack" />
 </p>
+
+**Built for high performance and zero dependencies using native web technologies[cite: 1]:**
+* **Frontend:** HTML5, CSS3, Vanilla JavaScript (ES6+)[cite: 1]
+* **Styling:** Custom CSS variables with a built-in Dark/Light Theme Engine[cite: 1]
+* **Localization:** Custom JavaScript dictionary approach for instant EN/MS translation[cite: 1]
+* **Analytics:** Integrated with Vercel Speed Insights[cite: 1]
 
 ---
 
-![Strategic Focus](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=58A6FF&vCenter=true&width=600&repeat=false&lines=Strategic+Focus+(June+2026))
+![Core Features & Capabilities](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=58A6FF&vCenter=true&width=600&repeat=false&lines=Core+Features+%26+Capabilities)
 
-**At Zenqor Technologies, we prioritize:**
-- **Performance:** High-fidelity web interfaces built with native HTML5, CSS3, and ES6+ JavaScript.
-- **Localization:** Seamless multi-language support (EN/MS) via custom dictionary systems.
-- **User Experience:** Responsive design with a persistent Dark/Light theme engine.
-- **Maintainability:** Modular structure designed for clear documentation and rapid scalability.
+1. **Dynamic Theme Manager:** Persistent Dark and Light modes utilizing `localStorage`[cite: 1].
+2. **Multi-Language System:** Seamless toggling between English and Bahasa Melayu without page reloads[cite: 1].
+3. **Interactive Portfolio:** Dedicated showcases for both Gaming (FiveM) and Web (Enterprise) projects[cite: 1].
+4. **Careers Portal:** Integrated hiring board targeting technical roles[cite: 1].
 
 <br>
 
@@ -41,42 +48,22 @@
 
 <br>
 
-![Why Partners Choose Zenqor Technologies](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=58A6FF&vCenter=true&width=650&repeat=false&lines=Why+Partners+Choose+Zenqor+Technologies%3F)
+![Repository Structure](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=58A6FF&vCenter=true&width=600&repeat=false&lines=Repository+Structure)
 
-We engineer digital storefronts that reflect the professionalism and technical integrity of your business.
+```text
+zenqor-tech/
+├── index.html              # Main Landing Page
+├── about.html              # Company Vision & Tech Stack
+├── services.html           # FiveM & Web Development Services
+├── portfolio-gaming.html   # Scripting & Server Projects
+├── portfolio-web.html      # Enterprise Web Projects
+├── careers.html            # Job Openings & Perks
+├── script.js               # Core logic (Translation & Animations)
+├── styles.css              # Global styling & CSS variables
+└── SECURITY.md             # Vulnerability reporting policy
+```
 
-1. **Enterprise Web Solutions:** Tailor-made websites optimized for speed and global accessibility.
-2. **FiveM Development:** Premium Lua scripting and custom resource development for high-concurrency servers.
-3. **Responsive Architecture:** Ensuring flawless rendering across all devices, from desktop to mobile.
-4. **Theme Engineering:** Robust CSS variable systems for fluid UI/UX transitions.
-5. **Security Policy:** Proactive vulnerability reporting via [SECURITY.md](SECURITY.md).
-6. **Technical Support:** Dedicated commitment to quality through rigorous code standards.
-
-> **Technical Note:** Regularly audit your project assets and theme configurations to ensure optimal performance and user engagement.
-
----
-
-![Activity Graph](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=58A6FF&vCenter=true&width=600&repeat=false&lines=Activity+Graph)
-
-<p align="left">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=zenq0r&theme=tokyonight&area=true&hide_border=true" alt="Activity Graph" />
-</p>
-
----
-
-![The Mission Behind the Scenes](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=58A6FF&vCenter=true&width=600&repeat=false&lines=The+Mission+Behind+the+Scenes)
-
-<details>
-  <summary><strong>The Zenqor Manifesto — An Evolving Vision &rarr;</strong></summary>
-  <br>
-  <blockquote>
-    Zenqor Technologies was founded to bridge the gap between complex digital infrastructure and intuitive user experiences. We believe that professional web presence is not just about aesthetics—it is about high-performance engineering, clean code, and reliable deployment.<br><br>
-    Our mission is to provide the digital foundation upon which high-concurrency gaming communities and corporate entities can build their future. We build systems that are transparent, secure, and ready for global scale.
-  </blockquote>
-  <p align="left">
-    <code>— Founder, Zenqor Technologies</code>
-  </p>
-</details>
+<br>
 
 ---
 
