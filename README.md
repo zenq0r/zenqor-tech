@@ -25,20 +25,20 @@
   <img src="https://skillicons.dev/icons?i=html,css,js,github" alt="Tech Stack" />
 </p>
 
-**Built for high performance and zero dependencies using native web technologies[cite: 1]:**
-* **Frontend:** HTML5, CSS3, Vanilla JavaScript (ES6+)[cite: 1]
-* **Styling:** Custom CSS variables with a built-in Dark/Light Theme Engine[cite: 1]
-* **Localization:** Custom JavaScript dictionary approach for instant EN/MS translation[cite: 1]
-* **Analytics:** Integrated with Vercel Speed Insights[cite: 1]
+**Built for high performance and zero dependencies using native web technologies:**
+* **Frontend:** HTML5, CSS3, Vanilla JavaScript (ES6+)
+* **Styling:** Custom CSS variables with a built-in Dark/Light Theme Engine
+* **Localization:** Custom JavaScript dictionary approach for instant EN/MS translation
+* **Analytics:** Integrated with Vercel Speed Insights
 
 ---
 
 ![Core Features & Capabilities](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=58A6FF&vCenter=true&width=600&repeat=false&lines=Core+Features+%26+Capabilities)
 
-1. **Dynamic Theme Manager:** Persistent Dark and Light modes utilizing `localStorage`[cite: 1].
-2. **Multi-Language System:** Seamless toggling between English and Bahasa Melayu without page reloads[cite: 1].
-3. **Interactive Portfolio:** Dedicated showcases for both Gaming (FiveM) and Web (Enterprise) projects[cite: 1].
-4. **Careers Portal:** Integrated hiring board targeting technical roles[cite: 1].
+1. **Dynamic Theme Manager:** Persistent Dark and Light modes utilizing `localStorage`.
+2. **Multi-Language System:** Seamless toggling between English and Bahasa Melayu without page reloads.
+3. **Interactive Portfolio:** Dedicated showcases for both Gaming (FiveM) and Web (Enterprise) projects.
+4. **Careers Portal:** Integrated hiring board targeting technical roles.
 
 <br>
 
