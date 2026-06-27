@@ -53,6 +53,7 @@ zenqor-tech/
 ├── styles.css              # Global styling & responsive breakpoints
 └── SECURITY.md             # Vulnerability reporting policy
 ```
+
 > **Technical Note:** This is the official frontend repository for Zenqor Technologies. All digital assets, branding, and text are copyright protected. Unauthorized reproduction is strictly prohibited.
 
 ---
