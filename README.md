@@ -1,44 +1,38 @@
-<h1 align="center">Zenqor Technologies</h1>
+<h1 align="center">ZENQOR TECHNOLOGIES</h1>
 
 <p align="center">
-  <strong>Official Corporate Website • FiveM Development • Digital Solutions</strong><br>
-  <em>Primary Digital Storefront by Zenqor Technologies</em>
+  <b>Official Corporate Website • FiveM Development • Digital Solutions</b>
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=15&pause=2000&color=10b981&center=true&vCenter=true&width=600&repeat=false&lines=Designing,+Developing+%26+Deploying+Websites.;Premium+FiveM+Scripting+%26+Server+Setups.;Dynamic+Multi-Language+%26+Theme+Engine." alt="Typing Animation" />
+  <img src="https://img.shields.io/badge/Status-LIVE-10b981?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Platform-Web-blue?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Stack-HTML_|_CSS_|_JS-f7df1e?style=for-the-badge"/>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Status-LIVE-10b981?style=for-the-badge" alt="Status">
-  <img src="https://img.shields.io/badge/Platform-Web-blue?style=for-the-badge" alt="Platform">
-  <img src="https://img.shields.io/badge/Stack-HTML_|_CSS_|_JS-f7df1e?style=for-the-badge" alt="Stack">
+  <i>"Designing, Developing & Deploying Websites, Cloud Systems & FiveM Resources."</i>
 </p>
 
 ---
 
-## 🚀 Overview & Architecture
-This repository contains the source code for the official corporate website of **Zenqor Technologies** (Reg No: 202603157897 / JM1045730-D), based in Selangor, Malaysia. It serves as the primary digital storefront showcasing our expertise in premium FiveM development, custom Lua scripting, standalone server resources, and enterprise web solutions.
+## 🚀 Overview
+This repository contains the source code for the official corporate website of **Zenqor Technologies** (Reg No: 202603157897 / JM1045730-D), based in Selangor, Malaysia. 
 
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=html,css,js,vercel,github" alt="Tech Stack" />
-</p>
+It serves as the primary digital storefront showcasing our expertise in premium FiveM development, custom Lua scripting, standalone server resources, and enterprise web solutions.
 
-**Built for high performance and zero dependencies using native web technologies:**
-* **Frontend:** HTML5, CSS3, Vanilla JavaScript (ES6+)
-* **Styling:** Custom CSS variables with a built-in Dark/Light Theme Engine
-* **Localization:** Custom JavaScript dictionary approach for instant EN/MS translation
-* **Analytics:** Integrated with Vercel Speed Insights
+## 🏗️ Architecture & Tech Stack
+Built for high performance and zero dependencies using native web technologies:
+- **Frontend:** HTML5, CSS3, Vanilla JavaScript (ES6+)
+- **Styling:** Custom CSS variables with a built-in Dark/Light Theme Engine
+- **Localization:** Custom JavaScript dictionary approach for instant EN/MS translation
+- **Analytics:** Integrated with Vercel Speed Insights
 
----
-
-## 🖥️ Core Features & Capabilities
-1. **Dynamic Theme Manager:** Persistent Dark and Light modes utilizing `localStorage`.
-2. **Multi-Language System:** Seamless toggling between English and Bahasa Melayu without page reloads.
-3. **Interactive Portfolio:** Dedicated showcases for both Gaming (Unreal Engine, FiveM) and Web (React, Enterprise) projects.
-4. **Careers Portal:** Integrated hiring board targeting Lua Scripters, NUI Developers, and Server Techs.
-
----
+## 🖥️ Core Features
+- **Dynamic Theme Manager:** Persistent Dark and Light modes utilizing `localStorage`.
+- **Multi-Language System:** Seamless toggling between English and Bahasa Melayu without page reloads.
+- **Interactive Portfolio:** Dedicated showcases for both Gaming (Unreal Engine, FiveM) and Web (React, Enterprise) projects.
+- **Careers Portal:** Integrated hiring board targeting Lua Scripters, NUI Developers, and Server Techs.
 
 ## 📂 Repository Structure
 ```text
@@ -54,14 +48,3 @@ zenqor-tech/
 └── SECURITY.md             # Vulnerability reporting policy
 ```
 
-> **Technical Note:** This is the official frontend repository for Zenqor Technologies. All digital assets, branding, and text are copyright protected. Unauthorized reproduction is strictly prohibited.
-
----
-
-<p align="center">
-  <sub>
-    Managed by <strong>Zenqor Technologies</strong><br>
-    SSM: 202603157897 (JM1045730-D)<br>
-    Built with innovation in Malaysia · <a href="https://zenqor-tech.kauaku.store">zenqor-tech.kauaku.store</a><br>
-  </sub>
-</p>
