@@ -1,7 +1,7 @@
 <h1 align="center">Zenqor Technologies</h1>
 
 <p align="center">
-  <strong>Official Corporate Portal & Digital Solutions Hub</strong><br>
+  <strong>Official Corporate Website • FiveM Development • Digital Solutions</strong><br>
   <em>Primary Digital Storefront by Zenqor Technologies</em>
 </p>
 
@@ -20,8 +20,6 @@
 ---
 
 ![Overview & Architecture](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=58A6FF&vCenter=true&width=600&repeat=false&lines=Overview+%26+Architecture)
-
-This repository contains the source code for the official corporate website of **Zenqor Technologies** (SSM: 202603157897 / JM1045730-D)[cite: 1]. It serves as the primary digital storefront showcasing our expertise in premium FiveM development, custom Lua scripting, standalone server resources, and enterprise web solutions[cite: 1].
 
 <p align="left">
   <img src="https://skillicons.dev/icons?i=html,css,js,github" alt="Tech Stack" />
