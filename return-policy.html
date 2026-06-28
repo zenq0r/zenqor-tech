@@ -58,25 +58,31 @@
     </section>
 
     <footer>
-        <div class="container footer-content" style="margin-bottom: 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-            <div class="footer-brand">
-                <a href="index.html" class="logo-footer logo-text">
+        <div class="container footer-content" style="margin-bottom: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+            
+            <!-- 1. Logo & Maklumat Syarikat (Tengah) -->
+            <div class="footer-brand" style="display: flex; flex-direction: column; align-items: center;">
+                <a href="index.html" class="logo-footer logo-text" style="justify-content: center; margin-bottom: 15px;">
                     <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img">
                     <span class="text-primary">Zenqor</span> Technologies
                 </a>
-                <div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary);">
-                    <p style="margin-bottom: 4px;"><strong>Zenqor Technologies</strong></p>
-                    <p>No. Pendaftaran: 202603157897 (JM1045730-D)</p>
+                <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                    <p style="margin-bottom: 4px;">No. Pendaftaran: 202603157897 | (JM1045730-D)</p>
+                    <p>Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
                 </div>
             </div>
-            
-            <div class="footer-links" style="display: flex; gap: 20px; font-size: 0.9rem;">
+
+            <!-- 2. Pautan Polisi (Dipindahkan ke bawah maklumat, sebelum Hak Cipta) -->
+            <div class="footer-links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
                 <a href="return-policy.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary-blue)'" onmouseout="this.style.color='var(--text-secondary)'">Return Policy</a>
                 <a href="legal.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary-blue)'" onmouseout="this.style.color='var(--text-secondary)'">Legal</a>
                 <a href="data-policy.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary-blue)'" onmouseout="this.style.color='var(--text-secondary)'">Data Policy</a>
             </div>
+            
         </div>
-        <div class="footer-bottom" style="padding-top: 20px; margin-top: 20px; border-top: 1px solid var(--border-color);">
+        
+        <!-- 3. Hak Cipta -->
+        <div class="footer-bottom" style="padding-top: 20px; margin-top: 25px; border-top: 1px solid var(--border-color); text-align: center;">
             <p data-i18n="footer_copy"></p>
         </div>
     </footer>
