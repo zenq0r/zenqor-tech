@@ -37,7 +37,19 @@
    2. RESET & TYPOGRAPHY
    ========================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: var(--bg-color); 
+    background-image: url('zenqorr.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    color: var(--text-primary); 
+    line-height: 1.6; 
+    overflow-x: hidden; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
 h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .section-padding { padding: 60px 0; } /* Dikurangkan dari 100px kepada 60px */
@@ -179,4 +191,21 @@ footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; backgr
     .hero h1, .hero-inner h1 { font-size: 2.2rem; }
     .stats-grid { grid-template-columns: 1fr; gap: 16px; padding: 20px;}
     .portfolio-grid, .tech-stack-container { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   9. LOGO & BACKGROUND ADDITIONS
+   ========================================= */
+.nav-logo-img {
+    height: 35px;
+    width: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.footer-logo-img {
+    height: 30px;
+    width: auto;
+    margin-right: 10px;
+    vertical-align: middle;
 }
