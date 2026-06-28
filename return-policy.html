@@ -8,6 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .policy-content h2, .policy-content h3 { color: var(--text-primary); margin-top: 30px; margin-bottom: 15px; }
+        .policy-content p, .policy-content li { color: var(--text-secondary); margin-bottom: 15px; }
+        .policy-content ul { margin-left: 20px; margin-bottom: 20px; }
+    </style>
 </head>
 <body>
     <header class="navbar">
@@ -48,16 +53,13 @@
 
     <section class="hero-inner reveal">
         <div class="container hero-content reveal">
-            <h1 data-i18n="nav_return"></h1>
+            <h1 data-i18n="nav_return">Return Policy</h1>
         </div>
     </section>
 
     <section class="section-padding bg-alt">
         <div class="container">
-            <div class="card-style reveal" style="padding: 40px;">
-                <h3 data-i18n="rp_title" style="margin-bottom: 20px;"></h3>
-                <p data-i18n="rp_desc1" style="margin-bottom: 15px;"></p>
-                <p data-i18n="rp_desc2"></p>
+            <div class="card-style reveal policy-content" style="padding: 40px; text-align: left;" data-i18n="rp_content">
             </div>
         </div>
     </section>
@@ -75,9 +77,9 @@
                 </div>
             </div>
             <div class="footer-links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
-                <a href="return-policy.html">Return Policy</a>
-                <a href="legal.html">Legal</a>
-                <a href="data-policy.html">Data Policy</a>
+                <a href="return-policy.html" data-i18n="nav_return">Return Policy</a>
+                <a href="legal.html" data-i18n="nav_legal">Legal Notices</a>
+                <a href="data-policy.html" data-i18n="nav_data">Data Policy</a>
             </div>
         </div>
         <div class="footer-bottom" style="padding-top: 20px; margin-top: 25px; border-top: 1px solid var(--border-color); text-align: center;">
@@ -86,17 +88,5 @@
     </footer>
 
     <script src="script.js"></script>
-    
-    <!-- Vercel Speed Insights -->
-    <script type="module">
-        import { injectSpeedInsights } from 'https://cdn.jsdelivr.net/npm/@vercel/speed-insights@2.0.0/dist/index.mjs';
-        injectSpeedInsights();
-    </script>
-    
-    <!-- Vercel Web Analytics -->
-    <script type="module">
-        import { inject } from 'https://cdn.jsdelivr.net/npm/@vercel/analytics@1.3.1/dist/index.mjs';
-        inject();
-    </script>
 </body>
 </html>

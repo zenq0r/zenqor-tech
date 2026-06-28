@@ -69,7 +69,8 @@ const translations = {
         faq_1_q: "How do I purchase a FiveM Script?", faq_1_a: "You can visit our official Tebex store by clicking the 'Store' button on our navigation menu. We support multiple secure payment gateways.",
         faq_2_q: "Do you offer custom server development?", faq_2_a: "Yes, we specialize in complete server setups and tailor-made framework development (QBCore & ESX). Please reach out via the Contact page.",
         faq_3_q: "Is technical support included?", faq_3_a: "Absolutely. All our premium resources come with priority technical support through our official Discord server.",
-                tos_content: `
+        
+        tos_content: `
             <h3 style="color: var(--text-primary); margin-bottom: 20px; font-size: 1.5rem;">Terms of Service & Copyright</h3>
             <p style="margin-bottom: 15px;">Welcome to Zenqor Technologies. By accessing or using our digital solutions, official corporate website, and FiveM development services, you agree to comply with and be bound by the following terms.</p>
             <p style="margin-bottom: 25px;">Our Terms of Service were last updated on <strong>28 June 2026</strong>. Please read these terms carefully.</p>
@@ -97,13 +98,75 @@ const translations = {
             <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">Contact Us</h4>
             <ul style="padding-left: 20px; margin-bottom: 20px;">
                 <li>By visiting our contact page: <a href="contact.html" style="color: var(--primary-blue);">Contact Us</a></li>
-                <li>By email: <strong>support@zenqor.com</strong></li>
+                <li>By email: <strong>info@zenqor.com</strong></li>
+            </ul>
+        `,
+
+        rp_content: `
+            <p><strong>Updated at:</strong> 29 June 2026</p>
+
+            <h3>Definitions and key terms</h3>
+            <p>To help explain things as clearly as possible in this Return & Refund Policy, every time any of these terms are referenced, are strictly defined as:</p>
+            <ul>
+                <li><strong>Company:</strong> when this policy mentions "Company," "we," "us," or "our," it refers to Zenqor Technologies, Bandar Mahkota Cheras, 43200 Selangor, Malaysia that is responsible for your information under this Return & Refund Policy.</li>
+                <li><strong>Customer:</strong> refers to the company, organization or person that signs up to use the Zenqor Technologies Service to manage the relationships with your consumers or service users.</li>
+                <li><strong>Device:</strong> any internet connected device such as a phone, tablet, computer or any other device that can be used to visit Zenqor Technologies and use the services.</li>
+                <li><strong>Service:</strong> refers to the digital and physical services provided by Zenqor Technologies as described in the relative terms (if available) and on this platform.</li>
+                <li><strong>Website:</strong> Zenqor Technologies's site, which can be accessed via this URL.</li>
+                <li><strong>You:</strong> a person or entity that is registered with Zenqor Technologies to use the Services.</li>
+            </ul>
+
+            <h3>Return & Refund Policy</h3>
+            <p>Thanks for shopping at Zenqor Technologies. We appreciate the fact that you like to buy the stuff we build. We also want to make sure you have a rewarding experience while you're exploring, evaluating, and purchasing our products.</p>
+            <p>As with any shopping experience, there are terms and conditions that apply to transactions at Zenqor Technologies. We'll be as brief as our attorneys will allow. The main thing to remember is that by placing an order or making a purchase at Zenqor Technologies, you agree to the terms set forth below along with Zenqor Technologies's Privacy Policy.</p>
+            <p>If there's something wrong with the item you bought, or if you are not happy with it, you will not be able to issue a refund for your item.</p>
+
+            <h3>Refunds</h3>
+            <p>We at Zenqor Technologies commit ourselves to serving our customers with the best products. Every single product that you choose is thoroughly inspected, checked for defects and packaged with utmost care. We do this to ensure that you fall in love with our products.</p>
+            <p>Sadly, there are times when we may not have the product(s) that you choose in stock, or may face some issues with our inventory and quality check. In such cases, we may have to cancel your order. You will be intimated about it in advance so that you don't have to worry unnecessarily about your order. If you have purchased via Online payment (not Cash on Delivery), then you will be refunded once our team confirms your request. Users will be notified by email once a refund is completed.</p>
+            <p>We carry out thorough quality check before processing the ordered item. We take utmost care while packing the product. At the same time we ensure that the packing is good such that the items won't get damaged during transit. Please note that Zenqor Technologies is not liable for damages that are caused to the items during transit or transportation.</p>
+            
+            <p>We follow certain policies to ensure transparency, efficiency and quality customer care:</p>
+            <ul>
+                <li>We DO NOT allow returns on sold products - online or in retail outlets.</li>
+                <li>We DO NOT accept returned goods, as we believe that customers should get the best quality products.</li>
+                <li>Refunds are NOT given for any purchases made - be they online or in retail store.</li>
+                <li>Products with discounts cannot be refunded.</li>
+                <li>We DO NOT encourage exchanges of our products.</li>
+                <li>We DO NOT engage in reselling used products and discourage the same, because we cannot ensure the best quality products for our customers.</li>
+            </ul>
+
+            <p><strong>Additional Return Conditions (if applicable by exceptions):</strong></p>
+            <ul>
+                <li>The customer has to pay for the shipping in return.</li>
+                <li>The product must have the receipt on the packaging. No refunds can be made without the receipt.</li>
+                <li>Every product must come back in its original packaging. Products in new packaging will not be refunded.</li>
+                <li>Damaged products cannot be refunded.</li>
+            </ul>
+
+            <p>For International Orders:</p>
+            <ul>
+                <li>We DO NOT support Exchanges or Returns.</li>
+                <li>If you cancel the order before we process it and dispatch for shipping, a refund can be processed. Orders generally take 1-2 days to process before dispatch.</li>
+                <li>Orders already in shipping cannot be returned, canceled or refunded.</li>
+                <li>If you face any issues, please contact our Support Team immediately.</li>
+            </ul>
+
+            <h3>Your Consent</h3>
+            <p>By using our website, registering an account, or making a purchase, you hereby consent to our Return & Refund Policy and agree to its terms.</p>
+
+            <h3>Changes To Our Return & Refund Policy</h3>
+            <p>Should we update, amend or make any changes to this document so that they accurately reflect our Service and policies. Unless otherwise required by law, those changes will be prominently posted here. Then, if you continue to use the Service, you will be bound by the updated Return & Refund Policy. If you do not want to agree to this or any updated Return & Refund Policy, you can delete your account.</p>
+
+            <h3>Contact Us</h3>
+            <p>If, for any reason, You are not completely satisfied with any good or service that we provide, don't hesitate to contact us and we will discuss any of the issues you are going through with our product.</p>
+            <ul>
+                <li>Via Email: info@zenqor.com</li>
+                <li>Via Phone Number: [Sila masukkan Nombor Telefon di sini]</li>
+                <li>Via this Link: <a href="contact.html">Contact Page</a></li>
+                <li>Via this Address: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</li>
             </ul>
         `
-    
-    
-    
-    
     },
     ms: {
         nav_return: "Dasar Pemulangan",
@@ -174,6 +237,7 @@ const translations = {
         faq_1_q: "Bagaimana cara untuk saya membeli Skrip FiveM?", faq_1_a: "Anda boleh melawat kedai rasmi Tebex kami dengan mengklik butang 'Kedai' pada menu navigasi. Kami menyokong pelbagai gerbang pembayaran yang selamat.",
         faq_2_q: "Adakah anda menyediakan perkhidmatan pembangunan pelayan (server) tersuai?", faq_2_a: "Ya, kami pakar dalam persediaan pelayan lengkap dan pembangunan framework tersuai (QBCore & ESX). Sila hubungi kami melalui halaman Hubungi.",
         faq_3_q: "Adakah bantuan teknikal disediakan?", faq_3_a: "Sudah tentu. Semua sumber premium kami didatangkan dengan bantuan teknikal keutamaan melalui pelayan Discord rasmi kami.",
+        
         tos_content: `
             <h3 style="color: var(--text-primary); margin-bottom: 20px; font-size: 1.5rem;">Terma Perkhidmatan & Hak Cipta</h3>
             <p style="margin-bottom: 15px;">Selamat datang ke Zenqor Technologies. Dengan mengakses atau menggunakan penyelesaian digital, laman web korporat rasmi, dan perkhidmatan pembangunan FiveM kami, anda bersetuju untuk mematuhi dan terikat dengan terma berikut.</p>
@@ -202,7 +266,73 @@ const translations = {
             <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">Hubungi Kami</h4>
             <ul style="padding-left: 20px; margin-bottom: 20px;">
                 <li>Melalui halaman hubungan kami: <a href="contact.html" style="color: var(--primary-blue);">Hubungi Kami</a></li>
-                <li>Melalui e-mel: <strong>support@zenqor.com</strong></li>
+                <li>Melalui e-mel: <strong>info@zenqor.com</strong></li>
+            </ul>
+        `,
+
+        rp_content: `
+            <p><strong>Dikemas kini pada:</strong> 29 Jun 2026</p>
+
+            <h3>Definisi dan terma utama</h3>
+            <p>Untuk membantu menerangkan perkara sejelas mungkin dalam Polisi Pemulangan & Bayaran Balik ini, setiap kali mana-mana terma ini dirujuk, ia ditakrifkan dengan tegas sebagai:</p>
+            <ul>
+                <li><strong>Syarikat:</strong> apabila polisi ini menyebut "Syarikat," "kami," atau "kita," ia merujuk kepada Zenqor Technologies, Bandar Mahkota Cheras, 43200 Selangor, Malaysia yang bertanggungjawab ke atas maklumat anda di bawah Polisi Pemulangan & Bayaran Balik ini.</li>
+                <li><strong>Pelanggan:</strong> merujuk kepada syarikat, organisasi atau individu yang mendaftar untuk menggunakan Perkhidmatan Zenqor Technologies.</li>
+                <li><strong>Peranti:</strong> sebarang peranti yang bersambung ke internet seperti telefon, tablet, komputer atau peranti lain yang boleh digunakan untuk melawati Zenqor Technologies.</li>
+                <li><strong>Perkhidmatan:</strong> merujuk kepada perkhidmatan digital dan fizikal yang disediakan oleh Zenqor Technologies seperti yang diterangkan dalam terma berkaitan di platform ini.</li>
+                <li><strong>Laman Web:</strong> tapak Zenqor Technologies, yang boleh diakses melalui URL ini.</li>
+                <li><strong>Anda:</strong> individu atau entiti yang berdaftar dengan Zenqor Technologies.</li>
+            </ul>
+
+            <h3>Polisi Pemulangan & Bayaran Balik</h3>
+            <p>Terima kasih kerana membeli-belah di Zenqor Technologies. Kami menghargai hakikat bahawa anda gemar membeli apa yang kami bina. Kami juga ingin memastikan anda mempunyai pengalaman yang memuaskan semasa meneroka dan membeli produk kami.</p>
+            <p>Seperti mana-mana pengalaman membeli-belah, terdapat terma dan syarat yang terpakai untuk transaksi di Zenqor Technologies. Perkara utama yang perlu diingat ialah dengan membuat pesanan atau pembelian di Zenqor Technologies, anda bersetuju dengan terma yang dinyatakan di bawah berserta Dasar Privasi Zenqor Technologies.</p>
+            <p>Jika terdapat masalah dengan item yang anda beli, atau jika anda tidak berpuas hati dengannya, anda tidak akan dapat memohon bayaran balik untuk item tersebut.</p>
+
+            <h3>Bayaran Balik</h3>
+            <p>Kami di Zenqor Technologies komited untuk melayani pelanggan kami dengan produk terbaik. Setiap produk yang anda pilih diperiksa dengan teliti, disemak untuk sebarang kecacatan dan dibungkus dengan berhati-hati.</p>
+            <p>Malangnya, ada kalanya kami mungkin tidak mempunyai produk yang anda pilih dalam stok, atau mungkin menghadapi isu inventori. Dalam kes sedemikian, kami mungkin terpaksa membatalkan pesanan anda. Anda akan dimaklumkan lebih awal. Jika anda telah membuat pembelian melalui pembayaran Dalam Talian (bukan Tunai Semasa Penghantaran), anda akan dibayar balik setelah pasukan kami mengesahkan permintaan anda. Pengguna akan dimaklumkan melalui e-mel setelah pemulangan wang selesai.</p>
+            <p>Kami menjalankan pemeriksaan kualiti menyeluruh sebelum memproses item. Sila ambil perhatian bahawa Zenqor Technologies tidak bertanggungjawab untuk kerosakan yang disebabkan pada item semasa transit atau pengangkutan.</p>
+            
+            <p>Kami mematuhi dasar tertentu untuk memastikan ketelusan, kecekapan dan penjagaan pelanggan yang berkualiti:</p>
+            <ul>
+                <li>Kami TIDAK membenarkan pemulangan pada produk yang telah dijual.</li>
+                <li>Kami TIDAK menerima barangan yang dipulangkan.</li>
+                <li>Bayaran balik TIDAK diberikan untuk sebarang pembelian yang dibuat.</li>
+                <li>Produk dengan diskaun tidak boleh dibayar balik.</li>
+                <li>Kami TIDAK menggalakkan pertukaran produk kami.</li>
+                <li>Kami TIDAK terlibat dalam menjual semula produk terpakai.</li>
+            </ul>
+
+            <p><strong>Syarat Pemulangan Tambahan (jika berkenaan melalui pengecualian):</strong></p>
+            <ul>
+                <li>Pelanggan perlu membayar kos penghantaran untuk pemulangan.</li>
+                <li>Produk mesti mempunyai resit pada pembungkusan. Tiada bayaran balik akan dibuat tanpa resit.</li>
+                <li>Setiap produk mesti dipulangkan dalam pembungkusan asalnya. Produk dalam pembungkusan baharu tidak akan dibayar balik.</li>
+                <li>Produk yang rosak tidak boleh dibayar balik.</li>
+            </ul>
+
+            <p>Untuk Pesanan Antarabangsa:</p>
+            <ul>
+                <li>Kami TIDAK menyokong Pertukaran atau Pemulangan.</li>
+                <li>Jika anda membatalkan pesanan sebelum kami memprosesnya untuk penghantaran, bayaran balik boleh diproses. Pesanan biasanya mengambil masa 1-2 hari untuk diproses.</li>
+                <li>Pesanan yang sudah dalam penghantaran tidak boleh dikembalikan, dibatalkan atau dibayar balik.</li>
+                <li>Jika anda menghadapi sebarang masalah, sila hubungi Pasukan Sokongan kami dengan segera.</li>
+            </ul>
+
+            <h3>Persetujuan Anda</h3>
+            <p>Dengan menggunakan laman web kami, mendaftar akaun, atau membuat pembelian, anda dengan ini bersetuju dengan Polisi Pemulangan & Bayaran Balik kami dan bersetuju dengan termanya.</p>
+
+            <h3>Perubahan Kepada Polisi Kami</h3>
+            <p>Jika kami mengemas kini atau membuat sebarang perubahan pada dokumen ini, perubahan tersebut akan disiarkan secara jelas di sini. Jika anda tidak mahu bersetuju dengan Polisi ini, anda boleh memadamkan akaun anda.</p>
+
+            <h3>Hubungi Kami</h3>
+            <p>Jika, atas sebarang sebab, anda tidak berpuas hati dengan mana-mana barangan atau perkhidmatan yang kami sediakan, jangan teragak-agak untuk menghubungi kami.</p>
+            <ul>
+                <li>Melalui E-mel: info@zenqor.com</li>
+                <li>Melalui Nombor Telefon: [Sila masukkan Nombor Telefon di sini]</li>
+                <li>Melalui Pautan ini: <a href="contact.html">Halaman Hubungan</a></li>
+                <li>Melalui Alamat ini: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</li>
             </ul>
         `
     }
