@@ -1,1 +1,115 @@
-<!DOCTYPE html><html><head><link rel="stylesheet" href="styles.css"></head><body><header class="navbar"><div class="nav-container"><nav class="nav-links"><a href="index.html" data-i18n="nav_home"></a><a href="services.html" data-i18n="nav_services"></a><div class="nav-item-dropdown"><a href="#" class="dropdown-toggle" data-target="port-menu" data-i18n="nav_portfolio"></a></div><div class="nav-item-dropdown"><a href="#" class="dropdown-toggle" data-target="car-menu" data-i18n="nav_careers"></a></div><a href="about.html" data-i18n="nav_about"></a><a href="faq.html" data-i18n="nav_faq"></a><a href="contact.html" data-i18n="nav_contact"></a><a href="https://zenqor-crm.kauaku.store" target="_blank" class="nav-login-btn" data-i18n="nav_login"></a><button id="lang-toggle" class="lang-btn">EN/MS</button></nav></div></header></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Portfolio | Zenqor Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-nav logo-text">
+                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img">
+                <span class="text-primary">Zenqor</span> Technologies
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" data-i18n="nav_home"></a>
+                <a href="services.html" data-i18n="nav_services"></a>
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu" style="color: var(--primary-blue);">
+                        <span data-i18n="nav_portfolio"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                    <div class="dropdown-menu" id="portfolio-menu">
+                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming"></a>
+                        <a href="portfolio-web.html" style="color: var(--primary-blue);" data-i18n="nav_port_web"></a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu">
+                        <span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                    <div class="dropdown-menu" id="careers-menu">
+                        <a href="careers.html" data-i18n="nav_careers_join"></a>
+                    </div>
+                </div>
+                <a href="about.html" data-i18n="nav_about"></a>
+                <a href="faq.html" data-i18n="nav_faq"></a>
+                <a href="contact.html" data-i18n="nav_contact"></a>
+                <a href="#" target="_blank" class="nav-store-btn" data-i18n="nav_store"></a>
+                <button id="lang-toggle" class="lang-btn"></button>
+            </nav>
+            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="hero-inner reveal">
+        <div class="container hero-content reveal">
+            <div class="badge" data-i18n="nav_port_web"></div>
+            <h1 data-i18n="pw_hero_title"></h1>
+            <p class="hero-sub" data-i18n="pw_hero_sub"></p>
+        </div>
+    </section>
+
+    <section class="portfolio section-padding">
+        <div class="container">
+            <div class="portfolio-grid">
+                <div class="portfolio-item card-style reveal hover-up">
+                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="port-content">
+                        <span class="tag">React & Node.js</span>
+                        <h3 data-i18n="pw_1_t"></h3>
+                        <p data-i18n="pw_1_d"></p>
+                    </div>
+                </div>
+                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.1s;">
+                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="port-content">
+                        <span class="tag">Enterprise System</span>
+                        <h3 data-i18n="pw_2_t"></h3>
+                        <p data-i18n="pw_2_d"></p>
+                    </div>
+                </div>
+                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.2s;">
+                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="port-content">
+                        <span class="tag">AI Integration</span>
+                        <h3 data-i18n="pw_3_t"></h3>
+                        <p data-i18n="pw_3_d"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content" style="margin-bottom: 0;">
+            <div class="footer-brand" style="margin-bottom: 25px;">
+                <a href="index.html" class="logo-footer logo-text">
+                    <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img">
+                    <span class="text-primary">Zenqor</span> Technologies
+                </a>
+                <div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary);">
+                    <p style="margin-bottom: 4px;"><strong>Zenqor Technologies</strong></p>
+                    <p>No. Pendaftaran: 202603157897 (JM1045730-D)</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="padding-top: 20px;">
+            <div style="margin-bottom: 10px;">
+                <a href="return-policy.html" data-i18n="nav_return" class="footer-link"></a>
+            </div>
+            <p data-i18n="footer_copy"></p>
+        </div>
+    </footer>
+
+    <div class="floating-widgets">
+        <a href="https://wa.me/601165012569" target="_blank" class="widget-wa"><i class="fab fa-whatsapp"></i></a>
+        <button id="scrollToTop" class="widget-top"><i class="fas fa-arrow-up"></i></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
