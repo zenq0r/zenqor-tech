@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal | Zenqor Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-nav logo-text">
+                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img">
+                <span class="text-primary">Zenqor</span> Technologies
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" data-i18n="nav_home"></a>
+                <a href="about.html" data-i18n="nav_about"></a>
+                <a href="services.html" data-i18n="nav_services"></a>
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu"><span data-i18n="nav_portfolio"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu" id="portfolio-menu">
+                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming"></a>
+                        <a href="portfolio-web.html" data-i18n="nav_port_web"></a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu"><span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu" id="careers-menu">
+                        <a href="careers.html" data-i18n="nav_careers_join"></a>
+                    </div>
+                </div>
+                <a href="contact.html" data-i18n="nav_contact"></a>
+                <button id="lang-toggle" class="lang-btn"></button>
+                <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+            </nav>
+            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="hero-inner reveal">
+        <div class="container hero-content reveal">
+            <h1>Legal Notices</h1>
+        </div>
+    </section>
+
+    <section class="section-padding bg-alt">
+        <div class="container">
+            <div class="card-style reveal" style="padding: 40px;">
+                <h3 style="margin-bottom: 20px;">Terms of Service & Copyright</h3>
+                <p style="margin-bottom: 15px; color: var(--text-secondary); line-height: 1.6;">
+                    Welcome to Zenqor Technologies. By accessing or using our digital solutions, official corporate website, and FiveM development services, you agree to comply with and be bound by the following terms and conditions of use.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.6;">
+                    All content included on this site, such as text, graphics, logos, images, and software, is the property of Zenqor Technologies (SSM: 202603157897 / JM1045730-D) and protected by international copyright laws. Unauthorized reproduction or distribution is strictly prohibited.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content" style="margin-bottom: 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div class="footer-brand">
+                <a href="index.html" class="logo-footer logo-text">
+                    <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img">
+                    <span class="text-primary">Zenqor</span> Technologies
+                </a>
+                <div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary);">
+                    <p style="margin-bottom: 4px;"><strong>Zenqor Technologies</strong></p>
+                    <p>No. Pendaftaran: 202603157897 (JM1045730-D)</p>
+                </div>
+            </div>
+            <div class="footer-links" style="display: flex; gap: 20px; font-size: 0.9rem;">
+                <a href="return-policy.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary-blue)'" onmouseout="this.style.color='var(--text-secondary)'">Return Policy</a>
+                <a href="legal.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary-blue)'" onmouseout="this.style.color='var(--text-secondary)'">Legal</a>
+                <a href="data-policy.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary-blue)'" onmouseout="this.style.color='var(--text-secondary)'">Data Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom" style="padding-top: 20px; margin-top: 20px; border-top: 1px solid var(--border-color);">
+            <p data-i18n="footer_copy"></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
