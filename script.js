@@ -6,7 +6,7 @@ const translations = {
         rp_desc1: "At Zenqor Technologies, all digital product sales (scripts, server setups) are final. Refunds are only issued if the product is proven to be fundamentally broken and our support team cannot resolve the issue within 14 days.",
         rp_desc2: "Please open a ticket in our Discord or email us at info@zenqor.com.my for any inquiries regarding your purchase.",
         nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_contact: "Contact",
-        nav_faq: "FAQ", nav_login: "ZT. Login", nav_store: "Store", 
+        nav_faq: "FAQ", nav_login: "ZT. Login",
         nav_careers_join: "Join the Zenqor Vanguard",
         nav_port_gaming: "Scripting Projects", nav_port_web: "Server Development",
         hero_badge: "Premium FiveM Development",
@@ -57,7 +57,7 @@ const translations = {
         opt_def: "Select Request Type", opt_1: "Custom Lua Script", opt_2: "Standalone Resource", opt_3: "NUI / UI Interface", opt_4: "Server Optimization / Bug Fix",
         ph_msg: "Script Specifications / Details", btn_submit: "Send Request",
         footer_sub: "Building Premium Scripts & Server Solutions for FiveM.",
-        footer_copy: "Â© 2026 Zenqor Technologies (Malaysia). All rights reserved.",
+        footer_copy: "© 2026 Zenqor Technologies (Malaysia). All rights reserved.",
         msg_sending: "Sending...", msg_success: "Request Delivered",
         
         faq_sub: "Find answers to common questions about our products and services.",
@@ -71,7 +71,7 @@ const translations = {
         rp_desc1: "Di Zenqor Technologies, semua jualan produk digital (skrip, tetapan pelayan) adalah muktamad. Bayaran balik hanya dikeluarkan jika produk dibuktikan rosak sepenuhnya dan pasukan sokongan kami tidak dapat menyelesaikan isu tersebut dalam masa 14 hari.",
         rp_desc2: "Sila buka tiket di Discord kami atau e-mel kepada info@zenqor.com.my untuk sebarang pertanyaan mengenai pembelian anda.",
         nav_home: "Utama", nav_about: "Tentang Kami", nav_services: "Servis", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_contact: "Hubungi",
-        nav_faq: "FAQ", nav_login: "ZT. Login", nav_store: "Kedai", 
+        nav_faq: "FAQ", nav_login: "ZT. Login",
         nav_careers_join: "Sertai Zenqor Vanguard",
         nav_port_gaming: "Projek Skrip", nav_port_web: "Pembangunan Pelayan",
         hero_badge: "Pembangunan FiveM Premium",
@@ -122,7 +122,7 @@ const translations = {
         opt_def: "Pilih Jenis Permintaan", opt_1: "Skrip Lua Tersuai", opt_2: "Sumber Standalone", opt_3: "Antara Muka NUI / UI", opt_4: "Pengoptimuman Pelayan / Pembaikan Ralat",
         ph_msg: "Spesifikasi / Butiran Skrip", btn_submit: "Hantar Permintaan",
         footer_sub: "Membina Skrip Premium & Penyelesaian Pelayan untuk FiveM.",
-        footer_copy: "Â© 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara.",
+        footer_copy: "© 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara.",
         msg_sending: "Menghantar...", msg_success: "Permintaan Berjaya Dihantar",
         
         faq_sub: "Cari jawapan bagi persoalan lazim mengenai produk dan perkhidmatan kami.",
@@ -132,7 +132,8 @@ const translations = {
     }
 };
 
-// --- 2. MULTI-LANGUAGE SYSTEM (Dipisahkan untuk kelajuan pemaparan awal) ---
+// --- 2. MULTI-LANGUAGE SYSTEM ---
+const langToggle = document.getElementById('lang-toggle');
 let currentLang = localStorage.getItem('zenqor-lang') || 'en';
 
 function setLanguage(lang) {
@@ -140,154 +141,145 @@ function setLanguage(lang) {
     localStorage.setItem('zenqor-lang', lang);
     document.documentElement.lang = lang;
     
-    const langToggle = document.getElementById('lang-toggle');
     if(langToggle) {
         langToggle.textContent = lang === 'en' ? 'MS' : 'EN';
     }
     
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if(translations[lang] && translations[lang][key]) {
+        if(translations[lang][key]) {
             el.innerHTML = translations[lang][key];
         }
     });
 
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
-        if(translations[lang] && translations[lang][key]) {
+        if(translations[lang][key]) {
             el.placeholder = translations[lang][key];
         }
     });
 }
 
-// Balut logik DOM dalam acara DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // Tetapkan bahasa awal sebaik sahaja DOM sedia
-    setLanguage(currentLang);
-    
-    const langToggle = document.getElementById('lang-toggle');
-    if(langToggle) {
-        langToggle.addEventListener('click', () => {
-            setLanguage(currentLang === 'en' ? 'ms' : 'en');
-        });
-    }
-
-    // --- 3. MULTI-DROPDOWN POP-UP LOGIC ---
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = toggle.getAttribute('data-target');
-            const menu = document.getElementById(targetId);
-            
-            document.querySelectorAll('.dropdown-menu').forEach(m => {
-                if (m !== menu) m.classList.remove('show');
-            });
-            
-            if(menu) menu.classList.toggle('show');
-        });
+if(langToggle) {
+    langToggle.addEventListener('click', () => {
+        setLanguage(currentLang === 'en' ? 'ms' : 'en');
     });
+}
+setLanguage(currentLang);
 
-    window.addEventListener('click', function(e) {
-        if (!e.target.closest('.nav-item-dropdown')) {
-            document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                menu.classList.remove('show');
-            });
-        }
-    });
+// --- 3. MULTI-DROPDOWN POP-UP LOGIC ---
+const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-    // --- 4. MOBILE MENU ---
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-
-    if(mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = toggle.getAttribute('data-target');
+        const menu = document.getElementById(targetId);
+        
+        document.querySelectorAll('.dropdown-menu').forEach(m => {
+            if (m !== menu) m.classList.remove('show');
         });
         
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                if(e.target.closest('.dropdown-toggle')) return;
-                navLinks.classList.remove('active');
-            });
+        menu.classList.toggle('show');
+    });
+});
+
+window.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item-dropdown')) {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            menu.classList.remove('show');
         });
     }
+});
 
-    // --- 5. SCROLL ANIMATION (REVEAL) ---
-    const revealElements = document.querySelectorAll('.reveal');
-    if (revealElements.length > 0) {
-        const revealCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-        const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
-        revealElements.forEach(el => revealObserver.observe(el));
-    }
+// --- 4. MOBILE MENU ---
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
 
-    // --- 6. CONTACT FORM SIMULATION ---
-    const form = document.getElementById('mainContactForm');
-    if(form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button');
-            const originalText = translations[currentLang]['btn_submit'] || "Submit";
-            
-            btn.textContent = translations[currentLang]['msg_sending'] || "Sending...";
-            btn.disabled = true;
+if(mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}
+
+if(navLinks) {
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if(e.target.closest('.dropdown-toggle')) return;
+            navLinks.classList.remove('active');
+        });
+    });
+}
+
+// --- 5. SCROLL ANIMATION (REVEAL) ---
+const revealElements = document.querySelectorAll('.reveal');
+const revealCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+        }
+    });
+};
+const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+revealElements.forEach(el => revealObserver.observe(el));
+
+// --- 6. CONTACT FORM SIMULATION ---
+const form = document.getElementById('mainContactForm');
+if(form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button');
+        const originalText = translations[currentLang]['btn_submit'];
+        
+        btn.textContent = translations[currentLang]['msg_sending'];
+        btn.disabled = true;
+        
+        setTimeout(() => {
+            btn.textContent = translations[currentLang]['msg_success'];
+            btn.style.background = '#059669'; 
+            form.reset();
             
             setTimeout(() => {
-                btn.textContent = translations[currentLang]['msg_success'] || "Success";
-                btn.style.background = '#059669'; 
-                form.reset();
-                
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.style.background = '';
-                    btn.disabled = false;
-                }, 3000);
-            }, 1200);
-        });
-    }
+                btn.textContent = originalText;
+                btn.style.background = '';
+                btn.disabled = false;
+            }, 3000);
+        }, 1200);
+    });
+}
 
-    // --- 7. SCROLL TO TOP & WIDGETS ---
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    if(scrollToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if(window.scrollY > 300) scrollToTopBtn.classList.add('show');
-            else scrollToTopBtn.classList.remove('show');
-        });
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        });
-    }
+// --- 7. SCROLL TO TOP & WIDGETS ---
+const scrollToTopBtn = document.getElementById('scrollToTop');
+if(scrollToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 300) scrollToTopBtn.classList.add('show');
+        else scrollToTopBtn.classList.remove('show');
+    });
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+}
 
-    // --- 8. FAQ ACCORDION ---
-    const faqBtns = document.querySelectorAll('.faq-btn');
-    faqBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const parent = btn.parentElement;
-            const content = btn.nextElementSibling;
-            const isActive = parent.classList.contains('active');
-            
-            // Tutup semua tab lain
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-                if(item.querySelector('.faq-content')) {
-                    item.querySelector('.faq-content').style.maxHeight = null;
-                }
-            });
-            
-            // Buka tab yang diklik jika belum dibuka
-            if(!isActive && content) {
-                parent.classList.add('active');
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
+// --- 8. FAQ ACCORDION ---
+const faqBtns = document.querySelectorAll('.faq-btn');
+faqBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const parent = btn.parentElement;
+        const content = btn.nextElementSibling;
+        const isActive = parent.classList.contains('active');
+        
+        // Close all others
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+            item.querySelector('.faq-content').style.maxHeight = null;
         });
+        
+        // Open if it wasn't active
+        if(!isActive) {
+            parent.classList.add('active');
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
     });
 });
