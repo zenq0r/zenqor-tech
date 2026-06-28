@@ -155,34 +155,7 @@ if(langToggle) {
 }
 setLanguage(currentLang);
 
-// --- 3. THEME MANAGER ---
-const themeToggleBtn = document.getElementById('theme-toggle');
-const rootElement = document.documentElement;
-const themeIcon = themeToggleBtn.querySelector('i');
-
-const savedTheme = localStorage.getItem('zenqor-engine-theme') || 'light';
-rootElement.setAttribute('data-theme', savedTheme);
-updateIcon(savedTheme);
-
-themeToggleBtn.addEventListener('click', () => {
-    const currentTheme = rootElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    rootElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('zenqor-engine-theme', newTheme);
-    updateIcon(newTheme);
-});
-
-function updateIcon(theme) {
-    if(theme === 'light') {
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-    } else {
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-    }
-}
-
-// --- 4. MULTI-DROPDOWN POP-UP LOGIC ---
+// --- 3. MULTI-DROPDOWN POP-UP LOGIC ---
 const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
 dropdownToggles.forEach(toggle => {
@@ -207,7 +180,7 @@ window.addEventListener('click', function(e) {
     }
 });
 
-// --- 5. MOBILE MENU ---
+// --- 4. MOBILE MENU ---
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
@@ -222,7 +195,7 @@ navLinks.querySelectorAll('a').forEach(link => {
     });
 });
 
-// --- 6. SCROLL ANIMATION (REVEAL) ---
+// --- 5. SCROLL ANIMATION (REVEAL) ---
 const revealElements = document.querySelectorAll('.reveal');
 const revealCallback = (entries, observer) => {
     entries.forEach(entry => {
@@ -236,7 +209,7 @@ const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
 revealElements.forEach(el => revealObserver.observe(el));
 
-// --- 7. CONTACT FORM SIMULATION ---
+// --- 6. CONTACT FORM SIMULATION ---
 const form = document.getElementById('mainContactForm');
 if(form) {
     form.addEventListener('submit', (e) => {

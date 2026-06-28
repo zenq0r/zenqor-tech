@@ -1,36 +1,20 @@
 /* =========================================
-   1. VARIABLES & KORPORAT THEME
+   1. VARIABLES & KORPORAT THEME (MATURE GLASSMORPHISM)
    ========================================= */
 :root {
-    --bg-color: #F8FAFC;
-    --bg-alt: #F1F5F9;
-    --surface-color: #FFFFFF;
-    --text-primary: #0F172A;
-    --text-secondary: #475569;
-    --primary-blue: #1D4ED8; 
-    --primary-hover: #1E40AF;
-    --accent-cyan: #0284C7;
-    --highlight-amber: #D97706;
-    
-    --border-color: #E2E8F0;
-    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="dark"] {
-    --bg-color: #0B1120;
-    --bg-alt: #0F172A;
-    --surface-color: #1E293B;
+    --bg-color: #050505;
+    --bg-alt: rgba(15, 23, 42, 0.3);
+    --surface-color: rgba(15, 23, 42, 0.65);
     --text-primary: #F8FAFC;
-    --text-secondary: #94A3B8;
-    --primary-blue: #3B82F6;
-    --primary-hover: #2563EB;
+    --text-secondary: #CBD5E1;
+    --primary-blue: #3B82F6; 
+    --primary-hover: #60A5FA;
     --accent-cyan: #38BDF8;
     --highlight-amber: #F59E0B;
     
-    --border-color: #334155;
-    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --hover-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* =========================================
@@ -40,33 +24,48 @@
 body { 
     font-family: 'Inter', sans-serif; 
     background-color: var(--bg-color); 
-    background-image: url('zenqorr.png');
+    background-image: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)), url('zenqorr.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-blend-mode: overlay;
     color: var(--text-primary); 
     line-height: 1.6; 
     overflow-x: hidden; 
-    transition: background-color 0.3s ease, color 0.3s ease; 
 }
 h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.section-padding { padding: 60px 0; } /* Dikurangkan dari 100px kepada 60px */
+.section-padding { padding: 60px 0; }
 .bg-alt { background-color: var(--bg-alt); }
 .text-primary { color: var(--primary-blue); }
 .text-accent { color: var(--accent-cyan); }
 .text-highlight { color: var(--highlight-amber); }
 
 /* =========================================
-   3. KAD KORPORAT
+   3. KAD KORPORAT (GLASS EFFECT)
    ========================================= */
-.card-style { background: var(--surface-color); border: 1px solid var(--border-color); box-shadow: var(--card-shadow); border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card-style { 
+    background: var(--surface-color); 
+    border: 1px solid var(--border-color); 
+    box-shadow: var(--card-shadow); 
+    border-radius: 8px; 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
+}
+.card-style:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
 
 /* =========================================
    4. NAVIGATION BAR, LOGO & DROPDOWN POP-UP
    ========================================= */
-.navbar { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--surface-color); border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease; }
+.navbar { 
+    position: fixed; top: 0; width: 100%; z-index: 1000; 
+    background: rgba(15, 23, 42, 0.85); 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color); 
+}
 .nav-container { display: flex; justify-content: space-between; align-items: center; min-height: 85px; padding: 10px 0; }
 
 .logo-nav { display: flex; align-items: center; position: relative; z-index: 1; }
@@ -81,41 +80,61 @@ h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-pr
 .dropdown-toggle { outline: none; display: flex; align-items: center; gap: 5px; color: var(--text-secondary); font-weight: 600; cursor: pointer;}
 .dropdown-toggle:hover { color: var(--primary-blue); }
 
-.dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background-color: var(--surface-color); min-width: 250px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1); border: 1px solid var(--border-color); border-radius: 10px; z-index: 1001; text-align: left; padding: 8px 0; margin-top: 25px; }
-.dropdown-menu::before { content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 12px; height: 12px; background-color: var(--surface-color); border-left: 1px solid var(--border-color); border-top: 1px solid var(--border-color); z-index: 1; }
+.dropdown-menu { 
+    display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); 
+    background-color: var(--surface-color); 
+    backdrop-filter: blur(16px);
+    min-width: 250px; 
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); 
+    border: 1px solid var(--border-color); 
+    border-radius: 8px; z-index: 1001; text-align: left; padding: 8px 0; margin-top: 25px; 
+}
+.dropdown-menu::before { 
+    content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%) rotate(45deg); 
+    width: 12px; height: 12px; 
+    background-color: rgba(15, 23, 42, 0.9); 
+    border-left: 1px solid var(--border-color); border-top: 1px solid var(--border-color); z-index: 1; 
+}
 .dropdown-menu a { display: block; padding: 12px 24px; color: var(--text-primary); font-weight: 500; font-size: 0.95rem; line-height: 1.5; position: relative; z-index: 2; transition: background-color 0.2s, padding-left 0.2s, color 0.2s; }
-.dropdown-menu a:hover { background-color: var(--bg-alt); color: var(--primary-blue); padding-left: 28px; }
+.dropdown-menu a:hover { background-color: rgba(255, 255, 255, 0.05); color: var(--primary-blue); padding-left: 28px; }
 .dropdown-menu.show { display: block; animation: fadeInDown 0.2s ease forwards; }
 
 @keyframes fadeInDown { from { opacity: 0; transform: translate(-50%, -10px); } to { opacity: 1; transform: translate(-50%, 0); } }
 
-.lang-btn { background: transparent; border: 2px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 12px; transition: all 0.2s ease; }
-.lang-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
-.theme-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 1.2rem; transition: color 0.2s; }
-.theme-btn:hover { color: var(--primary-blue); }
+.lang-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 12px; transition: all 0.2s ease; }
+.lang-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); background: rgba(59, 130, 246, 0.1); }
 .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); }
 
 /* =========================================
    5. BUTTONS & FORMS
    ========================================= */
-.btn { display: inline-flex; justify-content: center; align-items: center; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer; transition: all 0.2s ease; border: 2px solid transparent; }
+.btn { display: inline-flex; justify-content: center; align-items: center; padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer; transition: all 0.2s ease; border: 1px solid transparent; }
 .btn-primary { background-color: var(--primary-blue); color: #ffffff; }
 .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: var(--hover-shadow); }
-.btn-outline { background-color: transparent; border-color: var(--border-color); color: var(--text-primary); }
-.btn-outline:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+.btn-outline { background-color: rgba(255,255,255,0.05); border-color: var(--border-color); color: var(--text-primary); }
+.btn-outline:hover { border-color: var(--primary-blue); color: var(--primary-blue); background: rgba(59, 130, 246, 0.05); }
 .mt-3 { margin-top: 1.5rem; } .mt-5 { margin-top: 3rem; } .w-100 { width: 100%; }
 
 .input-group { margin-bottom: 20px; }
-.input-group input, .input-group select, .input-group textarea { width: 100%; padding: 14px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary); font-family: inherit; font-size: 0.95rem; transition: border-color 0.2s; }
-.input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--primary-blue); }
+.input-group input, .input-group select, .input-group textarea { 
+    width: 100%; padding: 14px; 
+    background: rgba(0, 0, 0, 0.2); 
+    border: 1px solid var(--border-color); 
+    border-radius: 6px; color: var(--text-primary); 
+    font-family: inherit; font-size: 0.95rem; transition: border-color 0.2s, background 0.2s; 
+}
+.input-group input:focus, .input-group select:focus, .input-group textarea:focus { 
+    outline: none; border-color: var(--primary-blue); background: rgba(0, 0, 0, 0.4); 
+}
+.input-group select option { background: #0F172A; color: #fff; }
 
 /* =========================================
-   6. SECTIONS & LAYOUT (KEMAS KINI RUANG KOSONG)
+   6. SECTIONS & LAYOUT 
    ========================================= */
-.hero { min-height: 65vh; display: flex; align-items: center; padding-top: 120px; padding-bottom: 60px; text-align: center; } /* Ketinggian dikurangkan */
-.hero-inner { min-height: 30vh; display: flex; align-items: center; padding-top: 140px; padding-bottom: 20px; text-align: center; } /* Khas untuk tajuk page dalam */
+.hero { min-height: 65vh; display: flex; align-items: center; padding-top: 120px; padding-bottom: 60px; text-align: center; } 
+.hero-inner { min-height: 30vh; display: flex; align-items: center; padding-top: 140px; padding-bottom: 20px; text-align: center; } 
 .hero-content { max-width: 850px; margin: 0 auto; }
-.badge { display: inline-block; padding: 6px 16px; border-radius: 20px; background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border-color); font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; letter-spacing: 0.5px; }
+.badge { display: inline-block; padding: 6px 16px; border-radius: 20px; background: rgba(255,255,255,0.05); color: var(--text-secondary); border: 1px solid var(--border-color); font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; letter-spacing: 0.5px; }
 .hero h1, .hero-inner h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
 .hero-sub { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 40px; }
 .hero-actions { display: flex; gap: 16px; justify-content: center; }
@@ -142,7 +161,7 @@ h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-pr
 .portfolio-item { overflow: hidden; display: flex; flex-direction: column; }
 .port-img { height: 200px; background-size: cover; background-position: center; border-bottom: 1px solid var(--border-color); }
 .port-content { padding: 24px; }
-.tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; background: var(--bg-alt); color: var(--primary-blue); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 12px; }
+.tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; background: rgba(59, 130, 246, 0.15); color: var(--primary-blue); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 12px; border: 1px solid rgba(59, 130, 246, 0.3); }
 .port-content h3 { margin-bottom: 8px; font-size: 1.2rem; }
 .port-content p { color: var(--text-secondary); font-size: 0.9rem; }
 
@@ -153,7 +172,7 @@ h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-pr
 /* =========================================
    7. FOOTER & LOGO BAWAH
    ========================================= */
-footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; background: var(--surface-color); }
+footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); }
 .footer-content { display: flex; flex-direction: column; align-items: center; margin-bottom: 15px; text-align: center; }
 .footer-brand { width: 100%; margin-bottom: 15px; }
 
@@ -178,15 +197,14 @@ footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; backgr
 
 @media (max-width: 768px) {
     .mobile-menu-btn { display: block; }
-    .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--surface-color); flex-direction: column; padding: 20px 0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid var(--border-color); max-height: calc(100vh - 85px); overflow-y: auto; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: rgba(15, 23, 42, 0.95); backdrop-filter: blur(16px); flex-direction: column; padding: 20px 0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); border-bottom: 1px solid var(--border-color); max-height: calc(100vh - 85px); overflow-y: auto; }
     .nav-links.active { display: flex; }
     .nav-links a { padding: 12px 20px; width: 100%; text-align: center; font-size: 1.05rem; }
     
-    .dropdown-menu { position: relative; left: 0; transform: none; box-shadow: none; border: none; background-color: var(--bg-alt); margin-top: 5px; }
+    .dropdown-menu { position: relative; left: 0; transform: none; box-shadow: none; border: none; background-color: rgba(255,255,255,0.05); margin-top: 5px; }
     .dropdown-menu::before { display: none; }
     
     .lang-btn { margin: 10px auto; width: 80px; text-align: center; }
-    .theme-btn { margin: 10px auto 20px auto; padding: 10px; }
     
     .hero h1, .hero-inner h1 { font-size: 2.2rem; }
     .stats-grid { grid-template-columns: 1fr; gap: 16px; padding: 20px;}
@@ -194,18 +212,7 @@ footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; backgr
 }
 
 /* =========================================
-   9. LOGO & BACKGROUND ADDITIONS
+   9. LOGO SIZES
    ========================================= */
-.nav-logo-img {
-    height: 35px;
-    width: auto;
-    margin-right: 10px;
-    vertical-align: middle;
-}
-
-.footer-logo-img {
-    height: 30px;
-    width: auto;
-    margin-right: 10px;
-    vertical-align: middle;
-}
+.nav-logo-img { height: 35px; width: auto; margin-right: 10px; vertical-align: middle; }
+.footer-logo-img { height: 30px; width: auto; margin-right: 10px; vertical-align: middle; }
