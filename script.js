@@ -190,35 +190,53 @@ const translations = {
         faq_1_q: "Bagaimana cara untuk saya membeli Skrip FiveM?", faq_1_a: "Anda boleh melawat kedai rasmi Tebex kami dengan mengklik butang 'Kedai' pada menu navigasi. Kami menyokong pelbagai gerbang pembayaran yang selamat.",
         faq_2_q: "Adakah anda menyediakan perkhidmatan pembangunan pelayan (server) tersuai?", faq_2_a: "Ya, kami pakar dalam persediaan pelayan lengkap dan pembangunan framework tersuai (QBCore & ESX). Sila hubungi kami melalui halaman Hubungi.",
         faq_3_q: "Adakah bantuan teknikal disediakan?", faq_3_a: "Sudah tentu. Semua sumber premium kami didatangkan dengan bantuan teknikal keutamaan melalui pelayan Discord rasmi kami.",
-        tos_content: `
+tos_content: `
             <h3 style="color: var(--text-primary); margin-bottom: 20px; font-size: 1.5rem;">Terma Perkhidmatan & Hak Cipta</h3>
-            <p style="margin-bottom: 15px;">Selamat datang ke Zenqor Technologies. Dengan mengakses atau menggunakan penyelesaian digital, laman web korporat rasmi, dan perkhidmatan pembangunan FiveM kami, anda bersetuju untuk mematuhi dan terikat dengan terma berikut.</p>
-            <p style="margin-bottom: 25px;">Terma Perkhidmatan kami terakhir dikemas kini pada <strong>28 Jun 2026</strong>. Sila baca terma ini dengan teliti.</p>
+            <p style="margin-bottom: 15px;">Selamat datang ke Zenqor Technologies. Dengan mengakses atau menggunakan penyelesaian digital, laman web korporat, pembangunan pelayan FiveM, dan perkhidmatan skrip kami, anda bersetuju untuk mematuhi dan terikat dengan Terma Perkhidmatan komprehensif berikut.</p>
+            <p style="margin-bottom: 25px;">Terma ini terakhir dikemas kini pada <strong>28 Jun 2026</strong>.</p>
             
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">1. Tafsiran dan Definisi</h4>
+            <h4 style="color: var(--text-primary); margin-top: 25px; margin-bottom: 10px;">1. Tafsiran dan Definisi</h4>
             <ul style="padding-left: 20px; margin-bottom: 20px;">
-                <li><strong>"Syarikat"</strong> merujuk kepada Zenqor Technologies (SSM: 202603157897 / JM1045730-D).</li>
-                <li><strong>"Negara"</strong> merujuk kepada Malaysia.</li>
-                <li><strong>"Perkhidmatan"</strong> merujuk kepada laman web dan penyelesaian digital kami.</li>
+                <li><strong>"Syarikat", "Kami"</strong> merujuk kepada Zenqor Technologies (SSM: 202603157897 / JM1045730-D).</li>
+                <li><strong>"Perkhidmatan"</strong> merujuk kepada semua produk, perisian, skrip, laman web, dan penyelesaian digital yang disediakan oleh Syarikat.</li>
+                <li><strong>"Pengguna", "Anda"</strong> merujuk kepada individu atau entiti sah yang mengakses atau menggunakan Perkhidmatan.</li>
             </ul>
 
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">2. Akaun Pengguna & Kandungan</h4>
-            <p style="margin-bottom: 15px;">Apabila anda membuat akaun dengan Kami, anda mesti memberikan maklumat yang tepat dan lengkap. Anda bertanggungjawab untuk menjaga kata laluan anda.</p>
-            <p style="margin-bottom: 20px;">Anda bertanggungjawab sepenuhnya terhadap Kandungan yang anda siarkan. Anda tidak dibenarkan menghantar sebarang Kandungan yang menyalahi undang-undang, menyinggung perasaan, memfitnah, atau melanggar sebarang hak milik. Kami berhak untuk memadam Kandungan yang tidak sesuai.</p>
-
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">3. Harta Intelek & Hak Cipta</h4>
-            <p style="margin-bottom: 20px;">Perkhidmatan dan kandungan asalnya (seperti skrip, logo, dan perisian) adalah hak milik eksklusif Zenqor Technologies dan dilindungi oleh undang-undang hak cipta antarabangsa. Pengeluaran semula atau pengedaran tanpa kebenaran adalah dilarang sama sekali.</p>
-
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">4. Had Liabiliti</h4>
-            <p style="margin-bottom: 20px;">Keseluruhan liabiliti Syarikat adalah terhad kepada jumlah yang sebenarnya dibayar oleh anda melalui Perkhidmatan. Perkhidmatan disediakan "SEBAGAIMANA ADANYA" tanpa sebarang jaminan.</p>
-
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">5. Undang-undang yang Mengawal</h4>
-            <p style="margin-bottom: 20px;">Undang-undang Malaysia akan mengawal Terma ini dan penggunaan Perkhidmatan oleh anda.</p>
-
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">Hubungi Kami</h4>
+            <h4 style="color: var(--text-primary); margin-top: 25px; margin-bottom: 10px;">2. Kelakuan dan Tanggungjawab Pengguna</h4>
+            <p style="margin-bottom: 15px;">Anda bersetuju untuk menggunakan Perkhidmatan kami hanya untuk tujuan yang sah. Anda dilarang sama sekali daripada:</p>
             <ul style="padding-left: 20px; margin-bottom: 20px;">
-                <li>Melalui halaman hubungan kami: <a href="contact.html" style="color: var(--primary-blue);">Hubungi Kami</a></li>
-                <li>Melalui e-mel: <strong>support@zenqor.com</strong></li>
+                <li>Melanggar mana-mana undang-undang atau peraturan tempatan, kebangsaan, atau antarabangsa.</li>
+                <li>Mencuba untuk menterbalikkan kejuruteraan (reverse-engineer), menyahsusun, atau mengekstrak kod sumber skrip atau perisian FiveM kami.</li>
+                <li>Menghantar kod berniat jahat, virus, atau data yang berbahaya.</li>
+            </ul>
+
+            <h4 style="color: var(--text-primary); margin-top: 25px; margin-bottom: 10px;">3. Harta Intelek & Hak Cipta</h4>
+            <p style="margin-bottom: 20px;">Semua kandungan, termasuk tetapi tidak terhad kepada skrip tersuai, reka bentuk web, logo, grafik, dan perisian proprietari, adalah hak milik eksklusif Zenqor Technologies. Ia dilindungi oleh undang-undang hak cipta antarabangsa. Pembelian perkhidmatan atau skrip memberikan anda lesen terhad yang tidak boleh dipindah milik untuk kegunaan peribadi atau projek tertentu. Pengedaran semula, penjualan semula, atau penuntutan hak milik tanpa kebenaran adalah dilarang sama sekali dan akan mengakibatkan penamatan perkhidmatan serta-merta.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 25px; margin-bottom: 10px;">4. Pembelian, Pembayaran dan Bayaran Balik</h4>
+            <p style="margin-bottom: 20px;">Semua pembelian yang dibuat melalui Kedai (Store) kami atau invois tertakluk kepada terma pembayaran kami. Harga boleh berubah tanpa notis awal. Disebabkan sifat digital produk kami (cth. skrip FiveM, kod sumber), semua jualan adalah muktamad. Sila rujuk <a href="return-policy.html" style="color: var(--primary-blue);">Dasar Pemulangan</a> kami yang berasingan untuk maklumat terperinci mengenai pengecualian.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 25px; margin-bottom: 10px;">5. Penafian Waranti "SEBAGAIMANA ADANYA"</h4>
+            <p style="margin-bottom: 20px;">Perkhidmatan ini disediakan kepada anda "SEBAGAIMANA ADANYA" dan "SEBAGAIMANA TERSEDIA". Zenqor Technologies secara nyata menafikan semua waranti dalam apa jua bentuk. Kami tidak menjamin bahawa skrip atau perkhidmatan kami tidak akan terganggu, bebas ralat, atau serasi sepenuhnya dengan pengubahsuaian pihak ketiga atau kemas kini masa hadapan oleh platform luar (cth. kemas kini pelanggan FiveM).</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 25px; margin-bottom: 10px;">6. Had Liabiliti</h4>
+            <p style="margin-bottom: 20px;">Setakat yang dibenarkan oleh undang-undang yang terpakai, Zenqor Technologies tidak akan bertanggungjawab ke atas sebarang kerosakan tidak langsung, sampingan, khas, atau berbangkit (termasuk kehilangan keuntungan, data, atau gangguan perniagaan) yang timbul daripada penggunaan atau ketidakupayaan untuk menggunakan Perkhidmatan kami. Jumlah liabiliti kami tidak akan melebihi jumlah wang yang sebenarnya dibayar oleh anda untuk perkhidmatan tertentu tersebut.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 25px; margin-bottom: 10px;">7. Tanggungjawab Ganti Rugi (Indemnification)</h4>
+            <p style="margin-bottom: 20px;">Anda bersetuju untuk mempertahankan, menanggung rugi, dan melindungi Zenqor Technologies serta ahli gabungannya daripada sebarang tuntutan, ganti rugi, kewajipan, kerugian, liabiliti, kos, atau hutang yang timbul daripada penggunaan Perkhidmatan oleh anda atau pelanggaran Terma ini.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 25px; margin-bottom: 10px;">8. Penamatan Akaun</h4>
+            <p style="margin-bottom: 20px;">Kami berhak untuk menggantung atau menamatkan akaun anda dan akses kepada Perkhidmatan kami serta-merta, tanpa notis awal atau liabiliti, atas apa-apa sebab sekalipun, termasuk tanpa had jika anda melanggar Terma Perkhidmatan ini.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 25px; margin-bottom: 10px;">9. Undang-undang yang Mengawal & Keterasingan</h4>
+            <p style="margin-bottom: 20px;">Terma ini akan dikawal dan ditafsirkan mengikut undang-undang Malaysia. Jika mana-mana peruntukan Terma ini didapati tidak sah atau tidak boleh dikuatkuasakan oleh mahkamah, peruntukan Terma yang selebihnya akan terus berkuat kuasa.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 25px; margin-bottom: 10px;">10. Maklumat Perhubungan</h4>
+            <ul style="padding-left: 20px; margin-bottom: 20px;">
+                <li><strong>Syarikat:</strong> Zenqor Technologies (Malaysia)</li>
+                <li><strong>Alamat:</strong> Bandar Mahkota Cheras, 43200 Selangor, Malaysia</li>
+                <li><strong>E-mel:</strong> support@zenqor.com</li>
+                <li><strong>Halaman Hubungan:</strong> <a href="contact.html" style="color: var(--primary-blue);">Klik Di Sini</a></li>
             </ul>
         `
     }
