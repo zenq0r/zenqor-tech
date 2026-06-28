@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Portfolio | Zenqor Technologies</title>
+    <title>FAQ | Zenqor Technologies</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -19,27 +19,20 @@
                 <a href="index.html" data-i18n="nav_home"></a>
                 <a href="about.html" data-i18n="nav_about"></a>
                 <a href="services.html" data-i18n="nav_services"></a>
-                <a href="faq.html" data-i18n="nav_faq"></a>
-                
+                <a href="faq.html" style="color: var(--primary-blue);" data-i18n="nav_faq"></a>
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu" style="color: var(--primary-blue);">
-                        <span data-i18n="nav_portfolio"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </a>
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu"><span data-i18n="nav_portfolio"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                     <div class="dropdown-menu" id="portfolio-menu">
                         <a href="portfolio-gaming.html" data-i18n="nav_port_gaming"></a>
-                        <a href="portfolio-web.html" style="color: var(--primary-blue);" data-i18n="nav_port_web"></a>
+                        <a href="portfolio-web.html" data-i18n="nav_port_web"></a>
                     </div>
                 </div>
-
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu">
-                        <span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </a>
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu"><span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                     <div class="dropdown-menu" id="careers-menu">
                         <a href="careers.html" data-i18n="nav_careers_join"></a>
                     </div>
                 </div>
-
                 <a href="contact.html" data-i18n="nav_contact"></a>
                 <a href="#" target="_blank" class="nav-store-btn" data-i18n="nav_store"></a>
                 <button id="lang-toggle" class="lang-btn"></button>
@@ -50,37 +43,33 @@
 
     <section class="hero-inner reveal">
         <div class="container hero-content reveal">
-            <div class="badge" data-i18n="nav_port_web"></div>
-            <h1 data-i18n="pw_hero_title"></h1>
-            <p class="hero-sub" data-i18n="pw_hero_sub"></p>
+            <h1 data-i18n="nav_faq"></h1>
+            <p class="hero-sub" data-i18n="faq_sub"></p>
         </div>
     </section>
 
-    <section class="portfolio section-padding">
-        <div class="container">
-            <div class="portfolio-grid">
-                <div class="portfolio-item card-style reveal hover-up">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag">React & Node.js</span>
-                        <h3 data-i18n="pw_1_t"></h3>
-                        <p data-i18n="pw_1_d"></p>
+    <section class="section-padding bg-alt">
+        <div class="container" style="max-width: 800px;">
+            <div class="faq-container reveal">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <button class="faq-btn"><span data-i18n="faq_1_q"></span> <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content">
+                        <p data-i18n="faq_1_a" style="padding-top: 10px;"></p>
                     </div>
                 </div>
-                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.1s;">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag">Enterprise System</span>
-                        <h3 data-i18n="pw_2_t"></h3>
-                        <p data-i18n="pw_2_d"></p>
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <button class="faq-btn"><span data-i18n="faq_2_q"></span> <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content">
+                        <p data-i18n="faq_2_a" style="padding-top: 10px;"></p>
                     </div>
                 </div>
-                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.2s;">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag">AI Integration</span>
-                        <h3 data-i18n="pw_3_t"></h3>
-                        <p data-i18n="pw_3_d"></p>
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <button class="faq-btn"><span data-i18n="faq_3_q"></span> <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content">
+                        <p data-i18n="faq_3_a" style="padding-top: 10px;"></p>
                     </div>
                 </div>
             </div>

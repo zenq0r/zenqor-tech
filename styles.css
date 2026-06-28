@@ -105,6 +105,9 @@ h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-pr
 .lang-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); background: rgba(59, 130, 246, 0.1); }
 .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); }
 
+.nav-store-btn { background: rgba(59, 130, 246, 0.2); padding: 6px 16px !important; border-radius: 6px; border: 1px solid rgba(59, 130, 246, 0.5); color: #fff !important; }
+.nav-store-btn:hover { background: var(--primary-blue) !important; color: white !important; }
+
 /* =========================================
    5. BUTTONS & FORMS
    ========================================= */
@@ -170,7 +173,7 @@ h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-pr
 .info-row i { margin-top: 4px; }
 
 /* =========================================
-   7. FOOTER & LOGO BAWAH
+   7. FOOTER & WIDGETS
    ========================================= */
 footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); }
 .footer-content { display: flex; flex-direction: column; align-items: center; margin-bottom: 15px; text-align: center; }
@@ -180,6 +183,24 @@ footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; backgr
 .footer-brand p { color: var(--text-secondary); font-size: 0.9rem; margin: 0 auto; }
 
 .footer-bottom { text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding-top: 15px; border-top: 1px solid var(--border-color); }
+
+.floating-widgets { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
+.widget-wa, .widget-top { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; cursor: pointer; border: none; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all 0.3s ease; box-shadow: var(--card-shadow); text-decoration: none; }
+.widget-wa { background: rgba(37, 211, 102, 0.8); border: 1px solid rgba(37, 211, 102, 0.3); }
+.widget-wa:hover { background: #25D366; transform: scale(1.1); }
+.widget-top { background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); opacity: 0; pointer-events: none; }
+.widget-top.show { opacity: 1; pointer-events: auto; }
+.widget-top:hover { background: var(--primary-blue); transform: scale(1.1); }
+
+/* FAQ Accordion */
+.faq-item { background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; overflow: hidden; transition: all 0.3s ease; }
+.faq-item:hover { border-color: rgba(255,255,255,0.2); }
+.faq-btn { width: 100%; text-align: left; padding: 20px; background: none; border: none; color: var(--text-primary); font-size: 1.1rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-btn i { transition: transform 0.3s; color: var(--primary-blue); }
+.faq-content { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-secondary); }
+.faq-item.active { background: rgba(15, 23, 42, 0.6); border-color: var(--primary-blue); }
+.faq-item.active .faq-content { padding-bottom: 20px; }
+.faq-item.active .faq-btn i { transform: rotate(180deg); }
 
 /* =========================================
    8. ANIMATIONS & RESPONSIVE
@@ -209,6 +230,7 @@ footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; backgr
     .hero h1, .hero-inner h1 { font-size: 2.2rem; }
     .stats-grid { grid-template-columns: 1fr; gap: 16px; padding: 20px;}
     .portfolio-grid, .tech-stack-container { grid-template-columns: 1fr; }
+    .floating-widgets { bottom: 20px; right: 20px; }
 }
 
 /* =========================================

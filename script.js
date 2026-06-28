@@ -6,6 +6,7 @@ const translations = {
         rp_desc1: "At Zenqor Technologies, all digital product sales (scripts, server setups) are final. Refunds are only issued if the product is proven to be fundamentally broken and our support team cannot resolve the issue within 14 days.",
         rp_desc2: "Please open a ticket in our Discord or email us at info@zenqor.com.my for any inquiries regarding your purchase.",
         nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_contact: "Contact",
+        nav_faq: "FAQ", nav_store: "<i class='fas fa-shopping-cart'></i> Store",
         nav_careers_join: "Join the Zenqor Vanguard",
         nav_port_gaming: "Scripting Projects", nav_port_web: "Server Development",
         hero_badge: "Premium FiveM Development",
@@ -57,7 +58,12 @@ const translations = {
         ph_msg: "Script Specifications / Details", btn_submit: "Send Request",
         footer_sub: "Building Premium Scripts & Server Solutions for FiveM.",
         footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). All rights reserved.",
-        msg_sending: "Sending...", msg_success: "Request Delivered"
+        msg_sending: "Sending...", msg_success: "Request Delivered",
+        
+        faq_sub: "Find answers to common questions about our products and services.",
+        faq_1_q: "How do I purchase a FiveM Script?", faq_1_a: "You can visit our official Tebex store by clicking the 'Store' button on our navigation menu. We support multiple secure payment gateways.",
+        faq_2_q: "Do you offer custom server development?", faq_2_a: "Yes, we specialize in complete server setups and tailor-made framework development (QBCore & ESX). Please reach out via the Contact page.",
+        faq_3_q: "Is technical support included?", faq_3_a: "Absolutely. All our premium resources come with priority technical support through our official Discord server."
     },
     ms: {
         nav_return: "Dasar Pemulangan",
@@ -65,6 +71,7 @@ const translations = {
         rp_desc1: "Di Zenqor Technologies, semua jualan produk digital (skrip, tetapan pelayan) adalah muktamad. Bayaran balik hanya dikeluarkan jika produk dibuktikan rosak sepenuhnya dan pasukan sokongan kami tidak dapat menyelesaikan isu tersebut dalam masa 14 hari.",
         rp_desc2: "Sila buka tiket di Discord kami atau e-mel kepada info@zenqor.com.my untuk sebarang pertanyaan mengenai pembelian anda.",
         nav_home: "Utama", nav_about: "Tentang Kami", nav_services: "Perkhidmatan", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_contact: "Hubungi",
+        nav_faq: "Soalan Lazim", nav_store: "<i class='fas fa-shopping-cart'></i> Kedai",
         nav_careers_join: "Sertai Zenqor Vanguard",
         nav_port_gaming: "Projek Skrip", nav_port_web: "Pembangunan Pelayan",
         hero_badge: "Pembangunan FiveM Premium",
@@ -116,7 +123,12 @@ const translations = {
         ph_msg: "Spesifikasi / Butiran Skrip", btn_submit: "Hantar Permintaan",
         footer_sub: "Membina Skrip Premium & Penyelesaian Pelayan untuk FiveM.",
         footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara.",
-        msg_sending: "Menghantar...", msg_success: "Permintaan Berjaya Dihantar"
+        msg_sending: "Menghantar...", msg_success: "Permintaan Berjaya Dihantar",
+        
+        faq_sub: "Cari jawapan bagi persoalan lazim mengenai produk dan perkhidmatan kami.",
+        faq_1_q: "Bagaimana cara untuk saya membeli Skrip FiveM?", faq_1_a: "Anda boleh melawat kedai rasmi Tebex kami dengan mengklik butang 'Kedai' pada menu navigasi. Kami menyokong pelbagai gerbang pembayaran yang selamat.",
+        faq_2_q: "Adakah anda menyediakan perkhidmatan pembangunan pelayan (server) tersuai?", faq_2_a: "Ya, kami pakar dalam persediaan pelayan lengkap dan pembangunan framework tersuai (QBCore & ESX). Sila hubungi kami melalui halaman Hubungi.",
+        faq_3_q: "Adakah bantuan teknikal disediakan?", faq_3_a: "Sudah tentu. Semua sumber premium kami didatangkan dengan bantuan teknikal keutamaan melalui pelayan Discord rasmi kami."
     }
 };
 
@@ -184,16 +196,20 @@ window.addEventListener('click', function(e) {
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
-mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', (e) => {
-        if(e.target.closest('.dropdown-toggle')) return;
-        navLinks.classList.remove('active');
+if(mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
     });
-});
+}
+
+if(navLinks) {
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if(e.target.closest('.dropdown-toggle')) return;
+            navLinks.classList.remove('active');
+        });
+    });
+}
 
 // --- 5. SCROLL ANIMATION (REVEAL) ---
 const revealElements = document.querySelectorAll('.reveal');
@@ -233,3 +249,37 @@ if(form) {
         }, 1200);
     });
 }
+
+// --- 7. SCROLL TO TOP & WIDGETS ---
+const scrollToTopBtn = document.getElementById('scrollToTop');
+if(scrollToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 300) scrollToTopBtn.classList.add('show');
+        else scrollToTopBtn.classList.remove('show');
+    });
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+}
+
+// --- 8. FAQ ACCORDION ---
+const faqBtns = document.querySelectorAll('.faq-btn');
+faqBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const parent = btn.parentElement;
+        const content = btn.nextElementSibling;
+        const isActive = parent.classList.contains('active');
+        
+        // Close all others
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+            item.querySelector('.faq-content').style.maxHeight = null;
+        });
+        
+        // Open if it wasn't active
+        if(!isActive) {
+            parent.classList.add('active');
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+});
