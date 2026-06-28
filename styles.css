@@ -183,8 +183,6 @@ footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; backgr
 .footer-brand p { color: var(--text-secondary); font-size: 0.9rem; margin: 0 auto; }
 
 .footer-bottom { text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; gap: 8px;}
-.footer-link { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-.footer-link:hover { color: var(--primary-blue); }
 
 /* --- Penambahbaikan Kesan Hover Footer & Ikon Sosial --- */
 .footer-links a {
