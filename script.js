@@ -68,7 +68,42 @@ const translations = {
         faq_sub: "Find answers to common questions about our products and services.",
         faq_1_q: "How do I purchase a FiveM Script?", faq_1_a: "You can visit our official Tebex store by clicking the 'Store' button on our navigation menu. We support multiple secure payment gateways.",
         faq_2_q: "Do you offer custom server development?", faq_2_a: "Yes, we specialize in complete server setups and tailor-made framework development (QBCore & ESX). Please reach out via the Contact page.",
-        faq_3_q: "Is technical support included?", faq_3_a: "Absolutely. All our premium resources come with priority technical support through our official Discord server."
+        faq_3_q: "Is technical support included?", faq_3_a: "Absolutely. All our premium resources come with priority technical support through our official Discord server.",
+                tos_content: `
+            <h3 style="color: var(--text-primary); margin-bottom: 20px; font-size: 1.5rem;">Terms of Service & Copyright</h3>
+            <p style="margin-bottom: 15px;">Welcome to Zenqor Technologies. By accessing or using our digital solutions, official corporate website, and FiveM development services, you agree to comply with and be bound by the following terms.</p>
+            <p style="margin-bottom: 25px;">Our Terms of Service were last updated on <strong>28 June 2026</strong>. Please read these terms carefully.</p>
+            
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">1. Interpretation and Definitions</h4>
+            <ul style="padding-left: 20px; margin-bottom: 20px;">
+                <li><strong>"Company"</strong> refers to Zenqor Technologies (SSM: 202603157897 / JM1045730-D).</li>
+                <li><strong>"Country"</strong> refers to Malaysia.</li>
+                <li><strong>"Service"</strong> refers to our website and digital solutions.</li>
+            </ul>
+
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">2. User Accounts & Content</h4>
+            <p style="margin-bottom: 15px;">When you create an account with Us, you must provide information that is accurate and complete. You are responsible for safeguarding your password.</p>
+            <p style="margin-bottom: 20px;">You are solely responsible for the Content you post. You may not transmit any Content that is unlawful, offensive, defamatory, or infringes on any proprietary rights. We reserve the right to remove inappropriate Content.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">3. Intellectual Property & Copyright</h4>
+            <p style="margin-bottom: 20px;">The Service and its original content (such as scripts, logos, and software) are the exclusive property of Zenqor Technologies and are protected by international copyright laws. Unauthorized reproduction or distribution is strictly prohibited.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">4. Limitation of Liability</h4>
+            <p style="margin-bottom: 20px;">The entire liability of the Company shall be limited to the amount actually paid by you through the Service. The Service is provided "AS IS" without warranty of any kind.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">5. Governing Law</h4>
+            <p style="margin-bottom: 20px;">The laws of Malaysia shall govern these Terms and your use of the Service.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">Contact Us</h4>
+            <ul style="padding-left: 20px; margin-bottom: 20px;">
+                <li>By visiting our contact page: <a href="contact.html" style="color: var(--primary-blue);">Contact Us</a></li>
+                <li>By email: <strong>support@zenqor.com</strong></li>
+            </ul>
+        `
+    
+    
+    
+    
     },
     ms: {
         nav_return: "Dasar Pemulangan",
@@ -138,7 +173,38 @@ const translations = {
         faq_sub: "Cari jawapan bagi persoalan lazim mengenai produk dan perkhidmatan kami.",
         faq_1_q: "Bagaimana cara untuk saya membeli Skrip FiveM?", faq_1_a: "Anda boleh melawat kedai rasmi Tebex kami dengan mengklik butang 'Kedai' pada menu navigasi. Kami menyokong pelbagai gerbang pembayaran yang selamat.",
         faq_2_q: "Adakah anda menyediakan perkhidmatan pembangunan pelayan (server) tersuai?", faq_2_a: "Ya, kami pakar dalam persediaan pelayan lengkap dan pembangunan framework tersuai (QBCore & ESX). Sila hubungi kami melalui halaman Hubungi.",
-        faq_3_q: "Adakah bantuan teknikal disediakan?", faq_3_a: "Sudah tentu. Semua sumber premium kami didatangkan dengan bantuan teknikal keutamaan melalui pelayan Discord rasmi kami."
+        faq_3_q: "Adakah bantuan teknikal disediakan?", faq_3_a: "Sudah tentu. Semua sumber premium kami didatangkan dengan bantuan teknikal keutamaan melalui pelayan Discord rasmi kami.",
+        tos_content: `
+            <h3 style="color: var(--text-primary); margin-bottom: 20px; font-size: 1.5rem;">Terma Perkhidmatan & Hak Cipta</h3>
+            <p style="margin-bottom: 15px;">Selamat datang ke Zenqor Technologies. Dengan mengakses atau menggunakan penyelesaian digital, laman web korporat rasmi, dan perkhidmatan pembangunan FiveM kami, anda bersetuju untuk mematuhi dan terikat dengan terma berikut.</p>
+            <p style="margin-bottom: 25px;">Terma Perkhidmatan kami terakhir dikemas kini pada <strong>28 Jun 2026</strong>. Sila baca terma ini dengan teliti.</p>
+            
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">1. Tafsiran dan Definisi</h4>
+            <ul style="padding-left: 20px; margin-bottom: 20px;">
+                <li><strong>"Syarikat"</strong> merujuk kepada Zenqor Technologies (SSM: 202603157897 / JM1045730-D).</li>
+                <li><strong>"Negara"</strong> merujuk kepada Malaysia.</li>
+                <li><strong>"Perkhidmatan"</strong> merujuk kepada laman web dan penyelesaian digital kami.</li>
+            </ul>
+
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">2. Akaun Pengguna & Kandungan</h4>
+            <p style="margin-bottom: 15px;">Apabila anda membuat akaun dengan Kami, anda mesti memberikan maklumat yang tepat dan lengkap. Anda bertanggungjawab untuk menjaga kata laluan anda.</p>
+            <p style="margin-bottom: 20px;">Anda bertanggungjawab sepenuhnya terhadap Kandungan yang anda siarkan. Anda tidak dibenarkan menghantar sebarang Kandungan yang menyalahi undang-undang, menyinggung perasaan, memfitnah, atau melanggar sebarang hak milik. Kami berhak untuk memadam Kandungan yang tidak sesuai.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">3. Harta Intelek & Hak Cipta</h4>
+            <p style="margin-bottom: 20px;">Perkhidmatan dan kandungan asalnya (seperti skrip, logo, dan perisian) adalah hak milik eksklusif Zenqor Technologies dan dilindungi oleh undang-undang hak cipta antarabangsa. Pengeluaran semula atau pengedaran tanpa kebenaran adalah dilarang sama sekali.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">4. Had Liabiliti</h4>
+            <p style="margin-bottom: 20px;">Keseluruhan liabiliti Syarikat adalah terhad kepada jumlah yang sebenarnya dibayar oleh anda melalui Perkhidmatan. Perkhidmatan disediakan "SEBAGAIMANA ADANYA" tanpa sebarang jaminan.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">5. Undang-undang yang Mengawal</h4>
+            <p style="margin-bottom: 20px;">Undang-undang Malaysia akan mengawal Terma ini dan penggunaan Perkhidmatan oleh anda.</p>
+
+            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">Hubungi Kami</h4>
+            <ul style="padding-left: 20px; margin-bottom: 20px;">
+                <li>Melalui halaman hubungan kami: <a href="contact.html" style="color: var(--primary-blue);">Hubungi Kami</a></li>
+                <li>Melalui e-mel: <strong>support@zenqor.com</strong></li>
+            </ul>
+        `
     }
 };
 
