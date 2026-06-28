@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +16,11 @@
                 <span class="text-primary">Zenqor</span> Technologies
             </a>
             <nav class="nav-links">
+                <a href="return-policy.html" data-i18n="nav_return"></a>
                 <a href="index.html" data-i18n="nav_home"></a>
+                <a href="about.html" data-i18n="nav_about"></a>
                 <a href="services.html" data-i18n="nav_services"></a>
+                
                 <div class="nav-item-dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu" style="color: var(--primary-blue);">
                         <span data-i18n="nav_portfolio"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
@@ -27,6 +30,7 @@
                         <a href="portfolio-web.html" style="color: var(--primary-blue);" data-i18n="nav_port_web"></a>
                     </div>
                 </div>
+
                 <div class="nav-item-dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu">
                         <span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
@@ -35,11 +39,10 @@
                         <a href="careers.html" data-i18n="nav_careers_join"></a>
                     </div>
                 </div>
-                <a href="about.html" data-i18n="nav_about"></a>
-                <a href="faq.html" data-i18n="nav_faq"></a>
+
                 <a href="contact.html" data-i18n="nav_contact"></a>
-                <a href="#" target="_blank" class="nav-store-btn" data-i18n="nav_store"></a>
                 <button id="lang-toggle" class="lang-btn"></button>
+                <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
             </nav>
             <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
         </div>
@@ -85,8 +88,8 @@
     </section>
 
     <footer>
-        <div class="container footer-content" style="margin-bottom: 0;">
-            <div class="footer-brand" style="margin-bottom: 25px;">
+        <div class="container footer-content" style="margin-bottom: 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div class="footer-brand">
                 <a href="index.html" class="logo-footer logo-text">
                     <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img">
                     <span class="text-primary">Zenqor</span> Technologies
@@ -96,20 +99,22 @@
                     <p>No. Pendaftaran: 202603157897 (JM1045730-D)</p>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom" style="padding-top: 20px;">
-            <div style="margin-bottom: 10px;">
-                <a href="return-policy.html" data-i18n="nav_return" class="footer-link"></a>
+            
+            <div class="footer-links" style="display: flex; gap: 20px; font-size: 0.9rem;">
+                <a href="return-policy.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary-blue)'" onmouseout="this.style.color='var(--text-secondary)'">Return Policy</a>
+                <a href="legal.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary-blue)'" onmouseout="this.style.color='var(--text-secondary)'">Legal</a>
+                <a href="data-policy.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary-blue)'" onmouseout="this.style.color='var(--text-secondary)'">Data Policy</a>
             </div>
+        </div>
+        <div class="footer-bottom" style="padding-top: 20px; margin-top: 20px; border-top: 1px solid var(--border-color);">
             <p data-i18n="footer_copy"></p>
         </div>
     </footer>
 
-    <div class="floating-widgets">
-        <a href="https://wa.me/601165012569" target="_blank" class="widget-wa"><i class="fab fa-whatsapp"></i></a>
-        <button id="scrollToTop" class="widget-top"><i class="fas fa-arrow-up"></i></button>
-    </div>
-
+    <script type="module">
+        import { injectSpeedInsights } from 'https://cdn.jsdelivr.net/npm/@vercel/speed-insights@2/dist/index.js';
+        injectSpeedInsights();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
