@@ -57,7 +57,7 @@ const translations = {
         opt_def: "Select Request Type", opt_1: "Custom Lua Script", opt_2: "Standalone Resource", opt_3: "NUI / UI Interface", opt_4: "Server Optimization / Bug Fix",
         ph_msg: "Script Specifications / Details", btn_submit: "Send Request",
         footer_sub: "Building Premium Scripts & Server Solutions for FiveM.",
-        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). All rights reserved.",
+        footer_copy: "© 2026 Zenqor Technologies (Malaysia). All rights reserved.",
         msg_sending: "Sending...", msg_success: "Request Delivered",
         
         faq_sub: "Find answers to common questions about our products and services.",
@@ -70,8 +70,8 @@ const translations = {
         rp_title: "Pemulangan dan Bayaran Balik",
         rp_desc1: "Di Zenqor Technologies, semua jualan produk digital (skrip, tetapan pelayan) adalah muktamad. Bayaran balik hanya dikeluarkan jika produk dibuktikan rosak sepenuhnya dan pasukan sokongan kami tidak dapat menyelesaikan isu tersebut dalam masa 14 hari.",
         rp_desc2: "Sila buka tiket di Discord kami atau e-mel kepada info@zenqor.com.my untuk sebarang pertanyaan mengenai pembelian anda.",
-        nav_home: "Utama", nav_about: "Tentang Kami", nav_services: "Perkhidmatan", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_contact: "Hubungi",
-        nav_faq: "Soalan Lazim", nav_store: "<i class='fas fa-shopping-cart'></i> Kedai",
+        nav_home: "Utama", nav_about: "Tentang Kami", nav_services: "Servis", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_contact: "Hubungi",
+        nav_faq: "FAQ", nav_store: "<i class='fas fa-shopping-cart'></i> Kedai",
         nav_careers_join: "Sertai Zenqor Vanguard",
         nav_port_gaming: "Projek Skrip", nav_port_web: "Pembangunan Pelayan",
         hero_badge: "Pembangunan FiveM Premium",
@@ -122,7 +122,7 @@ const translations = {
         opt_def: "Pilih Jenis Permintaan", opt_1: "Skrip Lua Tersuai", opt_2: "Sumber Standalone", opt_3: "Antara Muka NUI / UI", opt_4: "Pengoptimuman Pelayan / Pembaikan Ralat",
         ph_msg: "Spesifikasi / Butiran Skrip", btn_submit: "Hantar Permintaan",
         footer_sub: "Membina Skrip Premium & Penyelesaian Pelayan untuk FiveM.",
-        footer_copy: "&copy; 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara.",
+        footer_copy: "© 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara.",
         msg_sending: "Menghantar...", msg_success: "Permintaan Berjaya Dihantar",
         
         faq_sub: "Cari jawapan bagi persoalan lazim mengenai produk dan perkhidmatan kami.",

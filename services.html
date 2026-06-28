@@ -17,22 +17,26 @@
             </a>
             <nav class="nav-links">
                 <a href="index.html" data-i18n="nav_home"></a>
-                <a href="about.html" data-i18n="nav_about"></a>
                 <a href="services.html" style="color: var(--primary-blue);" data-i18n="nav_services"></a>
-                <a href="faq.html" data-i18n="nav_faq"></a>
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu"><span data-i18n="nav_portfolio"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu">
+                        <span data-i18n="nav_portfolio"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
                     <div class="dropdown-menu" id="portfolio-menu">
                         <a href="portfolio-gaming.html" data-i18n="nav_port_gaming"></a>
                         <a href="portfolio-web.html" data-i18n="nav_port_web"></a>
                     </div>
                 </div>
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu"><span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu">
+                        <span data-i18n="nav_careers"></span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
                     <div class="dropdown-menu" id="careers-menu">
                         <a href="careers.html" data-i18n="nav_careers_join"></a>
                     </div>
                 </div>
+                <a href="about.html" data-i18n="nav_about"></a>
+                <a href="faq.html" data-i18n="nav_faq"></a>
                 <a href="contact.html" data-i18n="nav_contact"></a>
                 <a href="#" target="_blank" class="nav-store-btn" data-i18n="nav_store"></a>
                 <button id="lang-toggle" class="lang-btn"></button>
@@ -106,14 +110,19 @@
                 </div>
             </div>
         </div>
-        <div class="footer-bottom" style="padding-top: 20px;"><p data-i18n="footer_copy"></p></div>
+        <div class="footer-bottom" style="padding-top: 20px;">
+            <div style="margin-bottom: 10px;">
+                <a href="return-policy.html" data-i18n="nav_return" class="footer-link"></a>
+            </div>
+            <p data-i18n="footer_copy"></p>
+        </div>
     </footer>
 
     <div class="floating-widgets">
         <a href="https://wa.me/601165012569" target="_blank" class="widget-wa"><i class="fab fa-whatsapp"></i></a>
         <button id="scrollToTop" class="widget-top"><i class="fas fa-arrow-up"></i></button>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
