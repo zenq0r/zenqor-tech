@@ -70,6 +70,9 @@
                     <label class="remember-me"><input type="checkbox" id="remember"> Remember me</label>
                     <a href="forgot-password.html" class="forgot-pass">Forgot Password?</a>
                 </div>
+                
+                <div id="formMessage" class="form-message"></div>
+                
                 <button type="submit" class="btn btn-primary w-100" style="padding: 12px; font-size: 1rem; border: none; cursor: pointer;">Sign In</button>
             </form>
 
@@ -118,6 +121,8 @@
         const auth = getAuth(app);
 
         const loginForm = document.getElementById('loginForm');
+        const formMessage = document.getElementById('formMessage');
+
         if(loginForm) {
             loginForm.addEventListener('submit', function(e) {
                 e.preventDefault(); 
@@ -126,16 +131,20 @@
                 const btn = this.querySelector('button[type="submit"]');
                 const originalText = btn.innerHTML;
                 
+                formMessage.textContent = "";
+                formMessage.className = "form-message";
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
                 btn.disabled = true;
 
                 signInWithEmailAndPassword(auth, email, password)
                     .then((userCredential) => {
-                        alert("Log Masuk Berjaya! Mengalihkan halaman...");
-                        window.location.href = "index.html"; 
+                        formMessage.textContent = "Log Masuk Berjaya! Mengalihkan halaman...";
+                        formMessage.classList.add("msg-success");
+                        setTimeout(() => { window.location.href = "index.html"; }, 1500);
                     })
                     .catch((error) => {
-                        alert("Ralat log masuk. Sila semak semula e-mel dan kata laluan anda.");
+                        formMessage.textContent = "Ralat log masuk. Sila semak semula e-mel dan kata laluan anda.";
+                        formMessage.classList.add("msg-error");
                         btn.innerHTML = originalText;
                         btn.disabled = false;
                     });

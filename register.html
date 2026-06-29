@@ -56,6 +56,9 @@
                     <input type="password" id="password" placeholder="••••••••" required minlength="6">
                     <i class="fas fa-eye toggle-password" id="togglePassword"></i>
                 </div>
+                
+                <div id="formMessage" class="form-message"></div>
+
                 <button type="submit" class="btn btn-primary w-100" style="padding: 12px; font-size: 1rem; border: none; cursor: pointer;">Sign Up</button>
             </form>
 
@@ -96,6 +99,8 @@
         const auth = getAuth(app);
 
         const registerForm = document.getElementById('registerForm');
+        const formMessage = document.getElementById('formMessage');
+
         if(registerForm) {
             registerForm.addEventListener('submit', function(e) {
                 e.preventDefault(); 
@@ -104,16 +109,20 @@
                 const btn = this.querySelector('button[type="submit"]');
                 const originalText = btn.innerHTML;
                 
+                formMessage.textContent = "";
+                formMessage.className = "form-message";
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registering...';
                 btn.disabled = true;
 
                 createUserWithEmailAndPassword(auth, email, password)
                     .then((userCredential) => {
-                        alert("Pendaftaran Berjaya! Akaun anda telah dicipta.");
-                        window.location.href = "login.html"; 
+                        formMessage.textContent = "Pendaftaran Berjaya! Mengalihkan ke log masuk...";
+                        formMessage.classList.add("msg-success");
+                        setTimeout(() => { window.location.href = "login.html"; }, 1500);
                     })
                     .catch((error) => {
-                        alert("Ralat Pendaftaran: " + error.message);
+                        formMessage.textContent = "Ralat Pendaftaran: " + error.message;
+                        formMessage.classList.add("msg-error");
                         btn.innerHTML = originalText;
                         btn.disabled = false;
                     });

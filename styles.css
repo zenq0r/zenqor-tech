@@ -131,6 +131,11 @@ h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; color: var(--text-pr
 }
 .input-group select option { background: #0F172A; color: #fff; }
 
+/* Mesej Borang (Login, Register, Forgot Password) */
+.form-message { text-align: center; margin-bottom: 15px; font-size: 0.9rem; font-weight: 500; min-height: 20px; }
+.msg-success { color: #10B981; }
+.msg-error { color: #EF4444; }
+
 /* =========================================
    6. SECTIONS & LAYOUT 
    ========================================= */
