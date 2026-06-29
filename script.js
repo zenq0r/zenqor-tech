@@ -58,7 +58,7 @@ const translations = {
         btn_apply: "Apply via Discord/Email",
         con_title: "Initialize <span class='text-primary'>Connection</span>",
         con_sub: "Partner with us to engineer your server's next big feature.",
-        hq_title: "Headquarters", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
+        hq_title: "Headquarters", hq_addr: "Bandar Mahkota Cheras<br>SELANGOR, Malaysia",
         ph_name: "Discord Tag / Name", ph_email: "Email Address", 
         opt_def: "Select Request Type", opt_1: "Custom Lua Script", opt_2: "Standalone Resource", opt_3: "NUI / UI Interface", opt_4: "Server Optimization / Bug Fix",
         ph_msg: "Script Specifications / Details", btn_submit: "Send Request",
@@ -71,44 +71,50 @@ const translations = {
         faq_3_q: "Is technical support included?", faq_3_a: "Absolutely. All our premium resources come with priority technical support through our official Discord server.",
         
         tos_content: `
-            <h3 style="color: var(--text-primary); margin-bottom: 20px; font-size: 1.5rem;">Terms of Service & Copyright</h3>
-            <p style="margin-bottom: 15px;">Welcome to Zenqor Technologies. By accessing or using our digital solutions, official corporate website, and FiveM development services, you agree to comply with and be bound by the following terms.</p>
-            <p style="margin-bottom: 25px;">Our Terms of Service were last updated on <strong>28 June 2026</strong>. Please read these terms carefully.</p>
+            <h3>TERMS AND CONDITIONS</h3>
+            <p><strong>Last updated June 17, 2026</strong></p>
             
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">1. Interpretation and Definitions</h4>
-            <ul style="padding-left: 20px; margin-bottom: 20px;">
-                <li><strong>"Company"</strong> refers to Zenqor Technologies (SSM: 202603157897 / JM1045730-D).</li>
-                <li><strong>"Country"</strong> refers to Malaysia.</li>
-                <li><strong>"Service"</strong> refers to our website and digital solutions.</li>
-            </ul>
+            <h4>1. AGREEMENT TO OUR LEGAL TERMS</h4>
+            <p>We are ZENQOR TECHNOLOGIES ("Company," "we," "us," "our"), a company registered in Malaysia at BANDAR MAHKOTA CHERAS, CHERAS, SELANGOR 43200.</p>
+            <p>We operate the website <a href="https://zenqor-tech.kauaku.store/">https://zenqor-tech.kauaku.store/</a> (the "Site"), as well as any other related products and services that refer or link to these legal terms (the "Services").</p>
+            <p>These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), and ZENQOR TECHNOLOGIES, concerning your access to and use of the Services.</p>
 
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">2. User Accounts & Content</h4>
-            <p style="margin-bottom: 15px;">When you create an account with Us, you must provide information that is accurate and complete. You are responsible for safeguarding your password.</p>
-            <p style="margin-bottom: 20px;">You are solely responsible for the Content you post. You may not transmit any Content that is unlawful, offensive, defamatory, or infringes on any proprietary rights. We reserve the right to remove inappropriate Content.</p>
+            <h4>2. INTELLECTUAL PROPERTY RIGHTS</h4>
+            <p>We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, the "Content"), as well as the trademarks, service marks, and logos contained therein.</p>
 
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">3. Intellectual Property & Copyright</h4>
-            <p style="margin-bottom: 20px;">The Service and its original content (such as scripts, logos, and software) are the exclusive property of Zenqor Technologies and are protected by international copyright laws. Unauthorized reproduction or distribution is strictly prohibited.</p>
+            <h4>3. PURCHASES AND PAYMENT</h4>
+            <p>We accept the following forms of payment: Visa, American Express, Mastercard, Discover, and PayPal. You agree to provide current, complete, and accurate purchase and account information for all purchases. All payments shall be in MYR.</p>
 
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">4. Limitation of Liability</h4>
-            <p style="margin-bottom: 20px;">The entire liability of the Company shall be limited to the amount actually paid by you through the Service. The Service is provided "AS IS" without warranty of any kind.</p>
+            <h4>4. SUBSCRIPTIONS & FREE TRIAL</h4>
+            <p>Your subscription will continue and automatically renew unless canceled. We offer a 3-day free trial to new users who register with the Services. The account will be charged according to the user's chosen subscription at the end of the free trial.</p>
 
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">5. Governing Law</h4>
-            <p style="margin-bottom: 20px;">The laws of Malaysia shall govern these Terms and your use of the Service.</p>
+            <h4>5. REFUNDS POLICY</h4>
+            <p>All sales are final and no refund will be issued.</p>
 
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">Contact Us</h4>
-            <ul style="padding-left: 20px; margin-bottom: 20px;">
-                <li>By visiting our contact page: <a href="contact.html" style="color: var(--primary-blue);">Contact Us</a></li>
-                <li>By email: <strong>info@zenqor.com</strong></li>
+            <h4>6. PROHIBITED ACTIVITIES</h4>
+            <p>You may not access or use the Services for any purpose other than that for which we make the Services available. Prohibited activities include, but are not limited to, system abuse, fraudulent activities, security circumvention, and unauthorized data extraction.</p>
+
+            <h4>7. GOVERNING LAW</h4>
+            <p>These Legal Terms shall be governed by and defined following the laws of Malaysia. ZENQOR TECHNOLOGIES and yourself irrevocably consent that the courts of Malaysia shall have exclusive jurisdiction to resolve any dispute which may arise.</p>
+
+            <h4>8. CONTACT US</h4>
+            <p>In order to resolve a complaint regarding the Services or to receive further information, please contact us at:</p>
+            <ul>
+                <li><strong>ZENQOR TECHNOLOGIES</strong></li>
+                <li>BANDAR MAHKOTA CHERAS</li>
+                <li>CHERAS, SELANGOR 43200, Malaysia</li>
+                <li>Phone: +601165012569</li>
+                <li>Email: <a href="mailto:zenqortech@gmail.com">zenqortech@gmail.com</a></li>
             </ul>
         `,
 
         rp_content: `
-            <p><strong>Updated at:</strong> 29 June 2026</p>
+            <p><strong>Updated at:</strong> 17 June 2026</p>
 
             <h3>Definitions and key terms</h3>
             <p>To help explain things as clearly as possible in this Return & Refund Policy, every time any of these terms are referenced, are strictly defined as:</p>
             <ul>
-                <li><strong>Company:</strong> when this policy mentions "Company," "we," "us," or "our," it refers to Zenqor Technologies, Bandar Mahkota Cheras, 43200 Selangor, Malaysia that is responsible for your information under this Return & Refund Policy.</li>
+                <li><strong>Company:</strong> when this policy mentions "Company," "we," "us," or "our," it refers to Zenqor Technologies, Bandar Mahkota Cheras, 43200 SELANGOR, Malaysia that is responsible for your information under this Return & Refund Policy.</li>
                 <li><strong>Customer:</strong> refers to the company, organization or person that signs up to use the Zenqor Technologies Service to manage the relationships with your consumers or service users.</li>
                 <li><strong>Device:</strong> any internet connected device such as a phone, tablet, computer or any other device that can be used to visit Zenqor Technologies and use the services.</li>
                 <li><strong>Service:</strong> refers to the digital and physical services provided by Zenqor Technologies as described in the relative terms (if available) and on this platform.</li>
@@ -164,7 +170,7 @@ const translations = {
                 <li>Via Email: info@zenqor.com</li>
                 <li>Via Phone Number: [Sila masukkan Nombor Telefon di sini]</li>
                 <li>Via this Link: <a href="contact.html">Contact Page</a></li>
-                <li>Via this Address: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</li>
+                <li>Via this Address: Bandar Mahkota Cheras, 43200 SELANGOR, Malaysia</li>
             </ul>
         `
     },
@@ -226,7 +232,7 @@ const translations = {
         btn_apply: "Mohon melalui Discord/E-mel",
         con_title: "Mulakan <span class='text-primary'>Hubungan</span>",
         con_sub: "Bekerjasama dengan kami untuk merealisasikan ciri hebat pelayan anda yang seterusnya.",
-        hq_title: "Ibu Pejabat", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
+        hq_title: "Ibu Pejabat", hq_addr: "Bandar Mahkota Cheras<br>SELANGOR, Malaysia",
         ph_name: "Tag Discord / Nama", ph_email: "Alamat E-mel", 
         opt_def: "Pilih Jenis Permintaan", opt_1: "Skrip Lua Tersuai", opt_2: "Sumber Standalone", opt_3: "Antara Muka NUI / UI", opt_4: "Pengoptimuman Pelayan / Pembaikan Ralat",
         ph_msg: "Spesifikasi / Butiran Skrip", btn_submit: "Hantar Permintaan",
@@ -239,44 +245,50 @@ const translations = {
         faq_3_q: "Adakah bantuan teknikal disediakan?", faq_3_a: "Sudah tentu. Semua sumber premium kami didatangkan dengan bantuan teknikal keutamaan melalui pelayan Discord rasmi kami.",
         
         tos_content: `
-            <h3 style="color: var(--text-primary); margin-bottom: 20px; font-size: 1.5rem;">Terma Perkhidmatan & Hak Cipta</h3>
-            <p style="margin-bottom: 15px;">Selamat datang ke Zenqor Technologies. Dengan mengakses atau menggunakan penyelesaian digital, laman web korporat rasmi, dan perkhidmatan pembangunan FiveM kami, anda bersetuju untuk mematuhi dan terikat dengan terma berikut.</p>
-            <p style="margin-bottom: 25px;">Terma Perkhidmatan kami terakhir dikemas kini pada <strong>28 Jun 2026</strong>. Sila baca terma ini dengan teliti.</p>
+            <h3>TERMA DAN SYARAT</h3>
+            <p><strong>Kemas kini terakhir pada 17 Jun 2026</strong></p>
             
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">1. Tafsiran dan Definisi</h4>
-            <ul style="padding-left: 20px; margin-bottom: 20px;">
-                <li><strong>"Syarikat"</strong> merujuk kepada Zenqor Technologies (SSM: 202603157897 / JM1045730-D).</li>
-                <li><strong>"Negara"</strong> merujuk kepada Malaysia.</li>
-                <li><strong>"Perkhidmatan"</strong> merujuk kepada laman web dan penyelesaian digital kami.</li>
-            </ul>
+            <h4>1. PERSETUJUAN KEPADA TERMA PERUNDANGAN KAMI</h4>
+            <p>Kami adalah ZENQOR TECHNOLOGIES ("Syarikat," "kami," "kita"), sebuah syarikat yang berdaftar di Malaysia di BANDAR MAHKOTA CHERAS, CHERAS, SELANGOR 43200.</p>
+            <p>Kami mengendalikan laman web <a href="https://zenqor-tech.kauaku.store/">https://zenqor-tech.kauaku.store/</a> ("Laman Web"), serta mana-mana produk dan perkhidmatan berkaitan yang merujuk kepada terma perundangan ini ("Perkhidmatan").</p>
+            <p>Terma Perundangan ini merupakan perjanjian yang mengikat di sisi undang-undang yang dibuat antara anda ("anda"), dan ZENQOR TECHNOLOGIES, berkenaan dengan akses dan penggunaan anda terhadap Perkhidmatan.</p>
 
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">2. Akaun Pengguna & Kandungan</h4>
-            <p style="margin-bottom: 15px;">Apabila anda membuat akaun dengan Kami, anda mesti memberikan maklumat yang tepat dan lengkap. Anda bertanggungjawab untuk menjaga kata laluan anda.</p>
-            <p style="margin-bottom: 20px;">Anda bertanggungjawab sepenuhnya terhadap Kandungan yang anda siarkan. Anda tidak dibenarkan menghantar sebarang Kandungan yang menyalahi undang-undang, menyinggung perasaan, memfitnah, atau melanggar sebarang hak milik. Kami berhak untuk memadam Kandungan yang tidak sesuai.</p>
+            <h4>2. HAK HARTA INTELEK</h4>
+            <p>Kami adalah pemilik atau pemegang lesen bagi semua hak harta intelek dalam Perkhidmatan kami, termasuk semua kod sumber, pangkalan data, perisian, reka bentuk tapak web, teks dan grafik (secara kolektif, "Kandungan"), serta tanda dagangan dan logo yang terkandung di dalamnya.</p>
 
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">3. Harta Intelek & Hak Cipta</h4>
-            <p style="margin-bottom: 20px;">Perkhidmatan dan kandungan asalnya (seperti skrip, logo, dan perisian) adalah hak milik eksklusif Zenqor Technologies dan dilindungi oleh undang-undang hak cipta antarabangsa. Pengeluaran semula atau pengedaran tanpa kebenaran adalah dilarang sama sekali.</p>
+            <h4>3. PEMBELIAN DAN PEMBAYARAN</h4>
+            <p>Kami menerima bentuk pembayaran berikut: Visa, American Express, Mastercard, Discover, dan PayPal. Anda bersetuju untuk memberikan maklumat pembelian dan akaun yang terkini, lengkap dan tepat. Semua pembayaran hendaklah dibuat dalam mata wang MYR.</p>
 
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">4. Had Liabiliti</h4>
-            <p style="margin-bottom: 20px;">Keseluruhan liabiliti Syarikat adalah terhad kepada jumlah yang sebenarnya dibayar oleh anda melalui Perkhidmatan. Perkhidmatan disediakan "SEBAGAIMANA ADANYA" tanpa sebarang jaminan.</p>
+            <h4>4. LANGGANAN & PERCUBAAN PERCUMA</h4>
+            <p>Langganan anda akan diteruskan dan diperbaharui secara automatik melainkan dibatalkan. Kami menawarkan percubaan percuma selama 3 hari kepada pengguna baharu. Akaun akan dicaj mengikut pelan langganan pada penghujung tempoh percubaan percuma tersebut.</p>
 
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">5. Undang-undang yang Mengawal</h4>
-            <p style="margin-bottom: 20px;">Undang-undang Malaysia akan mengawal Terma ini dan penggunaan Perkhidmatan oleh anda.</p>
+            <h4>5. POLISI PEMULANGAN</h4>
+            <p>Semua jualan adalah muktamad dan tiada bayaran balik akan dikeluarkan.</p>
 
-            <h4 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">Hubungi Kami</h4>
-            <ul style="padding-left: 20px; margin-bottom: 20px;">
-                <li>Melalui halaman hubungan kami: <a href="contact.html" style="color: var(--primary-blue);">Hubungi Kami</a></li>
-                <li>Melalui e-mel: <strong>info@zenqor.com</strong></li>
+            <h4>6. AKTIVITI YANG DILARANG</h4>
+            <p>Anda tidak dibenarkan mengakses atau menggunakan Perkhidmatan untuk sebarang tujuan selain daripada apa yang kami sediakan. Aktiviti yang dilarang termasuk, tetapi tidak terhad kepada, penyalahgunaan sistem, aktiviti penipuan, pemintasan keselamatan, dan pengekstrakan data tanpa kebenaran.</p>
+
+            <h4>7. UNDANG-UNDANG YANG MENGAWAL</h4>
+            <p>Terma Perundangan ini akan dikawal selia dan ditakrifkan berlandaskan undang-undang Malaysia. Anda dan ZENQOR TECHNOLOGIES bersetuju bahawa mahkamah Malaysia mempunyai bidang kuasa eksklusif untuk menyelesaikan sebarang pertikaian yang mungkin timbul.</p>
+
+            <h4>8. HUBUNGI KAMI</h4>
+            <p>Untuk menyelesaikan sebarang aduan mengenai Perkhidmatan atau untuk menerima maklumat lanjut, sila hubungi kami di:</p>
+            <ul>
+                <li><strong>ZENQOR TECHNOLOGIES</strong></li>
+                <li>BANDAR MAHKOTA CHERAS</li>
+                <li>CHERAS, SELANGOR 43200, Malaysia</li>
+                <li>Telefon: +601165012569</li>
+                <li>E-mel: <a href="mailto:zenqortech@gmail.com">zenqortech@gmail.com</a></li>
             </ul>
         `,
 
         rp_content: `
-            <p><strong>Dikemas kini pada:</strong> 29 Jun 2026</p>
+            <p><strong>Dikemas kini pada:</strong> 17 Jun 2026</p>
 
             <h3>Definisi dan terma utama</h3>
             <p>Untuk membantu menerangkan perkara sejelas mungkin dalam Polisi Pemulangan & Bayaran Balik ini, setiap kali mana-mana terma ini dirujuk, ia ditakrifkan dengan tegas sebagai:</p>
             <ul>
-                <li><strong>Syarikat:</strong> apabila polisi ini menyebut "Syarikat," "kami," atau "kita," ia merujuk kepada Zenqor Technologies, Bandar Mahkota Cheras, 43200 Selangor, Malaysia yang bertanggungjawab ke atas maklumat anda di bawah Polisi Pemulangan & Bayaran Balik ini.</li>
+                <li><strong>Syarikat:</strong> apabila polisi ini menyebut "Syarikat," "kami," atau "kita," ia merujuk kepada Zenqor Technologies, Bandar Mahkota Cheras, 43200 SELANGOR, Malaysia yang bertanggungjawab ke atas maklumat anda di bawah Polisi Pemulangan & Bayaran Balik ini.</li>
                 <li><strong>Pelanggan:</strong> merujuk kepada syarikat, organisasi atau individu yang mendaftar untuk menggunakan Perkhidmatan Zenqor Technologies.</li>
                 <li><strong>Peranti:</strong> sebarang peranti yang bersambung ke internet seperti telefon, tablet, komputer atau peranti lain yang boleh digunakan untuk melawati Zenqor Technologies.</li>
                 <li><strong>Perkhidmatan:</strong> merujuk kepada perkhidmatan digital dan fizikal yang disediakan oleh Zenqor Technologies seperti yang diterangkan dalam terma berkaitan di platform ini.</li>
@@ -332,7 +344,7 @@ const translations = {
                 <li>Melalui E-mel: info@zenqor.com</li>
                 <li>Melalui Nombor Telefon: [Sila masukkan Nombor Telefon di sini]</li>
                 <li>Melalui Pautan ini: <a href="contact.html">Halaman Hubungan</a></li>
-                <li>Melalui Alamat ini: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</li>
+                <li>Melalui Alamat ini: Bandar Mahkota Cheras, 43200 SELANGOR, Malaysia</li>
             </ul>
         `
     }
