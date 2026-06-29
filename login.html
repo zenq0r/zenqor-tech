@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Zenqor Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Gaya khusus yang diintegrasikan dengan styles.css asal */
+        .login-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            padding-top: 140px; /* Jarak untuk Navbar */
+            padding-bottom: 60px;
+        }
+        .login-card {
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+            /* Menggunakan warna/border dari styles.css anda (tema gelap) */
+            background-color: var(--bg-card, #151A23);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow, 0 10px 30px rgba(0,0,0,0.3));
+            border: 1px solid var(--border-color, #2A3241);
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-header img {
+            width: 60px;
+            margin-bottom: 15px;
+        }
+        .login-header h2 {
+            font-size: 1.8rem;
+            color: var(--text-main, #fff);
+            margin-bottom: 5px;
+        }
+        .login-header p {
+            color: var(--text-secondary, #94A3B8);
+            font-size: 0.9rem;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-main, #E2E8F0);
+            font-size: 0.9rem;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--bg-main, #0F131A);
+            border: 1px solid var(--border-color, #2A3241);
+            color: #fff;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-blue, #3B82F6);
+        }
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 38px;
+            color: var(--text-secondary, #94A3B8);
+            cursor: pointer;
+        }
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main, #E2E8F0);
+            cursor: pointer;
+        }
+        .forgot-pass {
+            color: var(--primary-blue, #3B82F6);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .forgot-pass:hover {
+            color: #60A5FA;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: var(--text-secondary, #94A3B8);
+        }
+        .register-link a {
+            color: var(--primary-blue, #3B82F6);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-alt"> <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-nav logo-text">
+                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img">
+                <span class="text-primary">Zenqor</span> Technologies
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <a href="services.html" data-i18n="nav_services">Services</a>
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu">
+                        <span data-i18n="nav_portfolio">Portfolio</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                    <div class="dropdown-menu" id="portfolio-menu">
+                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming">Scripting Projects</a>
+                        <a href="portfolio-web.html" data-i18n="nav_port_web">Server Development</a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu">
+                        <span data-i18n="nav_careers">Careers</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                    <div class="dropdown-menu" id="careers-menu">
+                        <a href="careers.html" data-i18n="nav_careers_join">Join Us</a>
+                    </div>
+                </div>
+                <a href="about.html" data-i18n="nav_about">About</a>
+                <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+                <a href="contact.html" data-i18n="nav_contact">Contact</a>
+                
+                <div style="display: flex; align-items: center; gap: 15px; margin-left: 15px;">
+                    <button id="lang-toggle" class="lang-btn">EN</button>
+                    <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;">Login</a>
+                </div>
+            </nav>
+            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="login-wrapper container">
+        <div class="login-card reveal"> <div class="login-header">
+                <a href="index.html">
+                    <img src="logo.png" alt="Zenqor Logo">
+                </a>
+                <h2>Welcome Back</h2>
+                <p>Please enter your details to sign in.</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="name@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                    <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                </div>
+
+                <div class="login-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember"> Remember me
+                    </label>
+                    <a href="#" class="forgot-pass">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100" style="padding: 12px; font-size: 1rem; border: none; cursor: pointer;">Sign In</button>
+            </form>
+
+            <div class="register-link">
+                Don't have an account? <a href="#">Sign up</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content" style="margin-bottom: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+            <div class="footer-brand" style="display: flex; flex-direction: column; align-items: center;">
+                <a href="index.html" class="logo-footer logo-text" style="justify-content: center; margin-bottom: 15px;">
+                    <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img">
+                    <span class="text-primary">Zenqor</span> Technologies
+                </a>
+                <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                    <p style="margin-bottom: 4px;">No. Pendaftaran: 202603157897 | (JM1045730-D)</p>
+                    <p>Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
+                </div>
+            </div>
+            <div class="footer-links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
+                <a href="return-policy.html">Return & Refund Policy</a>
+                <a href="legal.html">Legal</a>
+                <a href="data-policy.html">Data Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom" style="padding-top: 20px; margin-top: 25px; border-top: 1px solid var(--border-color); text-align: center;">
+            <p data-i18n="footer_copy">© 2026 Zenqor Technologies (Malaysia). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
+
+            if(togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    this.classList.toggle('fa-eye');
+                    this.classList.toggle('fa-eye-slash');
+                });
+            }
+        });
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
+            authDomain: "zenqor-web.firebaseapp.com",
+            projectId: "zenqor-web",
+            storageBucket: "zenqor-web.firebasestorage.app",
+            messagingSenderId: "785478368719",
+            appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba",
+            measurementId: "G-6MP7F1QBVG"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginForm = document.getElementById('loginForm');
+        if(loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const btn = this.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+                btn.disabled = true;
+
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        alert("Log Masuk Berjaya! Mengalihkan halaman...");
+                        window.location.href = "index.html"; 
+                    })
+                    .catch((error) => {
+                        let errorMessage = "Ralat Tidak Diketahui. Sila cuba lagi.";
+                        if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
+                            errorMessage = "Sila semak semula e-mel dan kata laluan anda.";
+                        } else if (error.code === 'auth/too-many-requests') {
+                            errorMessage = "Akaun dikunci sementara akibat terlalu banyak percubaan. Sila cuba sebentar lagi.";
+                        }
+                        
+                        alert(errorMessage);
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
