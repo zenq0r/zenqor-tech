@@ -58,7 +58,7 @@ const translations = {
         btn_apply: "Apply via Discord/Email",
         con_title: "Initialize <span class='text-primary'>Connection</span>",
         con_sub: "Partner with us to engineer your server's next big feature.",
-        hq_title: "Headquarters", hq_addr: "Bandar Mahkota Cheras<br>SELANGOR, Malaysia",
+        hq_title: "Headquarters", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
         ph_name: "Discord Tag / Name", ph_email: "Email Address", 
         opt_def: "Select Request Type", opt_1: "Custom Lua Script", opt_2: "Standalone Resource", opt_3: "NUI / UI Interface", opt_4: "Server Optimization / Bug Fix",
         ph_msg: "Script Specifications / Details", btn_submit: "Send Request",
@@ -75,7 +75,7 @@ const translations = {
             <p><strong>Last updated June 17, 2026</strong></p>
             
             <h4>1. AGREEMENT TO OUR LEGAL TERMS</h4>
-            <p>We are ZENQOR TECHNOLOGIES ("Company," "we," "us," "our"), a company registered in Malaysia at BANDAR MAHKOTA CHERAS, CHERAS, SELANGOR 43200.</p>
+            <p>We are ZENQOR TECHNOLOGIES ("Company," "we," "us," "our"), a company registered in Malaysia at Bandar Mahkota Cheras, 43200 Cheras, Selangor Malaysia</p>
             <p>We operate the website <a href="https://zenqor-tech.kauaku.store/">https://zenqor-tech.kauaku.store/</a> (the "Site"), as well as any other related products and services that refer or link to these legal terms (the "Services").</p>
             <p>These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), and ZENQOR TECHNOLOGIES, concerning your access to and use of the Services.</p>
 
@@ -101,8 +101,8 @@ const translations = {
             <p>In order to resolve a complaint regarding the Services or to receive further information, please contact us at:</p>
             <ul>
                 <li><strong>ZENQOR TECHNOLOGIES</strong></li>
-                <li>BANDAR MAHKOTA CHERAS</li>
-                <li>CHERAS, SELANGOR 43200, Malaysia</li>
+                <li>Bandar Mahkota Cheras</li>
+                <li>Cheras, Selangor 43200, Malaysia</li>
                 <li>Phone: +601165012569</li>
                 <li>Email: <a href="mailto:zenqortech@gmail.com">zenqortech@gmail.com</a></li>
             </ul>
@@ -114,7 +114,7 @@ const translations = {
             <h3>Definitions and key terms</h3>
             <p>To help explain things as clearly as possible in this Return & Refund Policy, every time any of these terms are referenced, are strictly defined as:</p>
             <ul>
-                <li><strong>Company:</strong> when this policy mentions "Company," "we," "us," or "our," it refers to Zenqor Technologies, Bandar Mahkota Cheras, 43200 SELANGOR, Malaysia that is responsible for your information under this Return & Refund Policy.</li>
+                <li><strong>Company:</strong> when this policy mentions "Company," "we," "us," or "our," it refers to Zenqor Technologies, Bandar Mahkota Cheras, 43200 Selangor, Malaysia that is responsible for your information under this Return & Refund Policy.</li>
                 <li><strong>Customer:</strong> refers to the company, organization or person that signs up to use the Zenqor Technologies Service to manage the relationships with your consumers or service users.</li>
                 <li><strong>Device:</strong> any internet connected device such as a phone, tablet, computer or any other device that can be used to visit Zenqor Technologies and use the services.</li>
                 <li><strong>Service:</strong> refers to the digital and physical services provided by Zenqor Technologies as described in the relative terms (if available) and on this platform.</li>
@@ -168,9 +168,9 @@ const translations = {
             <p>If, for any reason, You are not completely satisfied with any good or service that we provide, don't hesitate to contact us and we will discuss any of the issues you are going through with our product.</p>
             <ul>
                 <li>Via Email: info@zenqor.com</li>
-                <li>Via Phone Number: [Sila masukkan Nombor Telefon di sini]</li>
+                <li>Via Phone Number: +6011-6501 2569</li>
                 <li>Via this Link: <a href="contact.html">Contact Page</a></li>
-                <li>Via this Address: Bandar Mahkota Cheras, 43200 SELANGOR, Malaysia</li>
+                <li>Via this Address: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</li>
             </ul>
         `
     },
@@ -232,7 +232,7 @@ const translations = {
         btn_apply: "Mohon melalui Discord/E-mel",
         con_title: "Mulakan <span class='text-primary'>Hubungan</span>",
         con_sub: "Bekerjasama dengan kami untuk merealisasikan ciri hebat pelayan anda yang seterusnya.",
-        hq_title: "Ibu Pejabat", hq_addr: "Bandar Mahkota Cheras<br>SELANGOR, Malaysia",
+        hq_title: "Ibu Pejabat", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
         ph_name: "Tag Discord / Nama", ph_email: "Alamat E-mel", 
         opt_def: "Pilih Jenis Permintaan", opt_1: "Skrip Lua Tersuai", opt_2: "Sumber Standalone", opt_3: "Antara Muka NUI / UI", opt_4: "Pengoptimuman Pelayan / Pembaikan Ralat",
         ph_msg: "Spesifikasi / Butiran Skrip", btn_submit: "Hantar Permintaan",
@@ -249,7 +249,7 @@ const translations = {
             <p><strong>Kemas kini terakhir pada 17 Jun 2026</strong></p>
             
             <h4>1. PERSETUJUAN KEPADA TERMA PERUNDANGAN KAMI</h4>
-            <p>Kami adalah ZENQOR TECHNOLOGIES ("Syarikat," "kami," "kita"), sebuah syarikat yang berdaftar di Malaysia di BANDAR MAHKOTA CHERAS, CHERAS, SELANGOR 43200.</p>
+            <p>Kami adalah ZENQOR TECHNOLOGIES ("Syarikat," "kami," "kita"), sebuah syarikat yang berdaftar di Malaysia di Bandar Mahkota Cheras, 43200 Cheras, Selangor Malaysia</p>
             <p>Kami mengendalikan laman web <a href="https://zenqor-tech.kauaku.store/">https://zenqor-tech.kauaku.store/</a> ("Laman Web"), serta mana-mana produk dan perkhidmatan berkaitan yang merujuk kepada terma perundangan ini ("Perkhidmatan").</p>
             <p>Terma Perundangan ini merupakan perjanjian yang mengikat di sisi undang-undang yang dibuat antara anda ("anda"), dan ZENQOR TECHNOLOGIES, berkenaan dengan akses dan penggunaan anda terhadap Perkhidmatan.</p>
 
@@ -275,8 +275,8 @@ const translations = {
             <p>Untuk menyelesaikan sebarang aduan mengenai Perkhidmatan atau untuk menerima maklumat lanjut, sila hubungi kami di:</p>
             <ul>
                 <li><strong>ZENQOR TECHNOLOGIES</strong></li>
-                <li>BANDAR MAHKOTA CHERAS</li>
-                <li>CHERAS, SELANGOR 43200, Malaysia</li>
+                <li>Bandar Mahkota Cheras</li>
+                <li>Cheras, Selangor 43200, Malaysia</li>
                 <li>Telefon: +601165012569</li>
                 <li>E-mel: <a href="mailto:zenqortech@gmail.com">zenqortech@gmail.com</a></li>
             </ul>
@@ -288,7 +288,7 @@ const translations = {
             <h3>Definisi dan terma utama</h3>
             <p>Untuk membantu menerangkan perkara sejelas mungkin dalam Polisi Pemulangan & Bayaran Balik ini, setiap kali mana-mana terma ini dirujuk, ia ditakrifkan dengan tegas sebagai:</p>
             <ul>
-                <li><strong>Syarikat:</strong> apabila polisi ini menyebut "Syarikat," "kami," atau "kita," ia merujuk kepada Zenqor Technologies, Bandar Mahkota Cheras, 43200 SELANGOR, Malaysia yang bertanggungjawab ke atas maklumat anda di bawah Polisi Pemulangan & Bayaran Balik ini.</li>
+                <li><strong>Syarikat:</strong> apabila polisi ini menyebut "Syarikat," "kami," atau "kita," ia merujuk kepada Zenqor Technologies, Bandar Mahkota Cheras, 43200 Selangor, Malaysia yang bertanggungjawab ke atas maklumat anda di bawah Polisi Pemulangan & Bayaran Balik ini.</li>
                 <li><strong>Pelanggan:</strong> merujuk kepada syarikat, organisasi atau individu yang mendaftar untuk menggunakan Perkhidmatan Zenqor Technologies.</li>
                 <li><strong>Peranti:</strong> sebarang peranti yang bersambung ke internet seperti telefon, tablet, komputer atau peranti lain yang boleh digunakan untuk melawati Zenqor Technologies.</li>
                 <li><strong>Perkhidmatan:</strong> merujuk kepada perkhidmatan digital dan fizikal yang disediakan oleh Zenqor Technologies seperti yang diterangkan dalam terma berkaitan di platform ini.</li>
@@ -342,9 +342,9 @@ const translations = {
             <p>Jika, atas sebarang sebab, anda tidak berpuas hati dengan mana-mana barangan atau perkhidmatan yang kami sediakan, jangan teragak-agak untuk menghubungi kami.</p>
             <ul>
                 <li>Melalui E-mel: info@zenqor.com</li>
-                <li>Melalui Nombor Telefon: [Sila masukkan Nombor Telefon di sini]</li>
+                <li>Melalui Nombor Telefon: +6011-6501 2569</li>
                 <li>Melalui Pautan ini: <a href="contact.html">Halaman Hubungan</a></li>
-                <li>Melalui Alamat ini: Bandar Mahkota Cheras, 43200 SELANGOR, Malaysia</li>
+                <li>Melalui Alamat ini: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</li>
             </ul>
         `
     }
