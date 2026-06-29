@@ -55,9 +55,7 @@
                 <p data-i18n="con_sub"></p>
             </div>
             
-            <!-- Grid Utama Borang -->
             <div class="contact-grid">
-                <!-- Bahagian Maklumat Hubungan Kiri -->
                 <div class="contact-info card-style reveal">
                     <h3 data-i18n="hq_title"></h3>
                     <div class="info-row">
@@ -76,10 +74,8 @@
                         <p><a href="https://wa.me/601165012569" target="_blank" style="color: inherit; text-decoration: none; font-weight: 500;">+60 11 6501 2569</a></p>
                     </div>
 
-                    <!-- Garisan Pemisah -->
                     <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 30px 0 20px;">
 
-                    <!-- Waktu Operasi (Menutup ruang kosong) -->
                     <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Business Hours</h4>
                     <div class="info-row" style="margin-bottom: 10px;">
                         <i class="fas fa-clock text-accent"></i>
@@ -89,24 +85,24 @@
                         </div>
                     </div>
 
-                    <!-- Pautan Komuniti / Media Sosial Terus -->
                     <div style="margin-top: 30px; display: flex; gap: 20px;">
-                        <a href="#" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#5865F2'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-discord"></i></a>
-                        <a href="#" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-github"></i></a>
-                        <a href="#" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#0A66C2'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-linkedin"></i></a>
+                        <a href="MASUKKAN_PAUTAN_DISCORD_DI_SINI" target="_blank" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#5865F2'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-discord"></i></a>
+                        <a href="https://github.com/zenq0r" target="_blank" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-github"></i></a>
+                        <a href="MASUKKAN_PAUTAN_LINKEDIN_DI_SINI" target="_blank" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#0A66C2'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 
-                <!-- Bahagian Borang Kanan -->
-                <form class="contact-form card-style reveal" id="mainContactForm">
+                <form action="https://formsubmit.co/zenqortech@gmail.com" method="POST" class="contact-form card-style reveal" id="mainContactForm">
+                    <input type="hidden" name="_captcha" value="false">
+                    
                     <div class="input-group">
-                        <input type="text" id="form_name" data-i18n-placeholder="ph_name" required>
+                        <input type="text" id="form_name" name="name" data-i18n-placeholder="ph_name" required>
                     </div>
                     <div class="input-group">
-                        <input type="email" id="form_email" data-i18n-placeholder="ph_email" required>
+                        <input type="email" id="form_email" name="email" data-i18n-placeholder="ph_email" required>
                     </div>
                     <div class="input-group">
-                        <select required id="form_select">
+                        <select required id="form_select" name="subject">
                             <option value="" disabled selected data-i18n="opt_def"></option>
                             <option data-i18n="opt_1"></option>
                             <option data-i18n="opt_2"></option>
@@ -115,13 +111,12 @@
                         </select>
                     </div>
                     <div class="input-group">
-                        <textarea rows="4" id="form_msg" data-i18n-placeholder="ph_msg" required></textarea>
+                        <textarea rows="4" id="form_msg" name="message" data-i18n-placeholder="ph_msg" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary w-100" data-i18n="btn_submit"></button>
                 </form>
             </div>
 
-            <!-- Penambahan Peta Google Interaktif -->
             <div class="reveal" style="margin-top: 40px; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.153330364239!2d101.78453471018598!3d3.0535311969062327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc34c83b8b9b5f%3A0x8e83348c4146e5!2sBandar%20Mahkota%20Cheras%2C%20Selangor!5e0!3m2!1sen!2smy!4v1716800000000!5m2!1sen!2smy" width="100%" height="350" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -153,33 +148,5 @@
     </footer>
 
     <script src="script.js"></script>
-    
-    <!-- Penambahan Skrip Inline untuk Logik Borang -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('mainContactForm');
-            if(form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault(); 
-                    
-                    const btn = form.querySelector('button[type="submit"]');
-                    const originalText = btn.innerHTML;
-                    
-                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-                    btn.disabled = true;
-                    btn.style.opacity = '0.7';
-
-                    setTimeout(() => {
-                        alert("Mesej anda telah berjaya dihantar kepada pasukan Zenqor Technologies!");
-                        form.reset(); 
-                        
-                        btn.innerHTML = originalText;
-                        btn.disabled = false;
-                        btn.style.opacity = '1';
-                    }, 1500);
-                });
-            }
-        });
-    </script>
-</body>
+    </body>
 </html>
