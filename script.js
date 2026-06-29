@@ -1,7 +1,7 @@
 // --- 1. KAMUS TERJEMAHAN ---
 const translations = {
     en: {
-        nav_return: "Return Policy",
+        nav_return: "Return & Refund Policy",
         nav_legal: "Legal Notices",
         nav_data: "Data Policy",
         rp_title: "Refunds and Returns",
