@@ -1,3 +1,37 @@
+// ==========================================
+// ZENQOR MASTER GATEWAY INTERCEPTOR
+// ==========================================
+// PENTING: Gantikan URL di bawah dengan URL Vercel rasmi zenqor-api anda!
+const ZENQOR_MASTER_URL = "https://zenqor-api.kauaku.store/api/public-status";
+
+async function checkMasterProtocol() {
+  try {
+    const response = await fetch(ZENQOR_MASTER_URL);
+    const data = await response.json();
+    
+    if (data.is_offline) {
+      document.documentElement.innerHTML = `
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+          <title>SYSTEM LOCKDOWN</title>
+        </head>
+        <body style="background-color: #050505; color: #ff0000; font-family: 'Courier New', Courier, monospace; height: 100vh; width: 100vw; margin: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+          <div style="border: 1px solid #333333; background: #0d0d0d; padding: clamp(20px, 5vw, 40px); text-align: center; max-width: 90%; box-sizing: border-box;">
+            <h1 style="font-size: clamp(18px, 4vw, 24px); letter-spacing: 2px; margin-bottom: 15px; margin-top: 0;">CONNECTION SEVERED</h1>
+            <p style="color: #737373; font-size: clamp(10px, 2vw, 12px); letter-spacing: 1px; text-transform: uppercase; margin: 0;">Inbound traffic isolated by Zenqor Command.<br>Routine maintenance in progress.</p>
+          </div>
+        </body>
+      `;
+    }
+  } catch (error) {
+    console.warn("Gateway Ping Failed. Allowing local access.");
+  }
+}
+
+// Jalankan semakan protokol serta-merta apabila fail ini dipanggil
+checkMasterProtocol();
+// ==========================================
+
 // --- 1. KAMUS TERJEMAHAN ---
 const translations = {
     en: {
@@ -80,7 +114,7 @@ const translations = {
             <p>These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), and ZENQOR TECHNOLOGIES, concerning your access to and use of the Services.</p>
 
             <h4>2. INTELLECTUAL PROPERTY RIGHTS</h4>
-            <p>We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, the "Content"), as well as the trademarks, service marks, and logos contained therein.</p>
+            <p>We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, "Content"), as well as the trademarks, service marks, and logos contained therein.</p>
 
             <h4>3. PURCHASES AND PAYMENT</h4>
             <p>We accept the following forms of payment: Visa, American Express, Mastercard, Discover, and PayPal. You agree to provide current, complete, and accurate purchase and account information for all purchases. All payments shall be in MYR.</p>
