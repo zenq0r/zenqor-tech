@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Zenqor Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-wrapper { padding-top: 120px; padding-bottom: 60px; min-height: 80vh; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .admin-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+        @media (max-width: 900px) { .admin-grid { grid-template-columns: 1fr; } }
+        
+        .admin-form, .data-list { padding: 30px; }
+        .data-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; }
+        .data-item-info h4 { color: var(--primary-blue); margin-bottom: 5px; }
+        .data-item-info p { font-size: 0.85rem; color: var(--text-secondary); }
+        .btn-danger { background-color: rgba(239, 68, 68, 0.2); border: 1px solid #EF4444; color: #EF4444; padding: 8px 15px; font-size: 0.85rem; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        .btn-danger:hover { background-color: #EF4444; color: #fff; }
+    </style>
+</head>
+<body class="bg-alt">
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo-nav logo-text">
+                <i class="fas fa-shield-alt text-primary" style="margin-right: 10px;"></i>
+                <span class="text-primary">Admin</span> Panel
+            </div>
+            <div style="display: flex; gap: 15px;">
+                <a href="index.html" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.85rem;">View Site</a>
+                <button id="btnLogout" class="btn btn-danger">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="admin-wrapper container">
+        <div class="admin-header">
+            <h2>Manage <span class="text-primary">Web Portfolio</span></h2>
+        </div>
+
+        <div class="admin-grid">
+            <div class="card-style admin-form">
+                <h3 style="margin-bottom: 20px;">Add New Portfolio</h3>
+                <form id="addPortfolioForm">
+                    <div class="input-group">
+                        <label>Title</label>
+                        <input type="text" id="pTitle" required placeholder="e.g. Enterprise System">
+                    </div>
+                    <div class="input-group">
+                        <label>Tag / Technology</label>
+                        <input type="text" id="pTag" required placeholder="e.g. React & Node.js">
+                    </div>
+                    <div class="input-group">
+                        <label>Image URL</label>
+                        <input type="url" id="pImg" required placeholder="https://...">
+                    </div>
+                    <div class="input-group">
+                        <label>Description</label>
+                        <textarea id="pDesc" rows="3" required placeholder="Short description..."></textarea>
+                    </div>
+                    
+                    <div id="formMessage" class="form-message"></div>
+                    
+                    <button type="submit" class="btn btn-primary w-100">Add to Website</button>
+                </form>
+            </div>
+
+            <div class="card-style data-list">
+                <h3 style="margin-bottom: 20px;">Live Data</h3>
+                <div id="portfolioList">
+                    <p style="color: var(--text-secondary); text-align: center;">Loading data...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
+            authDomain: "zenqor-web.firebaseapp.com",
+            projectId: "zenqor-web",
+            storageBucket: "zenqor-web.firebasestorage.app",
+            messagingSenderId: "785478368719",
+            appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        const ADMIN_EMAIL = "zenqortech@gmail.com"; 
+
+        onAuthStateChanged(auth, (user) => {
+            if (!user || user.email !== ADMIN_EMAIL) {
+                alert("Access Denied. You are not an administrator.");
+                window.location.href = "login.html";
+            } else {
+                fetchPortfolioData(); 
+            }
+        });
+
+        document.getElementById('btnLogout').addEventListener('click', () => {
+            signOut(auth).then(() => {
+                window.location.href = "login.html";
+            });
+        });
+
+        const portfolioList = document.getElementById('portfolioList');
+        const addForm = document.getElementById('addPortfolioForm');
+        const formMsg = document.getElementById('formMessage');
+
+        async function fetchPortfolioData() {
+            portfolioList.innerHTML = "";
+            const querySnapshot = await getDocs(collection(db, "portfolio_web"));
+            
+            if(querySnapshot.empty) {
+                portfolioList.innerHTML = "<p>No portfolio items found.</p>";
+                return;
+            }
+
+            querySnapshot.forEach((docSnap) => {
+                const data = docSnap.data();
+                const id = docSnap.id;
+                
+                const itemHtml = `
+                    <div class="data-item">
+                        <div class="data-item-info">
+                            <h4>${data.title}</h4>
+                            <p>[${data.tag}] - ${data.desc.substring(0, 50)}...</p>
+                        </div>
+                        <button class="btn-danger delete-btn" data-id="${id}"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                portfolioList.innerHTML += itemHtml;
+            });
+
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', async function() {
+                    const docId = this.getAttribute('data-id');
+                    if(confirm("Are you sure you want to delete this record?")) {
+                        await deleteDoc(doc(db, "portfolio_web", docId));
+                        fetchPortfolioData(); 
+                    }
+                });
+            });
+        }
+
+        addForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = addForm.querySelector('button');
+            btn.innerHTML = "Saving...";
+            btn.disabled = true;
+
+            try {
+                await addDoc(collection(db, "portfolio_web"), {
+                    title: document.getElementById('pTitle').value,
+                    tag: document.getElementById('pTag').value,
+                    imgUrl: document.getElementById('pImg').value,
+                    desc: document.getElementById('pDesc').value,
+                    createdAt: new Date()
+                });
+                
+                formMsg.textContent = "Data successfully added!";
+                formMsg.className = "form-message msg-success";
+                addForm.reset();
+                fetchPortfolioData(); 
+            } catch (error) {
+                formMsg.textContent = "Error: " + error.message;
+                formMsg.className = "form-message msg-error";
+            } finally {
+                btn.innerHTML = "Add to Website";
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -49,6 +49,7 @@
             <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
         </div>
     </header>
+    
     <section class="hero-inner reveal">
         <div class="container hero-content reveal">
             <div class="badge" data-i18n="nav_port_web"></div>
@@ -59,31 +60,10 @@
 
     <section class="portfolio section-padding">
         <div class="container">
-            <div class="portfolio-grid">
-                <div class="portfolio-item card-style reveal hover-up">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag">React & Node.js</span>
-                        <h3 data-i18n="pw_1_t"></h3>
-                        <p data-i18n="pw_1_d"></p>
-                    </div>
-                </div>
-                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.1s;">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag">Enterprise System</span>
-                        <h3 data-i18n="pw_2_t"></h3>
-                        <p data-i18n="pw_2_d"></p>
-                    </div>
-                </div>
-                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.2s;">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag">AI Integration</span>
-                        <h3 data-i18n="pw_3_t"></h3>
-                        <p data-i18n="pw_3_d"></p>
-                    </div>
-                </div>
+            <div class="portfolio-grid" id="dynamicPortfolioGrid">
+                <p style="text-align: center; width: 100%; grid-column: 1 / -1; color: var(--text-secondary);">
+                    <i class="fas fa-spinner fa-spin"></i> Loading live portfolio data...
+                </p>
             </div>
         </div>
     </section>
@@ -111,10 +91,62 @@
         </div>
     </footer>
 
-    <script type="module">
-        import { injectSpeedInsights } from 'https://cdn.jsdelivr.net/npm/@vercel/speed-insights@2/dist/index.js';
-        injectSpeedInsights();
-    </script>
     <script src="script.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
+            authDomain: "zenqor-web.firebaseapp.com",
+            projectId: "zenqor-web",
+            storageBucket: "zenqor-web.firebasestorage.app",
+            messagingSenderId: "785478368719",
+            appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function loadPortfolio() {
+            const grid = document.getElementById('dynamicPortfolioGrid');
+            try {
+                const querySnapshot = await getDocs(collection(db, "portfolio_web"));
+                
+                if (querySnapshot.empty) {
+                    grid.innerHTML = "<p style='text-align: center; width: 100%; grid-column: 1 / -1; color: var(--text-secondary);'>No portfolio items found yet.</p>";
+                    return;
+                }
+                
+                grid.innerHTML = ""; 
+                let delay = 0;
+                
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    
+                    // HTML untuk Kad yang dijana secara automatik
+                    const itemHtml = `
+                        <div class="portfolio-item card-style reveal active hover-up" style="transition-delay: ${delay}s;">
+                            <div class="port-img" style="background-image: url('${data.imgUrl}');"></div>
+                            <div class="port-content">
+                                <span class="tag">${data.tag}</span>
+                                <h3>${data.title}</h3>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem;">${data.desc}</p>
+                            </div>
+                        </div>
+                    `;
+                    grid.innerHTML += itemHtml;
+                    delay += 0.1;
+                });
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+                grid.innerHTML = "<p style='text-align: center; width: 100%; grid-column: 1 / -1; color: #EF4444;'>Error loading portfolio data.</p>";
+            }
+        }
+
+        // Muatkan data sebaik sahaja halaman web sedia
+        document.addEventListener("DOMContentLoaded", loadPortfolio);
+    </script>
 </body>
 </html>
