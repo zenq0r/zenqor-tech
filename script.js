@@ -1,7 +1,6 @@
 // ==========================================
 // ZENQOR MASTER GATEWAY INTERCEPTOR
 // ==========================================
-// PENTING: Gantikan URL di bawah dengan URL Vercel rasmi zenqor-api anda!
 const ZENQOR_MASTER_URL = "https://zenqor-api.kauaku.store/api/public-status";
 
 async function checkMasterProtocol() {
@@ -28,16 +27,13 @@ async function checkMasterProtocol() {
   }
 }
 
-// Jalankan semakan protokol serta-merta apabila fail ini dipanggil
 checkMasterProtocol();
 // ==========================================
 
-// --- 1. KAMUS TERJEMAHAN ---
+// --- 1. KAMUS TERJEMAHAN STATIK (Lalai) ---
 const translations = {
     en: {
-        nav_return: "Return & Refund Policy",
-        nav_legal: "Legal Notices",
-        nav_data: "Data Policy",
+        nav_return: "Return & Refund Policy", nav_legal: "Legal Notices", nav_data: "Data Policy",
         rp_title: "Refunds and Returns",
         rp_desc1: "At Zenqor Technologies, all digital product sales (scripts, server setups) are final. Refunds are only issued if the product is proven to be fundamentally broken and our support team cannot resolve the issue within 14 days.",
         rp_desc2: "Please open a ticket in our Discord or email us at info@zenqor.com.my for any inquiries regarding your purchase.",
@@ -103,115 +99,11 @@ const translations = {
         faq_1_q: "How do I purchase a FiveM Script?", faq_1_a: "You can visit our official Tebex store by clicking the 'Store' button on our navigation menu. We support multiple secure payment gateways.",
         faq_2_q: "Do you offer custom server development?", faq_2_a: "Yes, we specialize in complete server setups and tailor-made framework development (QBCore & ESX). Please reach out via the Contact page.",
         faq_3_q: "Is technical support included?", faq_3_a: "Absolutely. All our premium resources come with priority technical support through our official Discord server.",
-        
-        tos_content: `
-            <h3>TERMS AND CONDITIONS</h3>
-            <p><strong>Last updated June 17, 2026</strong></p>
-            
-            <h4>1. AGREEMENT TO OUR LEGAL TERMS</h4>
-            <p>We are ZENQOR TECHNOLOGIES ("Company," "we," "us," "our"), a company registered in Malaysia at Bandar Mahkota Cheras, 43200 Cheras, Selangor Malaysia</p>
-            <p>We operate the website <a href="https://zenqor-tech.kauaku.store/">https://zenqor-tech.kauaku.store/</a> (the "Site"), as well as any other related products and services that refer or link to these legal terms (the "Services").</p>
-            <p>These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), and ZENQOR TECHNOLOGIES, concerning your access to and use of the Services.</p>
-
-            <h4>2. INTELLECTUAL PROPERTY RIGHTS</h4>
-            <p>We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, "Content"), as well as the trademarks, service marks, and logos contained therein.</p>
-
-            <h4>3. PURCHASES AND PAYMENT</h4>
-            <p>We accept the following forms of payment: Visa, American Express, Mastercard, Discover, and PayPal. You agree to provide current, complete, and accurate purchase and account information for all purchases. All payments shall be in MYR.</p>
-
-            <h4>4. SUBSCRIPTIONS & FREE TRIAL</h4>
-            <p>Your subscription will continue and automatically renew unless canceled. We offer a 3-day free trial to new users who register with the Services. The account will be charged according to the user's chosen subscription at the end of the free trial.</p>
-
-            <h4>5. REFUNDS POLICY</h4>
-            <p>All sales are final and no refund will be issued.</p>
-
-            <h4>6. PROHIBITED ACTIVITIES</h4>
-            <p>You may not access or use the Services for any purpose other than that for which we make the Services available. Prohibited activities include, but are not limited to, system abuse, fraudulent activities, security circumvention, and unauthorized data extraction.</p>
-
-            <h4>7. GOVERNING LAW</h4>
-            <p>These Legal Terms shall be governed by and defined following the laws of Malaysia. ZENQOR TECHNOLOGIES and yourself irrevocably consent that the courts of Malaysia shall have exclusive jurisdiction to resolve any dispute which may arise.</p>
-
-            <h4>8. CONTACT US</h4>
-            <p>In order to resolve a complaint regarding the Services or to receive further information, please contact us at:</p>
-            <ul>
-                <li><strong>ZENQOR TECHNOLOGIES</strong></li>
-                <li>Bandar Mahkota Cheras</li>
-                <li>Cheras, Selangor 43200, Malaysia</li>
-                <li>Phone: +601165012569</li>
-                <li>Email: <a href="mailto:zenqortech@gmail.com">zenqortech@gmail.com</a></li>
-            </ul>
-        `,
-
-        rp_content: `
-            <p><strong>Updated at:</strong> 17 June 2026</p>
-
-            <h3>Definitions and key terms</h3>
-            <p>To help explain things as clearly as possible in this Return & Refund Policy, every time any of these terms are referenced, are strictly defined as:</p>
-            <ul>
-                <li><strong>Company:</strong> when this policy mentions "Company," "we," "us," or "our," it refers to Zenqor Technologies, Bandar Mahkota Cheras, 43200 Selangor, Malaysia that is responsible for your information under this Return & Refund Policy.</li>
-                <li><strong>Customer:</strong> refers to the company, organization or person that signs up to use the Zenqor Technologies Service to manage the relationships with your consumers or service users.</li>
-                <li><strong>Device:</strong> any internet connected device such as a phone, tablet, computer or any other device that can be used to visit Zenqor Technologies and use the services.</li>
-                <li><strong>Service:</strong> refers to the digital and physical services provided by Zenqor Technologies as described in the relative terms (if available) and on this platform.</li>
-                <li><strong>Website:</strong> Zenqor Technologies's site, which can be accessed via this URL.</li>
-                <li><strong>You:</strong> a person or entity that is registered with Zenqor Technologies to use the Services.</li>
-            </ul>
-
-            <h3>Return & Refund Policy</h3>
-            <p>Thanks for shopping at Zenqor Technologies. We appreciate the fact that you like to buy the stuff we build. We also want to make sure you have a rewarding experience while you're exploring, evaluating, and purchasing our products.</p>
-            <p>As with any shopping experience, there are terms and conditions that apply to transactions at Zenqor Technologies. We'll be as brief as our attorneys will allow. The main thing to remember is that by placing an order or making a purchase at Zenqor Technologies, you agree to the terms set forth below along with Zenqor Technologies's Privacy Policy.</p>
-            <p>If there's something wrong with the item you bought, or if you are not happy with it, you will not be able to issue a refund for your item.</p>
-
-            <h3>Refunds</h3>
-            <p>We at Zenqor Technologies commit ourselves to serving our customers with the best products. Every single product that you choose is thoroughly inspected, checked for defects and packaged with utmost care. We do this to ensure that you fall in love with our products.</p>
-            <p>Sadly, there are times when we may not have the product(s) that you choose in stock, or may face some issues with our inventory and quality check. In such cases, we may have to cancel your order. You will be intimated about it in advance so that you don't have to worry unnecessarily about your order. If you have purchased via Online payment (not Cash on Delivery), then you will be refunded once our team confirms your request. Users will be notified by email once a refund is completed.</p>
-            <p>We carry out thorough quality check before processing the ordered item. We take utmost care while packing the product. At the same time we ensure that the packing is good such that the items won't get damaged during transit. Please note that Zenqor Technologies is not liable for damages that are caused to the items during transit or transportation.</p>
-            
-            <p>We follow certain policies to ensure transparency, efficiency and quality customer care:</p>
-            <ul>
-                <li>We DO NOT allow returns on sold products - online or in retail outlets.</li>
-                <li>We DO NOT accept returned goods, as we believe that customers should get the best quality products.</li>
-                <li>Refunds are NOT given for any purchases made - be they online or in retail store.</li>
-                <li>Products with discounts cannot be refunded.</li>
-                <li>We DO NOT encourage exchanges of our products.</li>
-                <li>We DO NOT engage in reselling used products and discourage the same, because we cannot ensure the best quality products for our customers.</li>
-            </ul>
-
-            <p><strong>Additional Return Conditions (if applicable by exceptions):</strong></p>
-            <ul>
-                <li>The customer has to pay for the shipping in return.</li>
-                <li>The product must have the receipt on the packaging. No refunds can be made without the receipt.</li>
-                <li>Every product must come back in its original packaging. Products in new packaging will not be refunded.</li>
-                <li>Damaged products cannot be refunded.</li>
-            </ul>
-
-            <p>For International Orders:</p>
-            <ul>
-                <li>We DO NOT support Exchanges or Returns.</li>
-                <li>If you cancel the order before we process it and dispatch for shipping, a refund can be processed. Orders generally take 1-2 days to process before dispatch.</li>
-                <li>Orders already in shipping cannot be returned, canceled or refunded.</li>
-                <li>If you face any issues, please contact our Support Team immediately.</li>
-            </ul>
-
-            <h3>Your Consent</h3>
-            <p>By using our website, registering an account, or making a purchase, you hereby consent to our Return & Refund Policy and agree to its terms.</p>
-
-            <h3>Changes To Our Return & Refund Policy</h3>
-            <p>Should we update, amend or make any changes to this document so that they accurately reflect our Service and policies. Unless otherwise required by law, those changes will be prominently posted here. Then, if you continue to use the Service, you will be bound by the updated Return & Refund Policy. If you do not want to agree to this or any updated Return & Refund Policy, you can delete your account.</p>
-
-            <h3>Contact Us</h3>
-            <p>If, for any reason, You are not completely satisfied with any good or service that we provide, don't hesitate to contact us and we will discuss any of the issues you are going through with our product.</p>
-            <ul>
-                <li>Via Email: info@zenqor.com</li>
-                <li>Via Phone Number: +6011-6501 2569</li>
-                <li>Via this Link: <a href="contact.html">Contact Page</a></li>
-                <li>Via this Address: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</li>
-            </ul>
-        `
+        tos_content: `<h3>TERMS AND CONDITIONS</h3>`,
+        rp_content: `<h3>Return & Refund Policy</h3>`
     },
     ms: {
-        nav_return: "Dasar Pemulangan",
-        nav_legal: "Notis Perundangan",
-        nav_data: "Dasar Data",
+        nav_return: "Dasar Pemulangan", nav_legal: "Notis Perundangan", nav_data: "Dasar Data",
         rp_title: "Pemulangan dan Bayaran Balik",
         rp_desc1: "Di Zenqor Technologies, semua jualan produk digital (skrip, tetapan pelayan) adalah muktamad. Bayaran balik hanya dikeluarkan jika produk dibuktikan rosak sepenuhnya dan pasukan sokongan kami tidak dapat menyelesaikan isu tersebut dalam masa 14 hari.",
         rp_desc2: "Sila buka tiket di Discord kami atau e-mel kepada info@zenqor.com.my untuk sebarang pertanyaan mengenai pembelian anda.",
@@ -277,122 +169,17 @@ const translations = {
         faq_1_q: "Bagaimana cara untuk saya membeli Skrip FiveM?", faq_1_a: "Anda boleh melawat kedai rasmi Tebex kami dengan mengklik butang 'Kedai' pada menu navigasi. Kami menyokong pelbagai gerbang pembayaran yang selamat.",
         faq_2_q: "Adakah anda menyediakan perkhidmatan pembangunan pelayan (server) tersuai?", faq_2_a: "Ya, kami pakar dalam persediaan pelayan lengkap dan pembangunan framework tersuai (QBCore & ESX). Sila hubungi kami melalui halaman Hubungi.",
         faq_3_q: "Adakah bantuan teknikal disediakan?", faq_3_a: "Sudah tentu. Semua sumber premium kami didatangkan dengan bantuan teknikal keutamaan melalui pelayan Discord rasmi kami.",
-        
-        tos_content: `
-            <h3>TERMA DAN SYARAT</h3>
-            <p><strong>Kemas kini terakhir pada 17 Jun 2026</strong></p>
-            
-            <h4>1. PERSETUJUAN KEPADA TERMA PERUNDANGAN KAMI</h4>
-            <p>Kami adalah ZENQOR TECHNOLOGIES ("Syarikat," "kami," "kita"), sebuah syarikat yang berdaftar di Malaysia di Bandar Mahkota Cheras, 43200 Cheras, Selangor Malaysia</p>
-            <p>Kami mengendalikan laman web <a href="https://zenqor-tech.kauaku.store/">https://zenqor-tech.kauaku.store/</a> ("Laman Web"), serta mana-mana produk dan perkhidmatan berkaitan yang merujuk kepada terma perundangan ini ("Perkhidmatan").</p>
-            <p>Terma Perundangan ini merupakan perjanjian yang mengikat di sisi undang-undang yang dibuat antara anda ("anda"), dan ZENQOR TECHNOLOGIES, berkenaan dengan akses dan penggunaan anda terhadap Perkhidmatan.</p>
-
-            <h4>2. HAK HARTA INTELEK</h4>
-            <p>Kami adalah pemilik atau pemegang lesen bagi semua hak harta intelek dalam Perkhidmatan kami, termasuk semua kod sumber, pangkalan data, perisian, reka bentuk tapak web, teks dan grafik (secara kolektif, "Kandungan"), serta tanda dagangan dan logo yang terkandung di dalamnya.</p>
-
-            <h4>3. PEMBELIAN DAN PEMBAYARAN</h4>
-            <p>Kami menerima bentuk pembayaran berikut: Visa, American Express, Mastercard, Discover, dan PayPal. Anda bersetuju untuk memberikan maklumat pembelian dan akaun yang terkini, lengkap dan tepat. Semua pembayaran hendaklah dibuat dalam mata wang MYR.</p>
-
-            <h4>4. LANGGANAN & PERCUBAAN PERCUMA</h4>
-            <p>Langganan anda akan diteruskan dan diperbaharui secara automatik melainkan dibatalkan. Kami menawarkan percubaan percuma selama 3 hari kepada pengguna baharu. Akaun akan dicaj mengikut pelan langganan pada penghujung tempoh percubaan percuma tersebut.</p>
-
-            <h4>5. POLISI PEMULANGAN</h4>
-            <p>Semua jualan adalah muktamad dan tiada bayaran balik akan dikeluarkan.</p>
-
-            <h4>6. AKTIVITI YANG DILARANG</h4>
-            <p>Anda tidak dibenarkan mengakses atau menggunakan Perkhidmatan untuk sebarang tujuan selain daripada apa yang kami sediakan. Aktiviti yang dilarang termasuk, tetapi tidak terhad kepada, penyalahgunaan sistem, aktiviti penipuan, pemintasan keselamatan, dan pengekstrakan data tanpa kebenaran.</p>
-
-            <h4>7. UNDANG-UNDANG YANG MENGAWAL</h4>
-            <p>Terma Perundangan ini akan dikawal selia dan ditakrifkan berlandaskan undang-undang Malaysia. Anda dan ZENQOR TECHNOLOGIES bersetuju bahawa mahkamah Malaysia mempunyai bidang kuasa eksklusif untuk menyelesaikan sebarang pertikaian yang mungkin timbul.</p>
-
-            <h4>8. HUBUNGI KAMI</h4>
-            <p>Untuk menyelesaikan sebarang aduan mengenai Perkhidmatan atau untuk menerima maklumat lanjut, sila hubungi kami di:</p>
-            <ul>
-                <li><strong>ZENQOR TECHNOLOGIES</strong></li>
-                <li>Bandar Mahkota Cheras</li>
-                <li>Cheras, Selangor 43200, Malaysia</li>
-                <li>Telefon: +601165012569</li>
-                <li>E-mel: <a href="mailto:zenqortech@gmail.com">zenqortech@gmail.com</a></li>
-            </ul>
-        `,
-
-        rp_content: `
-            <p><strong>Dikemas kini pada:</strong> 17 Jun 2026</p>
-
-            <h3>Definisi dan terma utama</h3>
-            <p>Untuk membantu menerangkan perkara sejelas mungkin dalam Polisi Pemulangan & Bayaran Balik ini, setiap kali mana-mana terma ini dirujuk, ia ditakrifkan dengan tegas sebagai:</p>
-            <ul>
-                <li><strong>Syarikat:</strong> apabila polisi ini menyebut "Syarikat," "kami," atau "kita," ia merujuk kepada Zenqor Technologies, Bandar Mahkota Cheras, 43200 Selangor, Malaysia yang bertanggungjawab ke atas maklumat anda di bawah Polisi Pemulangan & Bayaran Balik ini.</li>
-                <li><strong>Pelanggan:</strong> merujuk kepada syarikat, organisasi atau individu yang mendaftar untuk menggunakan Perkhidmatan Zenqor Technologies.</li>
-                <li><strong>Peranti:</strong> sebarang peranti yang bersambung ke internet seperti telefon, tablet, komputer atau peranti lain yang boleh digunakan untuk melawati Zenqor Technologies.</li>
-                <li><strong>Perkhidmatan:</strong> merujuk kepada perkhidmatan digital dan fizikal yang disediakan oleh Zenqor Technologies seperti yang diterangkan dalam terma berkaitan di platform ini.</li>
-                <li><strong>Laman Web:</strong> tapak Zenqor Technologies, yang boleh diakses melalui URL ini.</li>
-                <li><strong>Anda:</strong> individu atau entiti yang berdaftar dengan Zenqor Technologies.</li>
-            </ul>
-
-            <h3>Polisi Pemulangan & Bayaran Balik</h3>
-            <p>Terima kasih kerana membeli-belah di Zenqor Technologies. Kami menghargai hakikat bahawa anda gemar membeli apa yang kami bina. Kami juga ingin memastikan anda mempunyai pengalaman yang memuaskan semasa meneroka dan membeli produk kami.</p>
-            <p>Seperti mana-mana pengalaman membeli-belah, terdapat terma dan syarat yang terpakai untuk transaksi di Zenqor Technologies. Perkara utama yang perlu diingat ialah dengan membuat pesanan atau pembelian di Zenqor Technologies, anda bersetuju dengan terma yang dinyatakan di bawah berserta Dasar Privasi Zenqor Technologies.</p>
-            <p>Jika terdapat masalah dengan item yang anda beli, atau jika anda tidak berpuas hati dengannya, anda tidak akan dapat memohon bayaran balik untuk item tersebut.</p>
-
-            <h3>Bayaran Balik</h3>
-            <p>Kami di Zenqor Technologies komited untuk melayani pelanggan kami dengan produk terbaik. Setiap produk yang anda pilih diperiksa dengan teliti, disemak untuk sebarang kecacatan dan dibungkus dengan berhati-hati.</p>
-            <p>Malangnya, ada kalanya kami mungkin tidak mempunyai produk yang anda pilih dalam stok, atau mungkin menghadapi isu inventori. Dalam kes sedemikian, kami mungkin terpaksa membatalkan pesanan anda. Anda akan dimaklumkan lebih awal. Jika anda telah membuat pembelian melalui pembayaran Dalam Talian (bukan Tunai Semasa Penghantaran), anda akan dibayar balik setelah pasukan kami mengesahkan permintaan anda. Pengguna akan dimaklumkan melalui e-mel setelah pemulangan wang selesai.</p>
-            <p>Kami menjalankan pemeriksaan kualiti menyeluruh sebelum memproses item. Sila ambil perhatian bahawa Zenqor Technologies tidak bertanggungjawab untuk kerosakan yang disebabkan pada item semasa transit atau pengangkutan.</p>
-            
-            <p>Kami mematuhi dasar tertentu untuk memastikan ketelusan, kecekapan dan penjagaan pelanggan yang berkualiti:</p>
-            <ul>
-                <li>Kami TIDAK membenarkan pemulangan pada produk yang telah dijual.</li>
-                <li>Kami TIDAK menerima barangan yang dipulangkan.</li>
-                <li>Bayaran balik TIDAK diberikan untuk sebarang pembelian yang dibuat.</li>
-                <li>Produk dengan diskaun tidak boleh dibayar balik.</li>
-                <li>Kami TIDAK menggalakkan pertukaran produk kami.</li>
-                <li>Kami TIDAK terlibat dalam menjual semula produk terpakai.</li>
-            </ul>
-
-            <p><strong>Syarat Pemulangan Tambahan (jika berkenaan melalui pengecualian):</strong></p>
-            <ul>
-                <li>Pelanggan perlu membayar kos penghantaran untuk pemulangan.</li>
-                <li>Produk mesti mempunyai resit pada pembungkusan. Tiada bayaran balik akan dibuat tanpa resit.</li>
-                <li>Setiap produk mesti dipulangkan dalam pembungkusan asalnya. Produk dalam pembungkusan baharu tidak akan dibayar balik.</li>
-                <li>Produk yang rosak tidak boleh dibayar balik.</li>
-            </ul>
-
-            <p>Untuk Pesanan Antarabangsa:</p>
-            <ul>
-                <li>Kami TIDAK menyokong Pertukaran atau Pemulangan.</li>
-                <li>Jika anda membatalkan pesanan sebelum kami memprosesnya untuk penghantaran, bayaran balik boleh diproses. Pesanan biasanya mengambil masa 1-2 hari untuk diproses.</li>
-                <li>Pesanan yang sudah dalam penghantaran tidak boleh dikembalikan, dibatalkan atau dibayar balik.</li>
-                <li>Jika anda menghadapi sebarang masalah, sila hubungi Pasukan Sokongan kami dengan segera.</li>
-            </ul>
-
-            <h3>Persetujuan Anda</h3>
-            <p>Dengan menggunakan laman web kami, mendaftar akaun, atau membuat pembelian, anda dengan ini bersetuju dengan Polisi Pemulangan & Bayaran Balik kami dan bersetuju dengan termanya.</p>
-
-            <h3>Perubahan Kepada Polisi Kami</h3>
-            <p>Jika kami mengemas kini atau membuat sebarang perubahan pada dokumen ini, perubahan tersebut akan disiarkan secara jelas di sini. Jika anda tidak mahu bersetuju dengan Polisi ini, anda boleh memadamkan akaun anda.</p>
-
-            <h3>Hubungi Kami</h3>
-            <p>Jika, atas sebarang sebab, anda tidak berpuas hati dengan mana-mana barangan atau perkhidmatan yang kami sediakan, jangan teragak-agak untuk menghubungi kami.</p>
-            <ul>
-                <li>Melalui E-mel: info@zenqor.com</li>
-                <li>Melalui Nombor Telefon: +6011-6501 2569</li>
-                <li>Melalui Pautan ini: <a href="contact.html">Halaman Hubungan</a></li>
-                <li>Melalui Alamat ini: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</li>
-            </ul>
-        `
+        tos_content: `<h3>TERMA DAN SYARAT</h3>`,
+        rp_content: `<h3>Polisi Pemulangan & Bayaran Balik</h3>`
     }
 };
 
-// --- 2. MULTI-LANGUAGE SYSTEM ---
+// --- 2. SISTEM MULTI-LANGUAGE (BERSEPADU DENGAN FIREBASE) ---
 const langToggle = document.getElementById('lang-toggle');
 let currentLang = localStorage.getItem('zenqor-lang') || 'en';
 
-function setLanguage(lang) {
-    currentLang = lang;
-    localStorage.setItem('zenqor-lang', lang);
+function applyTranslationsToDOM(lang) {
     document.documentElement.lang = lang;
-    
     if(langToggle) {
         langToggle.textContent = lang === 'en' ? 'MS' : 'EN';
     }
@@ -412,16 +199,78 @@ function setLanguage(lang) {
     });
 }
 
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('zenqor-lang', lang);
+    applyTranslationsToDOM(lang);
+}
+
+// Laksanakan terjemahan statik (pantas)
+applyTranslationsToDOM(currentLang);
+
+// Tukar bahasa apabila butang diklik
 if(langToggle) {
     langToggle.addEventListener('click', () => {
         setLanguage(currentLang === 'en' ? 'ms' : 'en');
     });
 }
-setLanguage(currentLang);
 
-// --- 3. MULTI-DROPDOWN POP-UP LOGIC ---
+// Inisialisasi Import Dinamik Firebase untuk Mengemaskini Kamus Terjemahan
+async function initDynamicTranslations() {
+    try {
+        // Import dinamik bagi mengelakkan perlunya tag <script type="module"> di HTML asal
+        const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js");
+        const { getFirestore, doc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
+            authDomain: "zenqor-web.firebaseapp.com",
+            projectId: "zenqor-web",
+            storageBucket: "zenqor-web.firebasestorage.app",
+            messagingSenderId: "785478368719",
+            appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const docRef = doc(db, "site_content", "navbar_translations");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            
+            // Tindih nilai statik jika data wujud di Firebase
+            translations.en.nav_home = data.nav_home_en || translations.en.nav_home;
+            translations.ms.nav_home = data.nav_home_ms || translations.ms.nav_home;
+            
+            translations.en.nav_services = data.nav_services_en || translations.en.nav_services;
+            translations.ms.nav_services = data.nav_services_ms || translations.ms.nav_services;
+            
+            translations.en.nav_portfolio = data.nav_portfolio_en || translations.en.nav_portfolio;
+            translations.ms.nav_portfolio = data.nav_portfolio_ms || translations.ms.nav_portfolio;
+            
+            translations.en.nav_careers = data.nav_careers_en || translations.en.nav_careers;
+            translations.ms.nav_careers = data.nav_careers_ms || translations.ms.nav_careers;
+            
+            translations.en.nav_about = data.nav_about_en || translations.en.nav_about;
+            translations.ms.nav_about = data.nav_about_ms || translations.ms.nav_about;
+            
+            translations.en.nav_contact = data.nav_contact_en || translations.en.nav_contact;
+            translations.ms.nav_contact = data.nav_contact_ms || translations.ms.nav_contact;
+
+            // Memanggil semula fungsi aplikasi untuk menyegarkan paparan UI secara senyap
+            applyTranslationsToDOM(currentLang);
+        }
+    } catch (error) {
+        console.warn("Gagal menarik terjemahan dinamik:", error);
+    }
+}
+
+// Mulakan penarikan data dari pangkalan data di latar belakang
+initDynamicTranslations();
+
+// --- 3. LOGIK MULTI-DROPDOWN ---
 const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
 dropdownToggles.forEach(toggle => {
     toggle.addEventListener('click', (e) => {
         e.preventDefault();
@@ -435,7 +284,6 @@ dropdownToggles.forEach(toggle => {
         menu.classList.toggle('show');
     });
 });
-
 window.addEventListener('click', function(e) {
     if (!e.target.closest('.nav-item-dropdown')) {
         document.querySelectorAll('.dropdown-menu').forEach(menu => {
@@ -447,13 +295,11 @@ window.addEventListener('click', function(e) {
 // --- 4. MOBILE MENU ---
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
-
 if(mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
 }
-
 if(navLinks) {
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -463,7 +309,7 @@ if(navLinks) {
     });
 }
 
-// --- 5. SCROLL ANIMATION (REVEAL) ---
+// --- 5. SCROLL ANIMATION ---
 const revealElements = document.querySelectorAll('.reveal');
 const revealCallback = (entries, observer) => {
     entries.forEach(entry => {
@@ -473,26 +319,22 @@ const revealCallback = (entries, observer) => {
         }
     });
 };
-const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 revealElements.forEach(el => revealObserver.observe(el));
 
-// --- 6. CONTACT FORM SIMULATION ---
+// --- 6. SIMULASI BORANG ---
 const form = document.getElementById('mainContactForm');
 if(form) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const btn = form.querySelector('button');
         const originalText = translations[currentLang]['btn_submit'];
-        
         btn.textContent = translations[currentLang]['msg_sending'];
         btn.disabled = true;
-        
         setTimeout(() => {
             btn.textContent = translations[currentLang]['msg_success'];
             btn.style.background = '#059669'; 
             form.reset();
-            
             setTimeout(() => {
                 btn.textContent = originalText;
                 btn.style.background = '';
@@ -502,7 +344,7 @@ if(form) {
     });
 }
 
-// --- 7. SCROLL TO TOP & WIDGETS ---
+// --- 7. SCROLL TO TOP ---
 const scrollToTopBtn = document.getElementById('scrollToTop');
 if(scrollToTopBtn) {
     window.addEventListener('scroll', () => {
@@ -522,13 +364,11 @@ faqBtns.forEach(btn => {
         const content = btn.nextElementSibling;
         const isActive = parent.classList.contains('active');
         
-        // Close all others
         document.querySelectorAll('.faq-item').forEach(item => {
             item.classList.remove('active');
             item.querySelector('.faq-content').style.maxHeight = null;
         });
         
-        // Open if it wasn't active
         if(!isActive) {
             parent.classList.add('active');
             content.style.maxHeight = content.scrollHeight + "px";
