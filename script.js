@@ -45,7 +45,7 @@ const translations = {
         dp_desc2: "We collect only essential information required to deliver our digital and FiveM services. We do not sell or share your personal data with unauthorized third parties. For any vulnerability reports or data deletion requests, please refer to our security policy or contact us directly at info@zenqor.com.my.",
         nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_contact: "Contact",
         nav_faq: "FAQ", nav_login: "ZT. Login", nav_store: "Store", 
-        nav_careers_join: "Join the Zenqor Vanguard",
+        nav_careers_join: "Join Us",
         nav_port_gaming: "Scripting Projects", nav_port_web: "Server Development",
         hero_badge: "Premium FiveM Development",
         hero_title: "Designing, Developing & Deploying <br><span class='text-primary'>Websites, Cloud Systems & FiveM Resources</span>",
@@ -115,7 +115,7 @@ const translations = {
         dp_desc2: "Kami hanya mengumpul maklumat penting yang diperlukan untuk menyampaikan perkhidmatan digital dan FiveM kami. Kami tidak menjual atau berkongsi data peribadi anda dengan pihak ketiga yang tidak dibenarkan. Untuk sebarang laporan kerentanan atau permintaan pemadaman data, sila rujuk dasar keselamatan kami atau hubungi kami terus di info@zenqor.com.my.",
         nav_home: "Utama", nav_about: "Tentang Kami", nav_services: "Servis", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_contact: "Hubungi",
         nav_faq: "FAQ", nav_login: "ZT. Login", nav_store: "Kedai", 
-        nav_careers_join: "Sertai Zenqor Vanguard",
+        nav_careers_join: "Sertai Kami",
         nav_port_gaming: "Projek Skrip", nav_port_web: "Pembangunan Pelayan",
         hero_badge: "Pembangunan FiveM Premium",
         hero_title: "Dari Idea ke Produk Digital <br><span class='text-primary'>FiveM, Website & Sistem Cloud</span>",
@@ -215,10 +215,9 @@ if(langToggle) {
     });
 }
 
-// Inisialisasi Import Dinamik Firebase untuk Mengemaskini Kamus Terjemahan
+// Inisialisasi Import Dinamik Firebase untuk Mengemaskini Kamus Terjemahan Keseluruhan Menu
 async function initDynamicTranslations() {
     try {
-        // Import dinamik bagi mengelakkan perlunya tag <script type="module"> di HTML asal
         const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js");
         const { getFirestore, doc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
         
@@ -239,26 +238,40 @@ async function initDynamicTranslations() {
         if (docSnap.exists()) {
             const data = docSnap.data();
             
-            // Tindih nilai statik jika data wujud di Firebase
+            // Menu Utama
             translations.en.nav_home = data.nav_home_en || translations.en.nav_home;
             translations.ms.nav_home = data.nav_home_ms || translations.ms.nav_home;
             
             translations.en.nav_services = data.nav_services_en || translations.en.nav_services;
             translations.ms.nav_services = data.nav_services_ms || translations.ms.nav_services;
-            
-            translations.en.nav_portfolio = data.nav_portfolio_en || translations.en.nav_portfolio;
-            translations.ms.nav_portfolio = data.nav_portfolio_ms || translations.ms.nav_portfolio;
-            
-            translations.en.nav_careers = data.nav_careers_en || translations.en.nav_careers;
-            translations.ms.nav_careers = data.nav_careers_ms || translations.ms.nav_careers;
-            
+
             translations.en.nav_about = data.nav_about_en || translations.en.nav_about;
             translations.ms.nav_about = data.nav_about_ms || translations.ms.nav_about;
-            
+
+            translations.en.nav_faq = data.nav_faq_en || translations.en.nav_faq;
+            translations.ms.nav_faq = data.nav_faq_ms || translations.ms.nav_faq;
+
             translations.en.nav_contact = data.nav_contact_en || translations.en.nav_contact;
             translations.ms.nav_contact = data.nav_contact_ms || translations.ms.nav_contact;
 
-            // Memanggil semula fungsi aplikasi untuk menyegarkan paparan UI secara senyap
+            // Sub-Menu Portfolio
+            translations.en.nav_portfolio = data.nav_portfolio_en || translations.en.nav_portfolio;
+            translations.ms.nav_portfolio = data.nav_portfolio_ms || translations.ms.nav_portfolio;
+
+            translations.en.nav_port_gaming = data.nav_port_gaming_en || translations.en.nav_port_gaming;
+            translations.ms.nav_port_gaming = data.nav_port_gaming_ms || translations.ms.nav_port_gaming;
+
+            translations.en.nav_port_web = data.nav_port_web_en || translations.en.nav_port_web;
+            translations.ms.nav_port_web = data.nav_port_web_ms || translations.ms.nav_port_web;
+
+            // Sub-Menu Careers
+            translations.en.nav_careers = data.nav_careers_en || translations.en.nav_careers;
+            translations.ms.nav_careers = data.nav_careers_ms || translations.ms.nav_careers;
+            
+            translations.en.nav_careers_join = data.nav_careers_join_en || translations.en.nav_careers_join;
+            translations.ms.nav_careers_join = data.nav_careers_join_ms || translations.ms.nav_careers_join;
+
+            // Memanggil semula fungsi untuk menyegarkan paparan UI 100% secara automatik
             applyTranslationsToDOM(currentLang);
         }
     } catch (error) {
@@ -266,7 +279,7 @@ async function initDynamicTranslations() {
     }
 }
 
-// Mulakan penarikan data dari pangkalan data di latar belakang
+// Mulakan penarikan data latar belakang
 initDynamicTranslations();
 
 // --- 3. LOGIK MULTI-DROPDOWN ---
