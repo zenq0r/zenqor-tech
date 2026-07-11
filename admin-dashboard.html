@@ -11,7 +11,8 @@
     <style>
         .admin-wrapper { padding-top: 120px; padding-bottom: 60px; min-height: 80vh; }
         .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-        .admin-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+        .admin-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin-bottom: 40px; }
+        .admin-grid-full { display: grid; grid-template-columns: 1fr; gap: 30px; }
         @media (max-width: 900px) { .admin-grid { grid-template-columns: 1fr; } }
         
         .admin-form, .data-list { padding: 30px; }
@@ -20,6 +21,8 @@
         .data-item-info p { font-size: 0.85rem; color: var(--text-secondary); }
         .btn-danger { background-color: rgba(239, 68, 68, 0.2); border: 1px solid #EF4444; color: #EF4444; padding: 8px 15px; font-size: 0.85rem; border-radius: 6px; cursor: pointer; transition: 0.2s; }
         .btn-danger:hover { background-color: #EF4444; color: #fff; }
+        .flex-row { display: flex; gap: 15px; }
+        .flex-row input { flex: 1; }
     </style>
 </head>
 <body class="bg-alt">
@@ -38,10 +41,64 @@
 
     <section class="admin-wrapper container">
         <div class="admin-header">
-            <h2>Manage <span class="text-primary">Web Portfolio</span></h2>
+            <h2>Manage <span class="text-primary">Zenqor Platform</span></h2>
         </div>
 
-        <div class="admin-grid">
+        <div class="admin-grid-full">
+            <div class="card-style admin-form">
+                <h3 style="margin-bottom: 20px;">Tetapan Navigasi Utama (Navbar)</h3>
+                <form id="updateNavbarForm">
+                    <div class="admin-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 0;">
+                        <div class="input-group">
+                            <label>Menu Home (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navHomeEN" placeholder="Home" required>
+                                <input type="text" id="navHomeMS" placeholder="Utama" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Menu Services (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navServEN" placeholder="Services" required>
+                                <input type="text" id="navServMS" placeholder="Servis" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Menu Portfolio (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navPortEN" placeholder="Portfolio" required>
+                                <input type="text" id="navPortMS" placeholder="Portfolio" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Menu Careers (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navCarEN" placeholder="Careers" required>
+                                <input type="text" id="navCarMS" placeholder="Kerjaya" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Menu About (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navAbtEN" placeholder="About" required>
+                                <input type="text" id="navAbtMS" placeholder="Tentang Kami" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Menu Contact (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navConEN" placeholder="Contact" required>
+                                <input type="text" id="navConMS" placeholder="Hubungi" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="navFormMessage" class="form-message mt-3"></div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Simpan Tetapan Navigasi</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="admin-grid mt-5">
             <div class="card-style admin-form">
                 <h3 style="margin-bottom: 20px;">Add New Portfolio</h3>
                 <form id="addPortfolioForm">
@@ -61,15 +118,13 @@
                         <label>Description</label>
                         <textarea id="pDesc" rows="3" required placeholder="Short description..."></textarea>
                     </div>
-                    
                     <div id="formMessage" class="form-message"></div>
-                    
                     <button type="submit" class="btn btn-primary w-100">Add to Website</button>
                 </form>
             </div>
 
             <div class="card-style data-list">
-                <h3 style="margin-bottom: 20px;">Live Data</h3>
+                <h3 style="margin-bottom: 20px;">Live Data (Portfolio)</h3>
                 <div id="portfolioList">
                     <p style="color: var(--text-secondary); text-align: center;">Loading data...</p>
                 </div>
@@ -80,7 +135,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
@@ -103,6 +158,7 @@
                 window.location.href = "login.html";
             } else {
                 fetchPortfolioData(); 
+                loadNavbarSettings();
             }
         });
 
@@ -112,6 +168,73 @@
             });
         });
 
+        // ==========================================
+        // PENGURUSAN NAVBAR
+        // ==========================================
+        const navForm = document.getElementById('updateNavbarForm');
+        const navMsg = document.getElementById('navFormMessage');
+        const navbarDocRef = doc(db, "site_content", "navbar_translations");
+
+        async function loadNavbarSettings() {
+            try {
+                const docSnap = await getDoc(navbarDocRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    document.getElementById('navHomeEN').value = data.nav_home_en || "Home";
+                    document.getElementById('navHomeMS').value = data.nav_home_ms || "Utama";
+                    document.getElementById('navServEN').value = data.nav_services_en || "Services";
+                    document.getElementById('navServMS').value = data.nav_services_ms || "Servis";
+                    document.getElementById('navPortEN').value = data.nav_portfolio_en || "Portfolio";
+                    document.getElementById('navPortMS').value = data.nav_portfolio_ms || "Portfolio";
+                    document.getElementById('navCarEN').value = data.nav_careers_en || "Careers";
+                    document.getElementById('navCarMS').value = data.nav_careers_ms || "Kerjaya";
+                    document.getElementById('navAbtEN').value = data.nav_about_en || "About";
+                    document.getElementById('navAbtMS').value = data.nav_about_ms || "Tentang Kami";
+                    document.getElementById('navConEN').value = data.nav_contact_en || "Contact";
+                    document.getElementById('navConMS').value = data.nav_contact_ms || "Hubungi";
+                }
+            } catch (err) {
+                console.error("Gagal menarik data Navbar:", err);
+            }
+        }
+
+        navForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = navForm.querySelector('button');
+            btn.innerHTML = "Menyimpan...";
+            btn.disabled = true;
+
+            try {
+                await setDoc(navbarDocRef, {
+                    nav_home_en: document.getElementById('navHomeEN').value,
+                    nav_home_ms: document.getElementById('navHomeMS').value,
+                    nav_services_en: document.getElementById('navServEN').value,
+                    nav_services_ms: document.getElementById('navServMS').value,
+                    nav_portfolio_en: document.getElementById('navPortEN').value,
+                    nav_portfolio_ms: document.getElementById('navPortMS').value,
+                    nav_careers_en: document.getElementById('navCarEN').value,
+                    nav_careers_ms: document.getElementById('navCarMS').value,
+                    nav_about_en: document.getElementById('navAbtEN').value,
+                    nav_about_ms: document.getElementById('navAbtMS').value,
+                    nav_contact_en: document.getElementById('navConEN').value,
+                    nav_contact_ms: document.getElementById('navConMS').value,
+                }, { merge: true });
+                
+                navMsg.textContent = "Tetapan Navbar berjaya dikemas kini!";
+                navMsg.className = "form-message msg-success";
+                setTimeout(() => { navMsg.textContent = ""; }, 3000);
+            } catch (error) {
+                navMsg.textContent = "Ralat: " + error.message;
+                navMsg.className = "form-message msg-error";
+            } finally {
+                btn.innerHTML = "Simpan Tetapan Navigasi";
+                btn.disabled = false;
+            }
+        });
+
+        // ==========================================
+        // PENGURUSAN PORTFOLIO
+        // ==========================================
         const portfolioList = document.getElementById('portfolioList');
         const addForm = document.getElementById('addPortfolioForm');
         const formMsg = document.getElementById('formMessage');
