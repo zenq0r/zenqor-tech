@@ -12,12 +12,19 @@
         .admin-wrapper { padding-top: 120px; padding-bottom: 60px; min-height: 80vh; }
         .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
         .admin-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin-bottom: 40px; }
-        .admin-grid-full { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        .admin-form { padding: 30px; }
-        .flex-row { display: flex; gap: 15px; margin-bottom: 10px; }
+        .admin-grid-full { display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px; }
+        @media (max-width: 900px) { .admin-grid { grid-template-columns: 1fr; } }
+        
+        .admin-form, .data-list { padding: 30px; }
+        .data-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; }
+        .data-item-info h4 { color: var(--primary-blue); margin-bottom: 5px; }
+        .data-item-info p { font-size: 0.85rem; color: var(--text-secondary); }
+        .btn-danger { background-color: rgba(239, 68, 68, 0.2); border: 1px solid #EF4444; color: #EF4444; padding: 8px 15px; font-size: 0.85rem; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        .btn-danger:hover { background-color: #EF4444; color: #fff; }
+        .flex-row { display: flex; gap: 15px; margin-bottom: 15px; }
         .flex-row input, .flex-row textarea { flex: 1; }
-        .form-section-title { color: var(--primary-blue); margin: 30px 0 15px 0; font-size: 1.2rem; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; font-weight: bold;}
-        .sub-label { font-size: 0.8rem; color: #888; margin-bottom: 5px; display: block; }
+        .form-section-title { color: var(--primary-blue); margin: 30px 0 15px 0; font-size: 1.1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; font-weight: bold;}
+        .sub-label { font-size: 0.85rem; color: #888; margin-bottom: 5px; display: block; }
     </style>
 </head>
 <body class="bg-alt">
@@ -29,31 +36,111 @@
             </div>
             <div style="display: flex; gap: 15px;">
                 <a href="index.html" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.85rem;">View Site</a>
-                <button id="btnLogout" class="btn btn-danger" style="padding: 8px 15px;">Logout</button>
+                <button id="btnLogout" class="btn btn-danger">Logout</button>
             </div>
         </div>
     </header>
 
     <section class="admin-wrapper container">
         <div class="admin-header">
-            <h2>Urus Kandungan <span class="text-primary">Laman Web</span></h2>
+            <h2>Urus Kandungan <span class="text-primary">Zenqor</span></h2>
         </div>
 
+        <!-- TETAPAN NAVBAR -->
         <div class="admin-grid-full">
             <div class="card-style admin-form">
-                <h3 style="margin-bottom: 10px;">Tetapan Kandungan & Teks Laman Web</h3>
-                <p style="color: var(--text-secondary); font-size: 0.9rem;">Ubah suai tajuk, penerangan, dan pautan gambar di sini. Kosongkan ruang jika tidak mahu mengubah teks lalai.</p>
-                
+                <h3 style="margin-bottom: 10px;">1. Tetapan Navigasi (Navbar)</h3>
+                <form id="updateNavbarForm">
+                    <div class="form-section-title">Menu Utama & Dropdown</div>
+                    <div class="admin-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 0;">
+                        <div class="input-group">
+                            <label>Home (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navHomeEN" placeholder="Home" required>
+                                <input type="text" id="navHomeMS" placeholder="Utama" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Services (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navServEN" placeholder="Services" required>
+                                <input type="text" id="navServMS" placeholder="Servis" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Portfolio Utama (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navPortEN" placeholder="Portfolio" required>
+                                <input type="text" id="navPortMS" placeholder="Portfolio" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Sub Portfolio: Scripting (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navPortGameEN" placeholder="Scripting Projects" required>
+                                <input type="text" id="navPortGameMS" placeholder="Projek Skrip" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Sub Portfolio: Server (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navPortWebEN" placeholder="Server Development" required>
+                                <input type="text" id="navPortWebMS" placeholder="Pembangunan Pelayan" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Careers Utama (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navCarEN" placeholder="Careers" required>
+                                <input type="text" id="navCarMS" placeholder="Kerjaya" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Sub Careers: Join Us (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navCarJoinEN" placeholder="Join Us" required>
+                                <input type="text" id="navCarJoinMS" placeholder="Sertai Kami" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>About (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navAbtEN" placeholder="About" required>
+                                <input type="text" id="navAbtMS" placeholder="Tentang Kami" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>FAQ (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navFaqEN" placeholder="FAQ" required>
+                                <input type="text" id="navFaqMS" placeholder="FAQ" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Contact (EN / MS)</label>
+                            <div class="flex-row">
+                                <input type="text" id="navConEN" placeholder="Contact" required>
+                                <input type="text" id="navConMS" placeholder="Hubungi" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="navFormMessage" class="form-message mt-3"></div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Simpan Tetapan Navigasi</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- TETAPAN KANDUNGAN & GAMBAR -->
+        <div class="admin-grid-full">
+            <div class="card-style admin-form">
+                <h3 style="margin-bottom: 10px;">2. Tetapan Kandungan & Gambar Laman Web</h3>
                 <form id="updateContentForm">
-                    
-                    <!-- BAHAGIAN: GAMBAR & MEDIA -->
                     <div class="form-section-title">Media & Gambar Latar</div>
                     <div class="input-group">
                         <span class="sub-label">URL Gambar Latar Belakang (Hero Section - Home)</span>
                         <input type="url" id="imgHeroBg" placeholder="https://contoh.com/gambar.jpg">
                     </div>
 
-                    <!-- BAHAGIAN: HALAMAN UTAMA (HOME) -->
                     <div class="form-section-title">Halaman Utama (Hero Section)</div>
                     <div class="input-group">
                         <span class="sub-label">Lencana (Badge) - EN / MS</span>
@@ -66,7 +153,7 @@
                         <span class="sub-label">Tajuk Utama (Gunakan &lt;br&gt; untuk baris baharu) - EN / MS</span>
                         <div class="flex-row">
                             <textarea id="heroTitleEN" rows="2" placeholder="Designing, Developing & Deploying..."></textarea>
-                            <textarea id="heroTitleMS" rows="2" placeholder="Mereka, Membangun & Melaksana..."></textarea>
+                            <textarea id="heroTitleMS" rows="2" placeholder="Dari Idea ke Produk Digital..."></textarea>
                         </div>
                     </div>
                     <div class="input-group">
@@ -77,7 +164,6 @@
                         </div>
                     </div>
 
-                    <!-- BAHAGIAN: STATISTIK -->
                     <div class="form-section-title">Statistik Laman Utama</div>
                     <div class="flex-row">
                         <input type="text" id="stat1Num" placeholder="150+">
@@ -89,9 +175,13 @@
                         <input type="text" id="stat2TextEN" placeholder="Optimized Servers">
                         <input type="text" id="stat2TextMS" placeholder="Pelayan Dioptimumkan">
                     </div>
+                    <div class="flex-row">
+                        <input type="text" id="stat3Num" placeholder="2M+">
+                        <input type="text" id="stat3TextEN" placeholder="Active Players">
+                        <input type="text" id="stat3TextMS" placeholder="Pemain Aktif">
+                    </div>
 
-                    <!-- BAHAGIAN: SERVICES -->
-                    <div class="form-section-title">Halaman Servis (Our Development Services)</div>
+                    <div class="form-section-title">Halaman Servis</div>
                     <div class="input-group">
                         <span class="sub-label">Tajuk Utama Servis - EN / MS</span>
                         <div class="flex-row">
@@ -99,20 +189,7 @@
                             <input type="text" id="srvTitleMS" placeholder="Perkhidmatan Pembangunan Kami">
                         </div>
                     </div>
-                    <div class="input-group">
-                        <span class="sub-label">Servis 1: Tajuk & Penerangan (EN)</span>
-                        <div class="flex-row">
-                            <input type="text" id="srv1TitleEN" placeholder="Custom Lua Scripts">
-                            <input type="text" id="srv1DescEN" placeholder="Tailor-made gameplay scripts...">
-                        </div>
-                        <span class="sub-label">Servis 1: Tajuk & Penerangan (MS)</span>
-                        <div class="flex-row">
-                            <input type="text" id="srv1TitleMS" placeholder="Skrip Lua Tersuai">
-                            <input type="text" id="srv1DescMS" placeholder="Skrip permainan khas...">
-                        </div>
-                    </div>
 
-                    <!-- BAHAGIAN: ABOUT -->
                     <div class="form-section-title">Halaman Tentang Kami (About)</div>
                     <div class="input-group">
                         <span class="sub-label">Tajuk About - EN / MS</span>
@@ -121,17 +198,44 @@
                             <input type="text" id="abtTitleMS" placeholder="Kod Di Sebalik Roleplay Imersif">
                         </div>
                     </div>
-                    <div class="input-group">
-                        <span class="sub-label">Penerangan About - EN / MS</span>
-                        <div class="flex-row">
-                            <textarea id="abtSubEN" rows="2" placeholder="We write clean, efficient..."></textarea>
-                            <textarea id="abtSubMS" rows="2" placeholder="Kami menulis skrip Lua yang kemas..."></textarea>
-                        </div>
-                    </div>
 
                     <div id="contentFormMessage" class="form-message mt-3"></div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Simpan Semua Kandungan & Gambar</button>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Simpan Kandungan & Gambar</button>
                 </form>
+            </div>
+        </div>
+
+        <!-- TETAPAN PORTFOLIO ITEM -->
+        <div class="admin-grid mt-5">
+            <div class="card-style admin-form">
+                <h3 style="margin-bottom: 20px;">3. Tambah Portfolio Laman Web</h3>
+                <form id="addPortfolioForm">
+                    <div class="input-group">
+                        <label>Title</label>
+                        <input type="text" id="pTitle" required placeholder="e.g. Enterprise System">
+                    </div>
+                    <div class="input-group">
+                        <label>Tag / Technology</label>
+                        <input type="text" id="pTag" required placeholder="e.g. React & Node.js">
+                    </div>
+                    <div class="input-group">
+                        <label>Image URL</label>
+                        <input type="url" id="pImg" required placeholder="https://...">
+                    </div>
+                    <div class="input-group">
+                        <label>Description</label>
+                        <textarea id="pDesc" rows="3" required placeholder="Short description..."></textarea>
+                    </div>
+                    <div id="formMessage" class="form-message"></div>
+                    <button type="submit" class="btn btn-primary w-100">Add to Website</button>
+                </form>
+            </div>
+
+            <div class="card-style data-list">
+                <h3 style="margin-bottom: 20px;">Live Data (Portfolio)</h3>
+                <div id="portfolioList">
+                    <p style="color: var(--text-secondary); text-align: center;">Loading data...</p>
+                </div>
             </div>
         </div>
     </section>
@@ -139,7 +243,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
@@ -153,12 +257,16 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
+
         const ADMIN_EMAIL = "zenqortech@gmail.com"; 
 
         onAuthStateChanged(auth, (user) => {
             if (!user || user.email !== ADMIN_EMAIL) {
+                alert("Access Denied. You are not an administrator.");
                 window.location.href = "login.html";
             } else {
+                fetchPortfolioData(); 
+                loadNavbarSettings();
                 loadGlobalContent();
             }
         });
@@ -167,6 +275,77 @@
             signOut(auth).then(() => { window.location.href = "login.html"; });
         });
 
+        // 1. PENGURUSAN NAVBAR
+        const navForm = document.getElementById('updateNavbarForm');
+        const navMsg = document.getElementById('navFormMessage');
+        const navbarDocRef = doc(db, "site_content", "navbar_translations");
+
+        async function loadNavbarSettings() {
+            try {
+                const docSnap = await getDoc(navbarDocRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    document.getElementById('navHomeEN').value = data.nav_home_en || "Home";
+                    document.getElementById('navHomeMS').value = data.nav_home_ms || "Utama";
+                    document.getElementById('navServEN').value = data.nav_services_en || "Services";
+                    document.getElementById('navServMS').value = data.nav_services_ms || "Servis";
+                    document.getElementById('navPortEN').value = data.nav_portfolio_en || "Portfolio";
+                    document.getElementById('navPortMS').value = data.nav_portfolio_ms || "Portfolio";
+                    document.getElementById('navPortGameEN').value = data.nav_port_gaming_en || "Scripting Projects";
+                    document.getElementById('navPortGameMS').value = data.nav_port_gaming_ms || "Projek Skrip";
+                    document.getElementById('navPortWebEN').value = data.nav_port_web_en || "Server Development";
+                    document.getElementById('navPortWebMS').value = data.nav_port_web_ms || "Pembangunan Pelayan";
+                    document.getElementById('navCarEN').value = data.nav_careers_en || "Careers";
+                    document.getElementById('navCarMS').value = data.nav_careers_ms || "Kerjaya";
+                    document.getElementById('navCarJoinEN').value = data.nav_careers_join_en || "Join Us";
+                    document.getElementById('navCarJoinMS').value = data.nav_careers_join_ms || "Sertai Kami";
+                    document.getElementById('navAbtEN').value = data.nav_about_en || "About";
+                    document.getElementById('navAbtMS').value = data.nav_about_ms || "Tentang Kami";
+                    document.getElementById('navFaqEN').value = data.nav_faq_en || "FAQ";
+                    document.getElementById('navFaqMS').value = data.nav_faq_ms || "FAQ";
+                    document.getElementById('navConEN').value = data.nav_contact_en || "Contact";
+                    document.getElementById('navConMS').value = data.nav_contact_ms || "Hubungi";
+                }
+            } catch (err) { console.error("Gagal menarik data Navbar:", err); }
+        }
+
+        navForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = navForm.querySelector('button');
+            btn.innerHTML = "Menyimpan..."; btn.disabled = true;
+
+            try {
+                await setDoc(navbarDocRef, {
+                    nav_home_en: document.getElementById('navHomeEN').value,
+                    nav_home_ms: document.getElementById('navHomeMS').value,
+                    nav_services_en: document.getElementById('navServEN').value,
+                    nav_services_ms: document.getElementById('navServMS').value,
+                    nav_portfolio_en: document.getElementById('navPortEN').value,
+                    nav_portfolio_ms: document.getElementById('navPortMS').value,
+                    nav_port_gaming_en: document.getElementById('navPortGameEN').value,
+                    nav_port_gaming_ms: document.getElementById('navPortGameMS').value,
+                    nav_port_web_en: document.getElementById('navPortWebEN').value,
+                    nav_port_web_ms: document.getElementById('navPortWebMS').value,
+                    nav_careers_en: document.getElementById('navCarEN').value,
+                    nav_careers_ms: document.getElementById('navCarMS').value,
+                    nav_careers_join_en: document.getElementById('navCarJoinEN').value,
+                    nav_careers_join_ms: document.getElementById('navCarJoinMS').value,
+                    nav_about_en: document.getElementById('navAbtEN').value,
+                    nav_about_ms: document.getElementById('navAbtMS').value,
+                    nav_faq_en: document.getElementById('navFaqEN').value,
+                    nav_faq_ms: document.getElementById('navFaqMS').value,
+                    nav_contact_en: document.getElementById('navConEN').value,
+                    nav_contact_ms: document.getElementById('navConMS').value,
+                }, { merge: true });
+                
+                navMsg.textContent = "Tetapan Navbar dikemas kini!"; navMsg.className = "form-message msg-success";
+                setTimeout(() => { navMsg.textContent = ""; }, 3000);
+            } catch (error) {
+                navMsg.textContent = "Ralat: " + error.message; navMsg.className = "form-message msg-error";
+            } finally { btn.innerHTML = "Simpan Tetapan Navigasi"; btn.disabled = false; }
+        });
+
+        // 2. PENGURUSAN KANDUNGAN & GAMBAR
         const contentForm = document.getElementById('updateContentForm');
         const contentMsg = document.getElementById('contentFormMessage');
         const globalDocRef = doc(db, "site_content", "global_settings");
@@ -176,93 +355,108 @@
                 const docSnap = await getDoc(globalDocRef);
                 if (docSnap.exists()) {
                     const data = docSnap.data();
-                    
-                    // Images
                     document.getElementById('imgHeroBg').value = data.img_hero_bg || "";
-
-                    // Home Hero
                     document.getElementById('heroBadgeEN').value = data.hero_badge_en || "";
                     document.getElementById('heroBadgeMS').value = data.hero_badge_ms || "";
                     document.getElementById('heroTitleEN').value = data.hero_title_en || "";
                     document.getElementById('heroTitleMS').value = data.hero_title_ms || "";
                     document.getElementById('heroSubEN').value = data.hero_sub_en || "";
                     document.getElementById('heroSubMS').value = data.hero_sub_ms || "";
-
-                    // Stats
                     document.getElementById('stat1Num').value = data.stat_1_num || "";
                     document.getElementById('stat1TextEN').value = data.stat_1_en || "";
                     document.getElementById('stat1TextMS').value = data.stat_1_ms || "";
                     document.getElementById('stat2Num').value = data.stat_2_num || "";
                     document.getElementById('stat2TextEN').value = data.stat_2_en || "";
                     document.getElementById('stat2TextMS').value = data.stat_2_ms || "";
-
-                    // Services
+                    document.getElementById('stat3Num').value = data.stat_3_num || "";
+                    document.getElementById('stat3TextEN').value = data.stat_3_en || "";
+                    document.getElementById('stat3TextMS').value = data.stat_3_ms || "";
                     document.getElementById('srvTitleEN').value = data.srv_main_title_en || "";
                     document.getElementById('srvTitleMS').value = data.srv_main_title_ms || "";
-                    document.getElementById('srv1TitleEN').value = data.srv_1_t_en || "";
-                    document.getElementById('srv1TitleMS').value = data.srv_1_t_ms || "";
-                    document.getElementById('srv1DescEN').value = data.srv_1_d_en || "";
-                    document.getElementById('srv1DescMS').value = data.srv_1_d_ms || "";
-
-                    // About
                     document.getElementById('abtTitleEN').value = data.about_title_en || "";
                     document.getElementById('abtTitleMS').value = data.about_title_ms || "";
-                    document.getElementById('abtSubEN').value = data.about_sub_en || "";
-                    document.getElementById('abtSubMS').value = data.about_sub_ms || "";
                 }
-            } catch (err) {
-                console.error("Gagal menarik data:", err);
-            }
+            } catch (err) { console.error("Gagal menarik data Kandungan:", err); }
         }
 
         contentForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = contentForm.querySelector('button');
-            btn.innerHTML = "Menyimpan...";
-            btn.disabled = true;
+            btn.innerHTML = "Menyimpan..."; btn.disabled = true;
 
             try {
                 await setDoc(globalDocRef, {
                     img_hero_bg: document.getElementById('imgHeroBg').value,
-
                     hero_badge_en: document.getElementById('heroBadgeEN').value,
                     hero_badge_ms: document.getElementById('heroBadgeMS').value,
                     hero_title_en: document.getElementById('heroTitleEN').value,
                     hero_title_ms: document.getElementById('heroTitleMS').value,
                     hero_sub_en: document.getElementById('heroSubEN').value,
                     hero_sub_ms: document.getElementById('heroSubMS').value,
-
                     stat_1_num: document.getElementById('stat1Num').value,
                     stat_1_en: document.getElementById('stat1TextEN').value,
                     stat_1_ms: document.getElementById('stat1TextMS').value,
                     stat_2_num: document.getElementById('stat2Num').value,
                     stat_2_en: document.getElementById('stat2TextEN').value,
                     stat_2_ms: document.getElementById('stat2TextMS').value,
-
+                    stat_3_num: document.getElementById('stat3Num').value,
+                    stat_3_en: document.getElementById('stat3TextEN').value,
+                    stat_3_ms: document.getElementById('stat3TextMS').value,
                     srv_main_title_en: document.getElementById('srvTitleEN').value,
                     srv_main_title_ms: document.getElementById('srvTitleMS').value,
-                    srv_1_t_en: document.getElementById('srv1TitleEN').value,
-                    srv_1_t_ms: document.getElementById('srv1TitleMS').value,
-                    srv_1_d_en: document.getElementById('srv1DescEN').value,
-                    srv_1_d_ms: document.getElementById('srv1DescMS').value,
-
                     about_title_en: document.getElementById('abtTitleEN').value,
-                    about_title_ms: document.getElementById('abtTitleMS').value,
-                    about_sub_en: document.getElementById('abtSubEN').value,
-                    about_sub_ms: document.getElementById('abtSubMS').value
-
+                    about_title_ms: document.getElementById('abtTitleMS').value
                 }, { merge: true });
                 
-                contentMsg.textContent = "Kandungan berjaya dikemas kini!";
-                contentMsg.className = "form-message msg-success";
+                contentMsg.textContent = "Kandungan dikemas kini!"; contentMsg.className = "form-message msg-success";
                 setTimeout(() => { contentMsg.textContent = ""; }, 3000);
             } catch (error) {
-                contentMsg.textContent = "Ralat: " + error.message;
-                contentMsg.className = "form-message msg-error";
-            } finally {
-                btn.innerHTML = "Simpan Semua Kandungan & Gambar";
-                btn.disabled = false;
-            }
+                contentMsg.textContent = "Ralat: " + error.message; contentMsg.className = "form-message msg-error";
+            } finally { btn.innerHTML = "Simpan Kandungan & Gambar"; btn.disabled = false; }
+        });
+
+        // 3. PENGURUSAN PORTFOLIO
+        const portfolioList = document.getElementById('portfolioList');
+        const addForm = document.getElementById('addPortfolioForm');
+        const formMsg = document.getElementById('formMessage');
+
+        async function fetchPortfolioData() {
+            portfolioList.innerHTML = "";
+            const querySnapshot = await getDocs(collection(db, "portfolio_web"));
+            if(querySnapshot.empty) { portfolioList.innerHTML = "<p>No portfolio items found.</p>"; return; }
+            querySnapshot.forEach((docSnap) => {
+                const data = docSnap.data();
+                const itemHtml = `
+                    <div class="data-item">
+                        <div class="data-item-info"><h4>${data.title}</h4><p>[${data.tag}] - ${data.desc.substring(0, 50)}...</p></div>
+                        <button class="btn-danger delete-btn" data-id="${docSnap.id}"><i class="fas fa-trash"></i></button>
+                    </div>`;
+                portfolioList.innerHTML += itemHtml;
+            });
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', async function() {
+                    if(confirm("Are you sure you want to delete this record?")) {
+                        await deleteDoc(doc(db, "portfolio_web", this.getAttribute('data-id')));
+                        fetchPortfolioData(); 
+                    }
+                });
+            });
+        }
+
+        addForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = addForm.querySelector('button'); btn.innerHTML = "Saving..."; btn.disabled = true;
+            try {
+                await addDoc(collection(db, "portfolio_web"), {
+                    title: document.getElementById('pTitle').value, tag: document.getElementById('pTag').value,
+                    imgUrl: document.getElementById('pImg').value, desc: document.getElementById('pDesc').value,
+                    createdAt: new Date()
+                });
+                formMsg.textContent = "Data successfully added!"; formMsg.className = "form-message msg-success";
+                addForm.reset(); fetchPortfolioData(); 
+            } catch (error) {
+                formMsg.textContent = "Error: " + error.message; formMsg.className = "form-message msg-error";
+            } finally { btn.innerHTML = "Add to Website"; btn.disabled = false; }
         });
     </script>
 </body>
