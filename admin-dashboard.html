@@ -215,9 +215,12 @@
         const ADMIN_EMAIL = "zenqortech@gmail.com"; 
 
         onAuthStateChanged(auth, (user) => {
-            if (!user || user.email !== ADMIN_EMAIL) {
-                window.location.href = "login.html";
+            // Pengecaman KETAT: Memastikan tiada ralat huruf besar/kecil yang membenarkan orang lain masuk
+            if (!user || user.email.trim().toLowerCase() !== ADMIN_EMAIL) {
+                alert("Akses Ditolak: Anda bukan pentadbir (Admin).");
+                window.location.replace("login.html");
             } else {
+                // Jika berjaya dan disahkan sebagai Admin yang sah
                 loadNavbarSettings();
                 loadGlobalContent();
             }
