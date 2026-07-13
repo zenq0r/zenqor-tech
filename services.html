@@ -19,7 +19,17 @@
             </a>
             <nav class="nav-links">
                 <a href="index.html" data-i18n="nav_home">Home</a>
-                <a href="services.html" style="color: var(--primary-blue);" data-i18n="nav_services">Services</a>
+                
+                <div class="nav-item-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="services-menu" style="color: var(--primary-blue);">
+                        <span data-i18n="nav_services">Services</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                    <div class="dropdown-menu" id="services-menu">
+                        <a href="services.html" data-i18n="nav_srv_dev">Development</a>
+                        <a href="services.html#licensing" data-i18n="nav_srv_lic">Licensing & Permits</a>
+                    </div>
+                </div>
+
                 <div class="nav-item-dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu">
                         <span data-i18n="nav_portfolio">Portfolio</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
