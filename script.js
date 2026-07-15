@@ -22,7 +22,7 @@
     }
     checkMasterProtocol();
 
-    // 2. SCROLL REVEAL ANIMATIONS (PENYELESAIAN ISU "WEBSITE KOSONG")
+    // 2. SCROLL REVEAL ANIMATIONS
     function initRevealAnimations() {
         if ('IntersectionObserver' in window) {
             const revealCallback = (entries, observer) => {
@@ -36,11 +36,9 @@
             const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
         } else {
-            // Fallback keselamatan jika browser lama
             document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
         }
     }
-    // Wajib panggil terus supaya website muncul
     initRevealAnimations();
 
     // 3. MULTI-LANGUAGE SYSTEM (i18n)
@@ -97,7 +95,6 @@
         const headerConfigSnap = await getDoc(doc(db, "config", "header_settings"));
         let headerConfig = headerConfigSnap.exists() ? headerConfigSnap.data() : {};
         
-        // Kemas Kini Logo
         if(headerConfig.logoUrl) document.querySelectorAll('.nav-logo-img, .footer-logo-img').forEach(img => img.src = headerConfig.logoUrl);
         if(headerConfig.headerBackground) {
             const navbar = document.querySelector('.navbar');
@@ -108,7 +105,7 @@
         const navLinksContainer = document.querySelector('.nav-links');
         
         if(navLinksContainer && !navSnap.empty) {
-            // Jika ada data di Firebase
+            // Jika ada data di Firebase (Admin dah setup)
             let navItems = [];
             navSnap.forEach(d => navItems.push({ id: d.id, ...d.data() }));
             
@@ -142,30 +139,49 @@
                 <button id="lang-toggle" class="lang-btn">EN</button> ${btnHtml}
             </div>`;
             
-            document.querySelectorAll('.dropdown-toggle').forEach(t => {
-                t.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const menu = document.getElementById(t.dataset.target);
-                    const isExp = t.getAttribute('aria-expanded') === 'true';
-                    document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
-                    document.querySelectorAll('.dropdown-toggle').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
-                    if (!isExp) { menu.classList.add('show'); t.setAttribute('aria-expanded', 'true'); }
-                });
-            });
-
         } else if (navLinksContainer && navSnap.empty) {
-            // FALLBACK: Jika Database Kosong, pastikan Menu Asas tetap dipaparkan
+            // FALLBACK LENGKAP: Akan dipaparkan selagi Admin belum letak Navigation di Dashboard
             navLinksContainer.innerHTML = `
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <a href="services.html" data-i18n="nav_services">Services</a>
+                <div class="nav-item-dropdown">
+                    <button class="dropdown-toggle" data-target="portfolio-menu" aria-expanded="false">
+                        <span data-i18n="nav_portfolio">Portfolio</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </button>
+                    <div class="dropdown-menu" id="portfolio-menu">
+                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming">Scripting Projects</a>
+                        <a href="portfolio-web.html" data-i18n="nav_port_web">Server Development</a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <button class="dropdown-toggle" data-target="careers-menu" aria-expanded="false">
+                        <span data-i18n="nav_careers">Careers</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </button>
+                    <div class="dropdown-menu" id="careers-menu">
+                        <a href="careers.html" data-i18n="nav_careers_join">Join Us</a>
+                    </div>
+                </div>
+                <a href="about.html" data-i18n="nav_about">About</a>
+                <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+                <a href="contact.html" data-i18n="nav_contact">Contact</a>
                 <div style="display: flex; align-items: center; gap: 15px; margin-left: 15px;">
                     <button id="lang-toggle" class="lang-btn">EN</button>
                     <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; border-radius: 6px; text-decoration: none;">Login</a>
                 </div>
             `;
         }
+
+        // Bind Menu Dropdown (Berfungsi untuk Database & Fallback)
+        document.querySelectorAll('.dropdown-toggle').forEach(t => {
+            t.addEventListener('click', (e) => {
+                e.preventDefault();
+                const menu = document.getElementById(t.dataset.target);
+                const isExp = t.getAttribute('aria-expanded') === 'true';
+                document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
+                document.querySelectorAll('.dropdown-toggle').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+                if (!isExp) { menu.classList.add('show'); t.setAttribute('aria-expanded', 'true'); }
+            });
+        });
 
         // Panggil Semula Sistem Bahasa
         const toggleBtn = document.getElementById('lang-toggle');
@@ -188,5 +204,4 @@
         window.addEventListener('scroll', () => scrollToTopBtn.classList.toggle('show', window.scrollY > 300), { passive: true });
         scrollToTopBtn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
     }
-
 })();
