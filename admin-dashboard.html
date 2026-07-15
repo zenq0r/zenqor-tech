@@ -27,20 +27,17 @@
         .cms-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Admin UI Components */
-        .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
-        .stat-box { background: var(--surface-color); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); }
-        .stat-box h4 { margin: 0 0 10px 0; color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; }
-        .stat-box h2 { margin: 0; font-size: 2rem; color: var(--primary-blue); }
-        .chart-container { background: var(--surface-color); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 30px; height: 350px; }
-        
         .crud-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
         .crud-form, .crud-list { background: var(--surface-color); padding: 25px; border-radius: 8px; border: 1px solid var(--border-color); }
-        .data-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; }
-        .btn-danger { background-color: rgba(239, 68, 68, 0.2); border: 1px solid #EF4444; color: #EF4444; padding: 8px 15px; font-size: 0.85rem; border-radius: 6px; cursor: pointer; transition: 0.2s; }
-        .btn-danger:hover { background-color: #EF4444; color: #fff; }
         
-        @media (max-width: 1024px) { .crud-grid { grid-template-columns: 1fr; } .admin-sidebar { display: none; } }
+        /* Drag & Drop Nav UI */
+        .nav-list-container { list-style: none; padding: 0; margin: 0; }
+        .nav-list-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 6px; margin-bottom: 8px; cursor: grab; transition: 0.2s; }
+        .nav-list-item:active { cursor: grabbing; background: rgba(59, 130, 246, 0.1); }
+        .nav-list-item.sub-item { margin-left: 30px; border-left: 3px solid var(--primary-blue); }
+        
+        .btn-danger { background-color: rgba(239, 68, 68, 0.2); border: 1px solid #EF4444; color: #EF4444; padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; cursor: pointer; }
+        .btn-warning { background-color: rgba(245, 158, 11, 0.2); border: 1px solid #F59E0B; color: #F59E0B; padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -53,19 +50,12 @@
             <div class="nav-group">
                 <div class="nav-group-title">Core</div>
                 <a class="sidebar-link active" data-target="sec-dashboard"><i class="fas fa-chart-line w-20"></i> Dashboard</a>
-                <a class="sidebar-link" data-target="sec-analytics"><i class="fas fa-chart-pie w-20"></i> Analytics</a>
             </div>
             <div class="nav-group">
                 <div class="nav-group-title">Content Management</div>
+                <a class="sidebar-link" data-target="sec-nav"><i class="fas fa-sitemap w-20"></i> Navigation Menu</a>
+                <a class="sidebar-link" data-target="sec-header"><i class="fas fa-heading w-20"></i> Header Settings</a>
                 <a class="sidebar-link" data-target="sec-portfolio"><i class="fas fa-briefcase w-20"></i> Portfolio</a>
-                <a class="sidebar-link" data-target="sec-services"><i class="fas fa-cogs w-20"></i> Services</a>
-                <a class="sidebar-link" data-target="sec-careers"><i class="fas fa-users w-20"></i> Careers</a>
-                <a class="sidebar-link" data-target="sec-company"><i class="fas fa-building w-20"></i> Company Profile</a>
-            </div>
-            <div class="nav-group">
-                <div class="nav-group-title">System</div>
-                <a class="sidebar-link" data-target="sec-seo"><i class="fas fa-search w-20"></i> SEO & Metadata</a>
-                <a class="sidebar-link" data-target="sec-settings"><i class="fas fa-cog w-20"></i> Settings</a>
             </div>
         </nav>
     </aside>
@@ -74,8 +64,7 @@
         <header class="admin-topbar">
             <div><h3 style="margin: 0;" id="topbar-title">Dashboard Overview</h3></div>
             <div style="display: flex; gap: 15px; align-items: center;">
-                <span id="adminName" style="color: var(--text-secondary); font-size: 0.9rem;">Verifying Session...</span>
-                <a href="index.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">View Live Site</a>
+                <span id="adminName" style="color: var(--text-secondary); font-size: 0.9rem;">Verifying...</span>
                 <button id="btnLogout" class="btn btn-danger" style="padding: 6px 12px; font-size: 0.8rem;"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </header>
@@ -83,143 +72,106 @@
         <section class="admin-content">
             
             <div id="sec-dashboard" class="cms-section active">
-                <div class="stat-grid">
-                    <div class="stat-box"><h4>Total Traffic</h4><h2 id="stat-visitors">0</h2></div>
-                    <div class="stat-box"><h4>Total Portfolio</h4><h2 id="stat-projects">0</h2></div>
-                    <div class="stat-box"><h4>Active Services</h4><h2 id="stat-services">0</h2></div>
-                    <div class="stat-box"><h4>Registered Users</h4><h2 id="stat-users">0</h2></div>
-                </div>
-                <div class="chart-container"><canvas id="visitorChart"></canvas></div>
+                <h2>Admin Console Ready</h2>
+                <p>Select a module from the sidebar to manage content.</p>
             </div>
 
-            <div id="sec-analytics" class="cms-section">
-                <h2 style="margin-bottom: 20px;">Advanced Analytics (Real-time)</h2>
-                <div class="chart-container"><canvas id="deviceChart"></canvas></div>
-            </div>
-
-            <div id="sec-portfolio" class="cms-section">
+            <div id="sec-nav" class="cms-section">
                 <div class="crud-grid">
                     <div class="crud-form">
-                        <h3 style="margin-bottom: 20px;">Deploy New Portfolio</h3>
-                        <form id="formPortfolio">
+                        <h3 style="margin-bottom: 20px;">Add Menu Link</h3>
+                        <form id="formNav">
                             <div class="input-group">
-                                <label>Project Title</label>
-                                <input type="text" id="portTitle" required>
+                                <label>Menu Title</label>
+                                <input type="text" id="navTitle" required placeholder="e.g. Services">
                             </div>
                             <div class="input-group">
-                                <label>Category Tag</label>
-                                <input type="text" id="portTag" placeholder="e.g. QBCore, React" required>
+                                <label>URL / Slug</label>
+                                <input type="text" id="navUrl" required placeholder="e.g. services.html">
                             </div>
                             <div class="input-group">
-                                <label>Cover Image</label>
-                                <input type="file" id="portImage" accept="image/*" required style="padding: 10px;">
+                                <label>Parent Menu (For Submenu)</label>
+                                <select id="navParent">
+                                    <option value="">-- Main Menu (No Parent) --</option>
+                                </select>
                             </div>
                             <div class="input-group">
-                                <label>Description</label>
-                                <textarea id="portDesc" rows="3" required></textarea>
+                                <label>Icon (FontAwesome Class)</label>
+                                <input type="text" id="navIcon" placeholder="e.g. fas fa-home">
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Publish Project</button>
-                            <div id="msgPortfolio" class="form-message mt-3"></div>
+                            <div class="input-group" style="display: flex; gap: 15px; align-items: center;">
+                                <label style="margin:0;"><input type="checkbox" id="navVisible" checked> Visible to Public</label>
+                                <label style="margin:0;"><input type="checkbox" id="navNewTab"> Open in New Tab</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mt-3">Save Menu</button>
+                            <div id="msgNav" class="form-message mt-3"></div>
                         </form>
                     </div>
                     <div class="crud-list">
-                        <h3 style="margin-bottom: 20px;">Live Portfolio Records</h3>
-                        <div id="listPortfolio">Fetching data...</div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="sec-services" class="cms-section">
-                <div class="crud-grid">
-                    <div class="crud-form">
-                        <h3 style="margin-bottom: 20px;">Add New Service</h3>
-                        <form id="formService">
-                            <div class="input-group">
-                                <label>Service Name</label>
-                                <input type="text" id="srvName" required>
-                            </div>
-                            <div class="input-group">
-                                <label>FontAwesome Icon Class</label>
-                                <input type="text" id="srvIcon" placeholder="fas fa-server" required>
-                            </div>
-                            <div class="input-group">
-                                <label>Description</label>
-                                <textarea id="srvDesc" rows="3" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Add Service</button>
-                            <div id="msgService" class="form-message mt-3"></div>
-                        </form>
-                    </div>
-                    <div class="crud-list">
-                        <h3 style="margin-bottom: 20px;">Active Services</h3>
-                        <div id="listServices">Fetching data...</div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="sec-company" class="cms-section">
-                <div class="crud-form" style="max-width: 800px;">
-                    <h3 style="margin-bottom: 20px;">Company Information</h3>
-                    <form id="formCompany">
-                        <div class="input-group"><label>Company Name</label><input type="text" id="compName" required></div>
-                        <div class="input-group"><label>Registration No.</label><input type="text" id="compReg"></div>
-                        <div class="input-group"><label>Email Address</label><input type="email" id="compEmail" required></div>
-                        <div class="input-group"><label>Phone/WhatsApp</label><input type="text" id="compPhone" required></div>
-                        <div class="input-group"><label>Physical Address</label><textarea id="compAddress" rows="2"></textarea></div>
-                        <button type="submit" class="btn btn-primary">Save Profile Configuration</button>
-                        <div id="msgCompany" class="form-message mt-3"></div>
-                    </form>
-                </div>
-            </div>
-
-            <div id="sec-settings" class="cms-section">
-                <div class="crud-form" style="max-width: 800px;">
-                    <h3 style="margin-bottom: 20px;">Global System Settings</h3>
-                    <form id="formSettings">
-                        <div class="input-group"><label>Default Meta Title</label><input type="text" id="setMetaTitle"></div>
-                        <div class="input-group"><label>Maintenance Mode</label>
-                            <select id="setMaintenance">
-                                <option value="false">Off (Live)</option>
-                                <option value="true">On (Offline)</option>
-                            </select>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="margin:0;">Menu Structure</h3>
+                            <button id="saveNavOrder" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.85rem;"><i class="fas fa-save"></i> Save Order</button>
                         </div>
-                        <button type="submit" class="btn btn-primary">Update System Architecture</button>
-                        <div id="msgSettings" class="form-message mt-3"></div>
-                    </form>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Drag and drop items to reorder them.</p>
+                        <ul id="listNav" class="nav-list-container">
+                            </ul>
+                    </div>
                 </div>
             </div>
 
-            <div id="sec-careers" class="cms-section">
-                <h2>Careers Manager</h2>
-                <p style="color: var(--text-secondary);">Enterprise HR module ready for integration.</p>
+            <div id="sec-header" class="cms-section">
+                <div class="crud-grid">
+                    <div class="crud-form">
+                        <h3 style="margin-bottom: 20px;">Header & Branding</h3>
+                        <form id="formHeader">
+                            <div class="input-group">
+                                <label>Upload New Logo</label>
+                                <input type="file" id="hLogoFile" accept="image/*" style="padding: 10px;">
+                            </div>
+                            <div class="input-group">
+                                <label>Upload New Favicon</label>
+                                <input type="file" id="hFavFile" accept="image/*" style="padding: 10px;">
+                            </div>
+                            <div class="input-group">
+                                <label>Header Background Color</label>
+                                <input type="text" id="hBgColor" placeholder="e.g. rgba(15, 23, 42, 0.85)">
+                            </div>
+                            <hr style="border-color: var(--border-color); margin: 20px 0;">
+                            <h4>Call-to-Action Button</h4>
+                            <div class="input-group" style="margin-top: 10px;">
+                                <label><input type="checkbox" id="hBtnVisible"> Show Action Button</label>
+                            </div>
+                            <div class="input-group">
+                                <label>Button Text</label>
+                                <input type="text" id="hBtnText" placeholder="e.g. Login">
+                            </div>
+                            <div class="input-group">
+                                <label>Button URL</label>
+                                <input type="text" id="hBtnUrl" placeholder="e.g. login.html">
+                            </div>
+                            <div class="input-group">
+                                <label>Button Color (Hex)</label>
+                                <input type="text" id="hBtnColor" placeholder="#3B82F6">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Save System Layout</button>
+                            <div id="msgHeader" class="form-message mt-3"></div>
+                        </form>
+                    </div>
+                </div>
             </div>
             
-            <div id="sec-seo" class="cms-section">
-                <h2>SEO Control Center</h2>
-                <p style="color: var(--text-secondary);">Dynamic JSON-LD & OpenGraph routing ready.</p>
-            </div>
-
+            <div id="sec-portfolio" class="cms-section"><h2>Portfolio Module</h2><p>Working...</p></div>
         </section>
     </main>
 
     <script type="module">
         import { auth, db, storage, enforceSecurity, secureLogout } from './firebase-config.js';
-        import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, updateDoc, writeBatch, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         import { ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-        // KESELAMATAN: Pastikan hanya Role: Admin
         enforceSecurity('admin');
         document.getElementById('btnLogout').addEventListener('click', secureLogout);
 
-        // PAPARAN PROFIL ADMIN
-        auth.onAuthStateChanged(async (user) => {
-            if (user) {
-                const userDoc = await getDoc(doc(db, "users", user.uid));
-                document.getElementById('adminName').textContent = userDoc.exists() ? `Super Admin: ${userDoc.data().name}` : user.email;
-            }
-        });
-
-        // LOGIK NAVIGASI SPA
         const links = document.querySelectorAll('.sidebar-link');
         const sections = document.querySelectorAll('.cms-section');
         const topbarTitle = document.getElementById('topbar-title');
@@ -234,7 +186,6 @@
             });
         });
 
-        // FUNGSI GLOBAL: UPLOAD IMEJ KE FIREBASE STORAGE
         async function uploadImage(file, folderPath) {
             const storageRef = ref(storage, `${folderPath}/${Date.now()}_${file.name}`);
             const uploadTask = await uploadBytesResumable(storageRef, file);
@@ -242,195 +193,212 @@
         }
 
         // ==========================================
-        // ENJIN CRUD: PORTFOLIO
+        // DYNAMIC NAVIGATION CMS
         // ==========================================
-        const listPortfolio = document.getElementById('listPortfolio');
-        
-        async function fetchPortfolio() {
-            try {
-                const snap = await getDocs(collection(db, "portfolio_web"));
-                listPortfolio.innerHTML = snap.empty ? "<p>No data found.</p>" : "";
-                
-                snap.forEach((docSnap) => {
-                    const data = docSnap.data();
-                    listPortfolio.innerHTML += `
-                        <div class="data-item">
-                            <div style="display: flex; gap: 15px; align-items: center;">
-                                <img src="${data.imgUrl}" width="50" height="50" style="border-radius: 4px; object-fit: cover;">
-                                <div>
-                                    <h4 style="margin: 0; color: var(--primary-blue);">${data.title}</h4>
-                                    <span style="font-size: 0.75rem; color: #fff; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">${data.tag}</span>
-                                </div>
-                            </div>
-                            <button class="btn-danger delete-port" data-id="${docSnap.id}"><i class="fas fa-trash"></i></button>
-                        </div>
-                    `;
-                });
+        const listNav = document.getElementById('listNav');
+        const selectParent = document.getElementById('navParent');
+        let navDataList = [];
 
-                document.querySelectorAll('.delete-port').forEach(btn => {
-                    btn.addEventListener('click', async (e) => {
-                        if(confirm("Permanently delete this project?")) {
-                            await deleteDoc(doc(db, "portfolio_web", e.currentTarget.dataset.id));
-                            fetchPortfolio(); initStats();
-                        }
-                    });
+        async function fetchNavigation() {
+            const snap = await getDocs(query(collection(db, "navigation"), orderBy("order", "asc")));
+            navDataList = [];
+            snap.forEach(doc => navDataList.push({ id: doc.id, ...doc.data() }));
+            
+            listNav.innerHTML = "";
+            selectParent.innerHTML = `<option value="">-- Main Menu (No Parent) --</option>`;
+            
+            const parents = navDataList.filter(n => !n.parentId);
+            
+            parents.forEach(p => {
+                // Populate Dropdown for Parent Selection
+                selectParent.innerHTML += `<option value="${p.id}">${p.title}</option>`;
+                
+                // Populate Drag & Drop List (Parent)
+                listNav.innerHTML += buildNavItemHtml(p, false);
+                
+                // Populate Children
+                const children = navDataList.filter(n => n.parentId === p.id);
+                children.forEach(c => {
+                    listNav.innerHTML += buildNavItemHtml(c, true);
                 });
-            } catch (err) { listPortfolio.innerHTML = "Error loading data."; }
+            });
+
+            bindNavEvents();
+            initDragAndDrop();
         }
 
-        document.getElementById('formPortfolio').addEventListener('submit', async (e) => {
+        function buildNavItemHtml(item, isChild) {
+            return `
+                <li class="nav-list-item ${isChild ? 'sub-item' : ''}" draggable="true" data-id="${item.id}">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-grip-vertical" style="color: var(--text-secondary); cursor: grab;"></i>
+                        <span style="font-weight: 500;">${item.icon ? `<i class="${item.icon}"></i> ` : ""}${item.title}</span>
+                        <span style="font-size: 0.75rem; color: #94A3B8;">${item.url}</span>
+                        ${!item.visible ? `<span style="font-size: 0.7rem; color: #EF4444; border: 1px solid #EF4444; padding: 2px 4px; border-radius: 3px;">HIDDEN</span>` : ''}
+                    </div>
+                    <div style="display: flex; gap: 5px;">
+                        <button class="btn-warning toggle-vis" data-id="${item.id}" data-vis="${item.visible}"><i class="fas fa-eye${!item.visible ? '-slash' : ''}"></i></button>
+                        <button class="btn-danger delete-nav" data-id="${item.id}"><i class="fas fa-trash"></i></button>
+                    </div>
+                </li>
+            `;
+        }
+
+        document.getElementById('formNav').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = e.target.querySelector('button');
-            const msg = document.getElementById('msgPortfolio');
-            btn.innerHTML = "<i class='fas fa-circle-notch fa-spin'></i> Uploading...";
-            btn.disabled = true;
-
+            const msg = document.getElementById('msgNav');
+            btn.innerHTML = "Saving...";
+            
             try {
-                const file = document.getElementById('portImage').files[0];
-                const imgUrl = await uploadImage(file, 'portfolio');
-
-                await addDoc(collection(db, "portfolio_web"), {
-                    title: document.getElementById('portTitle').value,
-                    tag: document.getElementById('portTag').value,
-                    desc: document.getElementById('portDesc').value,
-                    imgUrl: imgUrl,
-                    createdAt: serverTimestamp()
+                await addDoc(collection(db, "navigation"), {
+                    title: document.getElementById('navTitle').value,
+                    url: document.getElementById('navUrl').value,
+                    parentId: document.getElementById('navParent').value || null,
+                    icon: document.getElementById('navIcon').value,
+                    visible: document.getElementById('navVisible').checked,
+                    target: document.getElementById('navNewTab').checked ? '_blank' : '_self',
+                    order: navDataList.length + 1
                 });
-                
-                msg.textContent = "Portfolio Published.";
+                msg.textContent = "Menu Added!";
                 msg.className = "form-message msg-success";
                 e.target.reset();
-                fetchPortfolio(); initStats();
+                fetchNavigation();
             } catch (err) {
                 msg.textContent = err.message;
                 msg.className = "form-message msg-error";
-            } finally { btn.innerHTML = "Publish Project"; btn.disabled = false; }
+            }
+            btn.innerHTML = "Save Menu";
+        });
+
+        function bindNavEvents() {
+            document.querySelectorAll('.delete-nav').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    if(confirm("Delete this menu? Submenus won't automatically redirect.")) {
+                        await deleteDoc(doc(db, "navigation", e.currentTarget.dataset.id));
+                        fetchNavigation();
+                    }
+                });
+            });
+            document.querySelectorAll('.toggle-vis').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    const id = e.currentTarget.dataset.id;
+                    const curVis = e.currentTarget.dataset.vis === 'true';
+                    await updateDoc(doc(db, "navigation", id), { visible: !curVis });
+                    fetchNavigation();
+                });
+            });
+        }
+
+        // Drag & Drop Sorting Algorithm
+        function initDragAndDrop() {
+            let draggedItem = null;
+            const items = document.querySelectorAll('.nav-list-item');
+            
+            items.forEach(item => {
+                item.addEventListener('dragstart', function() {
+                    draggedItem = this;
+                    setTimeout(() => this.style.display = 'none', 0);
+                });
+                item.addEventListener('dragend', function() {
+                    setTimeout(() => {
+                        this.style.display = 'flex';
+                        draggedItem = null;
+                    }, 0);
+                });
+                item.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                });
+                item.addEventListener('dragenter', function(e) {
+                    e.preventDefault();
+                    this.style.borderTop = '2px solid var(--primary-blue)';
+                });
+                item.addEventListener('dragleave', function() {
+                    this.style.borderTop = '1px solid var(--border-color)';
+                });
+                item.addEventListener('drop', function() {
+                    this.style.borderTop = '1px solid var(--border-color)';
+                    if (this !== draggedItem) {
+                        listNav.insertBefore(draggedItem, this);
+                    }
+                });
+            });
+        }
+
+        // Save Batch Order
+        document.getElementById('saveNavOrder').addEventListener('click', async (e) => {
+            const btn = e.target;
+            btn.innerHTML = "<i class='fas fa-circle-notch fa-spin'></i> Saving...";
+            try {
+                const batch = writeBatch(db);
+                const items = document.querySelectorAll('.nav-list-item');
+                items.forEach((item, index) => {
+                    const docRef = doc(db, "navigation", item.getAttribute('data-id'));
+                    batch.update(docRef, { order: index + 1 });
+                });
+                await batch.commit();
+                btn.innerHTML = "<i class='fas fa-check'></i> Saved";
+                setTimeout(() => btn.innerHTML = "<i class='fas fa-save'></i> Save Order", 2000);
+            } catch(e) {
+                alert("Failed to save order");
+                btn.innerHTML = "<i class='fas fa-save'></i> Save Order";
+            }
         });
 
         // ==========================================
-        // ENJIN CRUD: SERVICES
+        // HEADER & BRANDING CMS
         // ==========================================
-        const listServices = document.getElementById('listServices');
-        
-        async function fetchServices() {
-            try {
-                const snap = await getDocs(collection(db, "services"));
-                listServices.innerHTML = snap.empty ? "<p>No services found.</p>" : "";
-                
-                snap.forEach((docSnap) => {
-                    const data = docSnap.data();
-                    listServices.innerHTML += `
-                        <div class="data-item">
-                            <div><h4 style="margin: 0;"><i class="${data.icon} text-primary"></i> ${data.name}</h4></div>
-                            <button class="btn-danger delete-srv" data-id="${docSnap.id}"><i class="fas fa-trash"></i></button>
-                        </div>
-                    `;
-                });
-
-                document.querySelectorAll('.delete-srv').forEach(btn => {
-                    btn.addEventListener('click', async (e) => {
-                        if(confirm("Delete this service?")) {
-                            await deleteDoc(doc(db, "services", e.currentTarget.dataset.id));
-                            fetchServices(); initStats();
-                        }
-                    });
-                });
-            } catch (err) { listServices.innerHTML = "Error loading data."; }
+        async function fetchHeaderSettings() {
+            const snap = await getDoc(doc(db, "config", "header_settings"));
+            if(snap.exists()) {
+                const d = snap.data();
+                document.getElementById('hBgColor').value = d.headerBackground || "";
+                document.getElementById('hBtnVisible').checked = d.buttonVisible !== false;
+                document.getElementById('hBtnText').value = d.buttonTitle || "";
+                document.getElementById('hBtnUrl').value = d.buttonUrl || "";
+                document.getElementById('hBtnColor').value = d.buttonColor || "";
+            }
         }
 
-        document.getElementById('formService').addEventListener('submit', async (e) => {
+        document.getElementById('formHeader').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = e.target.querySelector('button');
-            btn.innerHTML = "Processing...";
-            try {
-                await addDoc(collection(db, "services"), {
-                    name: document.getElementById('srvName').value,
-                    icon: document.getElementById('srvIcon').value,
-                    desc: document.getElementById('srvDesc').value,
-                    createdAt: serverTimestamp()
-                });
-                e.target.reset();
-                fetchServices(); initStats();
-            } catch (err) { alert(err.message); }
-            btn.innerHTML = "Add Service";
-        });
-
-        // ==========================================
-        // SINGLETON MANAGER (Company & Settings)
-        // ==========================================
-        async function fetchSingletonData() {
-            const compSnap = await getDoc(doc(db, "config", "company_profile"));
-            if(compSnap.exists()) {
-                const data = compSnap.data();
-                document.getElementById('compName').value = data.name || "";
-                document.getElementById('compEmail').value = data.email || "";
-                document.getElementById('compPhone').value = data.phone || "";
-                document.getElementById('compReg').value = data.regNo || "";
-                document.getElementById('compAddress').value = data.address || "";
-            }
-
-            const setSnap = await getDoc(doc(db, "config", "system_settings"));
-            if(setSnap.exists()) {
-                document.getElementById('setMetaTitle').value = setSnap.data().metaTitle || "";
-                document.getElementById('setMaintenance').value = setSnap.data().maintenance || "false";
-            }
-        }
-
-        document.getElementById('formCompany').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            e.target.querySelector('button').innerHTML = "Saving...";
-            await setDoc(doc(db, "config", "company_profile"), {
-                name: document.getElementById('compName').value,
-                email: document.getElementById('compEmail').value,
-                phone: document.getElementById('compPhone').value,
-                regNo: document.getElementById('compReg').value,
-                address: document.getElementById('compAddress').value,
-                updatedAt: serverTimestamp()
-            }, { merge: true });
-            e.target.querySelector('button').innerHTML = "Save Profile Configuration";
-            document.getElementById('msgCompany').textContent = "Saved Successfully!";
-            document.getElementById('msgCompany').className = "form-message msg-success";
-        });
-
-        document.getElementById('formSettings').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            e.target.querySelector('button').innerHTML = "Updating...";
-            await setDoc(doc(db, "config", "system_settings"), {
-                metaTitle: document.getElementById('setMetaTitle').value,
-                maintenance: document.getElementById('setMaintenance').value,
-                updatedAt: serverTimestamp()
-            }, { merge: true });
-            e.target.querySelector('button').innerHTML = "Update System Architecture";
-            document.getElementById('msgSettings').textContent = "Settings Applied!";
-            document.getElementById('msgSettings').className = "form-message msg-success";
-        });
-
-        // ==========================================
-        // INITIALIZE DASHBOARD STATS
-        // ==========================================
-        async function initStats() {
-            const projSnap = await getDocs(collection(db, "portfolio_web"));
-            const srvSnap = await getDocs(collection(db, "services"));
-            const userSnap = await getDocs(collection(db, "users"));
+            const msg = document.getElementById('msgHeader');
+            btn.innerHTML = "Processing Uploads & Saving...";
             
-            document.getElementById('stat-projects').textContent = projSnap.size;
-            document.getElementById('stat-services').textContent = srvSnap.size;
-            document.getElementById('stat-users').textContent = userSnap.size;
-            document.getElementById('stat-visitors').textContent = Math.floor(Math.random() * 5000) + 1000;
-        }
+            try {
+                let logoUrl = null; let favUrl = null;
+                const logoFile = document.getElementById('hLogoFile').files[0];
+                const favFile = document.getElementById('hFavFile').files[0];
+                
+                if(logoFile) logoUrl = await uploadImage(logoFile, 'branding');
+                if(favFile) favUrl = await uploadImage(favFile, 'branding');
 
-        // Initialize All Modules
-        fetchPortfolio();
-        fetchServices();
-        fetchSingletonData();
-        initStats();
-        
-        // Setup Charts dummy data
-        const ctx = document.getElementById('visitorChart').getContext('2d');
-        new Chart(ctx, { type: 'line', data: { labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets: [{ label: 'Traffic', data: [120, 190, 300, 250, 420, 380, 500], borderColor: '#38BDF8', fill: true }] }, options: { responsive: true, maintainAspectRatio: false } });
-        
-        const ctxDev = document.getElementById('deviceChart').getContext('2d');
-        new Chart(ctxDev, { type: 'doughnut', data: { labels: ['Desktop', 'Mobile'], datasets: [{ data: [70, 30], backgroundColor: ['#3B82F6', '#38BDF8'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false } });
+                const updateData = {
+                    headerBackground: document.getElementById('hBgColor').value,
+                    buttonVisible: document.getElementById('hBtnVisible').checked,
+                    buttonTitle: document.getElementById('hBtnText').value,
+                    buttonUrl: document.getElementById('hBtnUrl').value,
+                    buttonColor: document.getElementById('hBtnColor').value,
+                };
+                
+                if(logoUrl) updateData.logoUrl = logoUrl;
+                if(favUrl) updateData.faviconUrl = favUrl;
+
+                await setDoc(doc(db, "config", "header_settings"), updateData, { merge: true });
+                
+                msg.textContent = "Header layout updated live.";
+                msg.className = "form-message msg-success";
+            } catch (err) {
+                msg.textContent = err.message;
+                msg.className = "form-message msg-error";
+            }
+            btn.innerHTML = "Save System Layout";
+        });
+
+        // Init
+        fetchNavigation();
+        fetchHeaderSettings();
 
     </script>
 </body>

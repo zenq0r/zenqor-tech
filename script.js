@@ -1,104 +1,126 @@
 /**
  * ZENQOR TECHNOLOGIES - ENTERPRISE CORE SCRIPT
- * Refactored for Stability, Performance, and Security.
+ * Dynamic Navigation, Header CMS & Core Gateway
  */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, getDocs, doc, getDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-(function() {
+const firebaseConfig = {
+    apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
+    authDomain: "zenqor-web.firebaseapp.com",
+    projectId: "zenqor-web",
+    storageBucket: "zenqor-web.firebasestorage.app",
+    messagingSenderId: "785478368719",
+    appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+(async function() {
     'use strict';
 
-    // ==========================================
-    // 1. ZENQOR MASTER GATEWAY INTERCEPTOR
-    // ==========================================
-    const ZENQOR_MASTER_URL = "https://zenqor-api.kauaku.store/api/public-status";
-    
+    // 1. ZENQOR MASTER GATEWAY
     async function checkMasterProtocol() {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 Seconds Timeout
-
         try {
-            const response = await fetch(ZENQOR_MASTER_URL, { signal: controller.signal });
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000);
+            const response = await fetch("https://zenqor-api.kauaku.store/api/public-status", { signal: controller.signal });
             clearTimeout(timeoutId);
-
-            if (!response.ok) throw new Error("Gateway HTTP Error");
-            
-            const data = await response.json();
-            
-            if (data.is_offline) {
-                document.documentElement.innerHTML = `
-                    <head>
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-                        <title>SYSTEM LOCKDOWN</title>
-                    </head>
-                    <body style="background-color: #050505; color: #ff0000; font-family: 'Courier New', Courier, monospace; height: 100vh; width: 100vw; margin: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                        <div style="border: 1px solid #333333; background: #0d0d0d; padding: clamp(20px, 5vw, 40px); text-align: center; max-width: 90%; box-sizing: border-box;">
-                            <h1 style="font-size: clamp(18px, 4vw, 24px); letter-spacing: 2px; margin-bottom: 15px; margin-top: 0;">CONNECTION SEVERED</h1>
-                            <p style="color: #737373; font-size: clamp(10px, 2vw, 12px); letter-spacing: 1px; text-transform: uppercase; margin: 0;">Inbound traffic isolated by Zenqor Command.<br>Routine maintenance in progress.</p>
-                        </div>
-                    </body>
-                `;
+            if (response.ok) {
+                const data = await response.json();
+                if (data.is_offline) document.documentElement.innerHTML = `<body style="background:#050505;color:red;display:flex;align-items:center;justify-content:center;height:100vh;"><h1>SYSTEM LOCKDOWN</h1></body>`;
             }
-        } catch (error) {
-            console.warn("Gateway Ping Failed or Timed Out. Allowing local access fallback.");
-        }
+        } catch (e) {}
     }
-
-    // Execute Immediately
     checkMasterProtocol();
 
-    // ==========================================
-    // 2. MULTI-LANGUAGE SYSTEM (DICTIONARY TRIMMED FOR BREVITY BUT LOGIC INTACT)
-    // ==========================================
-    const translations = {
-        en: {
-            nav_home: "Home", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_about: "About", nav_faq: "FAQ", nav_contact: "Contact",
-            nav_port_gaming: "Scripting Projects", nav_port_web: "Server Development", nav_careers_join: "Join Us",
-            hero_badge: "Premium FiveM Development", hero_title: "Designing, Developing & Deploying <br><span class='text-primary'>Websites, Cloud Systems & FiveM Resources</span>",
-            hero_sub: "Zenqor Technologies specializes in custom software development, website development, Lua scripting, standalone resources, and server optimization.",
-            btn_portfolio: "View Scripts", btn_contact: "Hire Us",
-            stat_1: "Scripts Released", stat_2: "Optimized Servers", stat_3: "Active Players", stat_gov: "Frameworks", stat_4: "Standalone Systems",
-            footer_copy: "© 2026 Zenqor Technologies (Malaysia). All rights reserved."
-        },
-        ms: {
-            nav_home: "Utama", nav_services: "Servis", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_about: "Tentang Kami", nav_faq: "FAQ", nav_contact: "Hubungi",
-            nav_port_gaming: "Projek Skrip", nav_port_web: "Pembangunan Pelayan", nav_careers_join: "Sertai Kami",
-            hero_badge: "Pembangunan FiveM Premium", hero_title: "Dari Idea ke Produk Digital <br><span class='text-primary'>FiveM, Website & Sistem Cloud</span>",
-            hero_sub: "Zenqor Technologies mengkhusus dalam pembangunan perisian tersuai, pembangunan laman web, skrip Lua, sumber bebas (standalone resources), dan pengoptimuman pelayan.",
-            btn_portfolio: "Lihat Skrip", btn_contact: "Lantik Kami",
-            stat_1: "Skrip Dilancarkan", stat_2: "Pelayan Dioptimumkan", stat_3: "Pemain Aktif", stat_gov: "Frameworks", stat_4: "Sistem Standalone",
-            footer_copy: "© 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara."
-        }
-    };
-
-    const langToggle = document.getElementById('lang-toggle');
-    let currentLang = localStorage.getItem('zenqor-lang') || 'en';
-
-    function setLanguage(lang) {
-        currentLang = lang;
-        localStorage.setItem('zenqor-lang', lang);
-        document.documentElement.lang = lang;
-        
-        if(langToggle) {
-            langToggle.textContent = lang === 'en' ? 'MS' : 'EN';
-        }
-        
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if(translations[lang] && translations[lang][key]) {
-                el.innerHTML = translations[lang][key];
+    // 2. DYNAMIC NAVIGATION & HEADER ENGINE
+    async function buildDynamicHeader() {
+        try {
+            // Fetch Header Settings
+            const headerConfigSnap = await getDoc(doc(db, "config", "header_settings"));
+            let headerConfig = {};
+            if(headerConfigSnap.exists()) {
+                headerConfig = headerConfigSnap.data();
+                // Tukar Logo
+                if(headerConfig.logoUrl) {
+                    document.querySelectorAll('.nav-logo-img, .footer-logo-img').forEach(img => img.src = headerConfig.logoUrl);
+                }
+                // Tukar Favicon
+                if(headerConfig.faviconUrl) {
+                    let link = document.querySelector("link[rel~='icon']");
+                    if (!link) {
+                        link = document.createElement('link');
+                        link.rel = 'icon';
+                        document.head.appendChild(link);
+                    }
+                    link.href = headerConfig.faviconUrl;
+                }
+                // Tetapan UI Header
+                const headerEl = document.querySelector('.navbar');
+                if(headerEl) {
+                    if(headerConfig.headerBackground) headerEl.style.background = headerConfig.headerBackground;
+                    if(headerConfig.headerHeight) {
+                        const navCont = headerEl.querySelector('.nav-container');
+                        if(navCont) navCont.style.minHeight = headerConfig.headerHeight;
+                    }
+                }
             }
-        });
+
+            // Fetch Navigation
+            const navSnap = await getDocs(query(collection(db, "navigation"), orderBy("order", "asc")));
+            const navLinksContainer = document.querySelector('.nav-links');
+            if(!navLinksContainer) return;
+
+            let navItems = [];
+            navSnap.forEach(doc => navItems.push({ id: doc.id, ...doc.data() }));
+            
+            // Build Tree (Parent & Submenus)
+            const parents = navItems.filter(item => !item.parentId && item.visible !== false);
+            const children = navItems.filter(item => item.parentId && item.visible !== false);
+            
+            let htmlBuild = "";
+            parents.forEach(p => {
+                const myChildren = children.filter(c => c.parentId === p.id);
+                if(myChildren.length > 0) {
+                    htmlBuild += `
+                        <div class="nav-item-dropdown">
+                            <button class="dropdown-toggle" data-target="menu-${p.id}" aria-haspopup="true" aria-expanded="false">
+                                <span>${p.icon ? `<i class="${p.icon}"></i> ` : ""}${p.title}</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                            </button>
+                            <div class="dropdown-menu" id="menu-${p.id}" role="menu">
+                                ${myChildren.map(c => `<a href="${c.url}" target="${c.target \vert{}\vert{} '_self'}" role="menuitem">${c.icon ? `<i class="${c.icon}"></i> ` : ""}${c.title}</a>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    htmlBuild += `<a href="${p.url}" target="${p.target || '_self'}">${p.icon ? `<i class="${p.icon}"></i> ` : ""}${p.title}</a>`;
+                }
+            });
+
+            // Action Button (Dynamic)
+            let btnHtml = "";
+            if(headerConfig.buttonVisible !== false) {
+                const btnTitle = headerConfig.buttonTitle || "Login";
+                const btnUrl = headerConfig.buttonUrl || "login.html";
+                const btnColor = headerConfig.buttonColor || "var(--primary-blue)";
+                btnHtml = `<a href="${btnUrl}" class="btn btn-primary" style="background-color: ${btnColor}; padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;">${btnTitle}</a>`;
+            }
+
+            navLinksContainer.innerHTML = htmlBuild + `<div style="display: flex; align-items: center; gap: 15px; margin-left: 15px;">
+                <button id="lang-toggle" class="lang-btn" aria-label="Toggle Language">EN</button>
+                ${btnHtml}
+            </div>`;
+
+            initDropdowns();
+
+        } catch(e) {
+            console.error("Dynamic Navigation Engine Error:", e);
+        }
     }
 
-    if(langToggle) {
-        langToggle.addEventListener('click', () => setLanguage(currentLang === 'en' ? 'ms' : 'en'));
-    }
-    setLanguage(currentLang);
-
-    // ==========================================
-    // 3. UI INTERACTIONS & EVENT LISTENERS
-    // ==========================================
-    document.addEventListener('DOMContentLoaded', () => {
-        // Dropdowns (A11y Improved)
+    function initDropdowns() {
         document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -115,48 +137,24 @@
                 }
             });
         });
-
-        // Mobile Menu
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
         
-        if(mobileMenuBtn && navLinks) {
-            mobileMenuBtn.addEventListener('click', () => {
-                const isActive = navLinks.classList.toggle('active');
-                mobileMenuBtn.setAttribute('aria-expanded', isActive);
-            });
-        }
-
-        // Click Outside to Close Menu
         window.addEventListener('click', (e) => {
             if (!e.target.closest('.nav-item-dropdown')) {
-                document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('show'));
+                document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
                 document.querySelectorAll('.dropdown-toggle').forEach(t => t.setAttribute('aria-expanded', 'false'));
             }
         });
+    }
 
-        // Scroll Reveal Observer
-        if ('IntersectionObserver' in window) {
-            const revealCallback = (entries, observer) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            };
-            const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-        }
+    // Execute Global Builder
+    await buildDynamicHeader();
 
-        // Scroll to Top
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        if(scrollToTopBtn) {
-            window.addEventListener('scroll', () => {
-                scrollToTopBtn.classList.toggle('show', window.scrollY > 300);
-            }, { passive: true });
-            scrollToTopBtn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
-        }
-    });
-
+    // Scroll Observer & Mobile Menu bindings
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if(mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
 })();
