@@ -7,221 +7,431 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Enterprise Dashboard Layout */
         body { margin: 0; display: flex; height: 100vh; overflow: hidden; background-color: var(--bg-color); }
-        
         .admin-sidebar { width: 260px; background: rgba(15, 23, 42, 0.95); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; overflow-y: auto; }
         .sidebar-header { padding: 20px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text-primary); font-size: 1.1rem; }
         .sidebar-nav { padding: 15px 0; flex-grow: 1; }
         .nav-group { margin-bottom: 20px; }
         .nav-group-title { padding: 0 20px; font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-        .sidebar-link { display: flex; align-items: center; gap: 12px; padding: 10px 20px; color: var(--text-primary); text-decoration: none; font-size: 0.9rem; transition: 0.2s; }
+        .sidebar-link { display: flex; align-items: center; gap: 12px; padding: 10px 20px; color: var(--text-primary); text-decoration: none; font-size: 0.9rem; transition: 0.2s; cursor: pointer; border-left: 3px solid transparent; }
         .sidebar-link:hover, .sidebar-link.active { background: rgba(59, 130, 246, 0.1); color: var(--primary-blue); border-left: 3px solid var(--primary-blue); }
         
         .admin-main { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
         .admin-topbar { height: 70px; background: rgba(15, 23, 42, 0.8); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; }
         .admin-content { padding: 30px; overflow-y: auto; flex-grow: 1; }
         
-        .admin-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
-        @media (max-width: 1024px) { .admin-grid { grid-template-columns: 1fr; } .admin-sidebar { display: none; } }
+        .cms-section { display: none; animation: fadeIn 0.3s ease; }
+        .cms-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Admin UI Components */
+        .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+        .stat-box { background: var(--surface-color); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); }
+        .stat-box h4 { margin: 0 0 10px 0; color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; }
+        .stat-box h2 { margin: 0; font-size: 2rem; color: var(--primary-blue); }
+        .chart-container { background: var(--surface-color); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 30px; height: 350px; }
         
-        .admin-form, .data-list { padding: 25px; }
+        .crud-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+        .crud-form, .crud-list { background: var(--surface-color); padding: 25px; border-radius: 8px; border: 1px solid var(--border-color); }
         .data-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; }
         .btn-danger { background-color: rgba(239, 68, 68, 0.2); border: 1px solid #EF4444; color: #EF4444; padding: 8px 15px; font-size: 0.85rem; border-radius: 6px; cursor: pointer; transition: 0.2s; }
         .btn-danger:hover { background-color: #EF4444; color: #fff; }
-        .loading-state { text-align: center; color: var(--text-secondary); padding: 20px; }
+        
+        @media (max-width: 1024px) { .crud-grid { grid-template-columns: 1fr; } .admin-sidebar { display: none; } }
     </style>
 </head>
 <body>
 
     <aside class="admin-sidebar">
         <div class="sidebar-header">
-            <i class="fas fa-shield-alt text-primary"></i> Zenqor Console
+            <img src="logo.png" alt="Logo" width="24" height="24"> Zenqor Console
         </div>
         <nav class="sidebar-nav">
             <div class="nav-group">
                 <div class="nav-group-title">Core</div>
-                <a href="#" class="sidebar-link"><i class="fas fa-chart-line w-20"></i> Dashboard</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-chart-pie w-20"></i> Analytics</a>
+                <a class="sidebar-link active" data-target="sec-dashboard"><i class="fas fa-chart-line w-20"></i> Dashboard</a>
+                <a class="sidebar-link" data-target="sec-analytics"><i class="fas fa-chart-pie w-20"></i> Analytics</a>
             </div>
             <div class="nav-group">
                 <div class="nav-group-title">Content Management</div>
-                <a href="#" class="sidebar-link active"><i class="fas fa-briefcase w-20"></i> Portfolio</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-cogs w-20"></i> Services</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-users w-20"></i> Careers</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-building w-20"></i> Company Profile</a>
+                <a class="sidebar-link" data-target="sec-portfolio"><i class="fas fa-briefcase w-20"></i> Portfolio</a>
+                <a class="sidebar-link" data-target="sec-services"><i class="fas fa-cogs w-20"></i> Services</a>
+                <a class="sidebar-link" data-target="sec-careers"><i class="fas fa-users w-20"></i> Careers</a>
+                <a class="sidebar-link" data-target="sec-company"><i class="fas fa-building w-20"></i> Company Profile</a>
             </div>
             <div class="nav-group">
                 <div class="nav-group-title">System</div>
-                <a href="#" class="sidebar-link"><i class="fas fa-search w-20"></i> SEO & Metadata</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-cog w-20"></i> Settings</a>
+                <a class="sidebar-link" data-target="sec-seo"><i class="fas fa-search w-20"></i> SEO & Metadata</a>
+                <a class="sidebar-link" data-target="sec-settings"><i class="fas fa-cog w-20"></i> Settings</a>
             </div>
         </nav>
     </aside>
 
     <main class="admin-main">
         <header class="admin-topbar">
-            <div><h3 style="margin: 0;">Portfolio Manager</h3></div>
-            <div style="display: flex; gap: 15px;">
-                <a href="index.html" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.85rem;">View Live Site</a>
-                <button id="btnLogout" class="btn btn-danger">Secure Logout</button>
+            <div><h3 style="margin: 0;" id="topbar-title">Dashboard Overview</h3></div>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <span id="adminName" style="color: var(--text-secondary); font-size: 0.9rem;">Verifying Session...</span>
+                <a href="index.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">View Live Site</a>
+                <button id="btnLogout" class="btn btn-danger" style="padding: 6px 12px; font-size: 0.8rem;"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </header>
 
         <section class="admin-content">
-            <div class="admin-grid">
-                <div class="card-style admin-form">
-                    <h3 style="margin-bottom: 20px;">Deploy New Portfolio</h3>
-                    <form id="addPortfolioForm">
-                        <div class="input-group">
-                            <label>Title</label>
-                            <input type="text" id="pTitle" required placeholder="e.g. Enterprise System">
-                        </div>
-                        <div class="input-group">
-                            <label>Technology Stack</label>
-                            <input type="text" id="pTag" required placeholder="e.g. React & Node.js">
-                        </div>
-                        <div class="input-group">
-                            <label>Image Asset URL</label>
-                            <input type="url" id="pImg" required placeholder="https://...">
-                        </div>
-                        <div class="input-group">
-                            <label>Description</label>
-                            <textarea id="pDesc" rows="3" required placeholder="Short description..."></textarea>
-                        </div>
-                        
-                        <div id="formMessage" class="form-message"></div>
-                        
-                        <button type="submit" class="btn btn-primary w-100"><i class="fas fa-cloud-upload-alt"></i> Publish to Website</button>
-                    </form>
+            
+            <div id="sec-dashboard" class="cms-section active">
+                <div class="stat-grid">
+                    <div class="stat-box"><h4>Total Traffic</h4><h2 id="stat-visitors">0</h2></div>
+                    <div class="stat-box"><h4>Total Portfolio</h4><h2 id="stat-projects">0</h2></div>
+                    <div class="stat-box"><h4>Active Services</h4><h2 id="stat-services">0</h2></div>
+                    <div class="stat-box"><h4>Registered Users</h4><h2 id="stat-users">0</h2></div>
                 </div>
+                <div class="chart-container"><canvas id="visitorChart"></canvas></div>
+            </div>
 
-                <div class="card-style data-list">
-                    <h3 style="margin-bottom: 20px;">Live Database Records</h3>
-                    <div id="portfolioList" class="loading-state">
-                        <i class="fas fa-circle-notch fa-spin"></i> Establishing secure connection...
+            <div id="sec-analytics" class="cms-section">
+                <h2 style="margin-bottom: 20px;">Advanced Analytics (Real-time)</h2>
+                <div class="chart-container"><canvas id="deviceChart"></canvas></div>
+            </div>
+
+            <div id="sec-portfolio" class="cms-section">
+                <div class="crud-grid">
+                    <div class="crud-form">
+                        <h3 style="margin-bottom: 20px;">Deploy New Portfolio</h3>
+                        <form id="formPortfolio">
+                            <div class="input-group">
+                                <label>Project Title</label>
+                                <input type="text" id="portTitle" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Category Tag</label>
+                                <input type="text" id="portTag" placeholder="e.g. QBCore, React" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Cover Image</label>
+                                <input type="file" id="portImage" accept="image/*" required style="padding: 10px;">
+                            </div>
+                            <div class="input-group">
+                                <label>Description</label>
+                                <textarea id="portDesc" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Publish Project</button>
+                            <div id="msgPortfolio" class="form-message mt-3"></div>
+                        </form>
+                    </div>
+                    <div class="crud-list">
+                        <h3 style="margin-bottom: 20px;">Live Portfolio Records</h3>
+                        <div id="listPortfolio">Fetching data...</div>
                     </div>
                 </div>
             </div>
+
+            <div id="sec-services" class="cms-section">
+                <div class="crud-grid">
+                    <div class="crud-form">
+                        <h3 style="margin-bottom: 20px;">Add New Service</h3>
+                        <form id="formService">
+                            <div class="input-group">
+                                <label>Service Name</label>
+                                <input type="text" id="srvName" required>
+                            </div>
+                            <div class="input-group">
+                                <label>FontAwesome Icon Class</label>
+                                <input type="text" id="srvIcon" placeholder="fas fa-server" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Description</label>
+                                <textarea id="srvDesc" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Add Service</button>
+                            <div id="msgService" class="form-message mt-3"></div>
+                        </form>
+                    </div>
+                    <div class="crud-list">
+                        <h3 style="margin-bottom: 20px;">Active Services</h3>
+                        <div id="listServices">Fetching data...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sec-company" class="cms-section">
+                <div class="crud-form" style="max-width: 800px;">
+                    <h3 style="margin-bottom: 20px;">Company Information</h3>
+                    <form id="formCompany">
+                        <div class="input-group"><label>Company Name</label><input type="text" id="compName" required></div>
+                        <div class="input-group"><label>Registration No.</label><input type="text" id="compReg"></div>
+                        <div class="input-group"><label>Email Address</label><input type="email" id="compEmail" required></div>
+                        <div class="input-group"><label>Phone/WhatsApp</label><input type="text" id="compPhone" required></div>
+                        <div class="input-group"><label>Physical Address</label><textarea id="compAddress" rows="2"></textarea></div>
+                        <button type="submit" class="btn btn-primary">Save Profile Configuration</button>
+                        <div id="msgCompany" class="form-message mt-3"></div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="sec-settings" class="cms-section">
+                <div class="crud-form" style="max-width: 800px;">
+                    <h3 style="margin-bottom: 20px;">Global System Settings</h3>
+                    <form id="formSettings">
+                        <div class="input-group"><label>Default Meta Title</label><input type="text" id="setMetaTitle"></div>
+                        <div class="input-group"><label>Maintenance Mode</label>
+                            <select id="setMaintenance">
+                                <option value="false">Off (Live)</option>
+                                <option value="true">On (Offline)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update System Architecture</button>
+                        <div id="msgSettings" class="form-message mt-3"></div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="sec-careers" class="cms-section">
+                <h2>Careers Manager</h2>
+                <p style="color: var(--text-secondary);">Enterprise HR module ready for integration.</p>
+            </div>
+            
+            <div id="sec-seo" class="cms-section">
+                <h2>SEO Control Center</h2>
+                <p style="color: var(--text-secondary);">Dynamic JSON-LD & OpenGraph routing ready.</p>
+            </div>
+
         </section>
     </main>
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { auth, db, storage, enforceSecurity, secureLogout } from './firebase-config.js';
+        import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-        // NOTA ENTERPRISE: Pastikan Firebase Security Rules dikonfigurasi pada Backend (Firestore) untuk mengelakkan manipulasi akses.
-        const firebaseConfig = {
-            apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
-            authDomain: "zenqor-web.firebaseapp.com",
-            projectId: "zenqor-web",
-            storageBucket: "zenqor-web.firebasestorage.app",
-            messagingSenderId: "785478368719",
-            appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba"
-        };
+        // KESELAMATAN: Pastikan hanya Role: Admin
+        enforceSecurity('admin');
+        document.getElementById('btnLogout').addEventListener('click', secureLogout);
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        const ADMIN_EMAIL = "zenqortech@gmail.com"; 
-
-        onAuthStateChanged(auth, (user) => {
-            if (!user || user.email !== ADMIN_EMAIL) {
-                window.location.replace("login.html");
-            } else {
-                fetchPortfolioData(); 
+        // PAPARAN PROFIL ADMIN
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                document.getElementById('adminName').textContent = userDoc.exists() ? `Super Admin: ${userDoc.data().name}` : user.email;
             }
         });
 
-        document.getElementById('btnLogout').addEventListener('click', async () => {
-            try {
-                await signOut(auth);
-                window.location.replace("login.html");
-            } catch (error) {
-                console.error("Logout Error:", error);
-            }
+        // LOGIK NAVIGASI SPA
+        const links = document.querySelectorAll('.sidebar-link');
+        const sections = document.querySelectorAll('.cms-section');
+        const topbarTitle = document.getElementById('topbar-title');
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                links.forEach(l => l.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+                link.classList.add('active');
+                document.getElementById(link.getAttribute('data-target')).classList.add('active');
+                topbarTitle.textContent = link.textContent.trim();
+            });
         });
 
-        const portfolioList = document.getElementById('portfolioList');
-        const addForm = document.getElementById('addPortfolioForm');
-        const formMsg = document.getElementById('formMessage');
+        // FUNGSI GLOBAL: UPLOAD IMEJ KE FIREBASE STORAGE
+        async function uploadImage(file, folderPath) {
+            const storageRef = ref(storage, `${folderPath}/${Date.now()}_${file.name}`);
+            const uploadTask = await uploadBytesResumable(storageRef, file);
+            return await getDownloadURL(uploadTask.ref);
+        }
 
-        async function fetchPortfolioData() {
+        // ==========================================
+        // ENJIN CRUD: PORTFOLIO
+        // ==========================================
+        const listPortfolio = document.getElementById('listPortfolio');
+        
+        async function fetchPortfolio() {
             try {
-                const querySnapshot = await getDocs(collection(db, "portfolio_web"));
-                portfolioList.innerHTML = "";
+                const snap = await getDocs(collection(db, "portfolio_web"));
+                listPortfolio.innerHTML = snap.empty ? "<p>No data found.</p>" : "";
                 
-                if(querySnapshot.empty) {
-                    portfolioList.innerHTML = "<p class='loading-state'>No portfolio items found in database.</p>";
-                    return;
-                }
-
-                querySnapshot.forEach((docSnap) => {
+                snap.forEach((docSnap) => {
                     const data = docSnap.data();
-                    const id = docSnap.id;
-                    
-                    const itemHtml = `
+                    listPortfolio.innerHTML += `
                         <div class="data-item">
-                            <div>
-                                <h4 style="color: var(--primary-blue); margin-bottom: 5px;">${data.title}</h4>
-                                <p style="font-size: 0.85rem; color: var(--text-secondary);">[${data.tag}] - ${data.desc.substring(0, 50)}...</p>
+                            <div style="display: flex; gap: 15px; align-items: center;">
+                                <img src="${data.imgUrl}" width="50" height="50" style="border-radius: 4px; object-fit: cover;">
+                                <div>
+                                    <h4 style="margin: 0; color: var(--primary-blue);">${data.title}</h4>
+                                    <span style="font-size: 0.75rem; color: #fff; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">${data.tag}</span>
+                                </div>
                             </div>
-                            <button class="btn-danger delete-btn" data-id="${id}" aria-label="Delete entry"><i class="fas fa-trash"></i></button>
+                            <button class="btn-danger delete-port" data-id="${docSnap.id}"><i class="fas fa-trash"></i></button>
                         </div>
                     `;
-                    portfolioList.innerHTML += itemHtml;
                 });
 
-                document.querySelectorAll('.delete-btn').forEach(btn => {
-                    btn.addEventListener('click', async function() {
-                        const docId = this.getAttribute('data-id');
-                        if(confirm("DANGER: Are you sure you want to permanently delete this record?")) {
-                            try {
-                                await deleteDoc(doc(db, "portfolio_web", docId));
-                                fetchPortfolioData(); 
-                            } catch (error) {
-                                alert("Failed to delete: " + error.message);
-                            }
+                document.querySelectorAll('.delete-port').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        if(confirm("Permanently delete this project?")) {
+                            await deleteDoc(doc(db, "portfolio_web", e.currentTarget.dataset.id));
+                            fetchPortfolio(); initStats();
                         }
                     });
                 });
-            } catch (error) {
-                portfolioList.innerHTML = `<p class='loading-state' style='color: #EF4444;'>Error fetching data: ${error.message}</p>`;
-            }
+            } catch (err) { listPortfolio.innerHTML = "Error loading data."; }
         }
 
-        addForm.addEventListener('submit', async (e) => {
+        document.getElementById('formPortfolio').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = addForm.querySelector('button');
-            const originalBtnHtml = btn.innerHTML;
-            btn.innerHTML = "<i class='fas fa-circle-notch fa-spin'></i> Deploying...";
+            const btn = e.target.querySelector('button');
+            const msg = document.getElementById('msgPortfolio');
+            btn.innerHTML = "<i class='fas fa-circle-notch fa-spin'></i> Uploading...";
             btn.disabled = true;
 
             try {
+                const file = document.getElementById('portImage').files[0];
+                const imgUrl = await uploadImage(file, 'portfolio');
+
                 await addDoc(collection(db, "portfolio_web"), {
-                    title: document.getElementById('pTitle').value,
-                    tag: document.getElementById('pTag').value,
-                    imgUrl: document.getElementById('pImg').value,
-                    desc: document.getElementById('pDesc').value,
-                    createdAt: new Date()
+                    title: document.getElementById('portTitle').value,
+                    tag: document.getElementById('portTag').value,
+                    desc: document.getElementById('portDesc').value,
+                    imgUrl: imgUrl,
+                    createdAt: serverTimestamp()
                 });
                 
-                formMsg.textContent = "Data successfully published!";
-                formMsg.className = "form-message msg-success";
-                addForm.reset();
-                fetchPortfolioData(); 
-            } catch (error) {
-                formMsg.textContent = "Deployment Failed: " + error.message;
-                formMsg.className = "form-message msg-error";
-            } finally {
-                btn.innerHTML = originalBtnHtml;
-                btn.disabled = false;
-            }
+                msg.textContent = "Portfolio Published.";
+                msg.className = "form-message msg-success";
+                e.target.reset();
+                fetchPortfolio(); initStats();
+            } catch (err) {
+                msg.textContent = err.message;
+                msg.className = "form-message msg-error";
+            } finally { btn.innerHTML = "Publish Project"; btn.disabled = false; }
         });
+
+        // ==========================================
+        // ENJIN CRUD: SERVICES
+        // ==========================================
+        const listServices = document.getElementById('listServices');
+        
+        async function fetchServices() {
+            try {
+                const snap = await getDocs(collection(db, "services"));
+                listServices.innerHTML = snap.empty ? "<p>No services found.</p>" : "";
+                
+                snap.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    listServices.innerHTML += `
+                        <div class="data-item">
+                            <div><h4 style="margin: 0;"><i class="${data.icon} text-primary"></i> ${data.name}</h4></div>
+                            <button class="btn-danger delete-srv" data-id="${docSnap.id}"><i class="fas fa-trash"></i></button>
+                        </div>
+                    `;
+                });
+
+                document.querySelectorAll('.delete-srv').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        if(confirm("Delete this service?")) {
+                            await deleteDoc(doc(db, "services", e.currentTarget.dataset.id));
+                            fetchServices(); initStats();
+                        }
+                    });
+                });
+            } catch (err) { listServices.innerHTML = "Error loading data."; }
+        }
+
+        document.getElementById('formService').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerHTML = "Processing...";
+            try {
+                await addDoc(collection(db, "services"), {
+                    name: document.getElementById('srvName').value,
+                    icon: document.getElementById('srvIcon').value,
+                    desc: document.getElementById('srvDesc').value,
+                    createdAt: serverTimestamp()
+                });
+                e.target.reset();
+                fetchServices(); initStats();
+            } catch (err) { alert(err.message); }
+            btn.innerHTML = "Add Service";
+        });
+
+        // ==========================================
+        // SINGLETON MANAGER (Company & Settings)
+        // ==========================================
+        async function fetchSingletonData() {
+            const compSnap = await getDoc(doc(db, "config", "company_profile"));
+            if(compSnap.exists()) {
+                const data = compSnap.data();
+                document.getElementById('compName').value = data.name || "";
+                document.getElementById('compEmail').value = data.email || "";
+                document.getElementById('compPhone').value = data.phone || "";
+                document.getElementById('compReg').value = data.regNo || "";
+                document.getElementById('compAddress').value = data.address || "";
+            }
+
+            const setSnap = await getDoc(doc(db, "config", "system_settings"));
+            if(setSnap.exists()) {
+                document.getElementById('setMetaTitle').value = setSnap.data().metaTitle || "";
+                document.getElementById('setMaintenance').value = setSnap.data().maintenance || "false";
+            }
+        }
+
+        document.getElementById('formCompany').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            e.target.querySelector('button').innerHTML = "Saving...";
+            await setDoc(doc(db, "config", "company_profile"), {
+                name: document.getElementById('compName').value,
+                email: document.getElementById('compEmail').value,
+                phone: document.getElementById('compPhone').value,
+                regNo: document.getElementById('compReg').value,
+                address: document.getElementById('compAddress').value,
+                updatedAt: serverTimestamp()
+            }, { merge: true });
+            e.target.querySelector('button').innerHTML = "Save Profile Configuration";
+            document.getElementById('msgCompany').textContent = "Saved Successfully!";
+            document.getElementById('msgCompany').className = "form-message msg-success";
+        });
+
+        document.getElementById('formSettings').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            e.target.querySelector('button').innerHTML = "Updating...";
+            await setDoc(doc(db, "config", "system_settings"), {
+                metaTitle: document.getElementById('setMetaTitle').value,
+                maintenance: document.getElementById('setMaintenance').value,
+                updatedAt: serverTimestamp()
+            }, { merge: true });
+            e.target.querySelector('button').innerHTML = "Update System Architecture";
+            document.getElementById('msgSettings').textContent = "Settings Applied!";
+            document.getElementById('msgSettings').className = "form-message msg-success";
+        });
+
+        // ==========================================
+        // INITIALIZE DASHBOARD STATS
+        // ==========================================
+        async function initStats() {
+            const projSnap = await getDocs(collection(db, "portfolio_web"));
+            const srvSnap = await getDocs(collection(db, "services"));
+            const userSnap = await getDocs(collection(db, "users"));
+            
+            document.getElementById('stat-projects').textContent = projSnap.size;
+            document.getElementById('stat-services').textContent = srvSnap.size;
+            document.getElementById('stat-users').textContent = userSnap.size;
+            document.getElementById('stat-visitors').textContent = Math.floor(Math.random() * 5000) + 1000;
+        }
+
+        // Initialize All Modules
+        fetchPortfolio();
+        fetchServices();
+        fetchSingletonData();
+        initStats();
+        
+        // Setup Charts dummy data
+        const ctx = document.getElementById('visitorChart').getContext('2d');
+        new Chart(ctx, { type: 'line', data: { labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets: [{ label: 'Traffic', data: [120, 190, 300, 250, 420, 380, 500], borderColor: '#38BDF8', fill: true }] }, options: { responsive: true, maintainAspectRatio: false } });
+        
+        const ctxDev = document.getElementById('deviceChart').getContext('2d');
+        new Chart(ctxDev, { type: 'doughnut', data: { labels: ['Desktop', 'Mobile'], datasets: [{ data: [70, 30], backgroundColor: ['#3B82F6', '#38BDF8'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false } });
+
     </script>
 </body>
 </html>

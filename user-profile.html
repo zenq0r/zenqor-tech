@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Zenqor Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .profile-wrapper { padding-top: 120px; padding-bottom: 60px; min-height: 80vh; }
+        .profile-grid { display: grid; grid-template-columns: 250px 1fr; gap: 30px; }
+        .profile-sidebar { background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; height: fit-content; }
+        .profile-menu { list-style: none; padding: 0; margin: 0; }
+        .profile-menu li a { display: flex; align-items: center; gap: 10px; padding: 12px 15px; color: var(--text-secondary); text-decoration: none; border-radius: 8px; transition: 0.2s; }
+        .profile-menu li a:hover, .profile-menu li a.active { background: rgba(59, 130, 246, 0.1); color: var(--primary-blue); }
+        .profile-content { background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 30px; }
+        .user-avatar { width: 100px; height: 100px; border-radius: 50%; background: var(--primary-blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 20px; }
+        @media (max-width: 768px) { .profile-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body class="bg-alt">
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-nav logo-text">
+                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img">
+                <span class="text-primary">Zenqor</span> Technologies
+            </a>
+            <div style="display: flex; gap: 15px;">
+                <button id="btnLogout" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.85rem;">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="profile-wrapper container">
+        <div class="profile-grid">
+            <aside class="profile-sidebar">
+                <ul class="profile-menu">
+                    <li><a href="#" class="active"><i class="fas fa-user"></i> Personal Info</a></li>
+                    <li><a href="#"><i class="fas fa-briefcase"></i> My Applications</a></li>
+                    <li><a href="#"><i class="fas fa-bookmark"></i> Saved Portfolio</a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    <li><a href="#"><i class="fas fa-shield-alt"></i> Security</a></li>
+                </ul>
+            </aside>
+            <main class="profile-content">
+                <div class="user-avatar" id="avatarInitials">U</div>
+                <h2 style="margin-bottom: 5px;" id="displayUserName">Loading...</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 30px;" id="displayUserEmail">Loading...</p>
+
+                <form id="updateProfileForm">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="profName" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="profPhone" placeholder="+60123456789">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Profile</button>
+                    <div id="profMessage" class="form-message" style="margin-top: 15px;"></div>
+                </form>
+            </main>
+        </div>
+    </section>
+
+    <script type="module">
+        import { auth, db, enforceSecurity, secureLogout } from './firebase-config.js';
+        import { doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        
+        // Pastikan hanya pengguna log masuk boleh akses (Role: User)
+        enforceSecurity('user');
+
+        document.getElementById('btnLogout').addEventListener('click', secureLogout);
+
+        // Muatkan Data Pengguna
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                if (userDoc.exists()) {
+                    const data = userDoc.data();
+                    document.getElementById('displayUserName').textContent = data.name || "User";
+                    document.getElementById('displayUserEmail').textContent = user.email;
+                    document.getElementById('profName').value = data.name || "";
+                    document.getElementById('profPhone').value = data.phone || "";
+                    document.getElementById('avatarInitials').textContent = (data.name ? data.name.charAt(0) : "U").toUpperCase();
+                }
+            }
+        });
+
+        // Kemas kini Profil
+        document.getElementById('updateProfileForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const msg = document.getElementById('profMessage');
+            btn.innerHTML = "Updating...";
+            
+            try {
+                const user = auth.currentUser;
+                await updateDoc(doc(db, "users", user.uid), {
+                    name: document.getElementById('profName').value,
+                    phone: document.getElementById('profPhone').value,
+                    updated_at: new Date()
+                });
+                msg.textContent = "Profile updated successfully.";
+                msg.className = "form-message msg-success";
+                setTimeout(() => location.reload(), 1500);
+            } catch (error) {
+                msg.textContent = "Error: " + error.message;
+                msg.className = "form-message msg-error";
+            } finally {
+                btn.innerHTML = "Update Profile";
+            }
+        });
+    </script>
+</body>
+</html>
