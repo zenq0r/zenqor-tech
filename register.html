@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | Zenqor Technologies</title>
+    <meta name="theme-color" content="#050505">
+    <title>Create Account | Zenqor Technologies</title>
+    <meta name="description" content="Register an account with Zenqor Technologies to manage your digital projects, server resources, and access technical support.">
+    <link rel="canonical" href="https://zenqor-tech.kauaku.store/register.html">
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -18,76 +24,87 @@
         .form-group { margin-bottom: 18px; position: relative; }
         .form-group label { display: block; margin-bottom: 8px; color: var(--text-main, #E2E8F0); font-size: 0.9rem; }
         .form-group input { width: 100%; padding: 12px 15px; background-color: var(--bg-main, #0F131A); border: 1px solid var(--border-color, #2A3241); color: #fff; border-radius: 6px; font-family: 'Inter', sans-serif; transition: border-color 0.3s; }
-        .form-group input:focus { outline: none; border-color: var(--primary-blue, #3B82F6); }
-        .toggle-password { position: absolute; right: 15px; top: 38px; color: var(--text-secondary, #94A3B8); cursor: pointer; }
+        .form-group input:focus { outline: none; border-color: var(--primary-blue, #3B82F6); box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); }
+        .toggle-password { position: absolute; right: 15px; top: 38px; color: var(--text-secondary, #94A3B8); cursor: pointer; padding: 5px; }
         .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-secondary); }
         .checkbox-group input { margin-top: 4px; cursor: pointer; }
         .checkbox-group a { color: var(--primary-blue); text-decoration: none; font-weight: 500; }
         .checkbox-group a:hover { text-decoration: underline; }
         .register-link { text-align: center; margin-top: 25px; font-size: 0.9rem; color: var(--text-secondary, #94A3B8); }
         .register-link a { color: var(--primary-blue, #3B82F6); text-decoration: none; font-weight: 600; }
+        button:disabled { opacity: 0.7; cursor: not-allowed; }
     </style>
 </head>
 <body class="bg-alt">
-    <header class="navbar">
+    <header class="navbar" role="banner">
         <div class="container nav-container">
-            <a href="index.html" class="logo-nav logo-text">
-                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img">
+            <a href="index.html" class="logo-nav logo-text" aria-label="Zenqor Technologies Home">
+                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img" width="35" height="35">
                 <span class="text-primary">Zenqor</span> Technologies
             </a>
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Main Navigation">
                 <a href="index.html" data-i18n="nav_home">Home</a>
-                <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;">Login</a>
+                <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;" aria-label="Login">Login</a>
             </nav>
         </div>
     </header>
 
-    <section class="login-wrapper container">
-        <div class="login-card reveal">
-            <div class="login-header">
-                <a href="index.html"><img src="logo.png" alt="Zenqor Logo"></a>
-                <h2>Create an Account</h2>
-                <p>Join us to get started.</p>
+    <main id="main-content">
+        <section class="login-wrapper container">
+            <div class="login-card reveal">
+                <div class="login-header">
+                    <a href="index.html" aria-label="Back to Home"><img src="logo.png" alt="Zenqor Logo" width="60" height="60"></a>
+                    <h2>Create an Account</h2>
+                    <p>Join us to get started.</p>
+                </div>
+
+                <form id="registerForm" novalidate>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="John Doe" required aria-required="true" autocomplete="name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="name@example.com" required aria-required="true" autocomplete="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password (Min. 8 characters)</label>
+                        <input type="password" id="password" placeholder="••••••••" required minlength="8" aria-required="true" autocomplete="new-password">
+                        <i class="fas fa-eye toggle-password" id="togglePassword" role="button" aria-label="Toggle password visibility" tabindex="0"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="••••••••" required minlength="8" aria-required="true" autocomplete="new-password">
+                        <i class="fas fa-eye toggle-password" id="toggleConfirmPassword" role="button" aria-label="Toggle confirm password visibility" tabindex="0"></i>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required aria-required="true">
+                        <label for="terms">I agree to the <a href="legal.html" target="_blank">Terms of Service</a> & <a href="data-policy.html" target="_blank">Privacy Policy</a>.</label>
+                    </div>
+                    
+                    <div id="formMessage" class="form-message" aria-live="polite" role="alert"></div>
+
+                    <button type="submit" class="btn btn-primary w-100" style="padding: 12px; font-size: 1rem; border: none; cursor: pointer;">Sign Up</button>
+                </form>
+
+                <div class="register-link">
+                    Already have an account? <a href="login.html">Sign in</a>
+                </div>
             </div>
+        </section>
+    </main>
 
-            <form id="registerForm">
-                <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" placeholder="John Doe" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="name@example.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password (Min. 8 characters)</label>
-                    <input type="password" id="password" placeholder="••••••••" required minlength="8">
-                    <i class="fas fa-eye toggle-password" id="togglePassword"></i>
-                </div>
-                
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" placeholder="••••••••" required minlength="8">
-                    <i class="fas fa-eye toggle-password" id="toggleConfirmPassword"></i>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="terms" required>
-                    <label for="terms">I agree to the <a href="legal.html" target="_blank">Terms of Service</a> & <a href="data-policy.html" target="_blank">Privacy Policy</a>.</label>
-                </div>
-                
-                <div id="formMessage" class="form-message"></div>
-
-                <button type="submit" class="btn btn-primary w-100" style="padding: 12px; font-size: 1rem; border: none; cursor: pointer;">Sign Up</button>
-            </form>
-
-            <div class="register-link">
-                Already have an account? <a href="login.html">Sign in</a>
+    <footer role="contentinfo">
+        <div class="container footer-content" style="margin-bottom: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+            <div class="footer-bottom" style="padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; width: 100%;">
+                <p data-i18n="footer_copy">© 2026 Zenqor Technologies (Malaysia). All rights reserved.</p>
             </div>
         </div>
-    </section>
+    </footer>
 
     <script src="script.js"></script>
     <script>
@@ -96,11 +113,15 @@
                 const toggle = document.getElementById(toggleId);
                 const input = document.getElementById(inputId);
                 if(toggle && input) {
-                    toggle.addEventListener('click', function() {
+                    const action = function() {
                         const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
                         input.setAttribute('type', type);
                         this.classList.toggle('fa-eye');
                         this.classList.toggle('fa-eye-slash');
+                    };
+                    toggle.addEventListener('click', action);
+                    toggle.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); action.call(this); }
                     });
                 }
             }
@@ -130,15 +151,28 @@
             registerForm.addEventListener('submit', function(e) {
                 e.preventDefault(); 
                 
-                const fullName = document.getElementById('fullName').value;
-                const email = document.getElementById('email').value;
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
                 const password = document.getElementById('password').value;
                 const confirmPassword = document.getElementById('confirmPassword').value;
+                const terms = document.getElementById('terms').checked;
                 const btn = this.querySelector('button[type="submit"]');
                 const originalText = btn.innerHTML;
                 
                 formMessage.textContent = "";
                 formMessage.className = "form-message";
+
+                if (!terms) {
+                    formMessage.textContent = "You must agree to the Terms of Service.";
+                    formMessage.classList.add("msg-error");
+                    return;
+                }
+
+                if (password.length < 8) {
+                    formMessage.textContent = "Password must be at least 8 characters long.";
+                    formMessage.classList.add("msg-error");
+                    return;
+                }
 
                 if (password !== confirmPassword) {
                     formMessage.textContent = "Passwords do not match. Please try again.";
@@ -146,7 +180,7 @@
                     return;
                 }
 
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registering...';
+                btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Registering...';
                 btn.disabled = true;
 
                 createUserWithEmailAndPassword(auth, email, password)
@@ -156,19 +190,21 @@
                         });
                     })
                     .then(() => {
-                        formMessage.textContent = "Registration successful! Redirecting to login...";
+                        formMessage.textContent = "Account created successfully! Redirecting to secure login...";
                         formMessage.classList.add("msg-success");
-                        setTimeout(() => { window.location.href = "login.html"; }, 1500);
+                        setTimeout(() => { window.location.replace("login.html"); }, 2000);
                     })
                     .catch((error) => {
-                        let errorMessage = error.message;
+                        console.error("Registration Error:", error.code);
+                        let errorMessage = "An error occurred during registration. Please try again.";
+                        
                         if (error.code === 'auth/email-already-in-use') {
-                            errorMessage = "This email is already in use. Please sign in.";
-                        } else if (error.code === 'auth/weak-password') {
-                            errorMessage = "Password is too weak. Please use at least 8 characters.";
+                            errorMessage = "This email is already registered. Please sign in.";
+                        } else if (error.code === 'auth/invalid-email') {
+                            errorMessage = "Please enter a valid email address.";
                         }
                         
-                        formMessage.textContent = "Registration Error: " + errorMessage;
+                        formMessage.textContent = errorMessage;
                         formMessage.classList.add("msg-error");
                         btn.innerHTML = originalText;
                         btn.disabled = false;

@@ -1,137 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="logo.png">
-    <meta name="description" content="Zenqor Technologies specializes in custom software development, website development, Lua scripting, and premium FiveM server optimization.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050505">
     <title>Contact Us | Zenqor Technologies</title>
+    <meta name="description" content="Get in touch with Zenqor Technologies for custom software development, enterprise web solutions, and premium FiveM services in Malaysia.">
+    <link rel="canonical" href="https://zenqor-tech.kauaku.store/contact.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact Zenqor Technologies">
+    <meta property="og:description" content="Partner with us to engineer your server's next big feature.">
+    <meta property="og:url" content="https://zenqor-tech.kauaku.store/contact.html">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="navbar">
+    <header class="navbar" role="banner">
         <div class="container nav-container">
-            <a href="index.html" class="logo-nav logo-text">
-                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img">
+            <a href="index.html" class="logo-nav logo-text" aria-label="Zenqor Technologies Home">
+                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img" width="35" height="35">
                 <span class="text-primary">Zenqor</span> Technologies
             </a>
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Main Navigation">
                 <a href="index.html" data-i18n="nav_home">Home</a>
                 <a href="services.html" data-i18n="nav_services">Services</a>
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu">
+                    <button class="dropdown-toggle" data-target="portfolio-menu" aria-haspopup="true" aria-expanded="false">
                         <span data-i18n="nav_portfolio">Portfolio</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </a>
-                    <div class="dropdown-menu" id="portfolio-menu">
-                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming">Scripting Projects</a>
-                        <a href="portfolio-web.html" data-i18n="nav_port_web">Server Development</a>
+                    </button>
+                    <div class="dropdown-menu" id="portfolio-menu" role="menu">
+                        <a href="portfolio-gaming.html" role="menuitem" data-i18n="nav_port_gaming">Scripting Projects</a>
+                        <a href="portfolio-web.html" role="menuitem" data-i18n="nav_port_web">Server Development</a>
                     </div>
                 </div>
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu">
+                    <button class="dropdown-toggle" data-target="careers-menu" aria-haspopup="true" aria-expanded="false">
                         <span data-i18n="nav_careers">Careers</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </a>
-                    <div class="dropdown-menu" id="careers-menu">
-                        <a href="careers.html" data-i18n="nav_careers_join">Join Us</a>
+                    </button>
+                    <div class="dropdown-menu" id="careers-menu" role="menu">
+                        <a href="careers.html" role="menuitem" data-i18n="nav_careers_join">Join Us</a>
                     </div>
                 </div>
                 <a href="about.html" data-i18n="nav_about">About</a>
                 <a href="faq.html" data-i18n="nav_faq">FAQ</a>
-                <a href="contact.html" data-i18n="nav_contact">Contact</a>
+                <a href="contact.html" style="color: var(--primary-blue);" data-i18n="nav_contact">Contact</a>
                 
                 <div style="display: flex; align-items: center; gap: 15px; margin-left: 15px;">
-                    <button id="lang-toggle" class="lang-btn">EN</button>
-                    <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;">Login</a>
+                    <button id="lang-toggle" class="lang-btn" aria-label="Toggle Language">EN</button>
+                    <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;" aria-label="Login">Login</a>
                 </div>
             </nav>
-            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+            <button class="mobile-menu-btn" aria-label="Open Mobile Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
-    <section id="contact" class="contact section-padding bg-alt" style="padding-top: 140px;">
-        <div class="container">
-            <div class="section-header reveal">
-                <h1 data-i18n="nav_contact" style="font-size: 3rem; margin-bottom: 15px;"></h1>
-                <h2 data-i18n="con_title" style="font-size: 1.8rem; margin-bottom: 10px;"></h2>
-                <p data-i18n="con_sub"></p>
-            </div>
-            
-            <div class="contact-grid">
-                <div class="contact-info card-style reveal">
-                    <h3 data-i18n="hq_title"></h3>
-                    <div class="info-row">
-                        <i class="fas fa-map-marker-alt text-accent"></i>
-                        <p data-i18n="hq_addr"></p>
-                    </div>
-                    <div class="info-row">
-                        <i class="fas fa-envelope text-accent"></i>
-                        <div>
-                            <p>info@zenqor.com.my</p>
-                            <p>zenqor.dev@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="info-row">
-                        <i class="fab fa-whatsapp text-accent" style="font-size: 1.2rem;"></i>
-                        <p><a href="https://wa.me/601165012569" target="_blank" style="color: inherit; text-decoration: none; font-weight: 500;">+60 11 6501 2569</a></p>
-                    </div>
-
-                    <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 30px 0 20px;">
-
-                    <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Business Hours</h4>
-                    <div class="info-row" style="margin-bottom: 10px;">
-                        <i class="fas fa-clock text-accent"></i>
-                        <div>
-                            <p><strong>Mon - Fri:</strong> 9:00 AM - 6:00 PM</p>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Sat - Sun: Closed</p>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 30px; display: flex; gap: 20px;">
-                        <a href="MASUKKAN_PAUTAN_DISCORD_DI_SINI" target="_blank" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#5865F2'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-discord"></i></a>
-                        <a href="https://github.com/zenq0r" target="_blank" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-github"></i></a>
-                        <a href="MASUKKAN_PAUTAN_LINKEDIN_DI_SINI" target="_blank" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#0A66C2'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-linkedin"></i></a>
-                    </div>
+    <main id="main-content">
+        <section id="contact" class="contact section-padding bg-alt" style="padding-top: 140px;">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h1 data-i18n="nav_contact" style="font-size: 3rem; margin-bottom: 15px;">Contact</h1>
+                    <h2 data-i18n="con_title" style="font-size: 1.8rem; margin-bottom: 10px;">Initialize Connection</h2>
+                    <p data-i18n="con_sub">Partner with us to engineer your server's next big feature.</p>
                 </div>
                 
-                <form action="https://formsubmit.co/zenqortech@gmail.com" method="POST" class="contact-form card-style reveal" id="mainContactForm">
-                    <input type="hidden" name="_captcha" value="false">
+                <div class="contact-grid">
+                    <address class="contact-info card-style reveal" style="font-style: normal;">
+                        <h3 data-i18n="hq_title">Headquarters</h3>
+                        <div class="info-row">
+                            <i class="fas fa-map-marker-alt text-accent" aria-hidden="true"></i>
+                            <p data-i18n="hq_addr">Bandar Mahkota Cheras<br>Selangor, Malaysia</p>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-envelope text-accent" aria-hidden="true"></i>
+                            <div>
+                                <p><a href="mailto:info@zenqor.com.my" style="color: inherit; text-decoration: none;">info@zenqor.com.my</a></p>
+                                <p><a href="mailto:zenqor.dev@gmail.com" style="color: inherit; text-decoration: none;">zenqor.dev@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="fab fa-whatsapp text-accent" style="font-size: 1.2rem;" aria-hidden="true"></i>
+                            <p><a href="https://wa.me/601165012569" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; font-weight: 500;">+60 11 6501 2569</a></p>
+                        </div>
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 30px 0 20px;">
+                        <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Business Hours</h4>
+                        <div class="info-row" style="margin-bottom: 10px;">
+                            <i class="fas fa-clock text-accent" aria-hidden="true"></i>
+                            <div>
+                                <p><strong>Mon - Fri:</strong> 9:00 AM - 6:00 PM</p>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem;">Sat - Sun: Closed</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 30px; display: flex; gap: 20px;">
+                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#5865F2'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-discord"></i></a>
+                            <a href="https://github.com/zenq0r" target="_blank" rel="noopener noreferrer" aria-label="View our GitHub" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-github"></i></a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Connect on LinkedIn" style="color: var(--text-secondary); font-size: 1.6rem; transition: color 0.2s;" onmouseover="this.style.color='#0A66C2'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </address>
                     
-                    <div class="input-group">
-                        <input type="text" id="form_name" name="name" data-i18n-placeholder="ph_name" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" id="form_email" name="email" data-i18n-placeholder="ph_email" required>
-                    </div>
-                    <div class="input-group">
-                        <select required id="form_select" name="subject">
-                            <option value="" disabled selected data-i18n="opt_def"></option>
-                            <option data-i18n="opt_1"></option>
-                            <option data-i18n="opt_2"></option>
-                            <option data-i18n="opt_3"></option>
-                            <option data-i18n="opt_4"></option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <textarea rows="4" id="form_msg" name="message" data-i18n-placeholder="ph_msg" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100" data-i18n="btn_submit"></button>
-                </form>
+                    <form action="https://formsubmit.co/zenqortech@gmail.com" method="POST" class="contact-form card-style reveal" id="mainContactForm">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Inquiry from Zenqor Website!">
+                        
+                        <div class="input-group">
+                            <label for="form_name" class="visually-hidden" style="display: none;">Name</label>
+                            <input type="text" id="form_name" name="name" data-i18n-placeholder="ph_name" placeholder="Name" required aria-required="true">
+                        </div>
+                        <div class="input-group">
+                            <label for="form_email" class="visually-hidden" style="display: none;">Email</label>
+                            <input type="email" id="form_email" name="email" data-i18n-placeholder="ph_email" placeholder="Email Address" required aria-required="true">
+                        </div>
+                        <div class="input-group">
+                            <label for="form_select" class="visually-hidden" style="display: none;">Subject</label>
+                            <select id="form_select" name="subject" required aria-required="true">
+                                <option value="" disabled selected data-i18n="opt_def">Select Request Type</option>
+                                <option data-i18n="opt_1">Custom Lua Script</option>
+                                <option data-i18n="opt_2">Standalone Resource</option>
+                                <option data-i18n="opt_3">NUI / UI Interface</option>
+                                <option data-i18n="opt_4">Server Optimization / Bug Fix</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form_msg" class="visually-hidden" style="display: none;">Message</label>
+                            <textarea rows="5" id="form_msg" name="message" data-i18n-placeholder="ph_msg" placeholder="Message Details" required aria-required="true"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" data-i18n="btn_submit">Send Request</button>
+                    </form>
+                </div>
+                
+                <div class="reveal" style="margin-top: 40px; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.153330364239!2d101.78453471018598!3d3.0535311969062327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc34c83b8b9b5f%3A0x8e83348c4146e5!2sBandar%20Mahkota%20Cheras%2C%20Selangor!5e0!3m2!1sen!2smy!4v1716800000000!5m2!1sen!2smy" width="100%" height="350" style="border:0; display: block;" allowfullscreen="" loading="lazy" title="Office Location Map" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
+        </section>
+    </main>
 
-            <div class="reveal" style="margin-top: 40px; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.153330364239!2d101.78453471018598!3d3.0535311969062327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc34c83b8b9b5f%3A0x8e83348c4146e5!2sBandar%20Mahkota%20Cheras%2C%20Selangor!5e0!3m2!1sen!2smy!4v1716800000000!5m2!1sen!2smy" width="100%" height="350" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            
-        </div>
-    </section>
-
-    <footer>
+    <footer role="contentinfo">
         <div class="container footer-content" style="margin-bottom: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
             <div class="footer-brand" style="display: flex; flex-direction: column; align-items: center;">
-                <a href="index.html" class="logo-footer logo-text" style="justify-content: center; margin-bottom: 15px;">
-                    <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img">
+                <a href="index.html" class="logo-footer logo-text" style="justify-content: center; margin-bottom: 15px;" aria-label="Zenqor Technologies Home">
+                    <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img" width="30" height="30" loading="lazy">
                     <span class="text-primary">Zenqor</span> Technologies
                 </a>
                 <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
@@ -139,17 +152,30 @@
                     <p>Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
                 </div>
             </div>
-            <div class="footer-links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
+            <nav class="footer-links" aria-label="Footer Legal Links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
                 <a href="return-policy.html">Return & Refund Policy</a>
                 <a href="legal.html">Legal</a>
                 <a href="data-policy.html">Data Policy</a>
-            </div>
+            </nav>
         </div>
         <div class="footer-bottom" style="padding-top: 20px; margin-top: 25px; border-top: 1px solid var(--border-color); text-align: center;">
             <p data-i18n="footer_copy">© 2026 Zenqor Technologies (Malaysia). All rights reserved.</p>
         </div>
     </footer>
 
+    <div class="floating-widgets">
+        <a href="https://wa.me/601165012569" target="_blank" rel="noopener noreferrer" class="widget-wa" aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <button id="scrollToTop" class="widget-top" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+    </div>
+
     <script src="script.js"></script>
-    </body>
+    <script>
+        // Form Loading State Handling
+        document.getElementById('mainContactForm').addEventListener('submit', function() {
+            const btn = this.querySelector('button[type="submit"]');
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processing...';
+            btn.style.opacity = '0.8';
+        });
+    </script>
+</body>
 </html>

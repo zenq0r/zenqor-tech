@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="logo.png">
-    <meta name="description" content="Zenqor Technologies specializes in custom software development, website development, Lua scripting, and premium FiveM server optimization.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Zenqor Technologies</title>
+    <meta name="theme-color" content="#050505">
+    <title>Our Services | Zenqor Technologies</title>
+    <meta name="description" content="Explore Zenqor Technologies' premium services including custom software development, FiveM scripting, server optimization, and NUI design.">
+    <link rel="canonical" href="https://zenqor-tech.kauaku.store/services.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Our Services | Zenqor Technologies">
+    <meta property="og:description" content="Professional FiveM, Cloud, and Web Solutions.">
+    <meta property="og:url" content="https://zenqor-tech.kauaku.store/services.html">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="navbar">
+    <header class="navbar" role="banner">
         <div class="container nav-container">
-            <a href="index.html" class="logo-nav logo-text">
-                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img">
+            <a href="index.html" class="logo-nav logo-text" aria-label="Zenqor Technologies Home">
+                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img" width="35" height="35">
                 <span class="text-primary">Zenqor</span> Technologies
             </a>
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Main Navigation">
                 <a href="index.html" data-i18n="nav_home">Home</a>
-                
+                <a href="services.html" style="color: var(--primary-blue);" data-i18n="nav_services">Services</a>
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="services-menu" style="color: var(--primary-blue);">
-                        <span data-i18n="nav_services">Services</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </a>
-                    <div class="dropdown-menu" id="services-menu">
-                        <a href="services.html" data-i18n="nav_srv_dev">Development</a>
-                        <a href="services.html#licensing" data-i18n="nav_srv_lic">Licensing & Permits</a>
-                    </div>
-                </div>
-
-                <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu">
+                    <button class="dropdown-toggle" data-target="portfolio-menu" aria-haspopup="true" aria-expanded="false">
                         <span data-i18n="nav_portfolio">Portfolio</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </a>
-                    <div class="dropdown-menu" id="portfolio-menu">
-                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming">Scripting Projects</a>
-                        <a href="portfolio-web.html" data-i18n="nav_port_web">Server Development</a>
+                    </button>
+                    <div class="dropdown-menu" id="portfolio-menu" role="menu">
+                        <a href="portfolio-gaming.html" role="menuitem" data-i18n="nav_port_gaming">Scripting Projects</a>
+                        <a href="portfolio-web.html" role="menuitem" data-i18n="nav_port_web">Server Development</a>
                     </div>
                 </div>
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu">
+                    <button class="dropdown-toggle" data-target="careers-menu" aria-haspopup="true" aria-expanded="false">
                         <span data-i18n="nav_careers">Careers</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </a>
-                    <div class="dropdown-menu" id="careers-menu">
-                        <a href="careers.html" data-i18n="nav_careers_join">Join Us</a>
+                    </button>
+                    <div class="dropdown-menu" id="careers-menu" role="menu">
+                        <a href="careers.html" role="menuitem" data-i18n="nav_careers_join">Join Us</a>
                     </div>
                 </div>
                 <a href="about.html" data-i18n="nav_about">About</a>
@@ -52,117 +52,62 @@
                 <a href="contact.html" data-i18n="nav_contact">Contact</a>
                 
                 <div style="display: flex; align-items: center; gap: 15px; margin-left: 15px;">
-                    <button id="lang-toggle" class="lang-btn">EN</button>
-                    <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;">Login</a>
+                    <button id="lang-toggle" class="lang-btn" aria-label="Toggle Language">EN</button>
+                    <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;" aria-label="Login">Login</a>
                 </div>
             </nav>
-            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+            <button class="mobile-menu-btn" aria-label="Open Mobile Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
-    <section class="hero-inner reveal">
-        <div class="container hero-content reveal">
-            <h1 data-i18n="nav_services">Services</h1>
-        </div>
-    </section>
+    <main id="main-content">
+        <section class="hero-inner reveal">
+            <div class="container hero-content reveal">
+                <h1 data-i18n="nav_services">Our Services</h1>
+            </div>
+        </section>
 
-    <section id="services" class="services section-padding">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 data-i18n="srv_main_title">Our <span class='text-primary'>Development Services</span></h2>
-                <p data-i18n="srv_main_sub">From highly optimized standalone tools to immersive roleplay systems.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card card-style reveal hover-up">
-                    <i class="fas fa-gamepad text-primary icon-lg"></i>
-                    <h3 data-i18n="srv_1_t">Custom Lua Scripts</h3>
-                    <p data-i18n="srv_1_d">Tailor-made gameplay scripts including jobs, crime systems, mechanics, and economy.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.1s;">
-                    <i class="fas fa-mobile-alt text-primary icon-lg"></i>
-                    <h3 data-i18n="srv_2_t">Standalone Resources</h3>
-                    <p data-i18n="srv_2_d">Framework-agnostic tools and utilities that drop cleanly into any FiveM setup.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.2s;">
-                    <i class="fas fa-globe text-primary icon-lg"></i>
-                    <h3 data-i18n="srv_3_t">NUI & UI Design</h3>
-                    <p data-i18n="srv_3_d">Modern, responsive, and player-centric NUI interfaces built with HTML, CSS, and JS.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.3s;">
-                    <i class="fas fa-code text-primary icon-lg"></i>
-                    <h3 data-i18n="srv_4_t">Framework Integration</h3>
-                    <p data-i18n="srv_4_d">Seamless compatibility and adaptation for QBCore, ESX, QBox, or custom frameworks.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.4s;">
-                    <i class="fas fa-pen-nib text-primary icon-lg"></i>
-                    <h3 data-i18n="srv_5_t">Server Optimization</h3>
-                    <p data-i18n="srv_5_d">Profiling and reducing CPU/RAM usage to ensure stable server performance and high FPS.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.5s;">
-                    <i class="fas fa-brain text-primary icon-lg"></i>
-                    <h3 data-i18n="srv_6_t">Bug Fixing & Support</h3>
-                    <p data-i18n="srv_6_d">Troubleshooting legacy code, resolving framework errors, and missing export fixes.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.6s;">
-                    <i class="fas fa-network-wired text-primary icon-lg"></i>
-                    <h3 data-i18n="srv_7_t">Database Tuning</h3>
-                    <p data-i18n="srv_7_d">Optimizing SQL queries and database structures to eliminate server latency.</p>
+        <section class="services section-padding bg-alt">
+            <div class="container">
+                <header class="section-header reveal">
+                    <h2 data-i18n="srv_main_title">Our <span class='text-primary'>Development Services</span></h2>
+                    <p data-i18n="srv_main_sub">From highly optimized standalone tools to immersive roleplay systems.</p>
+                </header>
+                <div class="services-grid">
+                    <article class="service-card card-style reveal hover-up">
+                        <h3 class="text-primary" data-i18n="srv_1_t">Custom Lua Scripts</h3>
+                        <p data-i18n="srv_1_d">Tailor-made gameplay scripts including jobs, crime systems, mechanics, and economy.</p>
+                    </article>
+                    <article class="service-card card-style reveal hover-up" style="transition-delay: 0.1s;">
+                        <h3 class="text-primary" data-i18n="srv_2_t">Standalone Resources</h3>
+                        <p data-i18n="srv_2_d">Framework-agnostic tools and utilities that drop cleanly into any FiveM setup.</p>
+                    </article>
+                    <article class="service-card card-style reveal hover-up" style="transition-delay: 0.2s;">
+                        <h3 class="text-primary" data-i18n="srv_3_t">NUI & UI Design</h3>
+                        <p data-i18n="srv_3_d">Modern, responsive, and player-centric NUI interfaces built with HTML, CSS, and JS.</p>
+                    </article>
+                    <article class="service-card card-style reveal hover-up">
+                        <h3 class="text-primary" data-i18n="srv_4_t">Framework Integration</h3>
+                        <p data-i18n="srv_4_d">Seamless compatibility and adaptation for QBCore, ESX, QBox, or custom frameworks.</p>
+                    </article>
+                    <article class="service-card card-style reveal hover-up" style="transition-delay: 0.1s;">
+                        <h3 class="text-primary" data-i18n="srv_5_t">Server Optimization</h3>
+                        <p data-i18n="srv_5_d">Profiling and reducing CPU/RAM usage to ensure stable server performance and high FPS.</p>
+                    </article>
+                    <article class="service-card card-style reveal hover-up" style="transition-delay: 0.2s;">
+                        <h3 class="text-primary" data-i18n="srv_6_t">Bug Fixing & Support</h3>
+                        <p data-i18n="srv_6_d">Troubleshooting legacy code, resolving framework errors, and missing export fixes.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="licensing" class="services section-padding bg-alt">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 data-i18n="lic_main_title">Business <span class='text-primary'>Licensing & Permits</span></h2>
-                <p data-i18n="lic_main_sub">ZENQOR TECHNOLOGIES menyediakan perkhidmatan pengurusan lesen perniagaan, lesen premis, lesen papan tanda, permit serta penyediaan dokumentasi bagi membantu individu, syarikat dan organisasi mendapatkan kelulusan daripada pihak berkuasa tempatan (PBT) dengan lebih mudah, cepat dan profesional.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card card-style reveal hover-up">
-                    <i class="fas fa-file-signature text-primary icon-lg"></i>
-                    <h3 data-i18n="lic_1_t">Malaysia Business Licence</h3>
-                    <p data-i18n="lic_1_d">Complete business registration and licensing solutions.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.1s;">
-                    <i class="fas fa-store text-primary icon-lg"></i>
-                    <h3 data-i18n="lic_2_t">Business Premise Licence</h3>
-                    <p data-i18n="lic_2_d">Fast-track your physical store or office premise licensing.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.2s;">
-                    <i class="fas fa-map-signs text-primary icon-lg"></i>
-                    <h3 data-i18n="lic_3_t">Signboard Licence</h3>
-                    <p data-i18n="lic_3_d">Authorized permits for your business signages and advertising boards.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.3s;">
-                    <i class="fas fa-file-contract text-primary icon-lg"></i>
-                    <h3 data-i18n="lic_4_t">Permit Services</h3>
-                    <p data-i18n="lic_4_d">General and specialized permits from relevant local authorities.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.4s;">
-                    <i class="fas fa-sync-alt text-primary icon-lg"></i>
-                    <h3 data-i18n="lic_5_t">Licence Renewal</h3>
-                    <p data-i18n="lic_5_d">Hassle-free annual renewals for all your existing business licenses.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.5s;">
-                    <i class="fas fa-folder-open text-primary icon-lg"></i>
-                    <h3 data-i18n="lic_6_t">Documentation Support</h3>
-                    <p data-i18n="lic_6_d">Professional preparation of paperwork and official documentation.</p>
-                </div>
-                <div class="service-card card-style reveal hover-up" style="transition-delay: 0.6s;">
-                    <i class="fas fa-comments text-primary icon-lg"></i>
-                    <h3 data-i18n="lic_7_t">Consultation Services</h3>
-                    <p data-i18n="lic_7_d">Expert advice on regulatory compliance and business setups.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
+    <footer role="contentinfo">
         <div class="container footer-content" style="margin-bottom: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
             <div class="footer-brand" style="display: flex; flex-direction: column; align-items: center;">
-                <a href="index.html" class="logo-footer logo-text" style="justify-content: center; margin-bottom: 15px;">
-                    <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img">
+                <a href="index.html" class="logo-footer logo-text" style="justify-content: center; margin-bottom: 15px;" aria-label="Zenqor Technologies Home">
+                    <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img" width="30" height="30" loading="lazy">
                     <span class="text-primary">Zenqor</span> Technologies
                 </a>
                 <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
@@ -170,21 +115,16 @@
                     <p>Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
                 </div>
             </div>
-            <div class="footer-links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
+            <nav class="footer-links" aria-label="Footer Legal Links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
                 <a href="return-policy.html">Return & Refund Policy</a>
                 <a href="legal.html">Legal</a>
                 <a href="data-policy.html">Data Policy</a>
-            </div>
+            </nav>
         </div>
         <div class="footer-bottom" style="padding-top: 20px; margin-top: 25px; border-top: 1px solid var(--border-color); text-align: center;">
             <p data-i18n="footer_copy">© 2026 Zenqor Technologies (Malaysia). All rights reserved.</p>
         </div>
     </footer>
-
-    <script type="module">
-        import { injectSpeedInsights } from 'https://cdn.jsdelivr.net/npm/@vercel/speed-insights@2/dist/index.js';
-        injectSpeedInsights();
-    </script>
     <script src="script.js"></script>
 </body>
 </html>

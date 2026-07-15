@@ -1,40 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="logo.png">
-    <meta name="description" content="Zenqor Technologies specializes in custom software development, website development, Lua scripting, and premium FiveM server optimization.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Portfolio | Zenqor Technologies</title>
+    <meta name="theme-color" content="#050505">
+    <title>Gaming & Scripting Portfolio | Zenqor Technologies</title>
+    <meta name="description" content="Explore Zenqor Technologies' premium FiveM scripting projects, custom Lua scripts, and standalone roleplay resources.">
+    <link rel="canonical" href="https://zenqor-tech.kauaku.store/portfolio-gaming.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Scripting Portfolio | Zenqor Technologies">
+    <meta property="og:description" content="View our premium FiveM scripts and roleplay systems.">
+    <meta property="og:image" content="https://zenqor-tech.kauaku.store/logo.png">
+    <meta property="og:url" content="https://zenqor-tech.kauaku.store/portfolio-gaming.html">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="navbar">
+    <header class="navbar" role="banner">
         <div class="container nav-container">
-            <a href="index.html" class="logo-nav logo-text">
-                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img">
+            <a href="index.html" class="logo-nav logo-text" aria-label="Zenqor Technologies Home">
+                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img" width="35" height="35">
                 <span class="text-primary">Zenqor</span> Technologies
             </a>
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Main Navigation">
                 <a href="index.html" data-i18n="nav_home">Home</a>
                 <a href="services.html" data-i18n="nav_services">Services</a>
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu">
+                    <button class="dropdown-toggle" style="color: var(--primary-blue);" data-target="portfolio-menu" aria-haspopup="true" aria-expanded="false">
                         <span data-i18n="nav_portfolio">Portfolio</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </a>
-                    <div class="dropdown-menu" id="portfolio-menu">
-                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming">Scripting Projects</a>
-                        <a href="portfolio-web.html" data-i18n="nav_port_web">Server Development</a>
+                    </button>
+                    <div class="dropdown-menu" id="portfolio-menu" role="menu">
+                        <a href="portfolio-gaming.html" role="menuitem" data-i18n="nav_port_gaming" style="color: var(--primary-blue);">Scripting Projects</a>
+                        <a href="portfolio-web.html" role="menuitem" data-i18n="nav_port_web">Server Development</a>
                     </div>
                 </div>
                 <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu">
+                    <button class="dropdown-toggle" data-target="careers-menu" aria-haspopup="true" aria-expanded="false">
                         <span data-i18n="nav_careers">Careers</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </a>
-                    <div class="dropdown-menu" id="careers-menu">
-                        <a href="careers.html" data-i18n="nav_careers_join">Join Us</a>
+                    </button>
+                    <div class="dropdown-menu" id="careers-menu" role="menu">
+                        <a href="careers.html" role="menuitem" data-i18n="nav_careers_join">Join Us</a>
                     </div>
                 </div>
                 <a href="about.html" data-i18n="nav_about">About</a>
@@ -42,58 +53,60 @@
                 <a href="contact.html" data-i18n="nav_contact">Contact</a>
                 
                 <div style="display: flex; align-items: center; gap: 15px; margin-left: 15px;">
-                    <button id="lang-toggle" class="lang-btn">EN</button>
-                    <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;">Login</a>
+                    <button id="lang-toggle" class="lang-btn" aria-label="Toggle Language">EN</button>
+                    <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;" aria-label="Login">Login</a>
                 </div>
             </nav>
-            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+            <button class="mobile-menu-btn" aria-label="Open Mobile Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
         </div>
     </header>
+    
+    <main id="main-content">
+        <section class="hero-inner reveal">
+            <div class="container hero-content reveal">
+                <div class="badge" data-i18n="nav_port_gaming">Scripting Projects</div>
+                <h1 data-i18n="pg_hero_title">Premium <span class='text-primary'>FiveM Resources</span></h1>
+                <p class="hero-sub" data-i18n="pg_hero_sub">Custom FiveM roleplay server scripting and UI designs crafted to match your vision.</p>
+            </div>
+        </section>
 
-    <section class="hero-inner reveal">
-        <div class="container hero-content reveal">
-            <div class="badge" data-i18n="nav_port_gaming"></div>
-            <h1 data-i18n="pg_hero_title"></h1>
-            <p class="hero-sub" data-i18n="pg_hero_sub"></p>
-        </div>
-    </section>
-
-    <section class="portfolio section-padding">
-        <div class="container">
-            <div class="portfolio-grid">
-                <div class="portfolio-item card-style reveal hover-up">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag">Unreal Engine 5</span>
-                        <h3 data-i18n="pg_1_t"></h3>
-                        <p data-i18n="pg_1_d"></p>
-                    </div>
-                </div>
-                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.1s;">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag">Unity 3D</span>
-                        <h3 data-i18n="pg_2_t"></h3>
-                        <p data-i18n="pg_2_d"></p>
-                    </div>
-                </div>
-                <div class="portfolio-item card-style reveal hover-up" style="transition-delay: 0.2s;">
-                    <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="port-content">
-                        <span class="tag">Mobile Native</span>
-                        <h3 data-i18n="pg_3_t"></h3>
-                        <p data-i18n="pg_3_d"></p>
-                    </div>
+        <section class="portfolio section-padding">
+            <div class="container">
+                <div class="portfolio-grid" id="gamingPortfolioGrid">
+                    <article class="portfolio-item card-style reveal active hover-up">
+                        <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800');" role="img" aria-label="Prayer Time Resource"></div>
+                        <div class="port-content">
+                            <span class="tag">LUA / UI</span>
+                            <h3 data-i18n="pg_1_t">Malaysia Prayer Time & Adhan Notifications</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;" data-i18n="pg_1_d">Accurate prayer times based on official zones verified by JAKIM.</p>
+                        </div>
+                    </article>
+                    <article class="portfolio-item card-style reveal active hover-up" style="transition-delay: 0.1s;">
+                        <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800');" role="img" aria-label="Billing System"></div>
+                        <div class="port-content">
+                            <span class="tag">STANDALONE</span>
+                            <h3 data-i18n="pg_2_t">Standalone Billing</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;" data-i18n="pg_2_d">Framework-agnostic invoicing tool that works instantly on any server architecture.</p>
+                        </div>
+                    </article>
+                    <article class="portfolio-item card-style reveal active hover-up" style="transition-delay: 0.2s;">
+                        <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=800');" role="img" aria-label="Crime System"></div>
+                        <div class="port-content">
+                            <span class="tag">QBCORE</span>
+                            <h3 data-i18n="pg_3_t">Immersive Crime System</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;" data-i18n="pg_3_d">Complex robberies, evidence tracking, and dynamic NPC interactions built in optimized Lua.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container footer-content" style="margin-bottom: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
             <div class="footer-brand" style="display: flex; flex-direction: column; align-items: center;">
-                <a href="index.html" class="logo-footer logo-text" style="justify-content: center; margin-bottom: 15px;">
-                    <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img">
+                <a href="index.html" class="logo-footer logo-text" style="justify-content: center; margin-bottom: 15px;" aria-label="Zenqor Technologies Home">
+                    <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img" width="30" height="30" loading="lazy">
                     <span class="text-primary">Zenqor</span> Technologies
                 </a>
                 <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
@@ -101,21 +114,22 @@
                     <p>Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
                 </div>
             </div>
-            <div class="footer-links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
+            <nav class="footer-links" aria-label="Footer Legal Links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
                 <a href="return-policy.html">Return & Refund Policy</a>
                 <a href="legal.html">Legal</a>
                 <a href="data-policy.html">Data Policy</a>
-            </div>
+            </nav>
         </div>
         <div class="footer-bottom" style="padding-top: 20px; margin-top: 25px; border-top: 1px solid var(--border-color); text-align: center;">
             <p data-i18n="footer_copy">© 2026 Zenqor Technologies (Malaysia). All rights reserved.</p>
         </div>
     </footer>
 
-    <script type="module">
-        import { injectSpeedInsights } from 'https://cdn.jsdelivr.net/npm/@vercel/speed-insights@2/dist/index.js';
-        injectSpeedInsights();
-    </script>
+    <div class="floating-widgets">
+        <a href="https://wa.me/601165012569" target="_blank" rel="noopener noreferrer" class="widget-wa" aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <button id="scrollToTop" class="widget-top" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

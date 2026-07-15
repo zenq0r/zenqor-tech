@@ -1,78 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="logo.png">
-    <meta name="description" content="Zenqor Technologies specializes in custom software development, website development, Lua scripting, and premium FiveM server optimization.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050505">
     <title>Return & Refund Policy | Zenqor Technologies</title>
+    <meta name="description" content="Review the Return and Refund Policy for Zenqor Technologies digital products and services.">
+    <link rel="canonical" href="https://zenqor-tech.kauaku.store/return-policy.html">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .policy-content h2, .policy-content h3 { color: var(--text-primary); margin-top: 30px; margin-bottom: 15px; }
-        .policy-content p, .policy-content li { color: var(--text-secondary); margin-bottom: 15px; }
-        .policy-content ul { margin-left: 20px; margin-bottom: 20px; }
+        .legal-content h3 { color: var(--primary-blue); margin-top: 30px; margin-bottom: 15px; font-size: 1.5rem; }
+        .legal-content h4 { color: var(--text-primary); margin-top: 25px; margin-bottom: 10px; font-size: 1.1rem; }
+        .legal-content p, .legal-content li { color: var(--text-secondary); margin-bottom: 15px; line-height: 1.6; }
+        .legal-content ul { margin-left: 20px; margin-bottom: 20px; }
+        .legal-content a { color: var(--primary-blue); text-decoration: none; }
+        .legal-content a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <header class="navbar">
+    <header class="navbar" role="banner">
         <div class="container nav-container">
-            <a href="index.html" class="logo-nav logo-text">
-                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img">
+            <a href="index.html" class="logo-nav logo-text" aria-label="Zenqor Technologies Home">
+                <img src="logo.png" alt="Zenqor Logo" class="nav-logo-img" width="35" height="35">
                 <span class="text-primary">Zenqor</span> Technologies
             </a>
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Main Navigation">
                 <a href="index.html" data-i18n="nav_home">Home</a>
                 <a href="services.html" data-i18n="nav_services">Services</a>
-                <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="portfolio-menu">
-                        <span data-i18n="nav_portfolio">Portfolio</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </a>
-                    <div class="dropdown-menu" id="portfolio-menu">
-                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming">Scripting Projects</a>
-                        <a href="portfolio-web.html" data-i18n="nav_port_web">Server Development</a>
-                    </div>
-                </div>
-                <div class="nav-item-dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="careers-menu">
-                        <span data-i18n="nav_careers">Careers</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </a>
-                    <div class="dropdown-menu" id="careers-menu">
-                        <a href="careers.html" data-i18n="nav_careers_join">Join Us</a>
-                    </div>
-                </div>
                 <a href="about.html" data-i18n="nav_about">About</a>
-                <a href="faq.html" data-i18n="nav_faq">FAQ</a>
                 <a href="contact.html" data-i18n="nav_contact">Contact</a>
-                
-                <div style="display: flex; align-items: center; gap: 15px; margin-left: 15px;">
-                    <button id="lang-toggle" class="lang-btn">EN</button>
-                    <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;">Login</a>
-                </div>
             </nav>
-            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+            <button class="mobile-menu-btn" aria-label="Open Mobile Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
-    <section class="hero-inner reveal">
-        <div class="container hero-content reveal">
-            <h1 data-i18n="nav_return">Return & Refund Policy</h1>
-        </div>
-    </section>
-
-    <section class="section-padding bg-alt">
-        <div class="container">
-            <div class="card-style reveal policy-content" style="padding: 40px; text-align: left;" data-i18n="rp_content">
+    <main id="main-content">
+        <section class="hero-inner reveal">
+            <div class="container hero-content reveal">
+                <h1 data-i18n="nav_return">Return & Refund Policy</h1>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
+        <section class="section-padding bg-alt">
+            <div class="container">
+                <article class="card-style reveal legal-content" style="padding: 40px;" data-i18n="rp_content">
+                    </article>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
         <div class="container footer-content" style="margin-bottom: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
             <div class="footer-brand" style="display: flex; flex-direction: column; align-items: center;">
-                <a href="index.html" class="logo-footer logo-text" style="justify-content: center; margin-bottom: 15px;">
-                    <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img">
+                <a href="index.html" class="logo-footer logo-text" style="justify-content: center; margin-bottom: 15px;" aria-label="Zenqor Technologies Home">
+                    <img src="logo.png" alt="Zenqor Logo" class="footer-logo-img" width="30" height="30" loading="lazy">
                     <span class="text-primary">Zenqor</span> Technologies
                 </a>
                 <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
@@ -80,17 +67,16 @@
                     <p>Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
                 </div>
             </div>
-            <div class="footer-links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
-                <a href="return-policy.html" data-i18n="nav_return">Return & Refund Policy</a>
+            <nav class="footer-links" aria-label="Footer Legal Links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
+                <a href="return-policy.html" style="color: var(--primary-blue);" data-i18n="nav_return">Return & Refund Policy</a>
                 <a href="legal.html" data-i18n="nav_legal">Legal Notices</a>
                 <a href="data-policy.html" data-i18n="nav_data">Data Policy</a>
-            </div>
+            </nav>
         </div>
         <div class="footer-bottom" style="padding-top: 20px; margin-top: 25px; border-top: 1px solid var(--border-color); text-align: center;">
             <p data-i18n="footer_copy">© 2026 Zenqor Technologies (Malaysia). All rights reserved.</p>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
