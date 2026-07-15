@@ -37,12 +37,22 @@
         <div class="sidebar-header"><img src="logo.png" alt="Logo" width="24" height="24"> Zenqor Console</div>
         <nav class="sidebar-nav">
             <div class="nav-group">
-                <div class="nav-group-title">Core Modules</div>
+                <div class="nav-group-title">Core</div>
                 <a class="sidebar-link active" data-target="sec-dashboard"><i class="fas fa-chart-line w-20"></i> Dashboard</a>
+                <a class="sidebar-link" data-target="sec-analytics"><i class="fas fa-chart-pie w-20"></i> Analytics</a>
+            </div>
+            <div class="nav-group">
+                <div class="nav-group-title">Content Management</div>
                 <a class="sidebar-link" data-target="sec-nav"><i class="fas fa-sitemap w-20"></i> Navigation & Header</a>
-                <a class="sidebar-link" data-target="sec-portfolio"><i class="fas fa-briefcase w-20"></i> Portfolio Manager</a>
-                <a class="sidebar-link" data-target="sec-services"><i class="fas fa-cogs w-20"></i> Services Manager</a>
+                <a class="sidebar-link" data-target="sec-portfolio"><i class="fas fa-briefcase w-20"></i> Portfolio</a>
+                <a class="sidebar-link" data-target="sec-services"><i class="fas fa-cogs w-20"></i> Services</a>
+                <a class="sidebar-link" data-target="sec-careers"><i class="fas fa-users w-20"></i> Careers</a>
                 <a class="sidebar-link" data-target="sec-company"><i class="fas fa-building w-20"></i> Company Profile</a>
+            </div>
+            <div class="nav-group">
+                <div class="nav-group-title">System</div>
+                <a class="sidebar-link" data-target="sec-seo"><i class="fas fa-search w-20"></i> SEO & Metadata</a>
+                <a class="sidebar-link" data-target="sec-settings"><i class="fas fa-cog w-20"></i> Settings</a>
             </div>
         </nav>
     </aside>
@@ -66,6 +76,11 @@
                     <div class="crud-form"><h4>Total Services</h4><h2 id="s-srv">0</h2></div>
                     <div class="crud-form"><h4>Registered Users</h4><h2 id="s-usr">0</h2></div>
                 </div>
+            </div>
+
+            <div id="sec-analytics" class="cms-section">
+                <h2>Advanced Analytics</h2>
+                <p style="color: var(--text-secondary);">Real-time traffic module ready for future integration.</p>
             </div>
 
             <div id="sec-nav" class="cms-section">
@@ -142,6 +157,11 @@
                     </div>
                 </div>
             </div>
+            
+            <div id="sec-careers" class="cms-section">
+                <h2>Careers Manager</h2>
+                <p style="color: var(--text-secondary);">Enterprise HR module ready for integration.</p>
+            </div>
 
             <div id="sec-company" class="cms-section">
                 <div class="crud-form" style="max-width: 800px;">
@@ -152,6 +172,24 @@
                         <div class="input-group"><label>Phone/WhatsApp</label><input type="text" id="compPhone" required></div>
                         <button type="submit" class="btn btn-primary">Save Profile Configuration</button>
                         <div id="msgCompany" class="form-message mt-3"></div>
+                    </form>
+                </div>
+            </div>
+            
+            <div id="sec-seo" class="cms-section">
+                <h2>SEO Control Center</h2>
+                <p style="color: var(--text-secondary);">Dynamic JSON-LD & OpenGraph routing ready.</p>
+            </div>
+            
+            <div id="sec-settings" class="cms-section">
+                <div class="crud-form" style="max-width: 800px;">
+                    <h3 style="margin-bottom: 20px;">Global System Settings</h3>
+                    <form id="formSettings">
+                        <div class="input-group"><label>Maintenance Mode</label>
+                            <select id="setMaintenance"><option value="false">Off (Live)</option><option value="true">On (Offline)</option></select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update System Architecture</button>
+                        <div id="msgSettings" class="form-message mt-3"></div>
                     </form>
                 </div>
             </div>
@@ -247,10 +285,9 @@
         });
 
         // =====================================
-        // MODULE: PORTFOLIO & SERVICES (PENTING)
+        // MODULE: PORTFOLIO & SERVICES
         // =====================================
         async function fetchPortfolioAndServices() {
-            // Portfolio
             const portSnap = await getDocs(collection(db, "portfolio_web"));
             document.getElementById('s-proj').textContent = portSnap.size;
             document.getElementById('listPortfolio').innerHTML = portSnap.empty ? "No data." : "";
@@ -263,7 +300,6 @@
                 </div>`;
             });
 
-            // Services
             const srvSnap = await getDocs(collection(db, "services"));
             document.getElementById('s-srv').textContent = srvSnap.size;
             document.getElementById('listServices').innerHTML = srvSnap.empty ? "No services." : "";
