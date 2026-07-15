@@ -7,14 +7,15 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
         body { margin: 0; display: flex; height: 100vh; overflow: hidden; background-color: var(--bg-color); }
         .admin-sidebar { width: 260px; background: rgba(15, 23, 42, 0.95); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; overflow-y: auto; }
-        .sidebar-header { padding: 20px; border-bottom: 1px solid var(--border-color); font-weight: 700; color: var(--text-primary); font-size: 1.1rem; }
+        .sidebar-header { padding: 20px; border-bottom: 1px solid var(--border-color); font-weight: 700; color: var(--text-primary); font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
         .sidebar-nav { padding: 15px 0; flex-grow: 1; }
         .nav-group { margin-bottom: 20px; }
-        .nav-group-title { padding: 0 20px; font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 10px; }
+        .nav-group-title { padding: 0 20px; font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; }
         .sidebar-link { display: flex; align-items: center; gap: 12px; padding: 10px 20px; color: var(--text-primary); text-decoration: none; font-size: 0.9rem; transition: 0.2s; cursor: pointer; border-left: 3px solid transparent; }
         .sidebar-link:hover, .sidebar-link.active { background: rgba(59, 130, 246, 0.1); color: var(--primary-blue); border-left: 3px solid var(--primary-blue); }
         .admin-main { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
@@ -29,10 +30,15 @@
         .btn-danger { background-color: rgba(239, 68, 68, 0.2); border: 1px solid #EF4444; color: #EF4444; padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; cursor: pointer; }
         .nav-list-item { display: flex; justify-content: space-between; padding: 12px 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 6px; margin-bottom: 8px; cursor: grab; }
         .nav-list-item.sub-item { margin-left: 30px; border-left: 3px solid var(--primary-blue); }
+        .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+        .stat-box { background: var(--surface-color); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); }
+        .stat-box h4 { margin: 0 0 10px 0; color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; }
+        .stat-box h2 { margin: 0; font-size: 2rem; color: var(--primary-blue); }
     </style>
 </head>
 <body>
 
+    <!-- KESELURUHAN SIDEBAR (10 MODUL) -->
     <aside class="admin-sidebar">
         <div class="sidebar-header"><img src="logo.png" alt="Logo" width="24" height="24"> Zenqor Console</div>
         <nav class="sidebar-nav">
@@ -43,7 +49,8 @@
             </div>
             <div class="nav-group">
                 <div class="nav-group-title">Content Management</div>
-                <a class="sidebar-link" data-target="sec-nav"><i class="fas fa-sitemap w-20"></i> Navigation & Header</a>
+                <a class="sidebar-link" data-target="sec-nav"><i class="fas fa-sitemap w-20"></i> Navigation Menu</a>
+                <a class="sidebar-link" data-target="sec-header"><i class="fas fa-heading w-20"></i> Header Settings</a>
                 <a class="sidebar-link" data-target="sec-portfolio"><i class="fas fa-briefcase w-20"></i> Portfolio</a>
                 <a class="sidebar-link" data-target="sec-services"><i class="fas fa-cogs w-20"></i> Services</a>
                 <a class="sidebar-link" data-target="sec-careers"><i class="fas fa-users w-20"></i> Careers</a>
@@ -59,60 +66,55 @@
 
     <main class="admin-main">
         <header class="admin-topbar">
-            <div><h3 style="margin: 0;" id="topbar-title">Dashboard Overview</h3></div>
+            <div><h3 style="margin: 0;" id="topbar-title">Dashboard</h3></div>
             <div style="display: flex; gap: 15px; align-items: center;">
                 <span id="adminName" style="color: var(--text-secondary); font-size: 0.9rem;">Verifying Session...</span>
-                <a href="index.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">View Live Site</a>
+                <a href="index.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" target="_blank">View Live Site</a>
                 <button id="btnLogout" class="btn btn-danger" style="padding: 6px 12px; font-size: 0.8rem;"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </header>
 
         <section class="admin-content">
             
+            <!-- 1. DASHBOARD -->
             <div id="sec-dashboard" class="cms-section active">
-                <h2>Admin Console Ready</h2>
-                <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: 20px;">
-                    <div class="crud-form"><h4>Total Projects</h4><h2 id="s-proj">0</h2></div>
-                    <div class="crud-form"><h4>Total Services</h4><h2 id="s-srv">0</h2></div>
-                    <div class="crud-form"><h4>Registered Users</h4><h2 id="s-usr">0</h2></div>
+                <div class="stat-grid">
+                    <div class="stat-box"><h4>Total Projects</h4><h2 id="s-proj">0</h2></div>
+                    <div class="stat-box"><h4>Active Services</h4><h2 id="s-srv">0</h2></div>
+                    <div class="stat-box"><h4>Job Applicants</h4><h2 id="s-app">0</h2></div>
+                    <div class="stat-box"><h4>Registered Users</h4><h2 id="s-usr">0</h2></div>
                 </div>
             </div>
 
+            <!-- 2. ANALYTICS -->
             <div id="sec-analytics" class="cms-section">
-                <h2>Advanced Analytics</h2>
-                <p style="color: var(--text-secondary);">Real-time traffic module ready for future integration.</p>
+                <h2>Website Analytics</h2>
+                <p style="color: var(--text-secondary);">Real-time traffic data visualization goes here.</p>
+                <div style="height: 300px; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+                    <canvas id="visitorChart"></canvas>
+                </div>
             </div>
 
+            <!-- 3. NAVIGATION MENU -->
             <div id="sec-nav" class="cms-section">
                 <div class="crud-grid">
                     <div class="crud-form">
                         <h3 style="margin-bottom: 20px;">Add Menu Link</h3>
                         <form id="formNav">
-                            <div class="input-group"><label>Menu Title</label><input type="text" id="navTitle" required></div>
+                            <div class="input-group"><label>Title</label><input type="text" id="navTitle" required></div>
                             <div class="input-group"><label>URL / Slug</label><input type="text" id="navUrl" required></div>
                             <div class="input-group"><label>Parent Menu</label><select id="navParent"><option value="">-- Main Menu --</option></select></div>
-                            <div class="input-group"><label>Icon Class</label><input type="text" id="navIcon" placeholder="fas fa-home"></div>
+                            <div class="input-group"><label>Icon (Optional)</label><input type="text" id="navIcon" placeholder="fas fa-home"></div>
                             <div class="input-group" style="display: flex; gap: 10px;">
                                 <label><input type="checkbox" id="navVisible" checked> Visible</label>
                                 <label><input type="checkbox" id="navNewTab"> New Tab</label>
                             </div>
                             <button type="submit" class="btn btn-primary w-100 mt-3">Save Menu</button>
-                            <div id="msgNav" class="form-message mt-3"></div>
-                        </form>
-
-                        <hr style="border-color: var(--border-color); margin: 30px 0;">
-                        <h3 style="margin-bottom: 20px;">Header Branding</h3>
-                        <form id="formHeader">
-                            <div class="input-group"><label>Upload New Logo</label><input type="file" id="hLogoFile" accept="image/*" style="padding: 10px;"></div>
-                            <div class="input-group"><label>CTA Button Text</label><input type="text" id="hBtnText"></div>
-                            <div class="input-group"><label>CTA Button URL</label><input type="text" id="hBtnUrl"></div>
-                            <button type="submit" class="btn btn-primary w-100">Save Branding</button>
-                            <div id="msgHeader" class="form-message mt-3"></div>
                         </form>
                     </div>
                     <div class="crud-list">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                            <h3 style="margin:0;">Menu Structure (Drag & Drop)</h3>
+                            <h3 style="margin:0;">Menu Structure</h3>
                             <button id="saveNavOrder" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.85rem;">Save Order</button>
                         </div>
                         <ul id="listNav" style="list-style: none; padding: 0; margin: 0;"></ul>
@@ -120,35 +122,51 @@
                 </div>
             </div>
 
+            <!-- 4. HEADER SETTINGS -->
+            <div id="sec-header" class="cms-section">
+                <div class="crud-form" style="max-width: 600px;">
+                    <h3 style="margin-bottom: 20px;">Header & Branding</h3>
+                    <form id="formHeader">
+                        <div class="input-group"><label>Upload New Logo</label><input type="file" id="hLogoFile" accept="image/*" style="padding: 10px;"></div>
+                        <div class="input-group"><label>Upload Favicon</label><input type="file" id="hFavFile" accept="image/*" style="padding: 10px;"></div>
+                        <div class="input-group"><label>CTA Button Text</label><input type="text" id="hBtnText"></div>
+                        <div class="input-group"><label>CTA Button URL</label><input type="text" id="hBtnUrl"></div>
+                        <button type="submit" class="btn btn-primary w-100">Save Header Settings</button>
+                        <div id="msgHeader" class="form-message mt-3"></div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 5. PORTFOLIO -->
             <div id="sec-portfolio" class="cms-section">
                 <div class="crud-grid">
                     <div class="crud-form">
-                        <h3 style="margin-bottom: 20px;">Deploy New Portfolio</h3>
+                        <h3 style="margin-bottom: 20px;">Deploy Portfolio</h3>
                         <form id="formPortfolio">
                             <div class="input-group"><label>Project Title</label><input type="text" id="portTitle" required></div>
                             <div class="input-group"><label>Category Tag</label><input type="text" id="portTag" required></div>
                             <div class="input-group"><label>Cover Image</label><input type="file" id="portImage" accept="image/*" required style="padding: 10px;"></div>
                             <div class="input-group"><label>Description</label><textarea id="portDesc" rows="3" required></textarea></div>
                             <button type="submit" class="btn btn-primary w-100">Publish Project</button>
-                            <div id="msgPortfolio" class="form-message mt-3"></div>
                         </form>
                     </div>
                     <div class="crud-list">
-                        <h3 style="margin-bottom: 20px;">Live Portfolio Records</h3>
+                        <h3 style="margin-bottom: 20px;">Live Records</h3>
                         <div id="listPortfolio">Fetching data...</div>
                     </div>
                 </div>
             </div>
 
+            <!-- 6. SERVICES -->
             <div id="sec-services" class="cms-section">
                 <div class="crud-grid">
                     <div class="crud-form">
-                        <h3 style="margin-bottom: 20px;">Add New Service</h3>
+                        <h3 style="margin-bottom: 20px;">Add Service</h3>
                         <form id="formService">
                             <div class="input-group"><label>Service Name</label><input type="text" id="srvName" required></div>
                             <div class="input-group"><label>Icon Class</label><input type="text" id="srvIcon" placeholder="fas fa-server" required></div>
                             <div class="input-group"><label>Description</label><textarea id="srvDesc" rows="3" required></textarea></div>
-                            <button type="submit" class="btn btn-primary w-100">Add Service</button>
+                            <button type="submit" class="btn btn-primary w-100">Save Service</button>
                         </form>
                     </div>
                     <div class="crud-list">
@@ -157,38 +175,70 @@
                     </div>
                 </div>
             </div>
-            
+
+            <!-- 7. CAREERS -->
             <div id="sec-careers" class="cms-section">
-                <h2>Careers Manager</h2>
-                <p style="color: var(--text-secondary);">Enterprise HR module ready for integration.</p>
+                <div class="crud-grid">
+                    <div class="crud-form">
+                        <h3 style="margin-bottom: 20px;">Post Job Vacancy</h3>
+                        <form id="formCareer">
+                            <div class="input-group"><label>Job Title</label><input type="text" id="carTitle" required></div>
+                            <div class="input-group"><label>Type (e.g. Full-Time)</label><input type="text" id="carType" required></div>
+                            <div class="input-group"><label>Location</label><input type="text" id="carLoc" required></div>
+                            <div class="input-group"><label>Description</label><textarea id="carDesc" rows="3" required></textarea></div>
+                            <button type="submit" class="btn btn-primary w-100">Publish Job</button>
+                        </form>
+                    </div>
+                    <div class="crud-list">
+                        <h3 style="margin-bottom: 20px;">Open Positions</h3>
+                        <div id="listCareers">Fetching data...</div>
+                    </div>
+                </div>
             </div>
 
+            <!-- 8. COMPANY PROFILE -->
             <div id="sec-company" class="cms-section">
                 <div class="crud-form" style="max-width: 800px;">
-                    <h3 style="margin-bottom: 20px;">Company Information</h3>
+                    <h3 style="margin-bottom: 20px;">Company Information (About & Contact)</h3>
                     <form id="formCompany">
                         <div class="input-group"><label>Company Name</label><input type="text" id="compName" required></div>
+                        <div class="input-group"><label>Registration No.</label><input type="text" id="compReg"></div>
                         <div class="input-group"><label>Email Address</label><input type="email" id="compEmail" required></div>
-                        <div class="input-group"><label>Phone/WhatsApp</label><input type="text" id="compPhone" required></div>
-                        <button type="submit" class="btn btn-primary">Save Profile Configuration</button>
+                        <div class="input-group"><label>Phone / WhatsApp</label><input type="text" id="compPhone" required></div>
+                        <div class="input-group"><label>Physical Address</label><textarea id="compAddress" rows="2"></textarea></div>
+                        <div class="input-group"><label>About Us Text</label><textarea id="compAbout" rows="4"></textarea></div>
+                        <button type="submit" class="btn btn-primary">Save Profile</button>
                         <div id="msgCompany" class="form-message mt-3"></div>
                     </form>
                 </div>
             </div>
-            
+
+            <!-- 9. SEO & METADATA -->
             <div id="sec-seo" class="cms-section">
-                <h2>SEO Control Center</h2>
-                <p style="color: var(--text-secondary);">Dynamic JSON-LD & OpenGraph routing ready.</p>
+                <div class="crud-form" style="max-width: 800px;">
+                    <h3 style="margin-bottom: 20px;">Global SEO Configuration</h3>
+                    <form id="formSeo">
+                        <div class="input-group"><label>Default Meta Title</label><input type="text" id="seoTitle"></div>
+                        <div class="input-group"><label>Default Meta Description</label><textarea id="seoDesc" rows="3"></textarea></div>
+                        <div class="input-group"><label>Keywords (Comma separated)</label><input type="text" id="seoKeys"></div>
+                        <div class="input-group"><label>Upload Open Graph Image (Thumbnail)</label><input type="file" id="seoOgImg" accept="image/*" style="padding: 10px;"></div>
+                        <button type="submit" class="btn btn-primary">Update SEO</button>
+                        <div id="msgSeo" class="form-message mt-3"></div>
+                    </form>
+                </div>
             </div>
-            
+
+            <!-- 10. SETTINGS -->
             <div id="sec-settings" class="cms-section">
                 <div class="crud-form" style="max-width: 800px;">
-                    <h3 style="margin-bottom: 20px;">Global System Settings</h3>
+                    <h3 style="margin-bottom: 20px;">System Settings</h3>
                     <form id="formSettings">
+                        <div class="input-group"><label>Website URL (Canonical)</label><input type="url" id="setUrl" placeholder="https://..."></div>
                         <div class="input-group"><label>Maintenance Mode</label>
-                            <select id="setMaintenance"><option value="false">Off (Live)</option><option value="true">On (Offline)</option></select>
+                            <select id="setMaintenance"><option value="false">Off (Live to Public)</option><option value="true">On (Offline / Building)</option></select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Update System Architecture</button>
+                        <div class="input-group"><label>Google Analytics ID</label><input type="text" id="setGa" placeholder="G-XXXXXXX"></div>
+                        <button type="submit" class="btn btn-primary">Save Settings</button>
                         <div id="msgSettings" class="form-message mt-3"></div>
                     </form>
                 </div>
@@ -202,130 +252,186 @@
         import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, updateDoc, writeBatch, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         import { ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-        // KESELAMATAN & NAVIGATION
+        // Security Check
         enforceSecurity('admin');
         document.getElementById('btnLogout').addEventListener('click', secureLogout);
         auth.onAuthStateChanged(async (user) => {
-            if(user) document.getElementById('adminName').textContent = user.email;
+            if(user) {
+                const uDoc = await getDoc(doc(db, "users", user.uid));
+                document.getElementById('adminName').textContent = uDoc.exists() ? uDoc.data().name : user.email;
+            }
         });
 
-        document.querySelectorAll('.sidebar-link').forEach(link => {
+        // Tab Switching Logic
+        const links = document.querySelectorAll('.sidebar-link');
+        const sections = document.querySelectorAll('.cms-section');
+        const topbarTitle = document.getElementById('topbar-title');
+
+        links.forEach(link => {
             link.addEventListener('click', () => {
-                document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-                document.querySelectorAll('.cms-section').forEach(s => s.classList.remove('active'));
+                links.forEach(l => l.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
                 link.classList.add('active');
                 document.getElementById(link.getAttribute('data-target')).classList.add('active');
-                document.getElementById('topbar-title').textContent = link.textContent.trim();
+                topbarTitle.textContent = link.textContent.trim();
             });
         });
 
         async function uploadImage(file, folderPath) {
+            if(!file) return null;
             const uploadTask = await uploadBytesResumable(ref(storage, `${folderPath}/${Date.now()}_${file.name}`), file);
             return await getDownloadURL(uploadTask.ref);
         }
 
         // =====================================
-        // MODULE: NAVIGATION & HEADER
+        // CORE MODULES: FETCH DATA
         // =====================================
         let navDataList = [];
+        
+        async function fetchAllData() {
+            // Stats
+            const portSnap = await getDocs(collection(db, "portfolio_web"));
+            const srvSnap = await getDocs(collection(db, "services"));
+            const carSnap = await getDocs(collection(db, "careers"));
+            const userSnap = await getDocs(collection(db, "users"));
+            
+            document.getElementById('s-proj').textContent = portSnap.size;
+            document.getElementById('s-srv').textContent = srvSnap.size;
+            document.getElementById('s-app').textContent = carSnap.size;
+            document.getElementById('s-usr').textContent = userSnap.size;
+
+            // Portfolio List
+            document.getElementById('listPortfolio').innerHTML = "";
+            portSnap.forEach(d => {
+                const p = d.data();
+                document.getElementById('listPortfolio').innerHTML += `<div class="data-item"><div><h4>${p.title}</h4></div><button class="btn-danger delete-port" data-id="${d.id}">Del</button></div>`;
+            });
+
+            // Services List
+            document.getElementById('listServices').innerHTML = "";
+            srvSnap.forEach(d => {
+                document.getElementById('listServices').innerHTML += `<div class="data-item"><div>${d.data().name}</div><button class="btn-danger delete-srv" data-id="${d.id}">Del</button></div>`;
+            });
+
+            // Careers List
+            document.getElementById('listCareers').innerHTML = "";
+            carSnap.forEach(d => {
+                document.getElementById('listCareers').innerHTML += `<div class="data-item"><div>${d.data().title}</div><button class="btn-danger delete-car" data-id="${d.id}">Del</button></div>`;
+            });
+
+            // Delete Binders
+            document.querySelectorAll('.delete-port').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "portfolio_web", e.currentTarget.dataset.id)); fetchAllData(); }));
+            document.querySelectorAll('.delete-srv').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "services", e.currentTarget.dataset.id)); fetchAllData(); }));
+            document.querySelectorAll('.delete-car').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "careers", e.currentTarget.dataset.id)); fetchAllData(); }));
+
+            // Configs (Company, SEO, Settings)
+            const compSnap = await getDoc(doc(db, "config", "company_profile"));
+            if(compSnap.exists()) {
+                const c = compSnap.data();
+                document.getElementById('compName').value = c.name || ""; document.getElementById('compEmail').value = c.email || "";
+                document.getElementById('compPhone').value = c.phone || ""; document.getElementById('compReg').value = c.regNo || "";
+                document.getElementById('compAddress').value = c.address || ""; document.getElementById('compAbout').value = c.about || "";
+            }
+
+            const seoSnap = await getDoc(doc(db, "config", "seo_settings"));
+            if(seoSnap.exists()) {
+                document.getElementById('seoTitle').value = seoSnap.data().title || ""; document.getElementById('seoDesc').value = seoSnap.data().desc || "";
+                document.getElementById('seoKeys').value = seoSnap.data().keys || "";
+            }
+
+            const setSnap = await getDoc(doc(db, "config", "system_settings"));
+            if(setSnap.exists()) {
+                document.getElementById('setUrl').value = setSnap.data().url || ""; document.getElementById('setMaintenance').value = setSnap.data().maintenance || "false";
+                document.getElementById('setGa').value = setSnap.data().ga || "";
+            }
+            
+            // Header Settings
+            const headSnap = await getDoc(doc(db, "config", "header_settings"));
+            if(headSnap.exists()) {
+                const h = headSnap.data();
+                document.getElementById('hBtnText').value = h.buttonTitle || ""; document.getElementById('hBtnUrl').value = h.buttonUrl || "";
+            }
+        }
+
         async function fetchNavigation() {
             const snap = await getDocs(query(collection(db, "navigation"), orderBy("order", "asc")));
             navDataList = []; snap.forEach(d => navDataList.push({ id: d.id, ...d.data() }));
-            
             const listNav = document.getElementById('listNav');
             const selectParent = document.getElementById('navParent');
             listNav.innerHTML = ""; selectParent.innerHTML = `<option value="">-- Main Menu --</option>`;
             
             navDataList.filter(n => !n.parentId).forEach(p => {
                 selectParent.innerHTML += `<option value="${p.id}">${p.title}</option>`;
-                listNav.innerHTML += buildNavRow(p, false);
-                navDataList.filter(n => n.parentId === p.id).forEach(c => listNav.innerHTML += buildNavRow(c, true));
+                listNav.innerHTML += `<li class="nav-list-item" draggable="true" data-id="${p.id}"><div><i class="fas fa-grip-vertical"></i> ${p.title}</div><button class="btn-danger delete-nav" data-id="${p.id}">Del</button></li>`;
+                navDataList.filter(n => n.parentId === p.id).forEach(c => listNav.innerHTML += `<li class="nav-list-item sub-item" draggable="true" data-id="${c.id}"><div><i class="fas fa-grip-vertical"></i> ${c.title}</div><button class="btn-danger delete-nav" data-id="${c.id}">Del</button></li>`);
             });
-            initNavEvents();
+            
+            document.querySelectorAll('.delete-nav').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "navigation", e.currentTarget.dataset.id)); fetchNavigation(); }));
         }
 
-        function buildNavRow(item, isChild) {
-            return `
-                <li class="nav-list-item ${isChild ? 'sub-item' : ''}" draggable="true" data-id="${item.id}">
-                    <div><i class="fas fa-grip-vertical" style="margin-right:10px; cursor:grab;"></i> ${item.title} (${item.url})</div>
-                    <div><button class="btn-danger delete-nav" data-id="${item.id}"><i class="fas fa-trash"></i></button></div>
-                </li>`;
-        }
-
+        // =====================================
+        // CORE MODULES: SUBMIT FORMS
+        // =====================================
         document.getElementById('formNav').addEventListener('submit', async (e) => {
             e.preventDefault(); e.target.querySelector('button').innerHTML = "Saving...";
-            await addDoc(collection(db, "navigation"), {
-                title: document.getElementById('navTitle').value, url: document.getElementById('navUrl').value,
-                parentId: document.getElementById('navParent').value || null, icon: document.getElementById('navIcon').value,
-                visible: document.getElementById('navVisible').checked, target: document.getElementById('navNewTab').checked ? '_blank' : '_self',
-                order: navDataList.length + 1
-            });
+            await addDoc(collection(db, "navigation"), { title: document.getElementById('navTitle').value, url: document.getElementById('navUrl').value, parentId: document.getElementById('navParent').value || null, icon: document.getElementById('navIcon').value, visible: document.getElementById('navVisible').checked, target: document.getElementById('navNewTab').checked ? '_blank' : '_self', order: navDataList.length + 1 });
             e.target.reset(); fetchNavigation(); e.target.querySelector('button').innerHTML = "Save Menu";
         });
 
-        function initNavEvents() {
-            let dragged = null;
-            document.querySelectorAll('.nav-list-item').forEach(item => {
-                item.addEventListener('dragstart', function() { dragged = this; setTimeout(() => this.style.display = 'none', 0); });
-                item.addEventListener('dragend', function() { setTimeout(() => { this.style.display = 'flex'; dragged = null; }, 0); });
-                item.addEventListener('dragover', e => e.preventDefault());
-                item.addEventListener('drop', function() { if (this !== dragged) document.getElementById('listNav').insertBefore(dragged, this); });
-            });
-            document.querySelectorAll('.delete-nav').forEach(b => b.addEventListener('click', async (e) => {
-                if(confirm("Delete menu?")) { await deleteDoc(doc(db, "navigation", e.currentTarget.dataset.id)); fetchNavigation(); }
-            }));
-        }
-
-        document.getElementById('saveNavOrder').addEventListener('click', async (e) => {
-            const batch = writeBatch(db);
-            document.querySelectorAll('.nav-list-item').forEach((item, index) => {
-                batch.update(doc(db, "navigation", item.getAttribute('data-id')), { order: index + 1 });
-            });
-            await batch.commit(); alert("Order Saved!");
+        document.getElementById('formHeader').addEventListener('submit', async (e) => {
+            e.preventDefault(); e.target.querySelector('button').innerHTML = "Saving...";
+            const logo = await uploadImage(document.getElementById('hLogoFile').files[0], 'branding');
+            const fav = await uploadImage(document.getElementById('hFavFile').files[0], 'branding');
+            const data = { buttonTitle: document.getElementById('hBtnText').value, buttonUrl: document.getElementById('hBtnUrl').value };
+            if(logo) data.logoUrl = logo; if(fav) data.faviconUrl = fav;
+            await setDoc(doc(db, "config", "header_settings"), data, { merge: true });
+            document.getElementById('msgHeader').textContent = "Saved"; e.target.querySelector('button').innerHTML = "Save Branding";
         });
-
-        // =====================================
-        // MODULE: PORTFOLIO & SERVICES
-        // =====================================
-        async function fetchPortfolioAndServices() {
-            const portSnap = await getDocs(collection(db, "portfolio_web"));
-            document.getElementById('s-proj').textContent = portSnap.size;
-            document.getElementById('listPortfolio').innerHTML = portSnap.empty ? "No data." : "";
-            portSnap.forEach(d => {
-                const p = d.data();
-                document.getElementById('listPortfolio').innerHTML += `
-                <div class="data-item">
-                    <div><h4 style="margin:0;">${p.title}</h4><small>${p.tag}</small></div>
-                    <button class="btn-danger delete-port" data-id="${d.id}">Delete</button>
-                </div>`;
-            });
-
-            const srvSnap = await getDocs(collection(db, "services"));
-            document.getElementById('s-srv').textContent = srvSnap.size;
-            document.getElementById('listServices').innerHTML = srvSnap.empty ? "No services." : "";
-            srvSnap.forEach(d => {
-                document.getElementById('listServices').innerHTML += `<div class="data-item"><div>${d.data().name}</div><button class="btn-danger delete-srv" data-id="${d.id}">Delete</button></div>`;
-            });
-
-            document.querySelectorAll('.delete-port').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "portfolio_web", e.currentTarget.dataset.id)); fetchPortfolioAndServices(); }));
-            document.querySelectorAll('.delete-srv').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "services", e.currentTarget.dataset.id)); fetchPortfolioAndServices(); }));
-        }
 
         document.getElementById('formPortfolio').addEventListener('submit', async (e) => {
             e.preventDefault(); e.target.querySelector('button').innerHTML = "Deploying...";
             const imgUrl = await uploadImage(document.getElementById('portImage').files[0], 'portfolio');
             await addDoc(collection(db, "portfolio_web"), { title: document.getElementById('portTitle').value, tag: document.getElementById('portTag').value, desc: document.getElementById('portDesc').value, imgUrl: imgUrl, createdAt: serverTimestamp() });
-            e.target.reset(); fetchPortfolioAndServices(); e.target.querySelector('button').innerHTML = "Publish Project";
+            e.target.reset(); fetchAllData(); e.target.querySelector('button').innerHTML = "Publish Project";
         });
 
         document.getElementById('formService').addEventListener('submit', async (e) => {
-            e.preventDefault(); e.target.querySelector('button').innerHTML = "Adding...";
+            e.preventDefault(); e.target.querySelector('button').innerHTML = "Saving...";
             await addDoc(collection(db, "services"), { name: document.getElementById('srvName').value, icon: document.getElementById('srvIcon').value, desc: document.getElementById('srvDesc').value, createdAt: serverTimestamp() });
-            e.target.reset(); fetchPortfolioAndServices(); e.target.querySelector('button').innerHTML = "Add Service";
+            e.target.reset(); fetchAllData(); e.target.querySelector('button').innerHTML = "Add Service";
         });
 
+        document.getElementById('formCareer').addEventListener('submit', async (e) => {
+            e.preventDefault(); e.target.querySelector('button').innerHTML = "Publishing...";
+            await addDoc(collection(db, "careers"), { title: document.getElementById('carTitle').value, type: document.getElementById('carType').value, location: document.getElementById('carLoc').value, desc: document.getElementById('carDesc').value, createdAt: serverTimestamp() });
+            e.target.reset(); fetchAllData(); e.target.querySelector('button').innerHTML = "Publish Job";
+        });
+
+        document.getElementById('formCompany').addEventListener('submit', async (e) => {
+            e.preventDefault(); e.target.querySelector('button').innerHTML = "Saving...";
+            await setDoc(doc(db, "config", "company_profile"), { name: document.getElementById('compName').value, email: document.getElementById('compEmail').value, phone: document.getElementById('compPhone').value, regNo: document.getElementById('compReg').value, address: document.getElementById('compAddress').value, about: document.getElementById('compAbout').value }, { merge: true });
+            document.getElementById('msgCompany').textContent = "Saved"; e.target.querySelector('button').innerHTML = "Save Profile";
+        });
+
+        document.getElementById('formSeo').addEventListener('submit', async (e) => {
+            e.preventDefault(); e.target.querySelector('button').innerHTML = "Saving...";
+            const ogImg = await uploadImage(document.getElementById('seoOgImg').files[0], 'branding');
+            const data = { title: document.getElementById('seoTitle').value, desc: document.getElementById('seoDesc').value, keys: document.getElementById('seoKeys').value };
+            if(ogImg) data.ogImg = ogImg;
+            await setDoc(doc(db, "config", "seo_settings"), data, { merge: true });
+            document.getElementById('msgSeo').textContent = "Saved"; e.target.querySelector('button').innerHTML = "Update SEO";
+        });
+
+        document.getElementById('formSettings').addEventListener('submit', async (e) => {
+            e.preventDefault(); e.target.querySelector('button').innerHTML = "Saving...";
+            await setDoc(doc(db, "config", "system_settings"), { url: document.getElementById('setUrl').value, maintenance: document.getElementById('setMaintenance').value, ga: document.getElementById('setGa').value }, { merge: true });
+            document.getElementById('msgSettings').textContent = "Saved"; e.target.querySelector('button').innerHTML = "Save Settings";
+        });
+
+        // Initialize All
         fetchNavigation();
-        fetchPortfolioAndServices();
+        fetchAllData();
+
     </script>
 </body>
 </html>
