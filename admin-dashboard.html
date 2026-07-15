@@ -7,55 +7,42 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
         body { margin: 0; display: flex; height: 100vh; overflow: hidden; background-color: var(--bg-color); }
         .admin-sidebar { width: 260px; background: rgba(15, 23, 42, 0.95); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; overflow-y: auto; }
-        .sidebar-header { padding: 20px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text-primary); font-size: 1.1rem; }
+        .sidebar-header { padding: 20px; border-bottom: 1px solid var(--border-color); font-weight: 700; color: var(--text-primary); font-size: 1.1rem; }
         .sidebar-nav { padding: 15px 0; flex-grow: 1; }
         .nav-group { margin-bottom: 20px; }
-        .nav-group-title { padding: 0 20px; font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .nav-group-title { padding: 0 20px; font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 10px; }
         .sidebar-link { display: flex; align-items: center; gap: 12px; padding: 10px 20px; color: var(--text-primary); text-decoration: none; font-size: 0.9rem; transition: 0.2s; cursor: pointer; border-left: 3px solid transparent; }
         .sidebar-link:hover, .sidebar-link.active { background: rgba(59, 130, 246, 0.1); color: var(--primary-blue); border-left: 3px solid var(--primary-blue); }
-        
         .admin-main { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
         .admin-topbar { height: 70px; background: rgba(15, 23, 42, 0.8); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; }
         .admin-content { padding: 30px; overflow-y: auto; flex-grow: 1; }
-        
         .cms-section { display: none; animation: fadeIn 0.3s ease; }
         .cms-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
         .crud-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
         .crud-form, .crud-list { background: var(--surface-color); padding: 25px; border-radius: 8px; border: 1px solid var(--border-color); }
-        
-        /* Drag & Drop Nav UI */
-        .nav-list-container { list-style: none; padding: 0; margin: 0; }
-        .nav-list-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 6px; margin-bottom: 8px; cursor: grab; transition: 0.2s; }
-        .nav-list-item:active { cursor: grabbing; background: rgba(59, 130, 246, 0.1); }
-        .nav-list-item.sub-item { margin-left: 30px; border-left: 3px solid var(--primary-blue); }
-        
+        .data-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; }
         .btn-danger { background-color: rgba(239, 68, 68, 0.2); border: 1px solid #EF4444; color: #EF4444; padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; cursor: pointer; }
-        .btn-warning { background-color: rgba(245, 158, 11, 0.2); border: 1px solid #F59E0B; color: #F59E0B; padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; cursor: pointer; }
+        .nav-list-item { display: flex; justify-content: space-between; padding: 12px 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 6px; margin-bottom: 8px; cursor: grab; }
+        .nav-list-item.sub-item { margin-left: 30px; border-left: 3px solid var(--primary-blue); }
     </style>
 </head>
 <body>
 
     <aside class="admin-sidebar">
-        <div class="sidebar-header">
-            <img src="logo.png" alt="Logo" width="24" height="24"> Zenqor Console
-        </div>
+        <div class="sidebar-header"><img src="logo.png" alt="Logo" width="24" height="24"> Zenqor Console</div>
         <nav class="sidebar-nav">
             <div class="nav-group">
-                <div class="nav-group-title">Core</div>
+                <div class="nav-group-title">Core Modules</div>
                 <a class="sidebar-link active" data-target="sec-dashboard"><i class="fas fa-chart-line w-20"></i> Dashboard</a>
-            </div>
-            <div class="nav-group">
-                <div class="nav-group-title">Content Management</div>
-                <a class="sidebar-link" data-target="sec-nav"><i class="fas fa-sitemap w-20"></i> Navigation Menu</a>
-                <a class="sidebar-link" data-target="sec-header"><i class="fas fa-heading w-20"></i> Header Settings</a>
-                <a class="sidebar-link" data-target="sec-portfolio"><i class="fas fa-briefcase w-20"></i> Portfolio</a>
+                <a class="sidebar-link" data-target="sec-nav"><i class="fas fa-sitemap w-20"></i> Navigation & Header</a>
+                <a class="sidebar-link" data-target="sec-portfolio"><i class="fas fa-briefcase w-20"></i> Portfolio Manager</a>
+                <a class="sidebar-link" data-target="sec-services"><i class="fas fa-cogs w-20"></i> Services Manager</a>
+                <a class="sidebar-link" data-target="sec-company"><i class="fas fa-building w-20"></i> Company Profile</a>
             </div>
         </nav>
     </aside>
@@ -64,7 +51,8 @@
         <header class="admin-topbar">
             <div><h3 style="margin: 0;" id="topbar-title">Dashboard Overview</h3></div>
             <div style="display: flex; gap: 15px; align-items: center;">
-                <span id="adminName" style="color: var(--text-secondary); font-size: 0.9rem;">Verifying...</span>
+                <span id="adminName" style="color: var(--text-secondary); font-size: 0.9rem;">Verifying Session...</span>
+                <a href="index.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">View Live Site</a>
                 <button id="btnLogout" class="btn btn-danger" style="padding: 6px 12px; font-size: 0.8rem;"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </header>
@@ -73,7 +61,11 @@
             
             <div id="sec-dashboard" class="cms-section active">
                 <h2>Admin Console Ready</h2>
-                <p>Select a module from the sidebar to manage content.</p>
+                <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: 20px;">
+                    <div class="crud-form"><h4>Total Projects</h4><h2 id="s-proj">0</h2></div>
+                    <div class="crud-form"><h4>Total Services</h4><h2 id="s-srv">0</h2></div>
+                    <div class="crud-form"><h4>Registered Users</h4><h2 id="s-usr">0</h2></div>
+                </div>
             </div>
 
             <div id="sec-nav" class="cms-section">
@@ -81,325 +73,223 @@
                     <div class="crud-form">
                         <h3 style="margin-bottom: 20px;">Add Menu Link</h3>
                         <form id="formNav">
-                            <div class="input-group">
-                                <label>Menu Title</label>
-                                <input type="text" id="navTitle" required placeholder="e.g. Services">
-                            </div>
-                            <div class="input-group">
-                                <label>URL / Slug</label>
-                                <input type="text" id="navUrl" required placeholder="e.g. services.html">
-                            </div>
-                            <div class="input-group">
-                                <label>Parent Menu (For Submenu)</label>
-                                <select id="navParent">
-                                    <option value="">-- Main Menu (No Parent) --</option>
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <label>Icon (FontAwesome Class)</label>
-                                <input type="text" id="navIcon" placeholder="e.g. fas fa-home">
-                            </div>
-                            <div class="input-group" style="display: flex; gap: 15px; align-items: center;">
-                                <label style="margin:0;"><input type="checkbox" id="navVisible" checked> Visible to Public</label>
-                                <label style="margin:0;"><input type="checkbox" id="navNewTab"> Open in New Tab</label>
+                            <div class="input-group"><label>Menu Title</label><input type="text" id="navTitle" required></div>
+                            <div class="input-group"><label>URL / Slug</label><input type="text" id="navUrl" required></div>
+                            <div class="input-group"><label>Parent Menu</label><select id="navParent"><option value="">-- Main Menu --</option></select></div>
+                            <div class="input-group"><label>Icon Class</label><input type="text" id="navIcon" placeholder="fas fa-home"></div>
+                            <div class="input-group" style="display: flex; gap: 10px;">
+                                <label><input type="checkbox" id="navVisible" checked> Visible</label>
+                                <label><input type="checkbox" id="navNewTab"> New Tab</label>
                             </div>
                             <button type="submit" class="btn btn-primary w-100 mt-3">Save Menu</button>
                             <div id="msgNav" class="form-message mt-3"></div>
                         </form>
+
+                        <hr style="border-color: var(--border-color); margin: 30px 0;">
+                        <h3 style="margin-bottom: 20px;">Header Branding</h3>
+                        <form id="formHeader">
+                            <div class="input-group"><label>Upload New Logo</label><input type="file" id="hLogoFile" accept="image/*" style="padding: 10px;"></div>
+                            <div class="input-group"><label>CTA Button Text</label><input type="text" id="hBtnText"></div>
+                            <div class="input-group"><label>CTA Button URL</label><input type="text" id="hBtnUrl"></div>
+                            <button type="submit" class="btn btn-primary w-100">Save Branding</button>
+                            <div id="msgHeader" class="form-message mt-3"></div>
+                        </form>
                     </div>
                     <div class="crud-list">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                            <h3 style="margin:0;">Menu Structure</h3>
-                            <button id="saveNavOrder" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.85rem;"><i class="fas fa-save"></i> Save Order</button>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <h3 style="margin:0;">Menu Structure (Drag & Drop)</h3>
+                            <button id="saveNavOrder" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.85rem;">Save Order</button>
                         </div>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Drag and drop items to reorder them.</p>
-                        <ul id="listNav" class="nav-list-container">
-                            </ul>
+                        <ul id="listNav" style="list-style: none; padding: 0; margin: 0;"></ul>
                     </div>
                 </div>
             </div>
 
-            <div id="sec-header" class="cms-section">
+            <div id="sec-portfolio" class="cms-section">
                 <div class="crud-grid">
                     <div class="crud-form">
-                        <h3 style="margin-bottom: 20px;">Header & Branding</h3>
-                        <form id="formHeader">
-                            <div class="input-group">
-                                <label>Upload New Logo</label>
-                                <input type="file" id="hLogoFile" accept="image/*" style="padding: 10px;">
-                            </div>
-                            <div class="input-group">
-                                <label>Upload New Favicon</label>
-                                <input type="file" id="hFavFile" accept="image/*" style="padding: 10px;">
-                            </div>
-                            <div class="input-group">
-                                <label>Header Background Color</label>
-                                <input type="text" id="hBgColor" placeholder="e.g. rgba(15, 23, 42, 0.85)">
-                            </div>
-                            <hr style="border-color: var(--border-color); margin: 20px 0;">
-                            <h4>Call-to-Action Button</h4>
-                            <div class="input-group" style="margin-top: 10px;">
-                                <label><input type="checkbox" id="hBtnVisible"> Show Action Button</label>
-                            </div>
-                            <div class="input-group">
-                                <label>Button Text</label>
-                                <input type="text" id="hBtnText" placeholder="e.g. Login">
-                            </div>
-                            <div class="input-group">
-                                <label>Button URL</label>
-                                <input type="text" id="hBtnUrl" placeholder="e.g. login.html">
-                            </div>
-                            <div class="input-group">
-                                <label>Button Color (Hex)</label>
-                                <input type="text" id="hBtnColor" placeholder="#3B82F6">
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Save System Layout</button>
-                            <div id="msgHeader" class="form-message mt-3"></div>
+                        <h3 style="margin-bottom: 20px;">Deploy New Portfolio</h3>
+                        <form id="formPortfolio">
+                            <div class="input-group"><label>Project Title</label><input type="text" id="portTitle" required></div>
+                            <div class="input-group"><label>Category Tag</label><input type="text" id="portTag" required></div>
+                            <div class="input-group"><label>Cover Image</label><input type="file" id="portImage" accept="image/*" required style="padding: 10px;"></div>
+                            <div class="input-group"><label>Description</label><textarea id="portDesc" rows="3" required></textarea></div>
+                            <button type="submit" class="btn btn-primary w-100">Publish Project</button>
+                            <div id="msgPortfolio" class="form-message mt-3"></div>
                         </form>
+                    </div>
+                    <div class="crud-list">
+                        <h3 style="margin-bottom: 20px;">Live Portfolio Records</h3>
+                        <div id="listPortfolio">Fetching data...</div>
                     </div>
                 </div>
             </div>
-            
-            <div id="sec-portfolio" class="cms-section"><h2>Portfolio Module</h2><p>Working...</p></div>
+
+            <div id="sec-services" class="cms-section">
+                <div class="crud-grid">
+                    <div class="crud-form">
+                        <h3 style="margin-bottom: 20px;">Add New Service</h3>
+                        <form id="formService">
+                            <div class="input-group"><label>Service Name</label><input type="text" id="srvName" required></div>
+                            <div class="input-group"><label>Icon Class</label><input type="text" id="srvIcon" placeholder="fas fa-server" required></div>
+                            <div class="input-group"><label>Description</label><textarea id="srvDesc" rows="3" required></textarea></div>
+                            <button type="submit" class="btn btn-primary w-100">Add Service</button>
+                        </form>
+                    </div>
+                    <div class="crud-list">
+                        <h3 style="margin-bottom: 20px;">Active Services</h3>
+                        <div id="listServices">Fetching data...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sec-company" class="cms-section">
+                <div class="crud-form" style="max-width: 800px;">
+                    <h3 style="margin-bottom: 20px;">Company Information</h3>
+                    <form id="formCompany">
+                        <div class="input-group"><label>Company Name</label><input type="text" id="compName" required></div>
+                        <div class="input-group"><label>Email Address</label><input type="email" id="compEmail" required></div>
+                        <div class="input-group"><label>Phone/WhatsApp</label><input type="text" id="compPhone" required></div>
+                        <button type="submit" class="btn btn-primary">Save Profile Configuration</button>
+                        <div id="msgCompany" class="form-message mt-3"></div>
+                    </form>
+                </div>
+            </div>
+
         </section>
     </main>
 
     <script type="module">
         import { auth, db, storage, enforceSecurity, secureLogout } from './firebase-config.js';
-        import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, updateDoc, writeBatch, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, updateDoc, writeBatch, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         import { ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
+        // KESELAMATAN & NAVIGATION
         enforceSecurity('admin');
         document.getElementById('btnLogout').addEventListener('click', secureLogout);
+        auth.onAuthStateChanged(async (user) => {
+            if(user) document.getElementById('adminName').textContent = user.email;
+        });
 
-        const links = document.querySelectorAll('.sidebar-link');
-        const sections = document.querySelectorAll('.cms-section');
-        const topbarTitle = document.getElementById('topbar-title');
-
-        links.forEach(link => {
+        document.querySelectorAll('.sidebar-link').forEach(link => {
             link.addEventListener('click', () => {
-                links.forEach(l => l.classList.remove('active'));
-                sections.forEach(s => s.classList.remove('active'));
+                document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.cms-section').forEach(s => s.classList.remove('active'));
                 link.classList.add('active');
                 document.getElementById(link.getAttribute('data-target')).classList.add('active');
-                topbarTitle.textContent = link.textContent.trim();
+                document.getElementById('topbar-title').textContent = link.textContent.trim();
             });
         });
 
         async function uploadImage(file, folderPath) {
-            const storageRef = ref(storage, `${folderPath}/${Date.now()}_${file.name}`);
-            const uploadTask = await uploadBytesResumable(storageRef, file);
+            const uploadTask = await uploadBytesResumable(ref(storage, `${folderPath}/${Date.now()}_${file.name}`), file);
             return await getDownloadURL(uploadTask.ref);
         }
 
-        // ==========================================
-        // DYNAMIC NAVIGATION CMS
-        // ==========================================
-        const listNav = document.getElementById('listNav');
-        const selectParent = document.getElementById('navParent');
+        // =====================================
+        // MODULE: NAVIGATION & HEADER
+        // =====================================
         let navDataList = [];
-
         async function fetchNavigation() {
             const snap = await getDocs(query(collection(db, "navigation"), orderBy("order", "asc")));
-            navDataList = [];
-            snap.forEach(doc => navDataList.push({ id: doc.id, ...doc.data() }));
+            navDataList = []; snap.forEach(d => navDataList.push({ id: d.id, ...d.data() }));
             
-            listNav.innerHTML = "";
-            selectParent.innerHTML = `<option value="">-- Main Menu (No Parent) --</option>`;
+            const listNav = document.getElementById('listNav');
+            const selectParent = document.getElementById('navParent');
+            listNav.innerHTML = ""; selectParent.innerHTML = `<option value="">-- Main Menu --</option>`;
             
-            const parents = navDataList.filter(n => !n.parentId);
-            
-            parents.forEach(p => {
-                // Populate Dropdown for Parent Selection
+            navDataList.filter(n => !n.parentId).forEach(p => {
                 selectParent.innerHTML += `<option value="${p.id}">${p.title}</option>`;
-                
-                // Populate Drag & Drop List (Parent)
-                listNav.innerHTML += buildNavItemHtml(p, false);
-                
-                // Populate Children
-                const children = navDataList.filter(n => n.parentId === p.id);
-                children.forEach(c => {
-                    listNav.innerHTML += buildNavItemHtml(c, true);
-                });
+                listNav.innerHTML += buildNavRow(p, false);
+                navDataList.filter(n => n.parentId === p.id).forEach(c => listNav.innerHTML += buildNavRow(c, true));
             });
-
-            bindNavEvents();
-            initDragAndDrop();
+            initNavEvents();
         }
 
-        function buildNavItemHtml(item, isChild) {
+        function buildNavRow(item, isChild) {
             return `
                 <li class="nav-list-item ${isChild ? 'sub-item' : ''}" draggable="true" data-id="${item.id}">
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-grip-vertical" style="color: var(--text-secondary); cursor: grab;"></i>
-                        <span style="font-weight: 500;">${item.icon ? `<i class="${item.icon}"></i> ` : ""}${item.title}</span>
-                        <span style="font-size: 0.75rem; color: #94A3B8;">${item.url}</span>
-                        ${!item.visible ? `<span style="font-size: 0.7rem; color: #EF4444; border: 1px solid #EF4444; padding: 2px 4px; border-radius: 3px;">HIDDEN</span>` : ''}
-                    </div>
-                    <div style="display: flex; gap: 5px;">
-                        <button class="btn-warning toggle-vis" data-id="${item.id}" data-vis="${item.visible}"><i class="fas fa-eye${!item.visible ? '-slash' : ''}"></i></button>
-                        <button class="btn-danger delete-nav" data-id="${item.id}"><i class="fas fa-trash"></i></button>
-                    </div>
-                </li>
-            `;
+                    <div><i class="fas fa-grip-vertical" style="margin-right:10px; cursor:grab;"></i> ${item.title} (${item.url})</div>
+                    <div><button class="btn-danger delete-nav" data-id="${item.id}"><i class="fas fa-trash"></i></button></div>
+                </li>`;
         }
 
         document.getElementById('formNav').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const msg = document.getElementById('msgNav');
-            btn.innerHTML = "Saving...";
-            
-            try {
-                await addDoc(collection(db, "navigation"), {
-                    title: document.getElementById('navTitle').value,
-                    url: document.getElementById('navUrl').value,
-                    parentId: document.getElementById('navParent').value || null,
-                    icon: document.getElementById('navIcon').value,
-                    visible: document.getElementById('navVisible').checked,
-                    target: document.getElementById('navNewTab').checked ? '_blank' : '_self',
-                    order: navDataList.length + 1
-                });
-                msg.textContent = "Menu Added!";
-                msg.className = "form-message msg-success";
-                e.target.reset();
-                fetchNavigation();
-            } catch (err) {
-                msg.textContent = err.message;
-                msg.className = "form-message msg-error";
-            }
-            btn.innerHTML = "Save Menu";
+            e.preventDefault(); e.target.querySelector('button').innerHTML = "Saving...";
+            await addDoc(collection(db, "navigation"), {
+                title: document.getElementById('navTitle').value, url: document.getElementById('navUrl').value,
+                parentId: document.getElementById('navParent').value || null, icon: document.getElementById('navIcon').value,
+                visible: document.getElementById('navVisible').checked, target: document.getElementById('navNewTab').checked ? '_blank' : '_self',
+                order: navDataList.length + 1
+            });
+            e.target.reset(); fetchNavigation(); e.target.querySelector('button').innerHTML = "Save Menu";
         });
 
-        function bindNavEvents() {
-            document.querySelectorAll('.delete-nav').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    if(confirm("Delete this menu? Submenus won't automatically redirect.")) {
-                        await deleteDoc(doc(db, "navigation", e.currentTarget.dataset.id));
-                        fetchNavigation();
-                    }
-                });
+        function initNavEvents() {
+            let dragged = null;
+            document.querySelectorAll('.nav-list-item').forEach(item => {
+                item.addEventListener('dragstart', function() { dragged = this; setTimeout(() => this.style.display = 'none', 0); });
+                item.addEventListener('dragend', function() { setTimeout(() => { this.style.display = 'flex'; dragged = null; }, 0); });
+                item.addEventListener('dragover', e => e.preventDefault());
+                item.addEventListener('drop', function() { if (this !== dragged) document.getElementById('listNav').insertBefore(dragged, this); });
             });
-            document.querySelectorAll('.toggle-vis').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    const id = e.currentTarget.dataset.id;
-                    const curVis = e.currentTarget.dataset.vis === 'true';
-                    await updateDoc(doc(db, "navigation", id), { visible: !curVis });
-                    fetchNavigation();
-                });
-            });
+            document.querySelectorAll('.delete-nav').forEach(b => b.addEventListener('click', async (e) => {
+                if(confirm("Delete menu?")) { await deleteDoc(doc(db, "navigation", e.currentTarget.dataset.id)); fetchNavigation(); }
+            }));
         }
 
-        // Drag & Drop Sorting Algorithm
-        function initDragAndDrop() {
-            let draggedItem = null;
-            const items = document.querySelectorAll('.nav-list-item');
-            
-            items.forEach(item => {
-                item.addEventListener('dragstart', function() {
-                    draggedItem = this;
-                    setTimeout(() => this.style.display = 'none', 0);
-                });
-                item.addEventListener('dragend', function() {
-                    setTimeout(() => {
-                        this.style.display = 'flex';
-                        draggedItem = null;
-                    }, 0);
-                });
-                item.addEventListener('dragover', function(e) {
-                    e.preventDefault();
-                });
-                item.addEventListener('dragenter', function(e) {
-                    e.preventDefault();
-                    this.style.borderTop = '2px solid var(--primary-blue)';
-                });
-                item.addEventListener('dragleave', function() {
-                    this.style.borderTop = '1px solid var(--border-color)';
-                });
-                item.addEventListener('drop', function() {
-                    this.style.borderTop = '1px solid var(--border-color)';
-                    if (this !== draggedItem) {
-                        listNav.insertBefore(draggedItem, this);
-                    }
-                });
-            });
-        }
-
-        // Save Batch Order
         document.getElementById('saveNavOrder').addEventListener('click', async (e) => {
-            const btn = e.target;
-            btn.innerHTML = "<i class='fas fa-circle-notch fa-spin'></i> Saving...";
-            try {
-                const batch = writeBatch(db);
-                const items = document.querySelectorAll('.nav-list-item');
-                items.forEach((item, index) => {
-                    const docRef = doc(db, "navigation", item.getAttribute('data-id'));
-                    batch.update(docRef, { order: index + 1 });
-                });
-                await batch.commit();
-                btn.innerHTML = "<i class='fas fa-check'></i> Saved";
-                setTimeout(() => btn.innerHTML = "<i class='fas fa-save'></i> Save Order", 2000);
-            } catch(e) {
-                alert("Failed to save order");
-                btn.innerHTML = "<i class='fas fa-save'></i> Save Order";
-            }
+            const batch = writeBatch(db);
+            document.querySelectorAll('.nav-list-item').forEach((item, index) => {
+                batch.update(doc(db, "navigation", item.getAttribute('data-id')), { order: index + 1 });
+            });
+            await batch.commit(); alert("Order Saved!");
         });
 
-        // ==========================================
-        // HEADER & BRANDING CMS
-        // ==========================================
-        async function fetchHeaderSettings() {
-            const snap = await getDoc(doc(db, "config", "header_settings"));
-            if(snap.exists()) {
-                const d = snap.data();
-                document.getElementById('hBgColor').value = d.headerBackground || "";
-                document.getElementById('hBtnVisible').checked = d.buttonVisible !== false;
-                document.getElementById('hBtnText').value = d.buttonTitle || "";
-                document.getElementById('hBtnUrl').value = d.buttonUrl || "";
-                document.getElementById('hBtnColor').value = d.buttonColor || "";
-            }
+        // =====================================
+        // MODULE: PORTFOLIO & SERVICES (PENTING)
+        // =====================================
+        async function fetchPortfolioAndServices() {
+            // Portfolio
+            const portSnap = await getDocs(collection(db, "portfolio_web"));
+            document.getElementById('s-proj').textContent = portSnap.size;
+            document.getElementById('listPortfolio').innerHTML = portSnap.empty ? "No data." : "";
+            portSnap.forEach(d => {
+                const p = d.data();
+                document.getElementById('listPortfolio').innerHTML += `
+                <div class="data-item">
+                    <div><h4 style="margin:0;">${p.title}</h4><small>${p.tag}</small></div>
+                    <button class="btn-danger delete-port" data-id="${d.id}">Delete</button>
+                </div>`;
+            });
+
+            // Services
+            const srvSnap = await getDocs(collection(db, "services"));
+            document.getElementById('s-srv').textContent = srvSnap.size;
+            document.getElementById('listServices').innerHTML = srvSnap.empty ? "No services." : "";
+            srvSnap.forEach(d => {
+                document.getElementById('listServices').innerHTML += `<div class="data-item"><div>${d.data().name}</div><button class="btn-danger delete-srv" data-id="${d.id}">Delete</button></div>`;
+            });
+
+            document.querySelectorAll('.delete-port').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "portfolio_web", e.currentTarget.dataset.id)); fetchPortfolioAndServices(); }));
+            document.querySelectorAll('.delete-srv').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "services", e.currentTarget.dataset.id)); fetchPortfolioAndServices(); }));
         }
 
-        document.getElementById('formHeader').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const msg = document.getElementById('msgHeader');
-            btn.innerHTML = "Processing Uploads & Saving...";
-            
-            try {
-                let logoUrl = null; let favUrl = null;
-                const logoFile = document.getElementById('hLogoFile').files[0];
-                const favFile = document.getElementById('hFavFile').files[0];
-                
-                if(logoFile) logoUrl = await uploadImage(logoFile, 'branding');
-                if(favFile) favUrl = await uploadImage(favFile, 'branding');
-
-                const updateData = {
-                    headerBackground: document.getElementById('hBgColor').value,
-                    buttonVisible: document.getElementById('hBtnVisible').checked,
-                    buttonTitle: document.getElementById('hBtnText').value,
-                    buttonUrl: document.getElementById('hBtnUrl').value,
-                    buttonColor: document.getElementById('hBtnColor').value,
-                };
-                
-                if(logoUrl) updateData.logoUrl = logoUrl;
-                if(favUrl) updateData.faviconUrl = favUrl;
-
-                await setDoc(doc(db, "config", "header_settings"), updateData, { merge: true });
-                
-                msg.textContent = "Header layout updated live.";
-                msg.className = "form-message msg-success";
-            } catch (err) {
-                msg.textContent = err.message;
-                msg.className = "form-message msg-error";
-            }
-            btn.innerHTML = "Save System Layout";
+        document.getElementById('formPortfolio').addEventListener('submit', async (e) => {
+            e.preventDefault(); e.target.querySelector('button').innerHTML = "Deploying...";
+            const imgUrl = await uploadImage(document.getElementById('portImage').files[0], 'portfolio');
+            await addDoc(collection(db, "portfolio_web"), { title: document.getElementById('portTitle').value, tag: document.getElementById('portTag').value, desc: document.getElementById('portDesc').value, imgUrl: imgUrl, createdAt: serverTimestamp() });
+            e.target.reset(); fetchPortfolioAndServices(); e.target.querySelector('button').innerHTML = "Publish Project";
         });
 
-        // Init
-        fetchNavigation();
-        fetchHeaderSettings();
+        document.getElementById('formService').addEventListener('submit', async (e) => {
+            e.preventDefault(); e.target.querySelector('button').innerHTML = "Adding...";
+            await addDoc(collection(db, "services"), { name: document.getElementById('srvName').value, icon: document.getElementById('srvIcon').value, desc: document.getElementById('srvDesc').value, createdAt: serverTimestamp() });
+            e.target.reset(); fetchPortfolioAndServices(); e.target.querySelector('button').innerHTML = "Add Service";
+        });
 
+        fetchNavigation();
+        fetchPortfolioAndServices();
     </script>
 </body>
 </html>

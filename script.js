@@ -2,21 +2,6 @@
  * ZENQOR TECHNOLOGIES - ENTERPRISE CORE SCRIPT
  * Dynamic Navigation, Header CMS & Core Gateway
  */
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, getDocs, doc, getDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
-    authDomain: "zenqor-web.firebaseapp.com",
-    projectId: "zenqor-web",
-    storageBucket: "zenqor-web.firebasestorage.app",
-    messagingSenderId: "785478368719",
-    appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 (async function() {
     'use strict';
 
@@ -35,50 +20,42 @@ const db = getFirestore(app);
     }
     checkMasterProtocol();
 
-    // 2. DYNAMIC NAVIGATION & HEADER ENGINE
-    async function buildDynamicHeader() {
-        try {
-            // Fetch Header Settings
-            const headerConfigSnap = await getDoc(doc(db, "config", "header_settings"));
-            let headerConfig = {};
-            if(headerConfigSnap.exists()) {
-                headerConfig = headerConfigSnap.data();
-                // Tukar Logo
-                if(headerConfig.logoUrl) {
-                    document.querySelectorAll('.nav-logo-img, .footer-logo-img').forEach(img => img.src = headerConfig.logoUrl);
-                }
-                // Tukar Favicon
-                if(headerConfig.faviconUrl) {
-                    let link = document.querySelector("link[rel~='icon']");
-                    if (!link) {
-                        link = document.createElement('link');
-                        link.rel = 'icon';
-                        document.head.appendChild(link);
-                    }
-                    link.href = headerConfig.faviconUrl;
-                }
-                // Tetapan UI Header
-                const headerEl = document.querySelector('.navbar');
-                if(headerEl) {
-                    if(headerConfig.headerBackground) headerEl.style.background = headerConfig.headerBackground;
-                    if(headerConfig.headerHeight) {
-                        const navCont = headerEl.querySelector('.nav-container');
-                        if(navCont) navCont.style.minHeight = headerConfig.headerHeight;
-                    }
-                }
-            }
+    // 2. DYNAMIC NAVIGATION ENGINE (DYNAMIC IMPORT)
+    try {
+        // Muat turun Firebase secara dinamik (Elak ralat "Cannot use import statement")
+        const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js");
+        const { getFirestore, collection, getDocs, doc, getDoc, query, orderBy } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
+        
+        const app = initializeApp({
+            apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
+            authDomain: "zenqor-web.firebaseapp.com",
+            projectId: "zenqor-web",
+            storageBucket: "zenqor-web.firebasestorage.app",
+            messagingSenderId: "785478368719",
+            appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba"
+        });
+        const db = getFirestore(app);
 
-            // Fetch Navigation
-            const navSnap = await getDocs(query(collection(db, "navigation"), orderBy("order", "asc")));
-            const navLinksContainer = document.querySelector('.nav-links');
-            if(!navLinksContainer) return;
+        // A. Bina Header / Logo
+        const headerConfigSnap = await getDoc(doc(db, "config", "header_settings"));
+        let headerConfig = headerConfigSnap.exists() ? headerConfigSnap.data() : {};
+        
+        if(headerConfig.logoUrl) document.querySelectorAll('.nav-logo-img, .footer-logo-img').forEach(img => img.src = headerConfig.logoUrl);
+        if(headerConfig.headerBackground) {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) navbar.style.background = headerConfig.headerBackground;
+        }
 
+        // B. Bina Navigation
+        const navSnap = await getDocs(query(collection(db, "navigation"), orderBy("order", "asc")));
+        const navLinksContainer = document.querySelector('.nav-links');
+        
+        if(navLinksContainer && !navSnap.empty) {
             let navItems = [];
-            navSnap.forEach(doc => navItems.push({ id: doc.id, ...doc.data() }));
+            navSnap.forEach(d => navItems.push({ id: d.id, ...d.data() }));
             
-            // Build Tree (Parent & Submenus)
-            const parents = navItems.filter(item => !item.parentId && item.visible !== false);
-            const children = navItems.filter(item => item.parentId && item.visible !== false);
+            const parents = navItems.filter(i => !i.parentId && i.visible !== false);
+            const children = navItems.filter(i => i.parentId && i.visible !== false);
             
             let htmlBuild = "";
             parents.forEach(p => {
@@ -86,75 +63,45 @@ const db = getFirestore(app);
                 if(myChildren.length > 0) {
                     htmlBuild += `
                         <div class="nav-item-dropdown">
-                            <button class="dropdown-toggle" data-target="menu-${p.id}" aria-haspopup="true" aria-expanded="false">
+                            <button class="dropdown-toggle" data-target="menu-${p.id}" aria-expanded="false">
                                 <span>${p.icon ? `<i class="${p.icon}"></i> ` : ""}${p.title}</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
                             </button>
-                            <div class="dropdown-menu" id="menu-${p.id}" role="menu">
-                                ${myChildren.map(c => `<a href="${c.url}" target="${c.target \vert{}\vert{} '_self'}" role="menuitem">${c.icon ? `<i class="${c.icon}"></i> ` : ""}${c.title}</a>`).join('')}
+                            <div class="dropdown-menu" id="menu-${p.id}">
+                                ${myChildren.map(c => `<a href="${c.url}" target="${c.target \vert{}\vert{} '_self'}">${c.icon ? `<i class="${c.icon}"></i> ` : ""}${c.title}</a>`).join('')}
                             </div>
-                        </div>
-                    `;
+                        </div>`;
                 } else {
                     htmlBuild += `<a href="${p.url}" target="${p.target || '_self'}">${p.icon ? `<i class="${p.icon}"></i> ` : ""}${p.title}</a>`;
                 }
             });
 
-            // Action Button (Dynamic)
+            // Butang CTA
             let btnHtml = "";
             if(headerConfig.buttonVisible !== false) {
-                const btnTitle = headerConfig.buttonTitle || "Login";
-                const btnUrl = headerConfig.buttonUrl || "login.html";
-                const btnColor = headerConfig.buttonColor || "var(--primary-blue)";
-                btnHtml = `<a href="${btnUrl}" class="btn btn-primary" style="background-color: ${btnColor}; padding: 8px 20px; font-size: 0.9rem; border-radius: 6px; text-decoration: none;">${btnTitle}</a>`;
+                btnHtml = `<a href="${headerConfig.buttonUrl || "login.html"}" class="btn btn-primary" style="background-color: ${headerConfig.buttonColor || 'var(--primary-blue)'}; padding: 8px 20px; border-radius: 6px; text-decoration: none;">${headerConfig.buttonTitle || "Login"}</a>`;
             }
 
             navLinksContainer.innerHTML = htmlBuild + `<div style="display: flex; align-items: center; gap: 15px; margin-left: 15px;">
-                <button id="lang-toggle" class="lang-btn" aria-label="Toggle Language">EN</button>
-                ${btnHtml}
+                <button id="lang-toggle" class="lang-btn">EN</button> ${btnHtml}
             </div>`;
-
-            initDropdowns();
-
-        } catch(e) {
-            console.error("Dynamic Navigation Engine Error:", e);
-        }
-    }
-
-    function initDropdowns() {
-        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = toggle.getAttribute('data-target');
-                const menu = document.getElementById(targetId);
-                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-                
-                document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
-                document.querySelectorAll('.dropdown-toggle').forEach(t => t.setAttribute('aria-expanded', 'false'));
-                
-                if (!isExpanded) {
-                    menu.classList.add('show');
-                    toggle.setAttribute('aria-expanded', 'true');
-                }
+            
+            // Re-bind Event Listener Dropdown
+            document.querySelectorAll('.dropdown-toggle').forEach(t => {
+                t.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const menu = document.getElementById(t.dataset.target);
+                    const isExp = t.getAttribute('aria-expanded') === 'true';
+                    document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
+                    document.querySelectorAll('.dropdown-toggle').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+                    if (!isExp) { menu.classList.add('show'); t.setAttribute('aria-expanded', 'true'); }
+                });
             });
-        });
-        
-        window.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-item-dropdown')) {
-                document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
-                document.querySelectorAll('.dropdown-toggle').forEach(t => t.setAttribute('aria-expanded', 'false'));
-            }
-        });
-    }
+        }
+    } catch(e) { console.error("CMS Injection Failed:", e); }
 
-    // Execute Global Builder
-    await buildDynamicHeader();
-
-    // Scroll Observer & Mobile Menu bindings
+    // 3. Mobile Menu Binders
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    if(mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    }
+    if(mobileMenuBtn && navLinks) mobileMenuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+
 })();
