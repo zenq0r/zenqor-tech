@@ -156,28 +156,26 @@
                 }
 
                 formMessage.textContent = "";
-                formMessage.className = "form-message";
                 btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Authenticating...';
                 btn.disabled = true;
 
                 signInWithEmailAndPassword(auth, email, password)
                     .then((userCredential) => {
                         formMessage.textContent = "Secure login successful. Redirecting...";
-                        formMessage.classList.add("msg-success");
+                        formMessage.className = "form-message msg-success";
                         
                         setTimeout(() => { 
+                            // HALA TUJU (REDIRECT) YANG BETUL
                             if(userCredential.user.email === "zenqortech@gmail.com") {
                                 window.location.replace("admin-dashboard.html"); 
                             } else {
-                                window.location.replace("index.html"); 
+                                window.location.replace("user-profile.html"); 
                             }
                         }, 1500);
                     })
                     .catch((error) => {
-                        console.error("Auth Error:", error.code);
-                        // Enterprise Standard: Generic error message to prevent account enumeration
                         formMessage.textContent = "Invalid email or password. Please try again.";
-                        formMessage.classList.add("msg-error");
+                        formMessage.className = "form-message msg-error";
                         btn.innerHTML = originalText;
                         btn.disabled = false;
                     });

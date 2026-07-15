@@ -132,6 +132,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
@@ -143,6 +144,7 @@
         };
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app);
 
         const registerForm = document.getElementById('registerForm');
         const formMessage = document.getElementById('formMessage');
@@ -154,58 +156,35 @@
                 const fullName = document.getElementById('fullName').value.trim();
                 const email = document.getElementById('email').value.trim();
                 const password = document.getElementById('password').value;
-                const confirmPassword = document.getElementById('confirmPassword').value;
                 const terms = document.getElementById('terms').checked;
                 const btn = this.querySelector('button[type="submit"]');
                 const originalText = btn.innerHTML;
                 
                 formMessage.textContent = "";
-                formMessage.className = "form-message";
-
-                if (!terms) {
-                    formMessage.textContent = "You must agree to the Terms of Service.";
-                    formMessage.classList.add("msg-error");
-                    return;
-                }
-
-                if (password.length < 8) {
-                    formMessage.textContent = "Password must be at least 8 characters long.";
-                    formMessage.classList.add("msg-error");
-                    return;
-                }
-
-                if (password !== confirmPassword) {
-                    formMessage.textContent = "Passwords do not match. Please try again.";
-                    formMessage.classList.add("msg-error");
-                    return;
-                }
 
                 btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Registering...';
                 btn.disabled = true;
 
                 createUserWithEmailAndPassword(auth, email, password)
                     .then((userCredential) => {
-                        return updateProfile(userCredential.user, {
-                            displayName: fullName
+                        updateProfile(userCredential.user, { displayName: fullName });
+                        
+                        // PENYELESAIAN UTAMA: Simpan maklumat dan ROLE ke Firestore!
+                        return setDoc(doc(db, "users", userCredential.user.uid), {
+                            name: fullName,
+                            email: email,
+                            role: (email === "zenqortech@gmail.com") ? "admin" : "user",
+                            createdAt: new Date()
                         });
                     })
                     .then(() => {
-                        formMessage.textContent = "Account created successfully! Redirecting to secure login...";
-                        formMessage.classList.add("msg-success");
+                        formMessage.textContent = "Account created successfully! Redirecting...";
+                        formMessage.className = "form-message msg-success";
                         setTimeout(() => { window.location.replace("login.html"); }, 2000);
                     })
                     .catch((error) => {
-                        console.error("Registration Error:", error.code);
-                        let errorMessage = "An error occurred during registration. Please try again.";
-                        
-                        if (error.code === 'auth/email-already-in-use') {
-                            errorMessage = "This email is already registered. Please sign in.";
-                        } else if (error.code === 'auth/invalid-email') {
-                            errorMessage = "Please enter a valid email address.";
-                        }
-                        
-                        formMessage.textContent = errorMessage;
-                        formMessage.classList.add("msg-error");
+                        formMessage.textContent = "Error: " + error.message;
+                        formMessage.className = "form-message msg-error";
                         btn.innerHTML = originalText;
                         btn.disabled = false;
                     });
