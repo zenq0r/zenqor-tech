@@ -72,31 +72,11 @@
 
         <section class="portfolio section-padding">
             <div class="container">
-                <div class="portfolio-grid" id="gamingPortfolioGrid">
-                    <article class="portfolio-item card-style reveal active hover-up">
-                        <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800');" role="img" aria-label="Prayer Time Resource"></div>
-                        <div class="port-content">
-                            <span class="tag">LUA / UI</span>
-                            <h3 data-i18n="pg_1_t">Malaysia Prayer Time & Adhan Notifications</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem;" data-i18n="pg_1_d">Accurate prayer times based on official zones verified by JAKIM.</p>
-                        </div>
-                    </article>
-                    <article class="portfolio-item card-style reveal active hover-up" style="transition-delay: 0.1s;">
-                        <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800');" role="img" aria-label="Billing System"></div>
-                        <div class="port-content">
-                            <span class="tag">STANDALONE</span>
-                            <h3 data-i18n="pg_2_t">Standalone Billing</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem;" data-i18n="pg_2_d">Framework-agnostic invoicing tool that works instantly on any server architecture.</p>
-                        </div>
-                    </article>
-                    <article class="portfolio-item card-style reveal active hover-up" style="transition-delay: 0.2s;">
-                        <div class="port-img" style="background-image: url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=800');" role="img" aria-label="Crime System"></div>
-                        <div class="port-content">
-                            <span class="tag">QBCORE</span>
-                            <h3 data-i18n="pg_3_t">Immersive Crime System</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem;" data-i18n="pg_3_d">Complex robberies, evidence tracking, and dynamic NPC interactions built in optimized Lua.</p>
-                        </div>
-                    </article>
+                <div class="portfolio-grid" id="gamingPortfolioGrid" aria-live="polite">
+                    <div style="text-align: center; width: 100%; grid-column: 1 / -1; color: var(--text-secondary); padding: 40px;">
+                        <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                        <p style="margin-top: 15px;">Synchronizing live portfolio data...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -110,8 +90,8 @@
                     <span class="text-primary">Zenqor</span> Technologies
                 </a>
                 <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
-                    <p style="margin-bottom: 4px;">No. Pendaftaran: 202603157897 | (JM1045730-D)</p>
-                    <p>Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
+                    <p id="footRegNo" style="margin-bottom: 4px;">No. Pendaftaran: 202603157897 | (JM1045730-D)</p>
+                    <p id="footAddress">Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
                 </div>
             </div>
             <nav class="footer-links" aria-label="Footer Legal Links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
@@ -126,10 +106,73 @@
     </footer>
 
     <div class="floating-widgets">
-        <a href="https://wa.me/601165012569" target="_blank" rel="noopener noreferrer" class="widget-wa" aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a id="floatingWhatsApp" href="https://wa.me/601165012569" target="_blank" rel="noopener noreferrer" class="widget-wa" aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
         <button id="scrollToTop" class="widget-top" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
     </div>
 
     <script src="script.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
+            authDomain: "zenqor-web.firebaseapp.com",
+            projectId: "zenqor-web",
+            storageBucket: "zenqor-web.firebasestorage.app",
+            messagingSenderId: "785478368719",
+            appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Shown only if the admin hasn't added any gaming portfolio items yet
+        const FALLBACK_ITEMS = [
+            { imgUrl: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800", tag: "LUA / UI", title: "Malaysia Prayer Time & Adhan Notifications", desc: "Accurate prayer times based on official zones verified by JAKIM." },
+            { imgUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800", tag: "STANDALONE", title: "Standalone Billing", desc: "Framework-agnostic invoicing tool that works instantly on any server architecture." },
+            { imgUrl: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=800", tag: "QBCORE", title: "Immersive Crime System", desc: "Complex robberies, evidence tracking, and dynamic NPC interactions built in optimized Lua." },
+        ];
+
+        function renderGrid(items) {
+            const grid = document.getElementById('gamingPortfolioGrid');
+            grid.innerHTML = "";
+            let delay = 0;
+            items.forEach((data) => {
+                grid.innerHTML += `
+                    <article class="portfolio-item card-style reveal active hover-up" style="transition-delay: ${delay}s;">
+                        <div class="port-img" style="background-image: url('${data.imgUrl}');" role="img" aria-label="${data.title} Project Image"></div>
+                        <div class="port-content">
+                            <span class="tag">${data.tag}</span>
+                            <h3>${data.title}</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">${data.desc}</p>
+                        </div>
+                    </article>`;
+                delay += 0.1;
+            });
+        }
+
+        async function loadPortfolio() {
+            const grid = document.getElementById('gamingPortfolioGrid');
+            try {
+                const q = query(collection(db, "portfolio_gaming"), orderBy("createdAt", "desc"));
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                    renderGrid(FALLBACK_ITEMS);
+                    return;
+                }
+
+                const items = [];
+                querySnapshot.forEach((doc) => items.push(doc.data()));
+                renderGrid(items);
+            } catch (error) {
+                console.error("Firebase Sync Error: ", error);
+                grid.innerHTML = "<div style='text-align: center; width: 100%; grid-column: 1 / -1; padding: 40px; border: 1px dashed #EF4444; border-radius: 8px;'><p style='color: #EF4444; margin: 0;'><i class='fas fa-exclamation-triangle'></i> Error connecting to database.</p></div>";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadPortfolio);
+    </script>
 </body>
 </html>

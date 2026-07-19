@@ -125,25 +125,11 @@
                 <header class="section-header reveal">
                     <h2 data-i18n="jobs_title">Open <span class='text-primary'>Positions</span></h2>
                 </header>
-                <div class="services-grid">
-                    <article class="service-card card-style reveal hover-up">
-                        <h3 class="text-primary" data-i18n="job_1_t">Senior Lua Scripter</h3>
-                        <span class="tag">Full-Time</span> <span class="tag">Selangor</span>
-                        <p data-i18n="job_1_d" style="margin: 15px 0;">Develop advanced server-side and client-side scripts. Deep knowledge of FiveM natives required.</p>
-                        <a href="mailto:careers@zenqortechnologies.com?subject=Application%20for%20Senior%20Game%20Developer" class="btn btn-outline w-100 mt-3" data-i18n="btn_apply" aria-label="Apply via Email for Senior Lua Scripter">Apply via Email</a>
-                    </article>
-                    <article class="service-card card-style reveal hover-up" style="transition-delay: 0.1s;">
-                        <h3 class="text-primary" data-i18n="job_2_t">Full Stack Engineer</h3>
-                        <span class="tag">Full-Time</span> <span class="tag">Hybrid</span>
-                        <p data-i18n="job_2_d" style="margin: 15px 0;">Design and scale enterprise backend systems and React-based dashboards.</p>
-                        <a href="mailto:careers@zenqortechnologies.com?subject=Application%20for%20Full%20Stack%20Engineer" class="btn btn-outline w-100 mt-3" data-i18n="btn_apply" aria-label="Apply via Email for Full Stack Engineer">Apply via Email</a>
-                    </article>
-                    <article class="service-card card-style reveal hover-up" style="transition-delay: 0.2s;">
-                        <h3 class="text-primary" data-i18n="job_3_t">NUI / UI Designer</h3>
-                        <span class="tag">Contract</span> <span class="tag">Remote</span>
-                        <p data-i18n="job_3_d" style="margin: 15px 0;">Create modern, responsive in-game UI designs using Vanilla JS/React.</p>
-                        <a href="mailto:careers@zenqortechnologies.com?subject=Application%20for%20UI/UX%20Designer" class="btn btn-outline w-100 mt-3" data-i18n="btn_apply" aria-label="Apply via Email for UI Designer">Apply via Email</a>
-                    </article>
+                <div class="services-grid" id="dynamicCareersGrid" aria-live="polite">
+                    <div style="text-align: center; width: 100%; grid-column: 1 / -1; color: var(--text-secondary); padding: 40px;">
+                        <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                        <p style="margin-top: 15px;">Loading open positions...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -157,8 +143,8 @@
                     <span class="text-primary">Zenqor</span> Technologies
                 </a>
                 <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
-                    <p style="margin-bottom: 4px;">No. Pendaftaran: 202603157897 | (JM1045730-D)</p>
-                    <p>Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
+                    <p id="footRegNo" style="margin-bottom: 4px;">No. Pendaftaran: 202603157897 | (JM1045730-D)</p>
+                    <p id="footAddress">Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
                 </div>
             </div>
             <nav class="footer-links" aria-label="Footer Legal Links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
@@ -172,5 +158,66 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
+            authDomain: "zenqor-web.firebaseapp.com",
+            projectId: "zenqor-web",
+            storageBucket: "zenqor-web.firebasestorage.app",
+            messagingSenderId: "785478368719",
+            appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Shown only if the admin hasn't posted any jobs in the dashboard yet
+        const FALLBACK_CAREERS = [
+            { title: "Senior Lua Scripter", type: "Full-Time", location: "Selangor", desc: "Develop advanced server-side and client-side scripts. Deep knowledge of FiveM natives required." },
+            { title: "Full Stack Engineer", type: "Full-Time", location: "Hybrid", desc: "Design and scale enterprise backend systems and React-based dashboards." },
+            { title: "NUI / UI Designer", type: "Contract", location: "Remote", desc: "Create modern, responsive in-game UI designs using Vanilla JS/React." },
+        ];
+
+        function renderCareers(list) {
+            const grid = document.getElementById('dynamicCareersGrid');
+            if (list.length === 0) {
+                grid.innerHTML = "<div style='text-align: center; width: 100%; grid-column: 1 / -1; padding: 40px; background: var(--surface-color); border: 1px dashed var(--border-color); border-radius: 8px;'><p style='color: var(--text-secondary); margin: 0;'>No open positions right now. Check back soon.</p></div>";
+                return;
+            }
+            grid.innerHTML = "";
+            let delay = 0;
+            list.forEach((job) => {
+                const subject = encodeURIComponent(`Application for ${job.title}`);
+                grid.innerHTML += `
+                    <article class="service-card card-style reveal active hover-up" style="transition-delay: ${delay}s;">
+                        <h3 class="text-primary">${job.title}</h3>
+                        <span class="tag">${job.type}</span> <span class="tag">${job.location}</span>
+                        <p style="margin: 15px 0;">${job.desc}</p>
+                        <a href="mailto:careers@zenqortechnologies.com?subject=${subject}" class="btn btn-outline w-100 mt-3" aria-label="Apply via Email for ${job.title}">Apply via Email</a>
+                    </article>`;
+                delay += 0.1;
+            });
+        }
+
+        async function loadCareers() {
+            try {
+                const snap = await getDocs(query(collection(db, "careers"), orderBy("createdAt", "desc")));
+                if (snap.empty) {
+                    renderCareers(FALLBACK_CAREERS);
+                    return;
+                }
+                const jobs = [];
+                snap.forEach(d => jobs.push(d.data()));
+                renderCareers(jobs);
+            } catch (error) {
+                console.error("Careers Sync Error:", error);
+                renderCareers(FALLBACK_CAREERS);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadCareers);
+    </script>
 </body>
 </html>

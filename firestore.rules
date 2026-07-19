@@ -1,0 +1,82 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Fungsi untuk menyemak sama ada pengguna adalah admin
+    function isAdmin() {
+      return request.auth != null
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // 1. Koleksi Pengguna (RBAC & Profil)
+    // PENTING: ini mesti kekal sebagai satu-satunya rule yang sepadan dengan
+    // /users/{userId} — jangan biarkan rule generik di bawah turut sepadan
+    // dengan path ini, sebab Firestore membenarkan akses jika MANA-MANA satu
+    // rule yang sepadan membenarkannya (bukan "rule paling spesifik menang").
+    // Sebelum ini, `match /{collection}/{document=**}` turut sepadan dengan
+    // /users/{uid} dan allow read:true di situ menyebabkan SEMUA profil
+    // pengguna (nama, emel, telefon) boleh dibaca sesiapa sahaja.
+    match /users/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      allow write: if request.auth != null && request.auth.uid == userId;
+      allow delete: if isAdmin();
+    }
+
+    // 2. Koleksi Kandungan Awam (senarai eksplisit — BUKAN wildcard)
+    // Setiap koleksi yang sah untuk paparan public disenaraikan secara
+    // eksplisit di sini. Ini elak sebarang koleksi baru (cth: masa depan
+    // "orders" atau "invoices") secara tidak sengaja jadi public-readable
+    // hanya kerana namanya sepadan dengan wildcard generik.
+    match /portfolio_web/{document=**} {
+      allow read: if true;
+      allow write, delete: if isAdmin();
+    }
+    match /portfolio_gaming/{document=**} {
+      allow read: if true;
+      allow write, delete: if isAdmin();
+    }
+    match /services/{document=**} {
+      allow read: if true;
+      allow write, delete: if isAdmin();
+    }
+    match /careers/{document=**} {
+      allow read: if true;
+      allow write, delete: if isAdmin();
+    }
+    match /navigation/{document=**} {
+      allow read: if true;
+      allow write, delete: if isAdmin();
+    }
+    match /config/{document=**} {
+      allow read: if true;
+      allow write, delete: if isAdmin();
+    }
+    // Kandungan teks generik (hero, about, FAQ, legal pages, dsb.) — lihat
+    // content-loader.js. Satu koleksi baru, senang untuk admin edit setiap
+    // teks di website tanpa perlu ubah struktur rules setiap kali.
+    match /content/{document=**} {
+      allow read: if true;
+      allow write, delete: if isAdmin();
+    }
+
+    // 3. Applications (job applications) & Contact Messages — awam boleh
+    // CREATE sahaja (hantar borang), tapi tak boleh baca senarai orang lain.
+    match /job_applications/{document=**} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+    match /contact_messages/{document=**} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // 4. Analytics — pageview logging. Sesiapa boleh CREATE (rakam
+    // lawatan), tapi hanya admin boleh BACA data agregat. Tiada update/
+    // delete sebab setiap dokumen adalah rekod log yang tak sepatutnya
+    // diubah selepas dicipta.
+    match /analytics_events/{document=**} {
+      allow create: if true;
+      allow read: if isAdmin();
+    }
+  }
+}

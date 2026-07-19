@@ -34,6 +34,9 @@
         .stat-box { background: var(--surface-color); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); }
         .stat-box h4 { margin: 0 0 10px 0; color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; }
         .stat-box h2 { margin: 0; font-size: 2rem; color: var(--primary-blue); }
+        .pt-input { width: 100%; padding: 8px 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); font-family: inherit; font-size: 0.85rem; margin-top: 4px; }
+        .pt-input:focus { outline: none; border-color: var(--primary-blue); }
+        details > summary::-webkit-details-marker { color: var(--primary-blue); }
     </style>
 </head>
 <body>
@@ -51,9 +54,12 @@
                 <div class="nav-group-title">Content Management</div>
                 <a class="sidebar-link" data-target="sec-nav"><i class="fas fa-sitemap w-20"></i> Navigation Menu</a>
                 <a class="sidebar-link" data-target="sec-header"><i class="fas fa-heading w-20"></i> Header Settings</a>
-                <a class="sidebar-link" data-target="sec-portfolio"><i class="fas fa-briefcase w-20"></i> Portfolio</a>
+                <a class="sidebar-link" data-target="sec-pagetext"><i class="fas fa-align-left w-20"></i> Page Text (Every Page)</a>
+                <a class="sidebar-link" data-target="sec-portfolio"><i class="fas fa-briefcase w-20"></i> Portfolio (Web)</a>
+                <a class="sidebar-link" data-target="sec-portfolio-gaming"><i class="fas fa-gamepad w-20"></i> Portfolio (Gaming)</a>
                 <a class="sidebar-link" data-target="sec-services"><i class="fas fa-cogs w-20"></i> Services</a>
                 <a class="sidebar-link" data-target="sec-careers"><i class="fas fa-users w-20"></i> Careers</a>
+                <a class="sidebar-link" data-target="sec-messages"><i class="fas fa-envelope w-20"></i> Messages</a>
                 <a class="sidebar-link" data-target="sec-company"><i class="fas fa-building w-20"></i> Company Profile</a>
             </div>
             <div class="nav-group">
@@ -88,11 +94,25 @@
 
             <!-- 2. ANALYTICS -->
             <div id="sec-analytics" class="cms-section">
-                <h2>Website Analytics</h2>
-                <p style="color: var(--text-secondary);">Real-time traffic data visualization goes here.</p>
-                <div style="height: 300px; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+                <h2 style="margin-bottom: 5px;">Website Analytics</h2>
+                <p style="color: var(--text-secondary); margin-top: 0;">Pageviews logged directly from the live site (last 500 visits). Excludes visits to this dashboard and the login/register pages.</p>
+                <div class="stat-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="stat-box"><h4>Pageviews (in window)</h4><h2 id="an-total">0</h2></div>
+                    <div class="stat-box"><h4>Most Visited Page</h4><h2 id="an-top" style="font-size: 1.1rem;">—</h2></div>
+                    <div class="stat-box"><h4>Unique Pages Tracked</h4><h2 id="an-pages">0</h2></div>
+                </div>
+                <div style="height: 320px; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
                     <canvas id="visitorChart"></canvas>
                 </div>
+            </div>
+
+            <!-- 2b. MESSAGES -->
+            <div id="sec-messages" class="cms-section">
+                <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom: 15px;">
+                    <h2 style="margin:0;">Contact Messages</h2>
+                    <span id="msgUnreadCount" style="color: var(--text-secondary); font-size: 0.9rem;"></span>
+                </div>
+                <div id="listMessages">Fetching messages...</div>
             </div>
 
             <!-- 3. NAVIGATION MENU -->
@@ -137,11 +157,28 @@
                 </div>
             </div>
 
-            <!-- 5. PORTFOLIO -->
+            <!-- 4b. PAGE TEXT (every data-i18n string on the live site, EN + MS) -->
+            <div id="sec-pagetext" class="cms-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <div>
+                        <h2 style="margin: 0 0 5px 0;">Page Text</h2>
+                        <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">
+                            Every editable sentence on the public website, grouped by page. Leave a field
+                            blank to keep the built-in default. Fields marked <strong>HTML allowed</strong>
+                            accept basic tags like &lt;h4&gt;, &lt;p&gt;, &lt;a&gt;.
+                        </p>
+                    </div>
+                    <button id="savePageText" class="btn btn-primary" style="padding: 10px 24px; white-space: nowrap;">Save All Page Text</button>
+                </div>
+                <div id="msgPageText" class="form-message mt-3"></div>
+                <div id="pageTextContainer" style="margin-top: 20px;">Loading fields...</div>
+            </div>
+
+            <!-- 5. PORTFOLIO (WEB) -->
             <div id="sec-portfolio" class="cms-section">
                 <div class="crud-grid">
                     <div class="crud-form">
-                        <h3 style="margin-bottom: 20px;">Deploy Portfolio</h3>
+                        <h3 style="margin-bottom: 20px;">Deploy Portfolio (Web)</h3>
                         <form id="formPortfolio">
                             <div class="input-group"><label>Project Title</label><input type="text" id="portTitle" required></div>
                             <div class="input-group"><label>Category Tag</label><input type="text" id="portTag" required></div>
@@ -153,6 +190,26 @@
                     <div class="crud-list">
                         <h3 style="margin-bottom: 20px;">Live Records</h3>
                         <div id="listPortfolio">Fetching data...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5b. PORTFOLIO (GAMING) -->
+            <div id="sec-portfolio-gaming" class="cms-section">
+                <div class="crud-grid">
+                    <div class="crud-form">
+                        <h3 style="margin-bottom: 20px;">Deploy Portfolio (Gaming)</h3>
+                        <form id="formPortfolioGaming">
+                            <div class="input-group"><label>Project Title</label><input type="text" id="portGTitle" required></div>
+                            <div class="input-group"><label>Category Tag</label><input type="text" id="portGTag" required></div>
+                            <div class="input-group"><label>Cover Image</label><input type="file" id="portGImage" accept="image/*" required style="padding: 10px;"></div>
+                            <div class="input-group"><label>Description</label><textarea id="portGDesc" rows="3" required></textarea></div>
+                            <button type="submit" class="btn btn-primary w-100">Publish Project</button>
+                        </form>
+                    </div>
+                    <div class="crud-list">
+                        <h3 style="margin-bottom: 20px;">Live Records</h3>
+                        <div id="listPortfolioGaming">Fetching data...</div>
                     </div>
                 </div>
             </div>
@@ -249,7 +306,7 @@
 
     <script type="module">
         import { auth, db, storage, enforceSecurity, secureLogout } from './firebase-config.js';
-        import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, updateDoc, writeBatch, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, updateDoc, writeBatch, query, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         import { ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
         // Security Check
@@ -274,6 +331,12 @@
                 link.classList.add('active');
                 document.getElementById(link.getAttribute('data-target')).classList.add('active');
                 topbarTitle.textContent = link.textContent.trim();
+
+                // Chart.js renders at 0x0 if built while its container is
+                // display:none, so only (re)draw it once the tab is visible.
+                if (link.getAttribute('data-target') === 'sec-analytics') {
+                    loadAnalytics();
+                }
             });
         });
 
@@ -291,20 +354,28 @@
         async function fetchAllData() {
             // Stats
             const portSnap = await getDocs(collection(db, "portfolio_web"));
+            const portGSnap = await getDocs(collection(db, "portfolio_gaming"));
             const srvSnap = await getDocs(collection(db, "services"));
             const carSnap = await getDocs(collection(db, "careers"));
             const userSnap = await getDocs(collection(db, "users"));
             
-            document.getElementById('s-proj').textContent = portSnap.size;
+            document.getElementById('s-proj').textContent = portSnap.size + portGSnap.size;
             document.getElementById('s-srv').textContent = srvSnap.size;
             document.getElementById('s-app').textContent = carSnap.size;
             document.getElementById('s-usr').textContent = userSnap.size;
 
-            // Portfolio List
+            // Portfolio (Web) List
             document.getElementById('listPortfolio').innerHTML = "";
             portSnap.forEach(d => {
                 const p = d.data();
                 document.getElementById('listPortfolio').innerHTML += `<div class="data-item"><div><h4>${p.title}</h4></div><button class="btn-danger delete-port" data-id="${d.id}">Del</button></div>`;
+            });
+
+            // Portfolio (Gaming) List
+            document.getElementById('listPortfolioGaming').innerHTML = "";
+            portGSnap.forEach(d => {
+                const p = d.data();
+                document.getElementById('listPortfolioGaming').innerHTML += `<div class="data-item"><div><h4>${p.title}</h4></div><button class="btn-danger delete-port-g" data-id="${d.id}">Del</button></div>`;
             });
 
             // Services List
@@ -321,6 +392,7 @@
 
             // Delete Binders
             document.querySelectorAll('.delete-port').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "portfolio_web", e.currentTarget.dataset.id)); fetchAllData(); }));
+            document.querySelectorAll('.delete-port-g').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "portfolio_gaming", e.currentTarget.dataset.id)); fetchAllData(); }));
             document.querySelectorAll('.delete-srv').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "services", e.currentTarget.dataset.id)); fetchAllData(); }));
             document.querySelectorAll('.delete-car').forEach(b => b.addEventListener('click', async e => { await deleteDoc(doc(db, "careers", e.currentTarget.dataset.id)); fetchAllData(); }));
 
@@ -395,6 +467,13 @@
             e.target.reset(); fetchAllData(); e.target.querySelector('button').innerHTML = "Publish Project";
         });
 
+        document.getElementById('formPortfolioGaming').addEventListener('submit', async (e) => {
+            e.preventDefault(); e.target.querySelector('button').innerHTML = "Deploying...";
+            const imgUrl = await uploadImage(document.getElementById('portGImage').files[0], 'portfolio-gaming');
+            await addDoc(collection(db, "portfolio_gaming"), { title: document.getElementById('portGTitle').value, tag: document.getElementById('portGTag').value, desc: document.getElementById('portGDesc').value, imgUrl: imgUrl, createdAt: serverTimestamp() });
+            e.target.reset(); fetchAllData(); e.target.querySelector('button').innerHTML = "Publish Project";
+        });
+
         document.getElementById('formService').addEventListener('submit', async (e) => {
             e.preventDefault(); e.target.querySelector('button').innerHTML = "Saving...";
             await addDoc(collection(db, "services"), { name: document.getElementById('srvName').value, icon: document.getElementById('srvIcon').value, desc: document.getElementById('srvDesc').value, createdAt: serverTimestamp() });
@@ -409,7 +488,13 @@
 
         document.getElementById('formCompany').addEventListener('submit', async (e) => {
             e.preventDefault(); e.target.querySelector('button').innerHTML = "Saving...";
-            await setDoc(doc(db, "config", "company_profile"), { name: document.getElementById('compName').value, email: document.getElementById('compEmail').value, phone: document.getElementById('compPhone').value, regNo: document.getElementById('compReg').value, address: document.getElementById('compAddress').value, about: document.getElementById('compAbout').value }, { merge: true });
+            const aboutText = document.getElementById('compAbout').value;
+            await setDoc(doc(db, "config", "company_profile"), { name: document.getElementById('compName').value, email: document.getElementById('compEmail').value, phone: document.getElementById('compPhone').value, regNo: document.getElementById('compReg').value, address: document.getElementById('compAddress').value, about: aboutText }, { merge: true });
+            // Keep the About page's data-i18n="about_sub" text in sync with this field
+            // so there's one place to edit it, even though it's technically stored twice.
+            if (aboutText) {
+                await setDoc(doc(db, "content", "site_text"), { about_sub: { en: aboutText } }, { merge: true });
+            }
             document.getElementById('msgCompany').textContent = "Saved"; e.target.querySelector('button').innerHTML = "Save Profile";
         });
 
@@ -428,9 +513,254 @@
             document.getElementById('msgSettings').textContent = "Saved"; e.target.querySelector('button').innerHTML = "Save Settings";
         });
 
+        // =====================================
+        // PAGE TEXT EDITOR (content/site_text)
+        // Covers every data-i18n string used across the public site.
+        // Add a new {key, label} entry here whenever a new translatable
+        // string is added to script.js's `translations` object — that's
+        // the only place a new field needs to be registered.
+        // =====================================
+        const PAGE_TEXT_GROUPS = [
+            { page: "Global (Nav & Footer)", keys: [
+                ["nav_home","Nav: Home"], ["nav_services","Nav: Services"], ["nav_portfolio","Nav: Portfolio"],
+                ["nav_careers","Nav: Careers"], ["nav_about","Nav: About"], ["nav_faq","Nav: FAQ"], ["nav_contact","Nav: Contact"],
+                ["nav_port_gaming","Nav: Portfolio > Scripting Projects"], ["nav_port_web","Nav: Portfolio > Server Development"],
+                ["nav_careers_join","Nav: Careers > Join Us"], ["nav_return","Footer: Return & Refund link"],
+                ["nav_legal","Footer: Legal link"], ["nav_data","Footer: Data Policy link"],
+                ["footer_copy","Footer copyright line"],
+            ]},
+            { page: "Home", keys: [
+                ["hero_badge","Hero badge"], ["hero_title","Hero title (HTML allowed)"], ["hero_sub","Hero subtitle"],
+                ["btn_portfolio","Hero button: View Scripts"], ["btn_contact","Hero button: Hire Us"],
+                ["stat_1","Stat 1 label"], ["stat_2","Stat 2 label"], ["stat_3","Stat 3 label"],
+                ["stat_gov","Stat 4 number/word"], ["stat_4","Stat 4 label"],
+            ]},
+            { page: "About", keys: [
+                ["about_title","About title (HTML allowed)"], ["about_sub","About paragraph — also editable via Company Profile > About Us Text"],
+                ["tech_1","Tech category 1"], ["tech_2","Tech category 2"], ["tech_3","Tech category 3"], ["tech_4","Tech category 4"],
+            ]},
+            { page: "Services", keys: [
+                ["srv_main_title","Section title (HTML allowed)"], ["srv_main_sub","Section subtitle"],
+                ["srv_1_t","Card 1 title"], ["srv_1_d","Card 1 description"],
+                ["srv_2_t","Card 2 title"], ["srv_2_d","Card 2 description"],
+                ["srv_3_t","Card 3 title"], ["srv_3_d","Card 3 description"],
+                ["srv_4_t","Card 4 title"], ["srv_4_d","Card 4 description"],
+                ["srv_5_t","Card 5 title"], ["srv_5_d","Card 5 description"],
+                ["srv_6_t","Card 6 title"], ["srv_6_d","Card 6 description"],
+            ]},
+            { page: "Careers", keys: [
+                ["car_page_badge","Hero badge"], ["car_page_title","Hero title (HTML allowed)"], ["car_page_sub","Hero subtitle"],
+                ["perk_1_t","Perk 1 title"], ["perk_1_d","Perk 1 description"],
+                ["perk_2_t","Perk 2 title"], ["perk_2_d","Perk 2 description"],
+                ["perk_3_t","Perk 3 title"], ["perk_3_d","Perk 3 description"],
+                ["perk_4_t","Perk 4 title"], ["perk_4_d","Perk 4 description"],
+                ["jobs_title","Open Positions section title (HTML allowed)"], ["btn_apply","Apply button text (used per job listing)"],
+            ]},
+            { page: "Contact", keys: [
+                ["con_title","Page title"], ["con_sub","Page subtitle"], ["hq_title","\"Headquarters\" label"],
+                ["ph_name","Form placeholder: Name"], ["ph_email","Form placeholder: Email"], ["ph_msg","Form placeholder: Message"],
+                ["opt_def","Form: default dropdown option"], ["opt_1","Form: request type 1"], ["opt_2","Form: request type 2"],
+                ["opt_3","Form: request type 3"], ["opt_4","Form: request type 4"], ["btn_submit","Form submit button"],
+            ]},
+            { page: "FAQ", keys: [
+                ["faq_sub","Page subtitle"],
+                ["faq_1_q","Question 1"], ["faq_1_a","Answer 1"],
+                ["faq_2_q","Question 2"], ["faq_2_a","Answer 2"],
+                ["faq_3_q","Question 3"], ["faq_3_a","Answer 3"],
+            ]},
+            { page: "Portfolio Pages", keys: [
+                ["pg_hero_title","Gaming portfolio hero title (HTML allowed)"], ["pg_hero_sub","Gaming portfolio hero subtitle"],
+                ["pw_hero_title","Web portfolio hero title"], ["pw_hero_sub","Web portfolio hero subtitle"],
+            ]},
+            { page: "Legal / Policy Pages", keys: [
+                ["tos_content","Legal Notices — full body (HTML allowed)", true],
+                ["rp_content","Return & Refund Policy — full body (HTML allowed)", true],
+                ["dp_title","Data Policy — heading"],
+                ["dp_desc1","Data Policy — paragraph 1", true],
+                ["dp_desc2","Data Policy — paragraph 2", true],
+            ]},
+        ];
+
+        function renderPageTextForm(overrides) {
+            const container = document.getElementById('pageTextContainer');
+            container.innerHTML = "";
+            PAGE_TEXT_GROUPS.forEach(group => {
+                let groupHtml = `<details style="margin-bottom: 15px; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px;">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--text-primary);">${group.page}</summary>
+                    <div style="margin-top: 15px; display: grid; gap: 15px;">`;
+                group.keys.forEach(([key, label, isLong]) => {
+                    const current = overrides[key] || {};
+                    const tag = isLong ? "textarea" : "input";
+                    const rows = isLong ? ` rows="4"` : "";
+                    const type = isLong ? "" : ` type="text"`;
+                    groupHtml += `
+                        <div style="border-left: 3px solid var(--primary-blue); padding-left: 12px;">
+                            <label style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px; display:block;">${label} <code style="opacity:0.6;">[${key}]</code></label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div>
+                                    <label style="font-size:0.75rem; color:var(--text-secondary);">EN</label>
+                                    <${tag}${type}${rows} class="pt-input" data-key="${key}" data-lang="en">${current.en ? current.en.replace(/</g,'&lt;') : ''}</${tag}>
+                                </div>
+                                <div>
+                                    <label style="font-size:0.75rem; color:var(--text-secondary);">MS</label>
+                                    <${tag}${type}${rows} class="pt-input" data-key="${key}" data-lang="ms">${current.ms ? current.ms.replace(/</g,'&lt;') : ''}</${tag}>
+                                </div>
+                            </div>
+                        </div>`;
+                });
+                groupHtml += `</div></details>`;
+                container.innerHTML += groupHtml;
+            });
+            // textarea/input value must be set via .value for <input>, innerHTML already handles <textarea>
+            container.querySelectorAll('input.pt-input').forEach(el => {
+                const key = el.dataset.key, lang = el.dataset.lang;
+                el.value = (overrides[key] && overrides[key][lang]) ? overrides[key][lang] : "";
+            });
+        }
+
+        async function loadPageText() {
+            const snap = await getDoc(doc(db, "content", "site_text"));
+            const overrides = snap.exists() ? snap.data() : {};
+            renderPageTextForm(overrides);
+        }
+
+        document.getElementById('savePageText').addEventListener('click', async () => {
+            const btn = document.getElementById('savePageText');
+            btn.textContent = "Saving...";
+            const payload = {};
+            document.querySelectorAll('#pageTextContainer .pt-input').forEach(el => {
+                const key = el.dataset.key, lang = el.dataset.lang;
+                const val = el.value.trim();
+                if (!val) return; // blank = keep built-in default, don't write an empty override
+                if (!payload[key]) payload[key] = {};
+                payload[key][lang] = val;
+            });
+            await setDoc(doc(db, "content", "site_text"), payload, { merge: true });
+            document.getElementById('msgPageText').textContent = "All page text saved. Changes are live immediately on the public site.";
+            btn.textContent = "Save All Page Text";
+        });
+
+        // =====================================
+        // ANALYTICS (content/analytics_events)
+        // =====================================
+        let visitorChartInstance = null;
+        async function loadAnalytics() {
+            try {
+                const snap = await getDocs(query(collection(db, "analytics_events"), orderBy("timestamp", "desc"), limit(500)));
+                const events = [];
+                snap.forEach(d => events.push(d.data()));
+
+                document.getElementById('an-total').textContent = events.length;
+
+                const pageCounts = {};
+                events.forEach(e => { pageCounts[e.page] = (pageCounts[e.page] || 0) + 1; });
+                const topPage = Object.entries(pageCounts).sort((a, b) => b[1] - a[1])[0];
+                document.getElementById('an-top').textContent = topPage ? `${topPage[0]} (${topPage[1]})` : "—";
+                document.getElementById('an-pages').textContent = Object.keys(pageCounts).length;
+
+                // Bucket by day for the last 14 days
+                const days = [];
+                for (let i = 13; i >= 0; i--) {
+                    const d = new Date();
+                    d.setDate(d.getDate() - i);
+                    days.push(d.toISOString().slice(0, 10));
+                }
+                const dayCounts = Object.fromEntries(days.map(d => [d, 0]));
+                events.forEach(e => {
+                    if (!e.timestamp || !e.timestamp.toDate) return;
+                    const key = e.timestamp.toDate().toISOString().slice(0, 10);
+                    if (key in dayCounts) dayCounts[key]++;
+                });
+
+                const ctx = document.getElementById('visitorChart').getContext('2d');
+                if (visitorChartInstance) visitorChartInstance.destroy();
+                visitorChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: days.map(d => d.slice(5)), // MM-DD
+                        datasets: [{
+                            label: 'Pageviews',
+                            data: days.map(d => dayCounts[d]),
+                            borderColor: '#3B82F6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.15)',
+                            fill: true,
+                            tension: 0.3,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { labels: { color: '#CBD5E1' } } },
+                        scales: {
+                            x: { ticks: { color: '#94A3B8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                            y: { ticks: { color: '#94A3B8', precision: 0 }, grid: { color: 'rgba(255,255,255,0.05)' }, beginAtZero: true }
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error("Analytics load failed:", e);
+            }
+        }
+
+        // =====================================
+        // MESSAGES (content/contact_messages)
+        // =====================================
+        async function loadMessages() {
+            try {
+                const snap = await getDocs(query(collection(db, "contact_messages"), orderBy("createdAt", "desc")));
+                const list = document.getElementById('listMessages');
+                if (snap.empty) {
+                    list.innerHTML = "<p style='color: var(--text-secondary);'>No messages yet.</p>";
+                    document.getElementById('msgUnreadCount').textContent = "";
+                    return;
+                }
+                let unread = 0;
+                list.innerHTML = "";
+                snap.forEach(d => {
+                    const m = d.data();
+                    if (m.status === 'UNREAD') unread++;
+                    const dateStr = m.createdAt && m.createdAt.toDate ? m.createdAt.toDate().toLocaleString() : "";
+                    const isUnread = m.status === 'UNREAD';
+                    list.innerHTML += `
+                        <div class="data-item" style="flex-direction: column; align-items: stretch; gap: 8px; ${isUnread ? 'border-left: 3px solid var(--primary-blue);' : ''}">
+                            <div style="display:flex; justify-content: space-between; align-items:flex-start;">
+                                <div>
+                                    <h4 style="margin:0 0 4px 0;">${m.name || '(no name)'} ${isUnread ? '<span style="background:var(--primary-blue); color:#fff; font-size:0.7rem; padding:2px 8px; border-radius:10px; margin-left:8px;">NEW</span>' : ''}</h4>
+                                    <p style="margin:0; color: var(--text-secondary); font-size:0.85rem;">${m.email || ''} ${m.subject ? '· ' + m.subject : ''}</p>
+                                </div>
+                                <div style="display:flex; gap:8px; flex-shrink:0;">
+                                    ${isUnread ? `<button class="btn-danger mark-read" data-id="${d.id}" style="background: rgba(16,185,129,0.15); border-color:#10B981; color:#10B981;">Mark Read</button>` : ''}
+                                    <button class="btn-danger delete-msg" data-id="${d.id}">Del</button>
+                                </div>
+                            </div>
+                            <p style="margin:0; font-size:0.9rem; color: var(--text-primary);">${(m.message || '').replace(/</g,'&lt;')}</p>
+                            <p style="margin:0; font-size:0.75rem; color: var(--text-secondary);">${dateStr}</p>
+                        </div>`;
+                });
+                document.getElementById('msgUnreadCount').textContent = unread > 0 ? `${unread} unread` : "All read";
+
+                document.querySelectorAll('.mark-read').forEach(b => b.addEventListener('click', async e => {
+                    await updateDoc(doc(db, "contact_messages", e.currentTarget.dataset.id), { status: 'READ' });
+                    loadMessages();
+                }));
+                document.querySelectorAll('.delete-msg').forEach(b => b.addEventListener('click', async e => {
+                    await deleteDoc(doc(db, "contact_messages", e.currentTarget.dataset.id));
+                    loadMessages();
+                }));
+            } catch (e) {
+                console.error("Messages load failed:", e);
+                document.getElementById('listMessages').innerHTML = "<p style='color:#EF4444;'>Failed to load messages.</p>";
+            }
+        }
+
         // Initialize All
         fetchNavigation();
         fetchAllData();
+        loadPageText();
+        loadMessages();
+        // Note: loadAnalytics() runs on-demand when the Analytics tab is
+        // clicked (see tab-switching logic above) — not here — because
+        // Chart.js renders at 0×0 if built while its container is hidden.
 
     </script>
 </body>

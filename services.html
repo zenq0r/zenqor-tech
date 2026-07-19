@@ -73,31 +73,11 @@
                     <h2 data-i18n="srv_main_title">Our <span class='text-primary'>Development Services</span></h2>
                     <p data-i18n="srv_main_sub">From highly optimized standalone tools to immersive roleplay systems.</p>
                 </header>
-                <div class="services-grid">
-                    <article class="service-card card-style reveal hover-up">
-                        <h3 class="text-primary" data-i18n="srv_1_t">Custom Lua Scripts</h3>
-                        <p data-i18n="srv_1_d">Tailor-made gameplay scripts including jobs, crime systems, mechanics, and economy.</p>
-                    </article>
-                    <article class="service-card card-style reveal hover-up" style="transition-delay: 0.1s;">
-                        <h3 class="text-primary" data-i18n="srv_2_t">Standalone Resources</h3>
-                        <p data-i18n="srv_2_d">Framework-agnostic tools and utilities that drop cleanly into any FiveM setup.</p>
-                    </article>
-                    <article class="service-card card-style reveal hover-up" style="transition-delay: 0.2s;">
-                        <h3 class="text-primary" data-i18n="srv_3_t">NUI & UI Design</h3>
-                        <p data-i18n="srv_3_d">Modern, responsive, and player-centric NUI interfaces built with HTML, CSS, and JS.</p>
-                    </article>
-                    <article class="service-card card-style reveal hover-up">
-                        <h3 class="text-primary" data-i18n="srv_4_t">Framework Integration</h3>
-                        <p data-i18n="srv_4_d">Seamless compatibility and adaptation for QBCore, ESX, QBox, or custom frameworks.</p>
-                    </article>
-                    <article class="service-card card-style reveal hover-up" style="transition-delay: 0.1s;">
-                        <h3 class="text-primary" data-i18n="srv_5_t">Server Optimization</h3>
-                        <p data-i18n="srv_5_d">Profiling and reducing CPU/RAM usage to ensure stable server performance and high FPS.</p>
-                    </article>
-                    <article class="service-card card-style reveal hover-up" style="transition-delay: 0.2s;">
-                        <h3 class="text-primary" data-i18n="srv_6_t">Bug Fixing & Support</h3>
-                        <p data-i18n="srv_6_d">Troubleshooting legacy code, resolving framework errors, and missing export fixes.</p>
-                    </article>
+                <div class="services-grid" id="dynamicServicesGrid" aria-live="polite">
+                    <div style="text-align: center; width: 100%; grid-column: 1 / -1; color: var(--text-secondary); padding: 40px;">
+                        <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                        <p style="margin-top: 15px;">Loading services...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -111,8 +91,8 @@
                     <span class="text-primary">Zenqor</span> Technologies
                 </a>
                 <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
-                    <p style="margin-bottom: 4px;">No. Pendaftaran: 202603157897 | (JM1045730-D)</p>
-                    <p>Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
+                    <p id="footRegNo" style="margin-bottom: 4px;">No. Pendaftaran: 202603157897 | (JM1045730-D)</p>
+                    <p id="footAddress">Alamat: Bandar Mahkota Cheras, 43200 Selangor, Malaysia</p>
                 </div>
             </div>
             <nav class="footer-links" aria-label="Footer Legal Links" style="display: flex; gap: 30px; font-size: 0.9rem; justify-content: center; margin-top: 10px;">
@@ -126,5 +106,64 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
+            authDomain: "zenqor-web.firebaseapp.com",
+            projectId: "zenqor-web",
+            storageBucket: "zenqor-web.firebasestorage.app",
+            messagingSenderId: "785478368719",
+            appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Shown only if the admin hasn't added any services in the dashboard yet
+        // (Services tab) — keeps the page from ever looking broken/empty.
+        const FALLBACK_SERVICES = [
+            { icon: "fas fa-code", name: "Custom Lua Scripts", desc: "Tailor-made gameplay scripts including jobs, crime systems, mechanics, and economy." },
+            { icon: "fas fa-cube", name: "Standalone Resources", desc: "Framework-agnostic tools and utilities that drop cleanly into any FiveM setup." },
+            { icon: "fas fa-desktop", name: "NUI & UI Design", desc: "Modern, responsive, and player-centric NUI interfaces built with HTML, CSS, and JS." },
+            { icon: "fas fa-plug", name: "Framework Integration", desc: "Seamless compatibility and adaptation for QBCore, ESX, QBox, or custom frameworks." },
+            { icon: "fas fa-gauge-high", name: "Server Optimization", desc: "Profiling and reducing CPU/RAM usage to ensure stable server performance and high FPS." },
+            { icon: "fas fa-bug", name: "Bug Fixing & Support", desc: "Troubleshooting legacy code, resolving framework errors, and missing export fixes." },
+        ];
+
+        function renderServices(list) {
+            const grid = document.getElementById('dynamicServicesGrid');
+            grid.innerHTML = "";
+            let delay = 0;
+            list.forEach((s) => {
+                grid.innerHTML += `
+                    <article class="service-card card-style reveal active hover-up" style="transition-delay: ${delay}s;">
+                        <i class="${s.icon || 'fas fa-star'} icon-lg text-primary" aria-hidden="true"></i>
+                        <h3 class="text-primary">${s.name}</h3>
+                        <p>${s.desc}</p>
+                    </article>`;
+                delay += 0.1;
+            });
+        }
+
+        async function loadServices() {
+            try {
+                const snap = await getDocs(query(collection(db, "services"), orderBy("createdAt", "asc")));
+                if (snap.empty) {
+                    renderServices(FALLBACK_SERVICES);
+                    return;
+                }
+                const services = [];
+                snap.forEach(d => services.push(d.data()));
+                renderServices(services);
+            } catch (error) {
+                console.error("Services Sync Error:", error);
+                renderServices(FALLBACK_SERVICES);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadServices);
+    </script>
 </body>
 </html>
