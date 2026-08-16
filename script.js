@@ -26,13 +26,16 @@
     try {
         const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js");
         const { getFirestore } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
+        // Sama projek Firebase dengan firebase-config.js / zenqor-portal (zenqor-portal-a3b2d).
+        // Kekal init berasingan di sini (bukan import statik) sebab script.js dimuatkan
+        // sebagai classic <script>, bukan type="module", pada setiap halaman.
         const app = initializeApp({
-            apiKey: "AIzaSyCJyjvlm8jG-mT_1mDYsyF562L6XuskFxU",
-            authDomain: "zenqor-web.firebaseapp.com",
-            projectId: "zenqor-web",
-            storageBucket: "zenqor-web.firebasestorage.app",
-            messagingSenderId: "785478368719",
-            appId: "1:785478368719:web:ef6fa34ed5d949ac2566ba"
+            apiKey: "AIzaSyDgoE8ckbVWqc1j6bHq1u1685_xJp0y09Y",
+            authDomain: "zenqor-portal-a3b2d.firebaseapp.com",
+            projectId: "zenqor-portal-a3b2d",
+            storageBucket: "zenqor-portal-a3b2d.firebasestorage.app",
+            messagingSenderId: "1065187936514",
+            appId: "1:1065187936514:web:d05089d6668c58bf3e9a1b"
         });
         db = getFirestore(app);
     } catch (e) {
@@ -42,7 +45,7 @@
     // ─────────────────────────────────────────────
     // 1. MAINTENANCE MODE (config/system_settings.maintenance)
     // ─────────────────────────────────────────────
-    const MAINTENANCE_ALLOWLIST = ["login.html", "admin-dashboard.html"];
+    const MAINTENANCE_ALLOWLIST = [];
     async function checkMaintenanceMode() {
         if (!db) return;
         const currentPage = window.location.pathname.split("/").pop() || "index.html";
@@ -99,110 +102,118 @@
 
     const translations = {
         en: {
-            nav_home: "Home", nav_services: "Services", nav_portfolio: "Portfolio", nav_careers: "Careers", nav_about: "About", nav_faq: "FAQ", nav_contact: "Contact",
-            nav_port_gaming: "Scripting Projects", nav_port_web: "Server Development", nav_careers_join: "Join Us",
+            nav_home: "Home", nav_services: "Services", nav_portfolio: "Our Work", nav_about: "About", nav_faq: "FAQ", nav_contact: "Contact",
+            nav_port_gaming: "Licensing & Permits", nav_port_web: "Digital Systems",
             nav_return: "Return & Refund Policy", nav_legal: "Legal Notices", nav_data: "Data Policy",
-            hero_badge: "Premium FiveM Development", hero_title: "Designing, Developing & Deploying <br><span class='text-primary'>Websites, Cloud Systems & FiveM Resources</span>",
-            hero_sub: "Zenqor Technologies specializes in custom software development, website development, Lua scripting, standalone resources, and server optimization.",
-            btn_portfolio: "View Scripts", btn_contact: "Hire Us",
-            stat_1: "Scripts Released", stat_2: "Optimized Servers", stat_3: "Active Players", stat_gov: "Frameworks", stat_4: "Standalone Systems",
+            hero_badge: "Business Consulting & Licensing", hero_title: "Empowering Your Business <br><span class='text-primary'>Through Consulting, Licensing & Digital Systems</span>",
+            hero_sub: "Zenqor Technologies provides end-to-end business consulting — company registration, business licensing, and government permit applications for businesses across Malaysia.",
+            btn_portfolio: "View Our Work", btn_contact: "Consult With Us",
+            stat_1: "Clients Served", stat_2: "Licenses & Permits Processed", stat_3: "Years Combined Experience", stat_gov: "Digital Systems", stat_4: "Deployed In-House",
 
-            about_title: "The Code Behind <span class='text-primary'>Immersive Roleplay</span>",
-            about_sub: "We write clean, efficient, and well-optimized scripts that add real depth to server gameplay without overloading your server resources.",
-            tech_1: "NUI & UI Design", tech_2: "Server Architecture", tech_3: "Database Tuning", tech_4: "Cloud Optimization",
+            trust_badge_1: "SSM Registered Entity", trust_badge_2: "10+ Years Combined Experience", trust_badge_3: "100+ Businesses Served", trust_badge_4: "Malaysia-Wide Coverage",
+            testimonials_title: "What Our <span class='text-primary'>Clients Say</span>", testimonials_sub: "Real feedback from businesses we've helped register, license, and grow.",
+            process_title: "How <span class='text-primary'>We Work</span>", process_sub: "A clear, guided process from first consultation to final handover.",
+            process_1_t: "Consultation", process_1_d: "We assess your requirements and advise on the right registration, licensing, or system solution for your business.",
+            process_2_t: "Documentation", process_2_d: "We prepare and compile all required forms and supporting documents for your application.",
+            process_3_t: "Submission & Follow-up", process_3_d: "We submit your application and liaise directly with the relevant authorities on your behalf.",
+            process_4_t: "Approval & Handover", process_4_d: "Once approved, we hand over all official documents and remain available for ongoing support.",
+            process_note: "Free initial consultation &middot; Transparent quote before any work begins",
+            cookie_text: "We use cookies to improve your experience and understand site traffic. See our <a href=\"data-policy.html\">Data Policy</a> for details.",
+            cookie_accept: "Accept", cookie_decline: "Decline",
 
-            srv_main_title: "Our <span class='text-primary'>Development Services</span>",
-            srv_main_sub: "From highly optimized standalone tools to immersive roleplay systems.",
-            srv_1_t: "Custom Lua Scripts", srv_1_d: "Tailor-made gameplay scripts including jobs, crime systems, mechanics, and economy.",
-            srv_2_t: "Standalone Resources", srv_2_d: "Framework-agnostic tools and utilities that drop cleanly into any FiveM setup.",
-            srv_3_t: "NUI & UI Design", srv_3_d: "Modern, responsive, and player-centric NUI interfaces built with HTML, CSS, and JS.",
-            srv_4_t: "Framework Integration", srv_4_d: "Seamless compatibility and adaptation for QBCore, ESX, QBox, or custom frameworks.",
-            srv_5_t: "Server Optimization", srv_5_d: "Profiling and reducing CPU/RAM usage to ensure stable server performance and high FPS.",
-            srv_6_t: "Bug Fixing & Support", srv_6_d: "Troubleshooting legacy code, resolving framework errors, and missing export fixes.",
+            about_title: "Your Trusted Partner <span class='text-primary'>in Business Growth</span>",
+            about_sub: "We combine regulatory and licensing expertise with in-house technology to help businesses register, get licensed, stay compliant, and operate efficiently — all under one roof.",
+            tech_1: "Business Registration", tech_2: "Licensing & Permits", tech_3: "HRMS/CDTS Systems", tech_4: "Compliance Advisory",
+            agencies_title: "Agencies & <span class='text-primary'>Systems We Work With</span>", agencies_sub: "Government bodies and regulatory systems our consulting team engages with every day.",
 
-            car_page_badge: "We Are Hiring", car_page_title: "Join the <span class='text-primary'>Development Team</span>",
-            car_page_sub: "Work with elite Lua scripters and UI designers to build the next generation of FiveM roleplay experiences.",
-            perk_1_t: "Remote Work", perk_1_d: "Flexible working hours and 100% remote work opportunities.",
-            perk_2_t: "Revenue Sharing", perk_2_d: "Earn percentages from premium scripts sold on our Tebex store.",
-            perk_3_t: "Skill Growth", perk_3_d: "Collaborate and learn advanced programming patterns.",
-            perk_4_t: "Modern Tooling", perk_4_d: "Work with the latest IDE setups and version control.",
-            jobs_title: "Open <span class='text-primary'>Positions</span>", btn_apply: "Apply via Email",
+            srv_main_title: "Our <span class='text-primary'>Consulting & Digital Services</span>",
+            srv_main_sub: "From business registration and government licensing to the digital systems that run your operations.",
+            srv_1_t: "Business Registration & Company Setup", srv_1_d: "End-to-end assistance with SSM company registration and business structuring for new and growing businesses.",
+            srv_2_t: "Licensing & Government Permit Consulting", srv_2_d: "We manage the full application process for business licenses and government permits, so you don't have to.",
+            srv_3_t: "HRMS/CDTS Digital Systems", srv_3_d: "Our own in-house Human Resource Management & Client Documents Tracking System, built to keep your operations organised.",
+            srv_4_t: "Payroll & Document Automation", srv_4_d: "Automated payslip generation, invoicing, and official document workflows tailored to Malaysian compliance requirements.",
+            srv_5_t: "Compliance & Regulatory Advisory", srv_5_d: "Ongoing guidance to help your business stay compliant with evolving regulatory and licensing requirements.",
+            srv_6_t: "Custom Enterprise Software Development", srv_6_d: "Bespoke digital systems and business automation tools designed around how your business actually operates.",
 
-            con_title: "Initialize Connection", con_sub: "Partner with us to engineer your server's next big feature.",
+            con_title: "Start a Conversation", con_sub: "Partner with us for your next business registration, licensing application, or digital system.",
             hq_title: "Headquarters", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
             ph_name: "Name", ph_email: "Email Address", ph_msg: "Message Details",
-            opt_def: "Select Request Type", opt_1: "Custom Lua Script", opt_2: "Standalone Resource", opt_3: "NUI / UI Interface", opt_4: "Server Optimization / Bug Fix",
+            opt_def: "Select Request Type", opt_1: "Business Registration", opt_2: "Licensing / Government Permit", opt_3: "HRMS/CDTS Digital System", opt_4: "Custom Software Consultation",
             btn_submit: "Send Request",
 
-            faq_sub: "Find answers to common questions about our products and services.",
-            faq_1_q: "How do I purchase a FiveM Script?", faq_1_a: "You can visit our official Tebex store by clicking the 'Store' button on our navigation menu. We support multiple secure payment gateways.",
-            faq_2_q: "Do you offer custom server development?", faq_2_a: "Yes, we specialize in complete server setups and tailor-made framework development (QBCore & ESX). Please reach out via the Contact page.",
-            faq_3_q: "Is technical support included?", faq_3_a: "Absolutely. All our premium resources come with priority technical support through our official Discord server.",
+            faq_sub: "Find answers to common questions about our consulting and digital services.",
+            faq_1_q: "What business registration and licensing services do you offer?", faq_1_a: "We assist with SSM company registration, business licensing, and government permit applications from start to finish. Reach out via the Contact page to discuss your requirements.",
+            faq_2_q: "Do you build custom digital systems for businesses?", faq_2_a: "Yes — we design and build custom digital systems, including our own HRMS/CDTS platform for HR management and client document tracking. Please contact us to discuss your needs.",
+            faq_3_q: "Is ongoing support included after a project is delivered?", faq_3_a: "Absolutely. All our consulting and digital system engagements come with dedicated after-service support and follow-up.",
 
-            pg_hero_title: "Premium <span class='text-primary'>FiveM Resources</span>",
-            pg_hero_sub: "Custom FiveM roleplay server scripting and UI designs crafted to match your vision.",
-            pw_hero_title: "Complete Server Setups", pw_hero_sub: "Full-stack server configuration and backend architecture.",
+            pg_hero_title: "Licensing & <span class='text-primary'>Permit Consulting</span>",
+            pg_hero_sub: "Business licenses, government permits, and regulatory applications handled on behalf of our clients.",
+            pw_hero_title: "Digital Systems We've Built", pw_hero_sub: "Custom HRMS/CDTS platforms and business automation systems developed in-house.",
 
-            tos_content: "<h4>1. Acceptance of Terms</h4><p>By accessing and using services provided by Zenqor Technologies, you agree to be bound by these Terms of Service.</p><h4>2. Intellectual Property</h4><p>All scripts, resources, and code delivered remain the intellectual property of Zenqor Technologies until full payment is received, after which a usage license (not ownership of the source) is granted to the client.</p><h4>3. Limitation of Liability</h4><p>Zenqor Technologies is not liable for indirect damages arising from the use of our resources on third-party servers.</p>",
-            rp_content: "<h4>Digital Products</h4><p>Due to the nature of digital goods and custom development work, all sales are final once a script or resource has been delivered. Refunds are considered on a case-by-case basis only where the delivered work materially fails to meet the agreed specification.</p><h4>Requesting a Refund</h4><p>Contact us within 7 days of delivery at <a href='mailto:info@zenqor.com.my'>info@zenqor.com.my</a> with your order details and a description of the issue.</p>",
+            tos_content: "<h4>1. Acceptance of Terms</h4><p>By accessing and using services provided by Zenqor Technologies, you agree to be bound by these Terms of Service.</p><h4>2. Intellectual Property</h4><p>All systems, deliverables, and materials provided remain the intellectual property of Zenqor Technologies until full payment is received, after which a usage license (not ownership of the underlying source) is granted to the client.</p><h4>3. Limitation of Liability</h4><p>Zenqor Technologies is not liable for indirect damages arising from third-party regulatory decisions or the client's use of delivered systems outside the agreed scope.</p>",
+            rp_content: "<h4>Consulting & Digital Services</h4><p>Due to the nature of consulting work, government submissions, and custom development, all engagements are final once the work has commenced or been delivered. Refunds are considered on a case-by-case basis only where the delivered work materially fails to meet the agreed scope.</p><h4>Requesting a Refund</h4><p>Contact us within 7 days of delivery at <a href='mailto:info@zenqor.com.my'>info@zenqor.com.my</a> with your engagement details and a description of the issue.</p>",
 
             dp_title: "Privacy & Data Protection",
-            dp_desc1: "At Zenqor Technologies, system security and user privacy are our top priorities. We are committed to protecting the personal data you provide us in accordance with applicable data protection regulations.",
-            dp_desc2: "We collect only essential information required to deliver our digital and FiveM services. We do not sell or share your personal data with unauthorized third parties. For any vulnerability reports or data deletion requests, please refer to our security policy or contact us directly at info@zenqor.com.my.",
+            dp_desc1: "At Zenqor Technologies, system security and user privacy are our top priorities. We are committed to protecting the personal and business data you provide us in accordance with applicable data protection regulations.",
+            dp_desc2: "We collect only essential information required to deliver our consulting, licensing, and digital system services. We do not sell or share your personal data with unauthorized third parties. For any vulnerability reports or data deletion requests, please refer to our security policy or contact us directly at info@zenqor.com.my.",
 
             footer_copy: "© 2026 Zenqor Technologies (Malaysia). All rights reserved."
         },
         ms: {
-            nav_home: "Utama", nav_services: "Servis", nav_portfolio: "Portfolio", nav_careers: "Kerjaya", nav_about: "Tentang Kami", nav_faq: "FAQ", nav_contact: "Hubungi",
-            nav_port_gaming: "Projek Skrip", nav_port_web: "Pembangunan Pelayan", nav_careers_join: "Sertai Kami",
+            nav_home: "Utama", nav_services: "Servis", nav_portfolio: "Kerja Kami", nav_about: "Tentang Kami", nav_faq: "FAQ", nav_contact: "Hubungi",
+            nav_port_gaming: "Lesen & Permit", nav_port_web: "Sistem Digital",
             nav_return: "Polisi Pemulangan & Bayaran Balik", nav_legal: "Notis Undang-Undang", nav_data: "Polisi Data",
-            hero_badge: "Pembangunan FiveM Premium", hero_title: "Dari Idea ke Produk Digital <br><span class='text-primary'>FiveM, Website & Sistem Cloud</span>",
-            hero_sub: "Zenqor Technologies mengkhusus dalam pembangunan perisian tersuai, pembangunan laman web, skrip Lua, sumber bebas (standalone resources), dan pengoptimuman pelayan.",
-            btn_portfolio: "Lihat Skrip", btn_contact: "Lantik Kami",
-            stat_1: "Skrip Dilancarkan", stat_2: "Pelayan Dioptimumkan", stat_3: "Pemain Aktif", stat_gov: "Frameworks", stat_4: "Sistem Standalone",
+            hero_badge: "Perundingan Perniagaan & Perlesenan", hero_title: "Memperkasa Perniagaan Anda <br><span class='text-primary'>Melalui Perundingan, Perlesenan & Sistem Digital</span>",
+            hero_sub: "Zenqor Technologies menyediakan perundingan perniagaan menyeluruh — pendaftaran syarikat, perlesenan perniagaan, dan permohonan permit kerajaan untuk perniagaan di seluruh Malaysia.",
+            btn_portfolio: "Lihat Kerja Kami", btn_contact: "Runding Dengan Kami",
+            stat_1: "Klien Dilayan", stat_2: "Lesen & Permit Diproses", stat_3: "Tahun Pengalaman Gabungan", stat_gov: "Sistem Digital", stat_4: "Dibangunkan Sendiri",
 
-            about_title: "Kod Di Sebalik <span class='text-primary'>Roleplay Mendalam</span>",
-            about_sub: "Kami menulis skrip yang bersih, cekap dan dioptimumkan dengan baik untuk menambah kedalaman gameplay tanpa membebankan sumber pelayan anda.",
-            tech_1: "Reka Bentuk NUI & UI", tech_2: "Seni Bina Pelayan", tech_3: "Penalaan Pangkalan Data", tech_4: "Pengoptimuman Awan",
+            trust_badge_1: "Entiti Berdaftar SSM", trust_badge_2: "10+ Tahun Pengalaman Gabungan", trust_badge_3: "100+ Perniagaan Dilayan", trust_badge_4: "Liputan Seluruh Malaysia",
+            testimonials_title: "Apa Kata <span class='text-primary'>Klien Kami</span>", testimonials_sub: "Maklum balas sebenar daripada perniagaan yang telah kami bantu daftar, dapatkan lesen, dan berkembang.",
+            process_title: "Cara <span class='text-primary'>Kami Bekerja</span>", process_sub: "Proses yang jelas dan berpandu dari perundingan pertama sehingga penyerahan akhir.",
+            process_1_t: "Perundingan", process_1_d: "Kami menilai keperluan anda dan menasihatkan penyelesaian pendaftaran, perlesenan, atau sistem yang sesuai untuk perniagaan anda.",
+            process_2_t: "Dokumentasi", process_2_d: "Kami sediakan dan susun semua borang serta dokumen sokongan yang diperlukan untuk permohonan anda.",
+            process_3_t: "Penghantaran & Susulan", process_3_d: "Kami hantar permohonan anda dan berhubung terus dengan pihak berkuasa berkaitan bagi pihak anda.",
+            process_4_t: "Kelulusan & Penyerahan", process_4_d: "Setelah diluluskan, kami serahkan semua dokumen rasmi dan sedia membantu untuk sokongan berterusan.",
+            process_note: "Perundingan awal percuma &middot; Sebutharga telus sebelum sebarang kerja bermula",
+            cookie_text: "Kami guna kuki untuk menambah baik pengalaman anda dan memahami trafik laman. Lihat <a href=\"data-policy.html\">Polisi Data</a> kami untuk maklumat lanjut.",
+            cookie_accept: "Terima", cookie_decline: "Tolak",
 
-            srv_main_title: "Servis <span class='text-primary'>Pembangunan Kami</span>",
-            srv_main_sub: "Daripada alatan standalone dioptimumkan sehingga sistem roleplay mendalam.",
-            srv_1_t: "Skrip Lua Tersuai", srv_1_d: "Skrip gameplay tersuai termasuk kerja, sistem jenayah, mekanik, dan ekonomi.",
-            srv_2_t: "Sumber Standalone", srv_2_d: "Alatan tanpa bergantung framework yang boleh dipasang terus pada mana-mana setup FiveM.",
-            srv_3_t: "Reka Bentuk NUI & UI", srv_3_d: "Antara muka NUI moden, responsif, dan mesra pemain dibina dengan HTML, CSS dan JS.",
-            srv_4_t: "Integrasi Framework", srv_4_d: "Keserasian lancar untuk QBCore, ESX, QBox, atau framework tersuai.",
-            srv_5_t: "Pengoptimuman Pelayan", srv_5_d: "Profiling dan pengurangan penggunaan CPU/RAM untuk prestasi pelayan yang stabil dan FPS tinggi.",
-            srv_6_t: "Pembaikan Bug & Sokongan", srv_6_d: "Menyelesaikan kod lama, ralat framework, dan pembaikan export yang hilang.",
+            about_title: "Rakan Kongsi Dipercayai <span class='text-primary'>Dalam Pertumbuhan Perniagaan</span>",
+            about_sub: "Kami menggabungkan kepakaran regulatori dan perlesenan dengan teknologi dalaman untuk membantu perniagaan mendaftar, mendapat lesen, kekal patuh, dan beroperasi dengan cekap — semuanya di bawah satu bumbung.",
+            tech_1: "Pendaftaran Perniagaan", tech_2: "Lesen & Permit", tech_3: "Sistem HRMS/CDTS", tech_4: "Nasihat Pematuhan",
+            agencies_title: "Agensi & <span class='text-primary'>Sistem Yang Kami Uruskan</span>", agencies_sub: "Badan kerajaan dan sistem regulatori yang pasukan perundingan kami uruskan setiap hari.",
 
-            car_page_badge: "Kami Sedang Mengambil Pekerja", car_page_title: "Sertai <span class='text-primary'>Pasukan Pembangunan</span>",
-            car_page_sub: "Bekerja bersama scripter Lua elit dan pereka UI untuk membina generasi seterusnya pengalaman roleplay FiveM.",
-            perk_1_t: "Kerja Jarak Jauh", perk_1_d: "Waktu kerja fleksibel dan peluang kerja 100% jarak jauh.",
-            perk_2_t: "Perkongsian Hasil", perk_2_d: "Peroleh peratusan daripada skrip premium yang dijual di kedai Tebex kami.",
-            perk_3_t: "Pertumbuhan Kemahiran", perk_3_d: "Berkolaborasi dan mempelajari corak pengaturcaraan lanjutan.",
-            perk_4_t: "Alatan Moden", perk_4_d: "Bekerja dengan persediaan IDE dan kawalan versi terkini.",
-            jobs_title: "Jawatan <span class='text-primary'>Kosong</span>", btn_apply: "Mohon Melalui Emel",
+            srv_main_title: "Servis <span class='text-primary'>Perundingan & Digital Kami</span>",
+            srv_main_sub: "Dari pendaftaran perniagaan dan perlesenan kerajaan sehingga sistem digital yang menggerakkan operasi anda.",
+            srv_1_t: "Pendaftaran Perniagaan & Penubuhan Syarikat", srv_1_d: "Bantuan menyeluruh untuk pendaftaran syarikat SSM dan penstrukturan perniagaan untuk syarikat baharu dan sedang berkembang.",
+            srv_2_t: "Perundingan Lesen & Permit Kerajaan", srv_2_d: "Kami menguruskan keseluruhan proses permohonan lesen perniagaan dan permit kerajaan bagi pihak anda.",
+            srv_3_t: "Sistem Digital HRMS/CDTS", srv_3_d: "Sistem Pengurusan Sumber Manusia & Penjejakan Dokumen Klien dalaman kami sendiri, dibina untuk memastikan operasi anda tersusun.",
+            srv_4_t: "Automasi Payroll & Dokumen", srv_4_d: "Penjanaan slip gaji, invois, dan aliran kerja dokumen rasmi automatik yang disesuaikan dengan keperluan pematuhan Malaysia.",
+            srv_5_t: "Nasihat Pematuhan & Regulatori", srv_5_d: "Panduan berterusan untuk membantu perniagaan anda kekal patuh dengan keperluan regulatori dan perlesenan yang sentiasa berkembang.",
+            srv_6_t: "Pembangunan Perisian Perusahaan Tersuai", srv_6_d: "Sistem digital dan alatan automasi perniagaan tersuai direka bentuk mengikut cara perniagaan anda beroperasi.",
 
-            con_title: "Mulakan Hubungan", con_sub: "Bekerjasama dengan kami untuk membina ciri besar seterusnya pelayan anda.",
+            con_title: "Mulakan Perbualan", con_sub: "Bekerjasama dengan kami untuk pendaftaran perniagaan, permohonan lesen, atau sistem digital seterusnya.",
             hq_title: "Ibu Pejabat", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
             ph_name: "Nama", ph_email: "Alamat Emel", ph_msg: "Butiran Mesej",
-            opt_def: "Pilih Jenis Permintaan", opt_1: "Skrip Lua Tersuai", opt_2: "Sumber Standalone", opt_3: "Antara Muka NUI / UI", opt_4: "Pengoptimuman Pelayan / Pembaikan Bug",
+            opt_def: "Pilih Jenis Permintaan", opt_1: "Pendaftaran Perniagaan", opt_2: "Lesen / Permit Kerajaan", opt_3: "Sistem Digital HRMS/CDTS", opt_4: "Perundingan Perisian Tersuai",
             btn_submit: "Hantar Permintaan",
 
-            faq_sub: "Cari jawapan kepada soalan lazim tentang produk dan servis kami.",
-            faq_1_q: "Bagaimana saya membeli Skrip FiveM?", faq_1_a: "Anda boleh melawati kedai Tebex rasmi kami dengan klik butang 'Store' pada menu navigasi. Kami menyokong pelbagai gateway pembayaran selamat.",
-            faq_2_q: "Adakah anda menawarkan pembangunan pelayan tersuai?", faq_2_a: "Ya, kami pakar dalam persediaan pelayan lengkap dan pembangunan framework tersuai (QBCore & ESX). Sila hubungi kami melalui halaman Contact.",
-            faq_3_q: "Adakah sokongan teknikal disertakan?", faq_3_a: "Sudah tentu. Semua sumber premium kami disertakan sokongan teknikal keutamaan melalui server Discord rasmi kami.",
+            faq_sub: "Cari jawapan kepada soalan lazim tentang servis perundingan dan digital kami.",
+            faq_1_q: "Apakah servis pendaftaran perniagaan dan perlesenan yang anda tawarkan?", faq_1_a: "Kami membantu pendaftaran syarikat SSM, perlesenan perniagaan, dan permohonan permit kerajaan dari awal hingga selesai. Hubungi kami melalui halaman Contact untuk bincangkan keperluan anda.",
+            faq_2_q: "Adakah anda membina sistem digital tersuai untuk perniagaan?", faq_2_a: "Ya — kami mereka bentuk dan membina sistem digital tersuai, termasuk platform HRMS/CDTS kami sendiri untuk pengurusan HR dan penjejakan dokumen klien. Sila hubungi kami untuk bincangkan keperluan anda.",
+            faq_3_q: "Adakah sokongan berterusan disertakan selepas projek disiapkan?", faq_3_a: "Sudah tentu. Semua penglibatan perundingan dan sistem digital kami disertakan sokongan susulan khusus.",
 
-            pg_hero_title: "Sumber <span class='text-primary'>FiveM Premium</span>",
-            pg_hero_sub: "Skrip pelayan roleplay FiveM tersuai dan reka bentuk UI dibina mengikut visi anda.",
-            pw_hero_title: "Persediaan Pelayan Lengkap", pw_hero_sub: "Konfigurasi pelayan full-stack dan seni bina backend.",
+            pg_hero_title: "Perundingan <span class='text-primary'>Lesen & Permit</span>",
+            pg_hero_sub: "Lesen perniagaan, permit kerajaan, dan permohonan regulatori yang diuruskan bagi pihak klien kami.",
+            pw_hero_title: "Sistem Digital Yang Kami Bina", pw_hero_sub: "Platform HRMS/CDTS tersuai dan sistem automasi perniagaan dibangunkan secara dalaman.",
 
-            tos_content: "<h4>1. Penerimaan Terma</h4><p>Dengan mengakses dan menggunakan servis yang disediakan oleh Zenqor Technologies, anda bersetuju untuk terikat dengan Terma Servis ini.</p><h4>2. Hak Harta Intelek</h4><p>Semua skrip, sumber, dan kod yang dihantar kekal sebagai hak harta intelek Zenqor Technologies sehingga bayaran penuh diterima, selepas itu lesen penggunaan (bukan pemilikan kod sumber) diberikan kepada pelanggan.</p><h4>3. Had Liabiliti</h4><p>Zenqor Technologies tidak bertanggungjawab atas kerugian tidak langsung akibat penggunaan sumber kami pada pelayan pihak ketiga.</p>",
-            rp_content: "<h4>Produk Digital</h4><p>Disebabkan sifat produk digital dan kerja pembangunan tersuai, semua jualan adalah muktamad sebaik sahaja skrip atau sumber dihantar. Bayaran balik dipertimbangkan mengikut kes demi kes hanya jika kerja yang dihantar gagal memenuhi spesifikasi yang dipersetujui.</p><h4>Memohon Bayaran Balik</h4><p>Hubungi kami dalam masa 7 hari selepas penghantaran di <a href='mailto:info@zenqor.com.my'>info@zenqor.com.my</a> dengan butiran pesanan dan penerangan isu.</p>",
+            tos_content: "<h4>1. Penerimaan Terma</h4><p>Dengan mengakses dan menggunakan servis yang disediakan oleh Zenqor Technologies, anda bersetuju untuk terikat dengan Terma Servis ini.</p><h4>2. Hak Harta Intelek</h4><p>Semua sistem, deliverables, dan bahan yang disediakan kekal sebagai hak harta intelek Zenqor Technologies sehingga bayaran penuh diterima, selepas itu lesen penggunaan (bukan pemilikan kod sumber) diberikan kepada pelanggan.</p><h4>3. Had Liabiliti</h4><p>Zenqor Technologies tidak bertanggungjawab atas kerugian tidak langsung akibat keputusan regulatori pihak ketiga atau penggunaan sistem oleh klien di luar skop yang dipersetujui.</p>",
+            rp_content: "<h4>Servis Perundingan & Digital</h4><p>Disebabkan sifat kerja perundingan, penyerahan kepada agensi kerajaan, dan pembangunan tersuai, semua penglibatan adalah muktamad sebaik sahaja kerja dimulakan atau dihantar. Bayaran balik dipertimbangkan mengikut kes demi kes hanya jika kerja yang dihantar gagal memenuhi skop yang dipersetujui.</p><h4>Memohon Bayaran Balik</h4><p>Hubungi kami dalam masa 7 hari selepas penghantaran di <a href='mailto:info@zenqor.com.my'>info@zenqor.com.my</a> dengan butiran penglibatan dan penerangan isu.</p>",
 
             dp_title: "Privasi & Perlindungan Data",
-            dp_desc1: "Di Zenqor Technologies, keselamatan sistem dan privasi pengguna adalah keutamaan utama kami. Kami komited melindungi data peribadi yang anda berikan mengikut peraturan perlindungan data yang berkuat kuasa.",
-            dp_desc2: "Kami hanya mengumpul maklumat penting yang diperlukan untuk menyampaikan servis digital dan FiveM kami. Kami tidak menjual atau berkongsi data peribadi anda dengan pihak ketiga yang tidak dibenarkan. Untuk laporan kelemahan atau permintaan pemadaman data, sila rujuk polisi keselamatan kami atau hubungi kami terus di info@zenqor.com.my.",
+            dp_desc1: "Di Zenqor Technologies, keselamatan sistem dan privasi pengguna adalah keutamaan utama kami. Kami komited melindungi data peribadi dan perniagaan yang anda berikan mengikut peraturan perlindungan data yang berkuat kuasa.",
+            dp_desc2: "Kami hanya mengumpul maklumat penting yang diperlukan untuk menyampaikan servis perundingan, perlesenan, dan sistem digital kami. Kami tidak menjual atau berkongsi data peribadi anda dengan pihak ketiga yang tidak dibenarkan. Untuk laporan kelemahan atau permintaan pemadaman data, sila rujuk polisi keselamatan kami atau hubungi kami terus di info@zenqor.com.my.",
 
             footer_copy: "© 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara."
         }
@@ -332,9 +343,8 @@
     // 5c. SELF-HOSTED PAGEVIEW LOGGING (content/analytics_events)
     //    Powers the admin dashboard's Analytics tab. Fire-and-forget: never
     //    blocks page render, never throws if it fails (e.g. ad blockers).
-    //    Admin/login pages are excluded so testing/editing doesn't skew data.
     // ─────────────────────────────────────────────
-    const ANALYTICS_EXCLUDE = ["admin-dashboard.html", "login.html", "register.html", "forgot-password.html"];
+    const ANALYTICS_EXCLUDE = [];
     async function logPageview() {
         if (!db) return;
         const currentPage = window.location.pathname.split("/").pop() || "index.html";
@@ -352,8 +362,72 @@
         }
     }
 
-    await Promise.all([applyContentOverrides(), applyCompanyProfile(), applySeoDefaults(), applyGoogleAnalytics()]);
-    logPageview(); // deliberately not awaited — shouldn't delay page render
+    // ─────────────────────────────────────────────
+    // 5d. PDPA COOKIE CONSENT — gates analytics/pageview logging until the
+    //    visitor accepts. Choice is remembered in localStorage.
+    // ─────────────────────────────────────────────
+    function initCookieConsent() {
+        const banner = document.getElementById('cookie-consent');
+        const acceptBtn = document.getElementById('cookie-accept');
+        const declineBtn = document.getElementById('cookie-decline');
+        const consent = localStorage.getItem('zenqor-cookie-consent');
+
+        if (consent === 'accepted') {
+            applyGoogleAnalytics();
+            logPageview();
+        } else if (consent === null && banner) {
+            requestAnimationFrame(() => banner.classList.add('show'));
+        }
+
+        if (acceptBtn) acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('zenqor-cookie-consent', 'accepted');
+            if (banner) banner.classList.remove('show');
+            applyGoogleAnalytics();
+            logPageview();
+        });
+        if (declineBtn) declineBtn.addEventListener('click', () => {
+            localStorage.setItem('zenqor-cookie-consent', 'declined');
+            if (banner) banner.classList.remove('show');
+        });
+    }
+
+    // ─────────────────────────────────────────────
+    // 5e. TESTIMONIALS (testimonials collection, admin-managed via Firebase
+    //    Console). Section is hidden entirely if none exist yet — never
+    //    shows placeholder/fake reviews.
+    // ─────────────────────────────────────────────
+    async function loadTestimonials() {
+        const section = document.getElementById('testimonials-section');
+        const grid = document.getElementById('testimonialsGrid');
+        if (!section || !grid) return;
+        if (!db) { section.style.display = 'none'; return; }
+        try {
+            const { collection, getDocs, query, orderBy } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
+            const snap = await getDocs(query(collection(db, "testimonials"), orderBy("createdAt", "desc")));
+            if (snap.empty) { section.style.display = 'none'; return; }
+            grid.innerHTML = "";
+            snap.forEach(d => {
+                const t = d.data();
+                const initials = (t.name || "?").trim().split(/\s+/).map(w => w[0]).slice(0, 2).join("").toUpperCase();
+                const rating = Math.min(5, Math.max(1, Number(t.rating) || 5));
+                grid.innerHTML += `
+                    <article class="testimonial-card card-style reveal active">
+                        <div class="stars" aria-label="${rating} out of 5 stars">${"★".repeat(rating)}${"☆".repeat(5 - rating)}</div>
+                        <blockquote>&ldquo;${t.quote || ""}&rdquo;</blockquote>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar" aria-hidden="true">${initials}</div>
+                            <div><strong>${t.name || ""}</strong><span>${t.company || ""}</span></div>
+                        </div>
+                    </article>`;
+            });
+        } catch (e) {
+            console.warn("Testimonials fetch failed:", e);
+            section.style.display = 'none';
+        }
+    }
+
+    await Promise.all([applyContentOverrides(), applyCompanyProfile(), applySeoDefaults(), loadTestimonials()]);
+    initCookieConsent();
 
     try {
         if (!db) throw new Error("Firestore not initialized");
@@ -398,10 +472,10 @@
 
             let btnHtml = "";
             if(headerConfig.buttonVisible !== false) {
-                btnHtml = `<a href="${headerConfig.buttonUrl || "login.html"}" class="btn btn-primary" style="background-color: ${headerConfig.buttonColor || 'var(--primary-blue)'}; padding: 8px 20px; border-radius: 6px; text-decoration: none;">${headerConfig.buttonTitle || "Login"}</a>`;
+                btnHtml = `<a href="${headerConfig.buttonUrl || "https://hrms-portal.zenq0r.com"}" class="btn btn-primary" style="background-color: ${headerConfig.buttonColor || 'var(--primary-blue)'}; padding: 8px 20px; border-radius: 6px; text-decoration: none;">${headerConfig.buttonTitle || "Portal"}</a>`;
             }
 
-            navLinksContainer.innerHTML = htmlBuild + `<div style="display: flex; align-items: center; gap: 15px; margin-left: 15px;">
+            navLinksContainer.innerHTML = htmlBuild + `<div class="nav-actions">
                 <button id="lang-toggle" class="lang-btn">EN</button> ${btnHtml}
             </div>`;
 
@@ -414,24 +488,16 @@
                         <span data-i18n="nav_portfolio">Portfolio</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
                     </button>
                     <div class="dropdown-menu" id="portfolio-menu">
-                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming">Scripting Projects</a>
-                        <a href="portfolio-web.html" data-i18n="nav_port_web">Server Development</a>
-                    </div>
-                </div>
-                <div class="nav-item-dropdown">
-                    <button class="dropdown-toggle" data-target="careers-menu" aria-expanded="false">
-                        <span data-i18n="nav_careers">Careers</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
-                    </button>
-                    <div class="dropdown-menu" id="careers-menu">
-                        <a href="careers.html" data-i18n="nav_careers_join">Join Us</a>
+                        <a href="portfolio-gaming.html" data-i18n="nav_port_gaming">Licensing & Permits</a>
+                        <a href="portfolio-web.html" data-i18n="nav_port_web">Digital Systems</a>
                     </div>
                 </div>
                 <a href="about.html" data-i18n="nav_about">About</a>
                 <a href="faq.html" data-i18n="nav_faq">FAQ</a>
                 <a href="contact.html" data-i18n="nav_contact">Contact</a>
-                <div style="display: flex; align-items: center; gap: 15px; margin-left: 15px;">
+                <div class="nav-actions">
                     <button id="lang-toggle" class="lang-btn">EN</button>
-                    <a href="login.html" class="btn btn-primary" style="padding: 8px 20px; border-radius: 6px; text-decoration: none;">Login</a>
+                    <a href="https://hrms-portal.zenq0r.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" aria-label="Open HRMS/CDTS Portal (opens in a new tab)"><i class="fas fa-arrow-up-right-from-square"></i>Portal</a>
                 </div>
             `;
         }

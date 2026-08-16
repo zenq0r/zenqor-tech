@@ -1,13 +1,13 @@
 <h1 align="center">Zenqor Technologies</h1>
 
 <p align="center">
-  <strong>Official Corporate Website • FiveM Development • Digital Solutions</strong><br>
+  <strong>Official Corporate Website • Business Consulting & Licensing • Digital Systems</strong><br>
   <em>Primary Digital Storefront by Zenqor Technologies</em>
 </p>
 
 <p align="center">
-  <a href="https://zenqor-tech.kauaku.store">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=15&pause=2000&color=32CD32&center=true&vCenter=true&width=600&repeat=false&lines=Corporate+Web+Infrastructure.;Premium+FiveM+Development.;Custom+Web+Solutions." alt="Typing Animation" />
+  <a href="https://www.zenq0r.com">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=15&pause=2000&color=32CD32&center=true&vCenter=true&width=600&repeat=false&lines=Business+Registration+%26+Licensing.;Government+Permit+Consulting.;Custom+HRMS%2FCDTS+Digital+Systems." alt="Typing Animation" />
   </a>
 </p>
 
@@ -37,8 +37,7 @@
 
 1. **Dynamic Theme Manager:** Persistent Dark and Light modes utilizing `localStorage`.
 2. **Multi-Language System:** Seamless toggling between English and Bahasa Melayu without page reloads.
-3. **Interactive Portfolio:** Dedicated showcases for both Gaming (FiveM) and Web (Enterprise) projects.
-4. **Careers Portal:** Integrated hiring board targeting technical roles.
+3. **Interactive Portfolio:** Dedicated showcases for both Licensing & Permit consulting work and in-house Digital Systems (HRMS/CDTS).
 
 <br>
 
@@ -52,10 +51,9 @@
 zenqor-tech/
 ├── index.html              # Main Landing Page
 ├── about.html              # Company Vision & Tech Stack
-├── services.html           # FiveM & Web Development Services
-├── portfolio-gaming.html   # Scripting & Server Projects
-├── portfolio-web.html      # Enterprise Web Projects
-├── careers.html            # Job Openings & Perks
+├── services.html           # Consulting, Licensing & Digital System Services
+├── portfolio-gaming.html   # Licensing & Permit Case Studies
+├── portfolio-web.html      # Digital Systems (HRMS/CDTS) Projects
 ├── script.js               # Core logic (Translation & Animations)
 ├── styles.css              # Global styling & CSS variables
 └── SECURITY.md             # Vulnerability reporting policy
@@ -69,6 +67,6 @@ zenqor-tech/
   <sub>
     Managed by <strong>Zenqor Technologies</strong><br>
     SSM: 202603157897 (JM1045730-D)<br>
-    Built with innovation in Malaysia · <a href="https://zenqor-tech.kauaku.store">zenqor-tech.kauaku.store</a>
+    Built with innovation in Malaysia · <a href="https://www.zenq0r.com">www.zenq0r.com</a>
   </sub>
 </p>

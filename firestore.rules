@@ -1,3 +1,12 @@
+// ============================================================
+// ⚠️ TIDAK LAGI DI-DEPLOY SECARA BERASINGAN — RUJUKAN SAHAJA.
+// zenqor-tech kini berkongsi projek Firebase yang sama dengan zenqor-portal
+// (zenqor-portal-a3b2d). Rules sebenar yang di-deploy ialah:
+//   ../zenqor-portal/firestore.rules   (bahagian "ZENQOR-TECH" di hujung fail)
+// Jangan `firebase deploy` fail ini secara berasingan — ia akan menggantikan
+// rules /users, /projects, /claims dll milik zenqor-portal dengan versi yang
+// tiada langsung kebenaran untuk koleksi-koleksi tersebut.
+// ============================================================
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -39,10 +48,6 @@ service cloud.firestore {
       allow read: if true;
       allow write, delete: if isAdmin();
     }
-    match /careers/{document=**} {
-      allow read: if true;
-      allow write, delete: if isAdmin();
-    }
     match /navigation/{document=**} {
       allow read: if true;
       allow write, delete: if isAdmin();
@@ -58,13 +63,13 @@ service cloud.firestore {
       allow read: if true;
       allow write, delete: if isAdmin();
     }
-
-    // 3. Applications (job applications) & Contact Messages — awam boleh
-    // CREATE sahaja (hantar borang), tapi tak boleh baca senarai orang lain.
-    match /job_applications/{document=**} {
-      allow create: if true;
-      allow read, update, delete: if isAdmin();
+    match /testimonials/{document=**} {
+      allow read: if true;
+      allow write, delete: if isAdmin();
     }
+
+    // 3. Contact Messages — awam boleh CREATE sahaja (hantar borang), tapi
+    // tak boleh baca senarai orang lain.
     match /contact_messages/{document=**} {
       allow create: if true;
       allow read, update, delete: if isAdmin();
