@@ -137,7 +137,7 @@
 
             con_title: "Start a Conversation", con_sub: "Partner with us for your next business registration, licensing application, or digital system.",
             hq_title: "Headquarters", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
-            ph_name: "Name", ph_email: "Email Address", ph_msg: "Message Details",
+            ph_name: "Name", ph_email: "Email Address", ph_msg: "Message Details", ph_phone: "Phone Number", ph_company: "Company Name (Optional)",
             opt_def: "Select Request Type", opt_1: "Business Registration", opt_2: "Licensing / Government Permit", opt_3: "HRMS/CDTS Digital System", opt_4: "Custom Software Consultation",
             btn_submit: "Send Request",
 
@@ -195,7 +195,7 @@
 
             con_title: "Mulakan Perbualan", con_sub: "Bekerjasama dengan kami untuk pendaftaran perniagaan, permohonan lesen, atau sistem digital seterusnya.",
             hq_title: "Ibu Pejabat", hq_addr: "Bandar Mahkota Cheras<br>Selangor, Malaysia",
-            ph_name: "Nama", ph_email: "Alamat Emel", ph_msg: "Butiran Mesej",
+            ph_name: "Nama", ph_email: "Alamat Emel", ph_msg: "Butiran Mesej", ph_phone: "Nombor Telefon", ph_company: "Nama Syarikat (Pilihan)",
             opt_def: "Pilih Jenis Permintaan", opt_1: "Pendaftaran Perniagaan", opt_2: "Lesen / Permit Kerajaan", opt_3: "Sistem Digital HRMS/CDTS", opt_4: "Perundingan Perisian Tersuai",
             btn_submit: "Hantar Permintaan",
 

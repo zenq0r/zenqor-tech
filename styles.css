@@ -178,6 +178,7 @@ p { color: var(--text-secondary); }
 .btn-sm { padding: 9px 18px; font-size: 0.85rem; }
 .mt-3 { margin-top: 1.25rem; } .mt-5 { margin-top: 2rem; } .w-100 { width: 100%; }
 
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
 .input-group { margin-bottom: 20px; }
 .input-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px; }
 .input-group input, .input-group select, .input-group textarea {
@@ -362,6 +363,7 @@ footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; backgr
     .floating-widgets { bottom: 20px; right: 20px; }
     .contact-grid { grid-template-columns: 1fr; }
     .contact-info, .contact-form { padding: 28px 22px; }
+    .form-row { grid-template-columns: 1fr; }
     .tech-stack-container, .portfolio-grid { grid-template-columns: 1fr; }
     .trust-bar-grid, .process-steps, .testimonials-grid { grid-template-columns: 1fr; }
     .cookie-consent-inner { flex-direction: column; align-items: stretch; text-align: center; }
