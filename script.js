@@ -195,7 +195,7 @@
             tech_4_li1: "Semakan Pematuhan Regulatori", tech_4_li2: "Nasihat Perlindungan Data (PDPA)", tech_4_li3: "Sokongan Pembaharuan Berterusan",
             agencies_title: "Agensi & <span class='text-primary'>Sistem Yang Kami Uruskan</span>", agencies_sub: "Badan kerajaan dan sistem regulatori yang pasukan perundingan kami uruskan setiap hari.",
 
-            srv_main_title: "Perkhidmatan <span class='text-primary'>Perundingan & Digital Kami</span>",
+            srv_main_title: "Perundingan & <span class='text-primary'>Perkhidmatan Digital Kami</span>",
             srv_main_sub: "Dari pendaftaran perniagaan dan perlesenan kerajaan sehingga sistem digital yang menggerakkan operasi anda.",
             srv_1_t: "Pendaftaran Perniagaan & Penubuhan Syarikat", srv_1_d: "Bantuan menyeluruh untuk pendaftaran syarikat SSM dan penstrukturan perniagaan untuk syarikat baharu dan sedang berkembang.",
             srv_2_t: "Perundingan Lesen & Permit Kerajaan", srv_2_d: "Kami menguruskan keseluruhan proses permohonan lesen perniagaan dan permit kerajaan bagi pihak anda.",
