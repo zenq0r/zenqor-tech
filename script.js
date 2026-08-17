@@ -75,22 +75,6 @@
     }
     await checkMaintenanceMode();
 
-    async function checkMasterProtocol() {
-        try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 5000);
-            const response = await fetch("https://zenqor-api.kauaku.store/api/public-status", { signal: controller.signal });
-            clearTimeout(timeoutId);
-            if (response.ok) {
-                const data = await response.json();
-                if (data.is_offline) document.documentElement.innerHTML = `<body style="background:#050505;color:red;display:flex;align-items:center;justify-content:center;height:100vh;"><h1>SYSTEM LOCKDOWN</h1></body>`;
-            }
-        } catch (e) {
-            console.warn("Gateway Ping Failed. Menggunakan sambungan lokal.");
-        }
-    }
-    checkMasterProtocol();
-
     function initRevealAnimations() {
         if ('IntersectionObserver' in window) {
             const revealCallback = (entries, observer) => {
