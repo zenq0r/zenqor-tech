@@ -108,7 +108,7 @@
             hero_badge: "Business Consulting & Licensing", hero_title: "Empowering Your Business <br><span class='text-primary'>Through Consulting, Licensing & Digital Systems</span>",
             hero_sub: "Zenqor Technologies provides end-to-end business consulting — company registration, business licensing, and government permit applications for businesses across Malaysia.",
             btn_portfolio: "View Our Work", btn_contact: "Consult With Us",
-            stat_1: "Clients Served", stat_2: "Licenses & Permits Processed", stat_3: "Years Combined Experience", stat_gov: "Digital Systems", stat_4: "Deployed In-House",
+            stat_1: "Clients Served", stat_2: "Licences & Permits Processed", stat_3: "Years Combined Experience", stat_gov: "Digital Systems", stat_4: "Deployed In-House",
 
             trust_badge_1: "SSM Registered Entity", trust_badge_2: "10+ Years Combined Experience", trust_badge_3: "100+ Businesses Served", trust_badge_4: "Malaysia-Wide Coverage",
             testimonials_title: "What Our <span class='text-primary'>Clients Say</span>", testimonials_sub: "Real feedback from businesses we've helped register, license, and grow.",
@@ -129,7 +129,7 @@
             srv_main_title: "Our <span class='text-primary'>Consulting & Digital Services</span>",
             srv_main_sub: "From business registration and government licensing to the digital systems that run your operations.",
             srv_1_t: "Business Registration & Company Setup", srv_1_d: "End-to-end assistance with SSM company registration and business structuring for new and growing businesses.",
-            srv_2_t: "Licensing & Government Permit Consulting", srv_2_d: "We manage the full application process for business licenses and government permits, so you don't have to.",
+            srv_2_t: "Licensing & Government Permit Consulting", srv_2_d: "We manage the full application process for business licences and government permits, so you don't have to.",
             srv_3_t: "HRMS/CDTS Digital Systems", srv_3_d: "Our own in-house Human Resource Management & Client Documents Tracking System, built to keep your operations organised.",
             srv_4_t: "Payroll & Document Automation", srv_4_d: "Automated payslip generation, invoicing, and official document workflows tailored to Malaysian compliance requirements.",
             srv_5_t: "Compliance & Regulatory Advisory", srv_5_d: "Ongoing guidance to help your business stay compliant with evolving regulatory and licensing requirements.",
@@ -148,7 +148,7 @@
             faq_3_q: "Is ongoing support included after a project is delivered?", faq_3_a: "Absolutely. All our consulting and digital system engagements come with dedicated after-service support and follow-up.",
 
             pg_hero_title: "Licensing & <span class='text-primary'>Permit Consulting</span>",
-            pg_hero_sub: "Business licenses, government permits, and regulatory applications handled on behalf of our clients.",
+            pg_hero_sub: "Business licences, government permits, and regulatory applications handled on behalf of our clients.",
             pw_hero_title: "Digital Systems We've Built", pw_hero_sub: "Custom HRMS/CDTS platforms and business automation systems developed in-house.",
 
             tos_content: "<h4>1. Acceptance of Terms</h4><p>By accessing and using services provided by Zenqor Technologies, you agree to be bound by these Terms of Service.</p><h4>2. Intellectual Property</h4><p>All systems, deliverables, and materials provided remain the intellectual property of Zenqor Technologies until full payment is received, after which a usage license (not ownership of the underlying source) is granted to the client.</p><h4>3. Limitation of Liability</h4><p>Zenqor Technologies is not liable for indirect damages arising from third-party regulatory decisions or the client's use of delivered systems outside the agreed scope.</p>",
@@ -156,28 +156,28 @@
 
             dp_title: "Privacy & Data Protection",
             dp_desc1: "At Zenqor Technologies, system security and user privacy are our top priorities. We are committed to protecting the personal and business data you provide us in accordance with applicable data protection regulations.",
-            dp_desc2: "We collect only essential information required to deliver our consulting, licensing, and digital system services. We do not sell or share your personal data with unauthorized third parties. For any vulnerability reports or data deletion requests, please refer to our security policy or contact us directly at admin@zenq0r.com.",
+            dp_desc2: "We collect only essential information required to deliver our consulting, licensing, and digital system services. We do not sell or share your personal data with unauthorized third parties. For any vulnerability reports or data deletion requests, please contact us directly at admin@zenq0r.com.",
 
             footer_copy: "© 2026 Zenqor Technologies (Malaysia). All rights reserved."
         },
         ms: {
-            nav_home: "Utama", nav_services: "Servis", nav_portfolio: "Kerja Kami", nav_about: "Tentang Kami", nav_faq: "FAQ", nav_contact: "Hubungi",
+            nav_home: "Utama", nav_services: "Perkhidmatan", nav_portfolio: "Kerja Kami", nav_about: "Tentang Kami", nav_faq: "FAQ", nav_contact: "Hubungi",
             nav_port_gaming: "Lesen & Permit", nav_port_web: "Sistem Digital",
             nav_return: "Polisi Pemulangan & Bayaran Balik", nav_legal: "Notis Undang-Undang", nav_data: "Polisi Data",
             hero_badge: "Perundingan Perniagaan & Perlesenan", hero_title: "Memperkasa Perniagaan Anda <br><span class='text-primary'>Melalui Perundingan, Perlesenan & Sistem Digital</span>",
             hero_sub: "Zenqor Technologies menyediakan perundingan perniagaan menyeluruh — pendaftaran syarikat, perlesenan perniagaan, dan permohonan permit kerajaan untuk perniagaan di seluruh Malaysia.",
-            btn_portfolio: "Lihat Kerja Kami", btn_contact: "Runding Dengan Kami",
+            btn_portfolio: "Lihat Kerja Kami", btn_contact: "Berunding Dengan Kami",
             stat_1: "Klien Dilayan", stat_2: "Lesen & Permit Diproses", stat_3: "Tahun Pengalaman Gabungan", stat_gov: "Sistem Digital", stat_4: "Dibangunkan Sendiri",
 
             trust_badge_1: "Entiti Berdaftar SSM", trust_badge_2: "10+ Tahun Pengalaman Gabungan", trust_badge_3: "100+ Perniagaan Dilayan", trust_badge_4: "Liputan Seluruh Malaysia",
-            testimonials_title: "Apa Kata <span class='text-primary'>Klien Kami</span>", testimonials_sub: "Maklum balas sebenar daripada perniagaan yang telah kami bantu daftar, dapatkan lesen, dan berkembang.",
+            testimonials_title: "Apa Kata <span class='text-primary'>Klien Kami</span>", testimonials_sub: "Maklum balas sebenar daripada perniagaan yang telah kami bantu mendaftar, mendapatkan lesen, dan berkembang.",
             process_title: "Cara <span class='text-primary'>Kami Bekerja</span>", process_sub: "Proses yang jelas dan berpandu dari perundingan pertama sehingga penyerahan akhir.",
-            process_1_t: "Perundingan", process_1_d: "Kami menilai keperluan anda dan menasihatkan penyelesaian pendaftaran, perlesenan, atau sistem yang sesuai untuk perniagaan anda.",
-            process_2_t: "Dokumentasi", process_2_d: "Kami sediakan dan susun semua borang serta dokumen sokongan yang diperlukan untuk permohonan anda.",
-            process_3_t: "Penghantaran & Susulan", process_3_d: "Kami hantar permohonan anda dan berhubung terus dengan pihak berkuasa berkaitan bagi pihak anda.",
-            process_4_t: "Kelulusan & Penyerahan", process_4_d: "Setelah diluluskan, kami serahkan semua dokumen rasmi dan sedia membantu untuk sokongan berterusan.",
+            process_1_t: "Perundingan", process_1_d: "Kami menilai keperluan anda serta menasihati dan mencadangkan penyelesaian pendaftaran, perlesenan, atau sistem yang sesuai untuk perniagaan anda.",
+            process_2_t: "Dokumentasi", process_2_d: "Kami menyediakan dan menyusun semua borang serta dokumen sokongan yang diperlukan untuk permohonan anda.",
+            process_3_t: "Penghantaran & Susulan", process_3_d: "Kami menghantar permohonan anda dan berhubung terus dengan pihak berkuasa berkaitan bagi pihak anda.",
+            process_4_t: "Kelulusan & Penyerahan", process_4_d: "Setelah diluluskan, kami menyerahkan semua dokumen rasmi dan sedia membantu untuk sokongan berterusan.",
             process_note: "Perundingan awal percuma &middot; Sebutharga telus sebelum sebarang kerja bermula",
-            cookie_text: "Kami guna kuki untuk menambah baik pengalaman anda dan memahami trafik laman. Lihat <a href=\"data-policy.html\">Polisi Data</a> kami untuk maklumat lanjut.",
+            cookie_text: "Kami menggunakan kuki untuk menambah baik pengalaman anda dan memahami trafik laman. Lihat <a href=\"data-policy.html\">Polisi Data</a> kami untuk maklumat lanjut.",
             cookie_accept: "Terima", cookie_decline: "Tolak",
 
             about_title: "Rakan Kongsi Dipercayai <span class='text-primary'>Dalam Pertumbuhan Perniagaan</span>",
@@ -185,7 +185,7 @@
             tech_1: "Pendaftaran Perniagaan", tech_2: "Lesen & Permit", tech_3: "Sistem HRMS/CDTS", tech_4: "Nasihat Pematuhan",
             agencies_title: "Agensi & <span class='text-primary'>Sistem Yang Kami Uruskan</span>", agencies_sub: "Badan kerajaan dan sistem regulatori yang pasukan perundingan kami uruskan setiap hari.",
 
-            srv_main_title: "Servis <span class='text-primary'>Perundingan & Digital Kami</span>",
+            srv_main_title: "Perkhidmatan <span class='text-primary'>Perundingan & Digital Kami</span>",
             srv_main_sub: "Dari pendaftaran perniagaan dan perlesenan kerajaan sehingga sistem digital yang menggerakkan operasi anda.",
             srv_1_t: "Pendaftaran Perniagaan & Penubuhan Syarikat", srv_1_d: "Bantuan menyeluruh untuk pendaftaran syarikat SSM dan penstrukturan perniagaan untuk syarikat baharu dan sedang berkembang.",
             srv_2_t: "Perundingan Lesen & Permit Kerajaan", srv_2_d: "Kami menguruskan keseluruhan proses permohonan lesen perniagaan dan permit kerajaan bagi pihak anda.",
@@ -201,21 +201,21 @@
             opt_def: "Pilih Jenis Permintaan", opt_1: "Pendaftaran Perniagaan", opt_2: "Lesen / Permit Kerajaan", opt_3: "Sistem Digital HRMS/CDTS", opt_4: "Perundingan Perisian Tersuai",
             btn_submit: "Hantar Permintaan",
 
-            faq_sub: "Cari jawapan kepada soalan lazim tentang servis perundingan dan digital kami.",
-            faq_1_q: "Apakah servis pendaftaran perniagaan dan perlesenan yang anda tawarkan?", faq_1_a: "Kami membantu pendaftaran syarikat SSM, perlesenan perniagaan, dan permohonan permit kerajaan dari awal hingga selesai. Hubungi kami melalui halaman Contact untuk bincangkan keperluan anda.",
-            faq_2_q: "Adakah anda membina sistem digital tersuai untuk perniagaan?", faq_2_a: "Ya — kami mereka bentuk dan membina sistem digital tersuai, termasuk platform HRMS/CDTS kami sendiri untuk pengurusan HR dan penjejakan dokumen klien. Sila hubungi kami untuk bincangkan keperluan anda.",
+            faq_sub: "Cari jawapan kepada soalan lazim tentang perkhidmatan perundingan dan digital kami.",
+            faq_1_q: "Apakah perkhidmatan pendaftaran perniagaan dan perlesenan yang anda tawarkan?", faq_1_a: "Kami membantu pendaftaran syarikat SSM, perlesenan perniagaan, dan permohonan permit kerajaan dari awal hingga selesai. Hubungi kami melalui halaman Hubungi untuk membincangkan keperluan anda.",
+            faq_2_q: "Adakah anda membina sistem digital tersuai untuk perniagaan?", faq_2_a: "Ya — kami mereka bentuk dan membina sistem digital tersuai, termasuk platform HRMS/CDTS kami sendiri untuk pengurusan sumber manusia dan penjejakan dokumen klien. Sila hubungi kami untuk membincangkan keperluan anda.",
             faq_3_q: "Adakah sokongan berterusan disertakan selepas projek disiapkan?", faq_3_a: "Sudah tentu. Semua penglibatan perundingan dan sistem digital kami disertakan sokongan susulan khusus.",
 
             pg_hero_title: "Perundingan <span class='text-primary'>Lesen & Permit</span>",
             pg_hero_sub: "Lesen perniagaan, permit kerajaan, dan permohonan regulatori yang diuruskan bagi pihak klien kami.",
             pw_hero_title: "Sistem Digital Yang Kami Bina", pw_hero_sub: "Platform HRMS/CDTS tersuai dan sistem automasi perniagaan dibangunkan secara dalaman.",
 
-            tos_content: "<h4>1. Penerimaan Terma</h4><p>Dengan mengakses dan menggunakan servis yang disediakan oleh Zenqor Technologies, anda bersetuju untuk terikat dengan Terma Servis ini.</p><h4>2. Hak Harta Intelek</h4><p>Semua sistem, deliverables, dan bahan yang disediakan kekal sebagai hak harta intelek Zenqor Technologies sehingga bayaran penuh diterima, selepas itu lesen penggunaan (bukan pemilikan kod sumber) diberikan kepada pelanggan.</p><h4>3. Had Liabiliti</h4><p>Zenqor Technologies tidak bertanggungjawab atas kerugian tidak langsung akibat keputusan regulatori pihak ketiga atau penggunaan sistem oleh klien di luar skop yang dipersetujui.</p>",
-            rp_content: "<h4>Servis Perundingan & Digital</h4><p>Disebabkan sifat kerja perundingan, penyerahan kepada agensi kerajaan, dan pembangunan tersuai, semua penglibatan adalah muktamad sebaik sahaja kerja dimulakan atau dihantar. Bayaran balik dipertimbangkan mengikut kes demi kes hanya jika kerja yang dihantar gagal memenuhi skop yang dipersetujui.</p><h4>Memohon Bayaran Balik</h4><p>Hubungi kami dalam masa 7 hari selepas penghantaran di <a href='mailto:admin@zenq0r.com'>admin@zenq0r.com</a> dengan butiran penglibatan dan penerangan isu.</p>",
+            tos_content: "<h4>1. Penerimaan Terma</h4><p>Dengan mengakses dan menggunakan perkhidmatan yang disediakan oleh Zenqor Technologies, anda bersetuju untuk terikat dengan Terma Perkhidmatan ini.</p><h4>2. Hak Harta Intelek</h4><p>Semua sistem, deliverables, dan bahan yang disediakan kekal sebagai hak harta intelek Zenqor Technologies sehingga bayaran penuh diterima, selepas itu lesen penggunaan (bukan pemilikan kod sumber) diberikan kepada pelanggan.</p><h4>3. Had Liabiliti</h4><p>Zenqor Technologies tidak bertanggungjawab atas kerugian tidak langsung akibat keputusan regulatori pihak ketiga atau penggunaan sistem oleh klien di luar skop yang dipersetujui.</p>",
+            rp_content: "<h4>Perkhidmatan Perundingan & Digital</h4><p>Disebabkan sifat kerja perundingan, penyerahan kepada agensi kerajaan, dan pembangunan tersuai, semua penglibatan adalah muktamad sebaik sahaja kerja dimulakan atau dihantar. Bayaran balik dipertimbangkan mengikut kes demi kes hanya jika kerja yang dihantar gagal memenuhi skop yang dipersetujui.</p><h4>Memohon Bayaran Balik</h4><p>Hubungi kami dalam masa 7 hari selepas penghantaran di <a href='mailto:admin@zenq0r.com'>admin@zenq0r.com</a> dengan butiran penglibatan dan penerangan isu.</p>",
 
             dp_title: "Privasi & Perlindungan Data",
-            dp_desc1: "Di Zenqor Technologies, keselamatan sistem dan privasi pengguna adalah keutamaan utama kami. Kami komited melindungi data peribadi dan perniagaan yang anda berikan mengikut peraturan perlindungan data yang berkuat kuasa.",
-            dp_desc2: "Kami hanya mengumpul maklumat penting yang diperlukan untuk menyampaikan servis perundingan, perlesenan, dan sistem digital kami. Kami tidak menjual atau berkongsi data peribadi anda dengan pihak ketiga yang tidak dibenarkan. Untuk laporan kelemahan atau permintaan pemadaman data, sila rujuk polisi keselamatan kami atau hubungi kami terus di admin@zenq0r.com.",
+            dp_desc1: "Di Zenqor Technologies, keselamatan sistem dan privasi pengguna adalah keutamaan utama kami. Kami komited untuk melindungi data peribadi dan perniagaan yang anda berikan mengikut peraturan perlindungan data yang berkuat kuasa.",
+            dp_desc2: "Kami hanya mengumpul maklumat penting yang diperlukan untuk menyampaikan perkhidmatan perundingan, perlesenan, dan sistem digital kami. Kami tidak menjual atau berkongsi data peribadi anda dengan pihak ketiga yang tidak dibenarkan. Untuk laporan kelemahan atau permintaan pemadaman data, sila hubungi kami terus di admin@zenq0r.com.",
 
             footer_copy: "© 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara."
         }
