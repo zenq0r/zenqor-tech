@@ -19,6 +19,15 @@
 (async function() {
     'use strict';
 
+    // Escapes admin-authored CMS text/attribute values before they're
+    // interpolated into innerHTML — content/config Firestore docs are only
+    // writable by isAdmin() per firestore.rules, but a compromised admin
+    // account (or an admin-dashboard bug) shouldn't be able to inject script
+    // into every visitor's page.
+    function escapeHtml(value) {
+        return String(value == null ? '' : value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
     // ─────────────────────────────────────────────
     // 0. FIREBASE INIT (shared across all CMS reads)
     // ─────────────────────────────────────────────
@@ -291,7 +300,7 @@
             if (regEl && c.regNo) regEl.textContent = `No. Pendaftaran: ${c.regNo}`;
 
             const addrEls = document.querySelectorAll('#footAddress, #contactAddress');
-            addrEls.forEach(el => { if (c.address) el.innerHTML = c.address; });
+            addrEls.forEach(el => { if (c.address) el.innerHTML = escapeHtml(c.address).replace(/\n/g, '<br>'); });
 
             const emailEls = document.querySelectorAll('#contactEmailPrimary');
             emailEls.forEach(el => {
@@ -333,17 +342,49 @@
     }
 
     // ─────────────────────────────────────────────
-    // 5b. GOOGLE ANALYTICS (config/system_settings.ga)
-    //    Previously this admin field was saved but never actually used.
+    // 5b. GOOGLE ANALYTICS / TAG MANAGER
+    //    Fixed site-wide IDs plus an optional admin-configured override
+    //    (config/system_settings.ga). Both paths are gated on cookie consent
+    //    (see initCookieConsent below) — never loaded before the visitor accepts.
     // ─────────────────────────────────────────────
+    const GA_MEASUREMENT_ID = 'G-MZE85GGM3K';
+    const GTM_CONTAINER_ID = 'GTM-WS9VHVP5';
+    let trackingTagsLoaded = false;
+
+    function loadFixedTrackingTags() {
+        if (trackingTagsLoaded) return;
+        trackingTagsLoaded = true;
+
+        const gtmScript = document.createElement('script');
+        gtmScript.textContent = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${GTM_CONTAINER_ID}');`;
+        document.head.appendChild(gtmScript);
+
+        const gaLoader = document.createElement('script');
+        gaLoader.async = true;
+        gaLoader.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+        document.head.appendChild(gaLoader);
+
+        const gaConfig = document.createElement('script');
+        gaConfig.textContent = `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');`;
+        document.head.appendChild(gaConfig);
+    }
+
     async function applyGoogleAnalytics() {
+        loadFixedTrackingTags();
         if (!db) return;
         try {
             const { doc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
             const snap = await getDoc(doc(db, "config", "system_settings"));
             if (!snap.exists()) return;
             const gaId = snap.data().ga;
-            if (!gaId) return;
+            if (!gaId || gaId === GA_MEASUREMENT_ID) return;
 
             const s1 = document.createElement('script');
             s1.async = true;
@@ -435,10 +476,10 @@
                 grid.innerHTML += `
                     <article class="testimonial-card card-style reveal active">
                         <div class="stars" aria-label="${rating} out of 5 stars">${"★".repeat(rating)}${"☆".repeat(5 - rating)}</div>
-                        <blockquote>&ldquo;${t.quote || ""}&rdquo;</blockquote>
+                        <blockquote>&ldquo;${escapeHtml(t.quote)}&rdquo;</blockquote>
                         <div class="testimonial-author">
-                            <div class="testimonial-avatar" aria-hidden="true">${initials}</div>
-                            <div><strong>${t.name || ""}</strong><span>${t.company || ""}</span></div>
+                            <div class="testimonial-avatar" aria-hidden="true">${escapeHtml(initials)}</div>
+                            <div><strong>${escapeHtml(t.name)}</strong><span>${escapeHtml(t.company)}</span></div>
                         </div>
                     </article>`;
             });
@@ -480,21 +521,21 @@
                 if(myChildren.length > 0) {
                     htmlBuild += `
                         <div class="nav-item-dropdown">
-                            <button class="dropdown-toggle" data-target="menu-${p.id}" aria-expanded="false">
-                                <span>${p.icon ? `<i class="${p.icon}"></i> ` : ""}${p.title}</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                            <button class="dropdown-toggle" data-target="menu-${escapeHtml(p.id)}" aria-expanded="false">
+                                <span>${p.icon ? `<i class="${escapeHtml(p.icon)}"></i> ` : ""}${escapeHtml(p.title)}</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
                             </button>
-                            <div class="dropdown-menu" id="menu-${p.id}">
-                                ${myChildren.map(c => `<a href="${c.url}" target="${c.target || '_self'}">${c.icon ? `<i class="${c.icon}"></i> ` : ""}${c.title}</a>`).join('')}
+                            <div class="dropdown-menu" id="menu-${escapeHtml(p.id)}">
+                                ${myChildren.map(c => `<a href="${escapeHtml(c.url)}" target="${escapeHtml(c.target || '_self')}">${c.icon ? `<i class="${escapeHtml(c.icon)}"></i> ` : ""}${escapeHtml(c.title)}</a>`).join('')}
                             </div>
                         </div>`;
                 } else {
-                    htmlBuild += `<a href="${p.url}" target="${p.target || '_self'}">${p.icon ? `<i class="${p.icon}"></i> ` : ""}${p.title}</a>`;
+                    htmlBuild += `<a href="${escapeHtml(p.url)}" target="${escapeHtml(p.target || '_self')}">${p.icon ? `<i class="${escapeHtml(p.icon)}"></i> ` : ""}${escapeHtml(p.title)}</a>`;
                 }
             });
 
             let btnHtml = "";
             if(headerConfig.buttonVisible !== false) {
-                btnHtml = `<a href="${headerConfig.buttonUrl || "https://www.portal.zenq0r.com"}" class="btn btn-primary" style="background-color: ${headerConfig.buttonColor || 'var(--primary-blue)'}; padding: 8px 20px; border-radius: 6px; text-decoration: none;">${headerConfig.buttonTitle || "Portal"}</a>`;
+                btnHtml = `<a href="${escapeHtml(headerConfig.buttonUrl || "https://www.portal.zenq0r.com")}" class="btn btn-primary" style="background-color: ${escapeHtml(headerConfig.buttonColor || 'var(--primary-blue)')}; padding: 8px 20px; border-radius: 6px; text-decoration: none;">${escapeHtml(headerConfig.buttonTitle || "Portal")}</a>`;
             }
 
             navLinksContainer.innerHTML = htmlBuild + `<div class="nav-actions">

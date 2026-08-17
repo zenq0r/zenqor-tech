@@ -1,25 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WS9VHVP5');</script>
-<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZE85GGM3K"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-MZE85GGM3K');
-    </script>
     <meta name="theme-color" content="#0B0F16">
     <title>Our Services | Zenqor Technologies</title>
     <meta name="description" content="Explore Zenqor Technologies' services including business registration, licensing & permit consulting, and custom digital systems.">
@@ -38,10 +21,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WS9VHVP5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
     <header class="navbar" role="banner">
         <div class="container nav-container">
             <a href="index.html" class="logo-nav logo-text" aria-label="Zenqor Technologies Home">
@@ -133,6 +112,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         import { db } from './firebase-config.js';
         import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+        function escapeHtml(value) {
+            return String(value == null ? '' : value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
         // Shown only if the admin hasn't added any services in the dashboard yet
         // (Services tab) — keeps the page from ever looking broken/empty.
         // Bilingual (en/ms) since the admin dashboard's "services" collection
@@ -177,9 +160,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 const text = pick(s, lang);
                 grid.innerHTML += `
                     <article class="service-card card-style reveal active hover-up" style="transition-delay: ${delay}s;">
-                        <i class="${s.icon || 'fas fa-star'} icon-lg text-primary" aria-hidden="true"></i>
-                        <h3 class="text-primary">${text.name}</h3>
-                        <p>${text.desc}</p>
+                        <i class="${escapeHtml(s.icon || 'fas fa-star')} icon-lg text-primary" aria-hidden="true"></i>
+                        <h3 class="text-primary">${escapeHtml(text.name)}</h3>
+                        <p>${escapeHtml(text.desc)}</p>
                     </article>`;
                 delay += 0.1;
             });

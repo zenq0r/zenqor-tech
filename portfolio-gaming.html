@@ -1,25 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WS9VHVP5');</script>
-<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZE85GGM3K"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-MZE85GGM3K');
-    </script>
     <meta name="theme-color" content="#0B0F16">
     <title>Licensing & Permit Portfolio | Zenqor Technologies</title>
     <meta name="description" content="Explore Zenqor Technologies' business licensing, government permit, and compliance consulting engagements.">
@@ -39,10 +22,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WS9VHVP5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
     <header class="navbar" role="banner">
         <div class="container nav-container">
             <a href="index.html" class="logo-nav logo-text" aria-label="Zenqor Technologies Home">
@@ -138,6 +117,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         import { db } from './firebase-config.js';
         import { collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+        function escapeHtml(value) {
+            return String(value == null ? '' : value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
         // Shown only if the admin hasn't added any gaming portfolio items yet.
         // Bilingual (en/ms) since the admin dashboard's "portfolio_gaming"
         // collection has no per-language fields — live admin-added items
@@ -172,11 +155,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 const text = pick(data, lang);
                 grid.innerHTML += `
                     <article class="portfolio-item card-style reveal active hover-up" style="transition-delay: ${delay}s;">
-                        <div class="port-img" style="background-image: url('${data.imgUrl}');" role="img" aria-label="${text.title} Project Image"></div>
+                        <div class="port-img" style="background-image: url('${escapeHtml(data.imgUrl)}');" role="img" aria-label="${escapeHtml(text.title)} Project Image"></div>
                         <div class="port-content">
-                            <span class="tag">${text.tag}</span>
-                            <h3>${text.title}</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem;">${text.desc}</p>
+                            <span class="tag">${escapeHtml(text.tag)}</span>
+                            <h3>${escapeHtml(text.title)}</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">${escapeHtml(text.desc)}</p>
                         </div>
                     </article>`;
                 delay += 0.1;

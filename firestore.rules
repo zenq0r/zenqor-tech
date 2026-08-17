@@ -69,18 +69,25 @@ service cloud.firestore {
     }
 
     // 3. Contact Messages — awam boleh CREATE sahaja (hantar borang), tapi
-    // tak boleh baca senarai orang lain.
+    // tak boleh baca senarai orang lain. Schema/size-validated so a create
+    // can't smuggle extra fields or oversized payloads into the inbox.
     match /contact_messages/{document=**} {
-      allow create: if true;
+      allow create: if request.resource.data.keys().hasOnly(['name', 'phone', 'email', 'company', 'subject', 'message', 'status', 'createdAt']) &&
+        request.resource.data.name is string && request.resource.data.name.size() <= 200 &&
+        request.resource.data.email is string && request.resource.data.email.size() <= 200 &&
+        request.resource.data.message is string && request.resource.data.message.size() <= 5000 &&
+        request.resource.data.status == 'UNREAD';
       allow read, update, delete: if isAdmin();
     }
 
     // 4. Analytics — pageview logging. Sesiapa boleh CREATE (rakam
     // lawatan), tapi hanya admin boleh BACA data agregat. Tiada update/
     // delete sebab setiap dokumen adalah rekod log yang tak sepatutnya
-    // diubah selepas dicipta.
+    // diubah selepas dicipta. Schema/size-validated for the same reason
+    // as contact_messages above.
     match /analytics_events/{document=**} {
-      allow create: if true;
+      allow create: if request.resource.data.keys().hasOnly(['page', 'referrer', 'lang', 'timestamp']) &&
+        request.resource.data.page is string && request.resource.data.page.size() <= 300;
       allow read: if isAdmin();
     }
   }
