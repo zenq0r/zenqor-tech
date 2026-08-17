@@ -148,6 +148,7 @@
             biz_hours_title: "Business Hours", biz_hours_weekday: "<strong>Mon - Fri:</strong> 9:00 AM - 6:00 PM", biz_hours_weekend: "Sat - Sun: Closed",
             loading_services: "Loading services...", loading_portfolio: "Synchronizing live portfolio data...", error_db: "Error connecting to database.",
 
+            faq_page_title: "Frequently Asked Questions",
             faq_sub: "Find answers to common questions about our consulting and digital services.",
             faq_1_q: "What business registration and licensing services do you offer?", faq_1_a: "We assist with SSM company registration, business licensing, and government permit applications from start to finish. Reach out via the Contact page to discuss your requirements.",
             faq_2_q: "Do you build custom digital systems for businesses?", faq_2_a: "Yes — we design and build custom digital systems, including our own HRMS/CDTS platform for HR management and client document tracking. Please contact us to discuss your needs.",
@@ -213,6 +214,7 @@
             biz_hours_title: "Waktu Operasi", biz_hours_weekday: "<strong>Isnin - Jumaat:</strong> 9:00 PG - 6:00 PTG", biz_hours_weekend: "Sabtu - Ahad: Tutup",
             loading_services: "Memuatkan perkhidmatan...", loading_portfolio: "Menyegerakkan data portfolio langsung...", error_db: "Ralat menyambung ke pangkalan data.",
 
+            faq_page_title: "Soalan Lazim",
             faq_sub: "Cari jawapan kepada soalan lazim tentang perkhidmatan perundingan dan digital kami.",
             faq_1_q: "Apakah perkhidmatan pendaftaran perniagaan dan perlesenan yang anda tawarkan?", faq_1_a: "Kami membantu pendaftaran syarikat SSM, perlesenan perniagaan, dan permohonan permit kerajaan dari awal hingga selesai. Hubungi kami melalui halaman Hubungi untuk membincangkan keperluan anda.",
             faq_2_q: "Adakah anda membina sistem digital tersuai untuk perniagaan?", faq_2_a: "Ya — kami mereka bentuk dan membina sistem digital tersuai, termasuk platform HRMS/CDTS kami sendiri untuk pengurusan sumber manusia dan penjejakan dokumen klien. Sila hubungi kami untuk membincangkan keperluan anda.",
