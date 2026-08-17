@@ -67,7 +67,7 @@
                 <div class="portfolio-grid" id="gamingPortfolioGrid" aria-live="polite">
                     <div style="text-align: center; width: 100%; grid-column: 1 / -1; color: var(--text-secondary); padding: 40px;">
                         <i class="fas fa-circle-notch fa-spin fa-2x"></i>
-                        <p style="margin-top: 15px;">Synchronizing live portfolio data...</p>
+                        <p style="margin-top: 15px;" data-i18n="loading_portfolio">Synchronizing live portfolio data...</p>
                     </div>
                 </div>
             </div>
@@ -117,25 +117,45 @@
         import { db } from './firebase-config.js';
         import { collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // Shown only if the admin hasn't added any gaming portfolio items yet
+        // Shown only if the admin hasn't added any gaming portfolio items yet.
+        // Bilingual (en/ms) since the admin dashboard's "portfolio_gaming"
+        // collection has no per-language fields — live admin-added items
+        // stay single-language until that schema is extended.
         const FALLBACK_ITEMS = [
-            { imgUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800", tag: "COMPANY REGISTRATION", title: "SSM Company Registration", desc: "End-to-end company registration and business structuring for a growing event & activation studio." },
-            { imgUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800", tag: "GOVERNMENT PERMIT", title: "JUPEM & CAAM Permit Applications", desc: "Managed government permit submissions and follow-ups on behalf of enterprise clients." },
-            { imgUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800", tag: "COMPLIANCE", title: "Business Licensing & Compliance Review", desc: "Ongoing licensing renewal and regulatory compliance advisory for existing clients." },
+            { imgUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800",
+              en: { tag: "COMPANY REGISTRATION", title: "SSM Company Registration", desc: "End-to-end company registration and business structuring for a growing event & activation studio." },
+              ms: { tag: "PENDAFTARAN SYARIKAT", title: "Pendaftaran Syarikat SSM", desc: "Pendaftaran syarikat menyeluruh dan penstrukturan perniagaan untuk studio acara & aktivasi yang sedang berkembang." } },
+            { imgUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800",
+              en: { tag: "GOVERNMENT PERMIT", title: "JUPEM & CAAM Permit Applications", desc: "Managed government permit submissions and follow-ups on behalf of enterprise clients." },
+              ms: { tag: "PERMIT KERAJAAN", title: "Permohonan Permit JUPEM & CAAM", desc: "Menguruskan penyerahan permit kerajaan dan susulan bagi pihak klien korporat." } },
+            { imgUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800",
+              en: { tag: "COMPLIANCE", title: "Business Licensing & Compliance Review", desc: "Ongoing licensing renewal and regulatory compliance advisory for existing clients." },
+              ms: { tag: "PEMATUHAN", title: "Semakan Perlesenan & Pematuhan Perniagaan", desc: "Pembaharuan lesen berterusan dan nasihat pematuhan regulatori untuk klien sedia ada." } },
         ];
 
+        let loadedPortfolio = FALLBACK_ITEMS;
+
+        function currentLang() { return localStorage.getItem('zenqor-lang') || 'en'; }
+
+        // Bilingual fallback items carry {en:{...}, ms:{...}}; live admin data
+        // from Firestore is a flat {tag, title, desc} object with no language variant.
+        function pick(item, lang) { return item[lang] ? item[lang] : item; }
+
         function renderGrid(items) {
+            loadedPortfolio = items;
+            const lang = currentLang();
             const grid = document.getElementById('gamingPortfolioGrid');
             grid.innerHTML = "";
             let delay = 0;
             items.forEach((data) => {
+                const text = pick(data, lang);
                 grid.innerHTML += `
                     <article class="portfolio-item card-style reveal active hover-up" style="transition-delay: ${delay}s;">
-                        <div class="port-img" style="background-image: url('${data.imgUrl}');" role="img" aria-label="${data.title} Project Image"></div>
+                        <div class="port-img" style="background-image: url('${data.imgUrl}');" role="img" aria-label="${text.title} Project Image"></div>
                         <div class="port-content">
-                            <span class="tag">${data.tag}</span>
-                            <h3>${data.title}</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem;">${data.desc}</p>
+                            <span class="tag">${text.tag}</span>
+                            <h3>${text.title}</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">${text.desc}</p>
                         </div>
                     </article>`;
                 delay += 0.1;
@@ -158,11 +178,14 @@
                 renderGrid(items);
             } catch (error) {
                 console.error("Firebase Sync Error: ", error);
-                grid.innerHTML = "<div style='text-align: center; width: 100%; grid-column: 1 / -1; padding: 40px; border: 1px dashed #EF4444; border-radius: 8px;'><p style='color: #EF4444; margin: 0;'><i class='fas fa-exclamation-triangle'></i> Error connecting to database.</p></div>";
+                const lang = currentLang();
+                const msg = lang === 'ms' ? 'Ralat menyambung ke pangkalan data.' : 'Error connecting to database.';
+                grid.innerHTML = `<div style='text-align: center; width: 100%; grid-column: 1 / -1; padding: 40px; border: 1px dashed #EF4444; border-radius: 8px;'><p style='color: #EF4444; margin: 0;'><i class='fas fa-exclamation-triangle'></i> ${msg}</p></div>`;
             }
         }
 
         document.addEventListener("DOMContentLoaded", loadPortfolio);
+        document.addEventListener("zenqor:langchange", () => renderGrid(loadedPortfolio));
     </script>
 </body>
 </html>

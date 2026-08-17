@@ -124,6 +124,10 @@
             about_title: "Your Trusted Partner <span class='text-primary'>in Business Growth</span>",
             about_sub: "We combine regulatory and licensing expertise with in-house technology to help businesses register, get licensed, stay compliant, and operate efficiently — all under one roof.",
             tech_1: "Business Registration", tech_2: "Licensing & Permits", tech_3: "HRMS/CDTS Systems", tech_4: "Compliance Advisory",
+            tech_1_li1: "SSM Company Incorporation", tech_1_li2: "Business Structuring", tech_1_li3: "Partnership & Sdn Bhd Setup",
+            tech_2_li1: "Government Permit Applications", tech_2_li2: "Business Licence Renewal", tech_2_li3: "Regulatory Submissions",
+            tech_3_li1: "Payroll & Employee Management", tech_3_li2: "Client Document Tracking", tech_3_li3: "Project & Billing Automation",
+            tech_4_li1: "Regulatory Compliance Review", tech_4_li2: "Data Protection (PDPA) Advisory", tech_4_li3: "Ongoing Renewal Support",
             agencies_title: "Agencies & <span class='text-primary'>Systems We Work With</span>", agencies_sub: "Government bodies and regulatory systems our consulting team engages with every day.",
 
             srv_main_title: "Our <span class='text-primary'>Consulting & Digital Services</span>",
@@ -140,7 +144,9 @@
             email_caption: "General Inquiries &amp; Suggestions",
             ph_name: "Name", ph_email: "Email Address", ph_msg: "Message Details", ph_phone: "Phone Number", ph_company: "Company Name (Optional)",
             opt_def: "Select Request Type", opt_1: "Business Registration", opt_2: "Licensing / Government Permit", opt_3: "HRMS/CDTS Digital System", opt_4: "Custom Software Consultation",
-            btn_submit: "Send Request",
+            btn_submit: "Send Request", btn_processing: "Processing...",
+            biz_hours_title: "Business Hours", biz_hours_weekday: "<strong>Mon - Fri:</strong> 9:00 AM - 6:00 PM", biz_hours_weekend: "Sat - Sun: Closed",
+            loading_services: "Loading services...", loading_portfolio: "Synchronizing live portfolio data...", error_db: "Error connecting to database.",
 
             faq_sub: "Find answers to common questions about our consulting and digital services.",
             faq_1_q: "What business registration and licensing services do you offer?", faq_1_a: "We assist with SSM company registration, business licensing, and government permit applications from start to finish. Reach out via the Contact page to discuss your requirements.",
@@ -183,6 +189,10 @@
             about_title: "Rakan Kongsi Dipercayai <span class='text-primary'>Dalam Pertumbuhan Perniagaan</span>",
             about_sub: "Kami menggabungkan kepakaran regulatori dan perlesenan dengan teknologi dalaman untuk membantu perniagaan mendaftar, mendapat lesen, kekal patuh, dan beroperasi dengan cekap — semuanya di bawah satu bumbung.",
             tech_1: "Pendaftaran Perniagaan", tech_2: "Lesen & Permit", tech_3: "Sistem HRMS/CDTS", tech_4: "Nasihat Pematuhan",
+            tech_1_li1: "Penubuhan Syarikat SSM", tech_1_li2: "Penstrukturan Perniagaan", tech_1_li3: "Penubuhan Perkongsian & Sdn Bhd",
+            tech_2_li1: "Permohonan Permit Kerajaan", tech_2_li2: "Pembaharuan Lesen Perniagaan", tech_2_li3: "Penyerahan Regulatori",
+            tech_3_li1: "Pengurusan Gaji & Pekerja", tech_3_li2: "Penjejakan Dokumen Klien", tech_3_li3: "Automasi Projek & Bil",
+            tech_4_li1: "Semakan Pematuhan Regulatori", tech_4_li2: "Nasihat Perlindungan Data (PDPA)", tech_4_li3: "Sokongan Pembaharuan Berterusan",
             agencies_title: "Agensi & <span class='text-primary'>Sistem Yang Kami Uruskan</span>", agencies_sub: "Badan kerajaan dan sistem regulatori yang pasukan perundingan kami uruskan setiap hari.",
 
             srv_main_title: "Perkhidmatan <span class='text-primary'>Perundingan & Digital Kami</span>",
@@ -199,7 +209,9 @@
             email_caption: "Pertanyaan Am &amp; Cadangan",
             ph_name: "Nama", ph_email: "Alamat Emel", ph_msg: "Butiran Mesej", ph_phone: "Nombor Telefon", ph_company: "Nama Syarikat (Pilihan)",
             opt_def: "Pilih Jenis Permintaan", opt_1: "Pendaftaran Perniagaan", opt_2: "Lesen / Permit Kerajaan", opt_3: "Sistem Digital HRMS/CDTS", opt_4: "Perundingan Perisian Tersuai",
-            btn_submit: "Hantar Permintaan",
+            btn_submit: "Hantar Permintaan", btn_processing: "Sedang Diproses...",
+            biz_hours_title: "Waktu Operasi", biz_hours_weekday: "<strong>Isnin - Jumaat:</strong> 9:00 PG - 6:00 PTG", biz_hours_weekend: "Sabtu - Ahad: Tutup",
+            loading_services: "Memuatkan perkhidmatan...", loading_portfolio: "Menyegerakkan data portfolio langsung...", error_db: "Ralat menyambung ke pangkalan data.",
 
             faq_sub: "Cari jawapan kepada soalan lazim tentang perkhidmatan perundingan dan digital kami.",
             faq_1_q: "Apakah perkhidmatan pendaftaran perniagaan dan perlesenan yang anda tawarkan?", faq_1_a: "Kami membantu pendaftaran syarikat SSM, perlesenan perniagaan, dan permohonan permit kerajaan dari awal hingga selesai. Hubungi kami melalui halaman Hubungi untuk membincangkan keperluan anda.",
@@ -257,6 +269,12 @@
             const key = el.getAttribute('data-i18n-placeholder');
             if(translations[lang] && translations[lang][key]) el.setAttribute('placeholder', translations[lang][key]);
         });
+
+        // Lets page-specific scripts (e.g. Services/Portfolio card renderers that
+        // pull bilingual fallback data) re-render their own dynamic content
+        // whenever the language toggle changes, without this file needing to
+        // know about every page's DOM structure.
+        document.dispatchEvent(new CustomEvent('zenqor:langchange', { detail: { lang } }));
     }
 
     async function applyCompanyProfile() {

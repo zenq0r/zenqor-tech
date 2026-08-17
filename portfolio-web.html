@@ -68,7 +68,7 @@
                 <div class="portfolio-grid" id="dynamicPortfolioGrid" aria-live="polite">
                     <div style="text-align: center; width: 100%; grid-column: 1 / -1; color: var(--text-secondary); padding: 40px;">
                         <i class="fas fa-circle-notch fa-spin fa-2x"></i>
-                        <p style="margin-top: 15px;">Synchronizing live portfolio data...</p>
+                        <p style="margin-top: 15px;" data-i18n="loading_portfolio">Synchronizing live portfolio data...</p>
                     </div>
                 </div>
             </div>
@@ -122,24 +122,44 @@
         // studies yet — mirrors the categories already described in the
         // About/Services pages (Payroll, Client Document Tracking, Billing
         // Automation) so the page never looks empty or broken.
+        // Bilingual (en/ms) since the admin dashboard's "portfolio_web"
+        // collection has no per-language fields — live admin-added items
+        // stay single-language until that schema is extended.
         const FALLBACK_ITEMS = [
-            { imgUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800", tag: "HRMS PLATFORM", title: "HRMS/CDTS Portal", desc: "In-house Human Resource Management & Client Document Tracking System, built for our own operations and available to client businesses." },
-            { imgUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800", tag: "PAYROLL AUTOMATION", title: "Payroll & Employee Management System", desc: "Automated payslip generation and employee records management tailored to Malaysian compliance requirements." },
-            { imgUrl: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800", tag: "BUSINESS AUTOMATION", title: "Project & Billing Automation", desc: "Custom project tracking and billing automation tools designed around real business workflows." },
+            { imgUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+              en: { tag: "HRMS PLATFORM", title: "HRMS/CDTS Portal", desc: "In-house Human Resource Management & Client Document Tracking System, built for our own operations and available to client businesses." },
+              ms: { tag: "PLATFORM HRMS", title: "Portal HRMS/CDTS", desc: "Sistem Pengurusan Sumber Manusia & Penjejakan Dokumen Klien dalaman kami sendiri, dibina untuk operasi kami dan tersedia kepada perniagaan klien." } },
+            { imgUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+              en: { tag: "PAYROLL AUTOMATION", title: "Payroll & Employee Management System", desc: "Automated payslip generation and employee records management tailored to Malaysian compliance requirements." },
+              ms: { tag: "AUTOMASI PAYROLL", title: "Sistem Pengurusan Gaji & Pekerja", desc: "Penjanaan slip gaji automatik dan pengurusan rekod pekerja yang disesuaikan dengan keperluan pematuhan Malaysia." } },
+            { imgUrl: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800",
+              en: { tag: "BUSINESS AUTOMATION", title: "Project & Billing Automation", desc: "Custom project tracking and billing automation tools designed around real business workflows." },
+              ms: { tag: "AUTOMASI PERNIAGAAN", title: "Automasi Projek & Bil", desc: "Alatan penjejakan projek dan automasi bil tersuai direka bentuk mengikut aliran kerja perniagaan sebenar." } },
         ];
 
+        let loadedPortfolio = FALLBACK_ITEMS;
+
+        function currentLang() { return localStorage.getItem('zenqor-lang') || 'en'; }
+
+        // Bilingual fallback items carry {en:{...}, ms:{...}}; live admin data
+        // from Firestore is a flat {tag, title, desc} object with no language variant.
+        function pick(item, lang) { return item[lang] ? item[lang] : item; }
+
         function renderGrid(items) {
+            loadedPortfolio = items;
+            const lang = currentLang();
             const grid = document.getElementById('dynamicPortfolioGrid');
             grid.innerHTML = "";
             let delay = 0;
             items.forEach((data) => {
+                const text = pick(data, lang);
                 grid.innerHTML += `
                     <article class="portfolio-item card-style reveal active hover-up" style="transition-delay: ${delay}s;">
-                        <div class="port-img" style="background-image: url('${data.imgUrl}');" role="img" aria-label="${data.title} Project Image"></div>
+                        <div class="port-img" style="background-image: url('${data.imgUrl}');" role="img" aria-label="${text.title} Project Image"></div>
                         <div class="port-content">
-                            <span class="tag">${data.tag}</span>
-                            <h3>${data.title}</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem;">${data.desc}</p>
+                            <span class="tag">${text.tag}</span>
+                            <h3>${text.title}</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">${text.desc}</p>
                         </div>
                     </article>`;
                 delay += 0.1;
@@ -157,31 +177,19 @@
                     return;
                 }
 
-                grid.innerHTML = "";
-                let delay = 0;
-
-                querySnapshot.forEach((doc) => {
-                    const data = doc.data();
-                    const itemHtml = `
-                        <article class="portfolio-item card-style reveal active hover-up" style="transition-delay: ${delay}s;">
-                            <div class="port-img" style="background-image: url('${data.imgUrl}');" role="img" aria-label="${data.title} Project Image"></div>
-                            <div class="port-content">
-                                <span class="tag">${data.tag}</span>
-                                <h3>${data.title}</h3>
-                                <p style="color: var(--text-secondary); font-size: 0.9rem;">${data.desc}</p>
-                            </div>
-                        </article>
-                    `;
-                    grid.innerHTML += itemHtml;
-                    delay += 0.1;
-                });
+                const items = [];
+                querySnapshot.forEach((doc) => items.push(doc.data()));
+                renderGrid(items);
             } catch (error) {
                 console.error("Firebase Sync Error: ", error);
-                grid.innerHTML = "<div style='text-align: center; width: 100%; grid-column: 1 / -1; padding: 40px; border: 1px dashed #EF4444; border-radius: 8px;'><p style='color: #EF4444; margin: 0;'><i class='fas fa-exclamation-triangle'></i> Error connecting to database.</p></div>";
+                const lang = currentLang();
+                const msg = lang === 'ms' ? 'Ralat menyambung ke pangkalan data.' : 'Error connecting to database.';
+                grid.innerHTML = `<div style='text-align: center; width: 100%; grid-column: 1 / -1; padding: 40px; border: 1px dashed #EF4444; border-radius: 8px;'><p style='color: #EF4444; margin: 0;'><i class='fas fa-exclamation-triangle'></i> ${msg}</p></div>`;
             }
         }
 
         document.addEventListener("DOMContentLoaded", loadPortfolio);
+        document.addEventListener("zenqor:langchange", () => renderGrid(loadedPortfolio));
     </script>
 </body>
 </html>

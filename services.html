@@ -62,13 +62,13 @@
         <section class="services section-padding bg-alt">
             <div class="container">
                 <header class="section-header reveal">
-                    <h2 data-i18n="srv_main_title">Our <span class='text-primary'>Development Services</span></h2>
+                    <h2 data-i18n="srv_main_title">Our <span class='text-primary'>Consulting & Digital Services</span></h2>
                     <p data-i18n="srv_main_sub">From business registration and government licensing to the digital systems that run your operations.</p>
                 </header>
                 <div class="services-grid" id="dynamicServicesGrid" aria-live="polite">
                     <div style="text-align: center; width: 100%; grid-column: 1 / -1; color: var(--text-secondary); padding: 40px;">
                         <i class="fas fa-circle-notch fa-spin fa-2x"></i>
-                        <p style="margin-top: 15px;">Loading services...</p>
+                        <p style="margin-top: 15px;" data-i18n="loading_services">Loading services...</p>
                     </div>
                 </div>
             </div>
@@ -114,25 +114,51 @@
 
         // Shown only if the admin hasn't added any services in the dashboard yet
         // (Services tab) — keeps the page from ever looking broken/empty.
+        // Bilingual (en/ms) since the admin dashboard's "services" collection
+        // has no per-language fields — live admin-added services stay
+        // single-language until that schema is extended.
         const FALLBACK_SERVICES = [
-            { icon: "fas fa-building", name: "Business Registration & Company Setup", desc: "End-to-end assistance with SSM company registration and business structuring for new and growing businesses." },
-            { icon: "fas fa-stamp", name: "Licensing & Government Permit Consulting", desc: "We manage the full application process for business licenses and government permits, so you don't have to." },
-            { icon: "fas fa-server", name: "HRMS/CDTS Digital Systems", desc: "Our own in-house Human Resource Management & Client Documents Tracking System, built to keep your operations organised." },
-            { icon: "fas fa-file-invoice-dollar", name: "Payroll & Document Automation", desc: "Automated payslip generation, invoicing, and official document workflows tailored to Malaysian compliance requirements." },
-            { icon: "fas fa-scale-balanced", name: "Compliance & Regulatory Advisory", desc: "Ongoing guidance to help your business stay compliant with evolving regulatory and licensing requirements." },
-            { icon: "fas fa-code", name: "Custom Enterprise Software Development", desc: "Bespoke digital systems and business automation tools designed around how your business actually operates." },
+            { icon: "fas fa-building",
+              en: { name: "Business Registration & Company Setup", desc: "End-to-end assistance with SSM company registration and business structuring for new and growing businesses." },
+              ms: { name: "Pendaftaran Perniagaan & Penubuhan Syarikat", desc: "Bantuan menyeluruh untuk pendaftaran syarikat SSM dan penstrukturan perniagaan untuk syarikat baharu dan sedang berkembang." } },
+            { icon: "fas fa-stamp",
+              en: { name: "Licensing & Government Permit Consulting", desc: "We manage the full application process for business licences and government permits, so you don't have to." },
+              ms: { name: "Perundingan Lesen & Permit Kerajaan", desc: "Kami menguruskan keseluruhan proses permohonan lesen perniagaan dan permit kerajaan bagi pihak anda." } },
+            { icon: "fas fa-server",
+              en: { name: "HRMS/CDTS Digital Systems", desc: "Our own in-house Human Resource Management & Client Documents Tracking System, built to keep your operations organised." },
+              ms: { name: "Sistem Digital HRMS/CDTS", desc: "Sistem Pengurusan Sumber Manusia & Penjejakan Dokumen Klien dalaman kami sendiri, dibina untuk memastikan operasi anda tersusun." } },
+            { icon: "fas fa-file-invoice-dollar",
+              en: { name: "Payroll & Document Automation", desc: "Automated payslip generation, invoicing, and official document workflows tailored to Malaysian compliance requirements." },
+              ms: { name: "Automasi Payroll & Dokumen", desc: "Penjanaan slip gaji, invois, dan aliran kerja dokumen rasmi automatik yang disesuaikan dengan keperluan pematuhan Malaysia." } },
+            { icon: "fas fa-scale-balanced",
+              en: { name: "Compliance & Regulatory Advisory", desc: "Ongoing guidance to help your business stay compliant with evolving regulatory and licensing requirements." },
+              ms: { name: "Nasihat Pematuhan & Regulatori", desc: "Panduan berterusan untuk membantu perniagaan anda kekal patuh dengan keperluan regulatori dan perlesenan yang sentiasa berkembang." } },
+            { icon: "fas fa-code",
+              en: { name: "Custom Enterprise Software Development", desc: "Bespoke digital systems and business automation tools designed around how your business actually operates." },
+              ms: { name: "Pembangunan Perisian Perusahaan Tersuai", desc: "Sistem digital dan alatan automasi perniagaan tersuai direka bentuk mengikut cara perniagaan anda beroperasi." } },
         ];
 
+        let loadedServices = FALLBACK_SERVICES;
+
+        function currentLang() { return localStorage.getItem('zenqor-lang') || 'en'; }
+
+        // Bilingual fallback items carry {en:{...}, ms:{...}}; live admin data
+        // from Firestore is a flat {name, desc} object with no language variant.
+        function pick(item, lang) { return item[lang] ? item[lang] : item; }
+
         function renderServices(list) {
+            loadedServices = list;
+            const lang = currentLang();
             const grid = document.getElementById('dynamicServicesGrid');
             grid.innerHTML = "";
             let delay = 0;
             list.forEach((s) => {
+                const text = pick(s, lang);
                 grid.innerHTML += `
                     <article class="service-card card-style reveal active hover-up" style="transition-delay: ${delay}s;">
                         <i class="${s.icon || 'fas fa-star'} icon-lg text-primary" aria-hidden="true"></i>
-                        <h3 class="text-primary">${s.name}</h3>
-                        <p>${s.desc}</p>
+                        <h3 class="text-primary">${text.name}</h3>
+                        <p>${text.desc}</p>
                     </article>`;
                 delay += 0.1;
             });
@@ -155,6 +181,7 @@
         }
 
         document.addEventListener("DOMContentLoaded", loadServices);
+        document.addEventListener("zenqor:langchange", () => renderServices(loadedServices));
     </script>
 </body>
 </html>
