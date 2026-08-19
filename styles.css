@@ -319,9 +319,14 @@ p { color: var(--text-secondary); }
 .why-checklist { display: flex; flex-wrap: wrap; gap: 8px 22px; list-style: none; padding: 0; margin: 0; }
 .why-checklist li { display: flex; align-items: center; gap: 7px; font-size: 0.85rem; color: var(--text-secondary); }
 .why-checklist i { color: var(--primary-blue); font-size: 0.85rem; }
-.why-choose-media { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-color); min-height: 460px; }
-.why-choose-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.why-choose-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,15,22,0) 45%, rgba(11,15,22,0.6) 100%); pointer-events: none; }
+/* The source photo's backdrop is near-pure black (verified ~RGB 0-2), and the page
+   background (--bg-color) is itself a near-black navy, so screen-blending the image
+   makes its black backdrop disappear into the page instead of sitting in a boxed
+   card — screen(0, bg) resolves to exactly `bg`. No boxed border/background here on
+   purpose, so the photo bleeds straight into the section. */
+.why-choose-media { position: relative; min-height: 460px; background: var(--bg-color); }
+.why-choose-media img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; mix-blend-mode: screen; }
+.why-choose-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,15,22,0) 65%, rgba(11,15,22,0.85) 100%); pointer-events: none; }
 
 /* =========================================
    7. FOOTER & WIDGETS
