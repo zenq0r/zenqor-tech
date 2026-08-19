@@ -28,6 +28,48 @@
         return String(value == null ? '' : value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     }
 
+    // The translations table intentionally ships a handful of keys (hero_title,
+    // cookie_text, tos_content, rp_content, etc.) containing hand-authored markup
+    // like <br>, <strong>, and <a href="...">. Firestore content/site_text lets an
+    // admin override those same keys, at the same trust level, so a blanket
+    // escapeHtml() would both break the legitimate markup AND still leave a
+    // compromised admin account (or admin-dashboard bug) able to inject arbitrary
+    // script via innerHTML. Instead, allowlist-sanitize: keep only the small set
+    // of tags/attributes these fields actually use, drop everything else down to
+    // plain text, and block unsafe href schemes (javascript:, data:, etc.).
+    const RICH_TEXT_ALLOWED_TAGS = new Set(['A', 'BR', 'SPAN', 'STRONG', 'EM', 'B', 'I', 'H4', 'P', 'UL', 'LI']);
+    const RICH_TEXT_ALLOWED_ATTRS = { A: ['href'], SPAN: ['class'] };
+    const RICH_TEXT_SAFE_HREF = /^(https?:\/\/|mailto:|\/|#|[\w.-]+\.html)/i;
+    function sanitizeRichText(html) {
+        const template = document.createElement('template');
+        template.innerHTML = String(html == null ? '' : html);
+        const walk = (parent) => {
+            Array.from(parent.childNodes).forEach((node) => {
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                    if (!RICH_TEXT_ALLOWED_TAGS.has(node.tagName)) {
+                        parent.replaceChild(document.createTextNode(node.textContent), node);
+                        return;
+                    }
+                    const allowedAttrs = RICH_TEXT_ALLOWED_ATTRS[node.tagName] || [];
+                    Array.from(node.attributes).forEach((attr) => {
+                        if (!allowedAttrs.includes(attr.name)) node.removeAttribute(attr.name);
+                    });
+                    if (node.tagName === 'A') {
+                        const href = node.getAttribute('href') || '';
+                        if (!RICH_TEXT_SAFE_HREF.test(href)) node.removeAttribute('href');
+                        node.setAttribute('rel', 'noopener noreferrer');
+                        if (RICH_TEXT_SAFE_HREF.test(href) && /^https?:\/\//i.test(href)) node.setAttribute('target', '_blank');
+                    }
+                    walk(node);
+                } else if (node.nodeType !== Node.TEXT_NODE) {
+                    parent.removeChild(node);
+                }
+            });
+        };
+        walk(template.content);
+        return template.innerHTML;
+    }
+
     // ─────────────────────────────────────────────
     // 0. FIREBASE INIT (shared across all CMS reads)
     // ─────────────────────────────────────────────
@@ -257,7 +299,7 @@
 
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if(translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+            if(translations[lang] && translations[lang][key]) el.innerHTML = sanitizeRichText(translations[lang][key]);
         });
 
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {

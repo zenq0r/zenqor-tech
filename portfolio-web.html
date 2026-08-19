@@ -159,7 +159,7 @@
                 const text = pick(data, lang);
                 grid.innerHTML += `
                     <article class="portfolio-item card-style reveal active hover-up" style="transition-delay: ${delay}s;">
-                        <div class="port-img" style="background-image: url('${escapeHtml(data.imgUrl)}');" role="img" aria-label="${escapeHtml(text.title)} Project Image"></div>
+                        <div class="port-img" role="img" aria-label="${escapeHtml(text.title)} Project Image"></div>
                         <div class="port-content">
                             <span class="tag">${escapeHtml(text.tag)}</span>
                             <h3>${escapeHtml(text.title)}</h3>
@@ -167,6 +167,15 @@
                         </div>
                     </article>`;
                 delay += 0.1;
+            });
+            // Set via the style property, not an interpolated style="" attribute string —
+            // escapeHtml() only makes a value safe for HTML-attribute context. The browser
+            // HTML-unescapes attribute values before handing them to the CSS parser, so a
+            // single quote in imgUrl could otherwise close url('...') early and inject
+            // extra CSS declarations. Assigning through .style.backgroundImage parses only
+            // the property value, not a CSS statement, so it can't be broken out of.
+            Array.from(grid.querySelectorAll('.port-img')).forEach((el, i) => {
+                if (items[i] && items[i].imgUrl) el.style.backgroundImage = `url("${items[i].imgUrl}")`;
             });
         }
 
