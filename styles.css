@@ -324,14 +324,15 @@ p { color: var(--text-secondary); }
    into the section on its own — no boxed border/background, no blend-mode trick
    needed (an earlier mix-blend-mode: screen pass made the whole dark photo nearly
    invisible instead of just its backdrop, which was worse, not better).
-   Sized by its own aspect-ratio (not stretched to match the tall text column).
-   position: sticky was tried here but proved unstable across zoom levels and
-   scroll direction — the stuck element could paint over unrelated sections
-   (reported: the wordmark bleeding into the Trust Indicators bar above it) — so
-   this is plain static flow now, same as every other section image on the site.
+   Sized by its own aspect-ratio (not stretched to match the tall text column) and
+   kept in view with position: sticky (top offset clears the 80px fixed navbar)
+   while the four-card list scrolls past it. An earlier attempt at this was reverted
+   after what looked like the sticky photo bleeding into the section above — that
+   was actually body's own zenqorr.png watermark background showing through a gap,
+   unrelated to this element; sticky itself was never the cause.
    Visually placed on the left via `order` while staying second in the DOM, so the
    text content (which matters more for screen readers/SEO) still reads first. */
-.why-choose-media { order: -1; aspect-ratio: 948 / 1260; width: 100%; max-height: 640px; background: var(--bg-color); }
+.why-choose-media { order: -1; position: sticky; top: 96px; aspect-ratio: 948 / 1260; width: 100%; max-height: 640px; background: var(--bg-color); }
 /* object-fit: contain (not cover) — this photo has its own "ZENQOR TECHNOLOGIES"
    wordmark baked into the top of the frame, and cover was cropping it off the left
    and right edges whenever the column was narrower than the source photo. contain
@@ -395,7 +396,7 @@ footer { border-top: 1px solid var(--border-color); padding: 30px 0 15px; backgr
     .stat-card:nth-child(2)::after { display: none; }
     .trust-bar-grid, .process-steps { grid-template-columns: repeat(2, 1fr); }
     .why-choose-grid { grid-template-columns: 1fr; }
-    .why-choose-media { max-height: 420px; }
+    .why-choose-media { position: relative; top: 0; max-height: 420px; }
 }
 
 @media (max-width: 768px) {
