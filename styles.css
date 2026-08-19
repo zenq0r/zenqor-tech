@@ -319,20 +319,17 @@ p { color: var(--text-secondary); }
 .why-checklist { display: flex; flex-wrap: wrap; gap: 8px 22px; list-style: none; padding: 0; margin: 0; }
 .why-checklist li { display: flex; align-items: center; gap: 7px; font-size: 0.85rem; color: var(--text-secondary); }
 .why-checklist i { color: var(--primary-blue); font-size: 0.85rem; }
-/* The source photo's own backdrop is near-pure black (verified ~RGB 0-2) and the
-   page background (--bg-color) is itself a near-black navy, so it already blends
-   into the section on its own — no boxed border/background, no blend-mode trick
-   needed (an earlier mix-blend-mode: screen pass made the whole dark photo nearly
-   invisible instead of just its backdrop, which was worse, not better).
+/* why-choose-us-model.png has a real alpha channel — its black backdrop was removed
+   (flood-fill from the image edges through near-black pixels only, so enclosed dark
+   hair strands stay opaque instead of being hollowed out by a blanket color
+   threshold) — so it just shows the page's own background wherever transparent, no
+   CSS blend-mode trick needed.
    Sized by its own aspect-ratio (not stretched to match the tall text column) and
    kept in view with position: sticky (top offset clears the 80px fixed navbar)
-   while the four-card list scrolls past it. An earlier attempt at this was reverted
-   after what looked like the sticky photo bleeding into the section above — that
-   was actually body's own zenqorr.png watermark background showing through a gap,
-   unrelated to this element; sticky itself was never the cause.
+   while the four-card list scrolls past it.
    Visually placed on the left via `order` while staying second in the DOM, so the
    text content (which matters more for screen readers/SEO) still reads first. */
-.why-choose-media { order: -1; position: sticky; top: 96px; aspect-ratio: 948 / 1260; width: 100%; max-height: 640px; background: var(--bg-color); }
+.why-choose-media { order: -1; position: sticky; top: 96px; aspect-ratio: 948 / 1660; width: 100%; max-height: 640px; background: var(--bg-color); }
 /* object-fit: contain (not cover) — this photo has its own "ZENQOR TECHNOLOGIES"
    wordmark baked into the top of the frame, and cover was cropping it off the left
    and right edges whenever the column was narrower than the source photo. contain
