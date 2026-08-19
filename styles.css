@@ -250,8 +250,14 @@ p { color: var(--text-secondary); }
 .tech-category ul li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--primary-blue); font-size: 0.75rem; }
 
 .portfolio-item { overflow: hidden; display: flex; flex-direction: column; }
-.port-img { height: 180px; background-size: cover; background-position: center; border-bottom: 1px solid var(--border-color); position: relative; }
-.port-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(5,5,5,0.55) 100%); }
+/* The wrapper's aspect-ratio adapts to each item's own image orientation (set via
+   JS after the image loads — see portfolio-web.html/portfolio-gaming.html), so a
+   portrait photo gets a taller card instead of being cropped into a landscape strip. */
+.port-img-wrap { position: relative; overflow: hidden; border-bottom: 1px solid var(--border-color); aspect-ratio: 16 / 9; background: var(--border-color); }
+.port-img-wrap.orientation-portrait { aspect-ratio: 3 / 4; }
+.port-img-wrap.orientation-square { aspect-ratio: 1 / 1; }
+.port-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(5,5,5,0.55) 100%); }
+.port-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .port-content { padding: 22px; }
 .tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--primary-soft); color: var(--primary-blue); padding: 5px 12px; border-radius: var(--radius-pill); display: inline-block; margin-bottom: 14px; border: 1px solid rgba(20, 184, 166, 0.3); }
 

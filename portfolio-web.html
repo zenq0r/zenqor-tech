@@ -159,7 +159,7 @@
                 const text = pick(data, lang);
                 grid.innerHTML += `
                     <article class="portfolio-item card-style reveal active hover-up" style="transition-delay: ${delay}s;">
-                        <div class="port-img" role="img" aria-label="${escapeHtml(text.title)} Project Image"></div>
+                        <div class="port-img-wrap"><img class="port-img" alt="${escapeHtml(text.title)} Project Image" loading="lazy"></div>
                         <div class="port-content">
                             <span class="tag">${escapeHtml(text.tag)}</span>
                             <h3>${escapeHtml(text.title)}</h3>
@@ -168,14 +168,22 @@
                     </article>`;
                 delay += 0.1;
             });
-            // Set via the style property, not an interpolated style="" attribute string —
-            // escapeHtml() only makes a value safe for HTML-attribute context. The browser
-            // HTML-unescapes attribute values before handing them to the CSS parser, so a
-            // single quote in imgUrl could otherwise close url('...') early and inject
-            // extra CSS declarations. Assigning through .style.backgroundImage parses only
-            // the property value, not a CSS statement, so it can't be broken out of.
+            // Set src via the property (not an interpolated attribute string) for the same
+            // reason as before — and once each image loads, classify its own natural
+            // width/height ratio so the card's aspect-ratio (see .port-img-wrap in
+            // styles.css) follows THAT image's shape instead of force-cropping every
+            // upload into one fixed landscape strip.
             Array.from(grid.querySelectorAll('.port-img')).forEach((el, i) => {
-                if (items[i] && items[i].imgUrl) el.style.backgroundImage = `url("${items[i].imgUrl}")`;
+                const url = items[i] && items[i].imgUrl;
+                if (!url) return;
+                el.addEventListener('load', () => {
+                    const wrap = el.parentElement;
+                    const ratio = el.naturalWidth / el.naturalHeight;
+                    wrap.classList.remove('orientation-portrait', 'orientation-square');
+                    if (ratio < 0.85) wrap.classList.add('orientation-portrait');
+                    else if (ratio <= 1.15) wrap.classList.add('orientation-square');
+                }, { once: true });
+                el.src = url;
             });
         }
 
