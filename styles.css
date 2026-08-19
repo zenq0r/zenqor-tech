@@ -50,10 +50,6 @@ html { scroll-behavior: smooth; }
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
-    background-image: linear-gradient(rgba(11, 15, 22, 0.88), rgba(11, 15, 22, 0.88)), url('zenqorr.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.65;
     overflow-x: hidden;
