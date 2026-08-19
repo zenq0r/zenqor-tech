@@ -306,7 +306,7 @@ p { color: var(--text-secondary); }
 .process-note i { color: var(--primary-blue); margin-right: 6px; }
 
 /* WHY CHOOSE US */
-.why-choose-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: stretch; }
+.why-choose-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: stretch; }
 .why-choose-sub { color: var(--text-secondary); font-size: 1.05rem; max-width: 560px; margin-top: -8px; }
 .why-choose-list { display: flex; flex-direction: column; gap: 18px; margin-top: 28px; }
 .why-choose-item { display: flex; gap: 18px; padding: 24px 26px; }
@@ -323,9 +323,15 @@ p { color: var(--text-secondary); }
    background (--bg-color) is itself a near-black navy, so screen-blending the image
    makes its black backdrop disappear into the page instead of sitting in a boxed
    card — screen(0, bg) resolves to exactly `bg`. No boxed border/background here on
-   purpose, so the photo bleeds straight into the section. */
-.why-choose-media { position: relative; min-height: 460px; background: var(--bg-color); }
-.why-choose-media img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; mix-blend-mode: screen; }
+   purpose, so the photo bleeds straight into the section.
+   Visually placed on the left via `order` while staying second in the DOM, so the
+   text content (which matters more for screen readers/SEO) still reads first. */
+.why-choose-media { order: -1; position: relative; min-height: 460px; background: var(--bg-color); }
+/* object-fit: contain (not cover) — this photo has its own "ZENQOR TECHNOLOGIES"
+   wordmark baked into the top of the frame, and cover was cropping it off the left
+   and right edges whenever the column was narrower than the source photo. contain
+   guarantees the full frame, wordmark included, is always visible. */
+.why-choose-media img { width: 100%; height: 100%; object-fit: contain; object-position: top center; display: block; mix-blend-mode: screen; }
 .why-choose-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,15,22,0) 65%, rgba(11,15,22,0.85) 100%); pointer-events: none; }
 
 /* =========================================
