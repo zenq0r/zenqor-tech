@@ -200,7 +200,28 @@
             dp_desc1: "At Zenqor Technologies, system security and user privacy are our top priorities. We are committed to protecting the personal and business data you provide us in accordance with applicable data protection regulations.",
             dp_desc2: "We collect only essential information required to deliver our consulting, licensing, and digital system services. We do not sell or share your personal data with unauthorized third parties. For any vulnerability reports or data deletion requests, please contact us directly at admin@zenq0r.com.",
 
-            footer_copy: "© 2026 Zenqor Technologies (Malaysia). All rights reserved."
+            footer_copy: "© 2026 Zenqor Technologies (Malaysia). All rights reserved.",
+
+            why_badge: "Why Choose Us",
+            why_title: "Your Malaysia Business Partner — <span class='text-primary'>Not Just a Service Provider</span>",
+            why_sub: "We understand the real challenges foreign entrepreneurs face — and Zenqor Technologies eliminates every one of them.",
+            why_1_t: "One-Stop Business Landing Solution",
+            why_1_d: "From company incorporation, bank account opening, business licences, visa applications and tax & accounting to brand marketing and market expansion — Zenqor Technologies handles the entire journey.",
+            why_1_li1: "No need to source multiple vendors", why_1_li2: "Unified project management", why_1_li3: "More efficiency, less communication cost",
+            why_2_t: "Strong Government Liaison & Licensing Expertise",
+            why_2_d: "Zenqor Technologies works hand-in-hand with government departments and regulators, including:",
+            why_2_note: "Deep filing experience that raises your approval success rate.",
+            why_2_li1: "Know the processes well", why_2_li2: "Shorter approval times", why_2_li3: "Lower application risk",
+            why_3_t: "ASEAN Market Entry Specialist",
+            why_3_d: "We understand the challenges foreign companies face entering Malaysia:",
+            why_3_tag1: "Laws & Regulations", why_3_tag2: "Equity Structure", why_3_tag3: "Foreign-Ownership Limits", why_3_tag4: "Bank Account Opening", why_3_tag5: "Visa Matters", why_3_tag6: "Localised Operations",
+            why_3_note: "Zenqor Technologies helps you build a compliant operating structure, fast.",
+            why_3_li1: "China companies", why_3_li2: "Taiwan companies", why_3_li3: "Singapore companies", why_3_li4: "International investors",
+            why_4_t: "Multi-Disciplinary Expert Team",
+            why_4_d: "An integrated Zenqor Technologies team of specialists across fields:",
+            why_4_tag1: "Company Secretary", why_4_tag2: "Accountants", why_4_tag3: "Tax Advisors", why_4_tag4: "Legal Advisors", why_4_tag5: "Visa Consultants", why_4_tag6: "Brand & Marketing Team",
+            why_4_note: "Long-term support for your growth — not just a single service delivered.",
+            why_4_li1: "Expert advisory support", why_4_li2: "Long-term operating plans", why_4_li3: "A partner in your growth"
         },
         ms: {
             nav_home: "Utama", nav_services: "Perkhidmatan", nav_portfolio: "Kerja Kami", nav_about: "Tentang Kami", nav_faq: "FAQ", nav_contact: "Hubungi",
@@ -266,7 +287,28 @@
             dp_desc1: "Di Zenqor Technologies, keselamatan sistem dan privasi pengguna adalah keutamaan utama kami. Kami komited untuk melindungi data peribadi dan perniagaan yang anda berikan mengikut peraturan perlindungan data yang berkuat kuasa.",
             dp_desc2: "Kami hanya mengumpul maklumat penting yang diperlukan untuk menyampaikan perkhidmatan perundingan, perlesenan, dan sistem digital kami. Kami tidak menjual atau berkongsi data peribadi anda dengan pihak ketiga yang tidak dibenarkan. Untuk laporan kelemahan atau permintaan pemadaman data, sila hubungi kami terus di admin@zenq0r.com.",
 
-            footer_copy: "© 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara."
+            footer_copy: "© 2026 Zenqor Technologies (Malaysia). Hak cipta terpelihara.",
+
+            why_badge: "Kenapa Pilih Kami",
+            why_title: "Rakan Perniagaan Malaysia Anda — <span class='text-primary'>Bukan Sekadar Penyedia Perkhidmatan</span>",
+            why_sub: "Kami memahami cabaran sebenar yang dihadapi usahawan asing — dan Zenqor Technologies menghapuskan setiap satu daripadanya.",
+            why_1_t: "Penyelesaian Pendaratan Perniagaan Sehenti",
+            why_1_d: "Daripada penubuhan syarikat, pembukaan akaun bank, lesen perniagaan, permohonan visa dan cukai & perakaunan sehingga pemasaran jenama dan pengembangan pasaran — Zenqor Technologies menguruskan keseluruhan perjalanan anda.",
+            why_1_li1: "Tidak perlu cari pelbagai vendor", why_1_li2: "Pengurusan projek bersepadu", why_1_li3: "Lebih cekap, kos komunikasi lebih rendah",
+            why_2_t: "Perhubungan Kerajaan & Kepakaran Perlesenan Yang Kukuh",
+            why_2_d: "Zenqor Technologies bekerjasama rapat dengan jabatan kerajaan dan pihak berkuasa, termasuk:",
+            why_2_note: "Pengalaman pemfailan mendalam yang meningkatkan kadar kejayaan kelulusan anda.",
+            why_2_li1: "Memahami proses dengan baik", why_2_li2: "Masa kelulusan lebih pantas", why_2_li3: "Risiko permohonan lebih rendah",
+            why_3_t: "Pakar Kemasukan Pasaran ASEAN",
+            why_3_d: "Kami memahami cabaran yang dihadapi syarikat asing untuk memasuki Malaysia:",
+            why_3_tag1: "Undang-Undang & Peraturan", why_3_tag2: "Struktur Ekuiti", why_3_tag3: "Had Pemilikan Asing", why_3_tag4: "Pembukaan Akaun Bank", why_3_tag5: "Hal Ehwal Visa", why_3_tag6: "Operasi Berdasar Tempatan",
+            why_3_note: "Zenqor Technologies membantu anda membina struktur operasi yang patuh, dengan pantas.",
+            why_3_li1: "Syarikat China", why_3_li2: "Syarikat Taiwan", why_3_li3: "Syarikat Singapura", why_3_li4: "Pelabur antarabangsa",
+            why_4_t: "Pasukan Pakar Pelbagai Disiplin",
+            why_4_d: "Pasukan pakar bersepadu Zenqor Technologies merentasi pelbagai bidang:",
+            why_4_tag1: "Setiausaha Syarikat", why_4_tag2: "Akauntan", why_4_tag3: "Penasihat Cukai", why_4_tag4: "Penasihat Undang-Undang", why_4_tag5: "Perunding Visa", why_4_tag6: "Pasukan Jenama & Pemasaran",
+            why_4_note: "Sokongan jangka panjang untuk pertumbuhan anda — bukan sekadar satu perkhidmatan sahaja.",
+            why_4_li1: "Sokongan nasihat pakar", why_4_li2: "Pelan operasi jangka panjang", why_4_li3: "Rakan kongsi dalam pertumbuhan anda"
         }
     };
 
