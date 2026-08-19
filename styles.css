@@ -50,6 +50,10 @@ html { scroll-behavior: smooth; }
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
+    background-image: linear-gradient(rgba(11, 15, 22, 0.88), rgba(11, 15, 22, 0.88)), url('zenqorr.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.65;
     overflow-x: hidden;
@@ -327,7 +331,7 @@ p { color: var(--text-secondary); }
    this is plain static flow now, same as every other section image on the site.
    Visually placed on the left via `order` while staying second in the DOM, so the
    text content (which matters more for screen readers/SEO) still reads first. */
-.why-choose-media { order: -1; aspect-ratio: 948 / 1660; width: 100%; max-height: 640px; background: var(--bg-color); }
+.why-choose-media { order: -1; aspect-ratio: 948 / 1260; width: 100%; max-height: 640px; background: var(--bg-color); }
 /* object-fit: contain (not cover) — this photo has its own "ZENQOR TECHNOLOGIES"
    wordmark baked into the top of the frame, and cover was cropping it off the left
    and right edges whenever the column was narrower than the source photo. contain
