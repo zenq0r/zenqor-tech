@@ -164,6 +164,8 @@
             tech_3_li1: "Payroll & Employee Management", tech_3_li2: "Client Document Tracking", tech_3_li3: "Project & Billing Automation",
             tech_4_li1: "Regulatory Compliance Review", tech_4_li2: "Data Protection (PDPA) Advisory", tech_4_li3: "Ongoing Renewal Support",
             agencies_title: "Agencies & <span class='text-primary'>Systems We Work With</span>", agencies_sub: "Government bodies and regulatory systems our consulting team engages with every day.",
+            about_disclaimer_title: "Independent Consultancy Disclaimer",
+            about_disclaimer_text: "Zenqor Technologies is an independent private business consultancy. We are not a government agency and are not affiliated with or endorsed by any government authority. We provide advisory, documentation preparation and application guidance only. Official licences, permits, registrations and approvals are issued solely by the relevant government authorities.",
 
             srv_main_title: "Our <span class='text-primary'>Consulting & Digital Services</span>",
             srv_main_sub: "From business registration and government licensing to the digital systems that run your operations.",
@@ -249,6 +251,8 @@
             tech_3_li1: "Pengurusan Gaji & Pekerja", tech_3_li2: "Penjejakan Dokumen Klien", tech_3_li3: "Automasi Projek & Bil",
             tech_4_li1: "Semakan Pematuhan Regulatori", tech_4_li2: "Nasihat Perlindungan Data (PDPA)", tech_4_li3: "Sokongan Pembaharuan Berterusan",
             agencies_title: "Agensi & <span class='text-primary'>Sistem Yang Kami Uruskan</span>", agencies_sub: "Badan kerajaan dan sistem regulatori yang pasukan perundingan kami uruskan setiap hari.",
+            about_disclaimer_title: "Penafian Perundingan Bebas",
+            about_disclaimer_text: "Zenqor Technologies ialah sebuah firma perundingan perniagaan swasta yang bebas. Kami bukan agensi kerajaan dan tidak bergabung dengan atau disokong oleh mana-mana pihak berkuasa kerajaan. Kami hanya menyediakan khidmat nasihat, penyediaan dokumentasi dan panduan permohonan sahaja. Lesen, permit, pendaftaran dan kelulusan rasmi hanya dikeluarkan oleh pihak berkuasa kerajaan yang berkaitan.",
 
             srv_main_title: "Perundingan & <span class='text-primary'>Perkhidmatan Digital Kami</span>",
             srv_main_sub: "Dari pendaftaran perniagaan dan perlesenan kerajaan sehingga sistem digital yang menggerakkan operasi anda.",
